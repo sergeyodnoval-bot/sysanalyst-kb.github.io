@@ -1,5 +1,6 @@
 ---
 id: what-is-api
+sidebar_position: 6
 title: "Что такое API"
 sidebar_label: "Что такое API"
 level: 1

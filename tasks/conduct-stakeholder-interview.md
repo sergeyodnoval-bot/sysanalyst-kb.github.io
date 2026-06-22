@@ -1,5 +1,6 @@
 ---
 id: conduct-stakeholder-interview
+sidebar_position: 2
 title: Проведение интервью со стейкхолдером
 sidebar_label: Интервью со стейкхолдером
 type: task

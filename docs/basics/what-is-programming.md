@@ -1,5 +1,6 @@
 ---
 id: what-is-programming
+sidebar_position: 3
 title: "Что такое программирование"
 sidebar_label: "Что такое программирование"
 level: 1

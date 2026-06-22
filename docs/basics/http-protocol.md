@@ -1,5 +1,6 @@
 ---
 id: http-protocol
+sidebar_position: 7
 title: HTTP — протокол передачи данных
 sidebar_label: HTTP
 level: 2

@@ -1,5 +1,6 @@
 ---
 id: design-rest-api
+sidebar_position: 1
 title: Проектирование REST API
 sidebar_label: Проектирование REST API
 type: task

@@ -1,5 +1,6 @@
 ---
 id: bpmn
+sidebar_position: 1
 title: BPMN — моделирование бизнес-процессов
 sidebar_label: BPMN
 level: 3

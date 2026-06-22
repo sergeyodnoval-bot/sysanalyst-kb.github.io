@@ -1,5 +1,6 @@
 ---
 id: it-roles
+sidebar_position: 8
 title: "Роли в IT-команде"
 sidebar_label: "Роли в IT"
 level: 1

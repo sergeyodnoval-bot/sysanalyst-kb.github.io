@@ -1,5 +1,6 @@
 ---
 id: sa-day-in-life
+sidebar_position: 9
 title: "Один день из жизни системного аналитика"
 sidebar_label: "День из жизни SA"
 level: 1

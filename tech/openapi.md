@@ -1,5 +1,6 @@
 ---
 id: openapi
+sidebar_position: 1
 title: OpenAPI Specification (Swagger)
 sidebar_label: OpenAPI / Swagger
 tech_type: standard

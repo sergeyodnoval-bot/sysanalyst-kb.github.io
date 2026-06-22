@@ -1,5 +1,6 @@
 ---
 id: postman
+sidebar_position: 2
 title: Postman
 sidebar_label: Postman
 tech_type: tool

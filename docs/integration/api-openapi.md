@@ -1,5 +1,6 @@
 ---
 id: api-openapi
+sidebar_position: 2
 title: Документирование API со спецификацией OpenAPI
 sidebar_label: OpenAPI
 level: 5

@@ -1,5 +1,6 @@
 ---
 id: what-is-software
+sidebar_position: 1
 title: "Что такое программное обеспечение"
 sidebar_label: "Что такое ПО"
 level: 1

@@ -1,5 +1,6 @@
 ---
 id: how-computer-works
+sidebar_position: 2
 title: "Как работает компьютер"
 sidebar_label: "Как работает компьютер"
 level: 1

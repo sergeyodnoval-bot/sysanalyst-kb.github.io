@@ -1,5 +1,6 @@
 ---
 id: scrum
+sidebar_position: 3
 title: Scrum
 sidebar_label: Scrum
 tech_type: methodology

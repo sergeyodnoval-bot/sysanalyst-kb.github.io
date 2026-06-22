@@ -1,5 +1,6 @@
 ---
 id: client-server-basics
+sidebar_position: 5
 title: "Клиент-серверная архитектура"
 sidebar_label: "Клиент-сервер"
 level: 1

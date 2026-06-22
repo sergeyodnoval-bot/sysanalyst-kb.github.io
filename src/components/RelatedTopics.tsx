@@ -10,7 +10,7 @@ function useDocsMap(): Record<string, {title?: string; path: string}> {
   if (!defaultPlugin) return map;
   for (const version of defaultPlugin.versions ?? []) {
     for (const doc of version.docs ?? []) {
-      map[doc.id] = {path: doc.path};
+      map[doc.id] = {title: doc.title, path: doc.path};
     }
   }
   return map;

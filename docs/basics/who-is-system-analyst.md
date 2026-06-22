@@ -1,5 +1,6 @@
 ---
 id: who-is-system-analyst
+sidebar_position: 4
 title: "Кто такой системный аналитик"
 sidebar_label: "Кто такой системный аналитик"
 level: 1

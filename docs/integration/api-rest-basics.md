@@ -1,5 +1,6 @@
 ---
 id: api-rest-basics
+sidebar_position: 1
 title: Основы REST API
 sidebar_label: REST API
 level: 4
