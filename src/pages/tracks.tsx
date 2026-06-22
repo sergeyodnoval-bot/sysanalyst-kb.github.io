@@ -30,6 +30,14 @@ const tracks: Track[] = [
     technologies: ['openapi', 'postman'],
     tasks: ['design-rest-api'],
   },
+  {
+    id: 'requirements-track',
+    title: 'Путь аналитика требований',
+    description: 'От понимания что такое требование до формальных BDD-сценариев. Базовый набор для Junior SA.',
+    articles: ['requirements/what-is-requirement', 'requirements/stakeholder-communication', 'requirements/user-stories', 'requirements/bdd-scenarios'],
+    technologies: ['jira', 'confluence'],
+    tasks: ['elicit-requirements', 'write-user-story'],
+  },
 ];
 
 const articleNames: Record<string, string> = {
@@ -38,6 +46,10 @@ const articleNames: Record<string, string> = {
   'modeling/bpmn': 'BPMN — моделирование бизнес-процессов',
   'integration/api-rest-basics': 'Основы REST API',
   'integration/api-openapi': 'Документирование API со спецификацией OpenAPI',
+  'requirements/what-is-requirement': 'Что такое требование',
+  'requirements/stakeholder-communication': 'Коммуникация со стейкхолдерами',
+  'requirements/user-stories': 'User Stories',
+  'requirements/bdd-scenarios': 'BDD-сценарии и критерии приёмки',
 };
 
 const techNames: Record<string, string> = {
@@ -45,11 +57,15 @@ const techNames: Record<string, string> = {
   postman: 'Postman',
   scrum: 'Scrum',
   http: 'HTTP — HyperText Transfer Protocol',
+  jira: 'Jira',
+  confluence: 'Confluence',
 };
 
 const taskNames: Record<string, string> = {
   'design-rest-api': 'Проектирование REST API',
   'conduct-stakeholder-interview': 'Проведение интервью со стейкхолдером',
+  'elicit-requirements': 'Сбор требований у стейкхолдера',
+  'write-user-story': 'Написание user story',
 };
 
 function getTotalItems(track: Track): number {

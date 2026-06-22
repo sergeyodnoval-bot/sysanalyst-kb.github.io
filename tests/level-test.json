@@ -100,6 +100,27 @@
       "correct": 2,
       "maps_to": "scrum",
       "maps_to_type": "technology"
+    },
+    {
+      "id": "q14",
+      "text": "Какой критерий НЕ входит в INVEST?",
+      "options": ["Independent", "Testable", "Valuable", "Executable"],
+      "correct": 3,
+      "maps_to": "requirements/user-stories"
+    },
+    {
+      "id": "q15",
+      "text": "Какой тип требований описывает ХАРАКТЕРИСТИКИ КАЧЕСТВА системы?",
+      "options": ["Функциональные", "Нефункциональные", "Бизнес-требования", "Пользовательские"],
+      "correct": 1,
+      "maps_to": "requirements/what-is-requirement"
+    },
+    {
+      "id": "q16",
+      "text": "Какой формат описания сценариев используется в BDD?",
+      "options": ["Как / Я хочу / Чтобы", "Given / When / Then", "Кто / Что / Зачем", "Must / Should / Could"],
+      "correct": 1,
+      "maps_to": "requirements/bdd-scenarios"
     }
   ]
 }

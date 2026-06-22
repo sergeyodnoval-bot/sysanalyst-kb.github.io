@@ -26,6 +26,10 @@ function formatLabel(docId: string): string {
     'integration/api-rest-basics': 'Основы REST API',
     'integration/api-openapi': 'Документирование API со спецификацией OpenAPI',
     'modeling/bpmn': 'BPMN — моделирование бизнес-процессов',
+    'requirements/what-is-requirement': 'Что такое требование',
+    'requirements/stakeholder-communication': 'Коммуникация со стейкхолдерами',
+    'requirements/user-stories': 'User Stories',
+    'requirements/bdd-scenarios': 'BDD-сценарии и критерии приёмки',
   };
   return map[docId] || docId.split('/').pop() || docId;
 }
