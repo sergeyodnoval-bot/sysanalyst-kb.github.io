@@ -11,7 +11,7 @@
 ## Критерии готовности MVP (Definition of Done)
 - [ ] `npm run build` проходит без ошибок
 - [ ] Сайт открывается локально (`npm run start`) и на деплое
-- [ ] Все 5 демо-статей читаются, переходы между ними работают
+- [x] Все 5 демо-статей читаются, переходы между ними работают
 - [ ] На странице статьи видны блоки "Что нужно знать до" и "Куда двигаться дальше"
 - [ ] Карта знаний отображает все 5 статей как узлы с ребрами
 - [ ] Поиск находит статью по ключевому слову из текста
@@ -24,26 +24,26 @@
 ## Этап 0. Инициализация проекта
 **DoD:** Репозиторий создан, Docusaurus запускается локально, пустая страница открывается.
 
-- [ ] Создать репозиторий `sysanalyst-kb`
-- [ ] Инициализировать Docusaurus 3: `npx create-docusaurus@latest . classic --typescript`
-- [ ] Удалить пример-контент из `docs/` и `blog/`
-- [ ] Настроить `docusaurus.config.js`:
+- [x] Создать репозиторий `sysanalyst-kb`
+- [x] Инициализировать Docusaurus 3: `npx create-docusaurus@latest . classic --typescript`
+- [x] Удалить пример-контент из `docs/` и `blog/`
+- [x] Настроить `docusaurus.config.js`:
   - title: "База знаний системного аналитика"
   - url / baseUrl под будущий домен
   - тема — светлая по умолчанию, переключатель темы сохранить
   - navbar: пункты "Карта знаний", "Тест на уровень", "Треки", "Поиск"
   - footer: ссылки на репо, контакты
-- [ ] Настроить `sidebars.js` — автоматическая генерация из структуры `docs/`
-- [ ] Подключить `docusaurus-lunr-search` для локального поиска
-- [ ] Добавить README.md с инструкцией: `npm install`, `npm run start`, `npm run build`
-- [ ] Коммит: `chore: init docusaurus project`
+- [x] Настроить `sidebars.js` — автоматическая генерация из структуры `docs/`
+- [x] Подключить `docusaurus-lunr-search` для локального поиска
+- [x] Добавить README.md с инструкцией: `npm install`, `npm run start`, `npm run build`
+- [x] Коммит: `chore: init docusaurus project`
 
 ---
 
 ## Этап 1. Модель статьи и 5 демо-статей
 **DoD:** 5 статей с валидным frontmatter, переходы по ссылкам работают, поиск находит статьи.
 
-### 1.1. Создать структуру папок в `docs/`:
+### 1.1. Создать структуру папок в `docs/`: **ГОТОВО**
 
 ```
 docs/
@@ -57,34 +57,20 @@ docs/
     └── bpmn.md
 ```
 
-### 1.2. Шаблон frontmatter (обязательные поля):
+### 1.2. Шаблон frontmatter — реализован во всех 5 статьях
 
-```yaml
----
-id: string              # уникальный идентификатор, совпадает с именем файла
-title: string           # заголовок
-sidebar_label: string   # короткое название для меню
-level: number           # 1..10 — уровень сложности
-category: enum          # basics | requirements | modeling | integration | architecture | soft
-tags: string[]          # теги для поиска и фильтрации
-prerequisites: string[] # ID статей, которые нужно знать ДО этой
-leads_to: string[]      # ID статей, которые откроются ПОСЛЕ этой
-related: string[]       # связанные, но не обязательные темы
-estimated_time: number  # минуты на чтение
-difficulty: number      # 1..5 — субъективная сложность
----
-```
+### 1.3. Написаны 5 демо-статей:
+- Цепочка: `http-protocol` → `api-rest-basics` → `api-openapi`
+- `client-server` как prereq для rest
+- `bpmn` изолированная
+- 300-500 слов каждая, H2/H3 заголовки, таблицы
+- `http-protocol` — с картинкой (http-diagram.png)
+- `api-rest-basics` — со встроенным YouTube-видео (MDX iframe)
+- `api-openapi` — с картинкой (swagger-example.png)
 
-### 1.3. Написать 5 демо-статей с валидными зависимостями:
+### 1.4. Созданы `_category_.json` для basics/, integration/, modeling/
 
-Цепочка для теста: `http-protocol` → `api-rest-basics` → `api-openapi`
-Отдельные: `client-server` (prereq для rest), `bpmn` (изолированная, для теста графа).
-
-Содержимое — любое осмысленное, 300-500 слов, с заголовками H2/H3, хотя бы одна статья с картинкой и одна со встроенным YouTube-видео через MDX.
-
-### 1.4. Настроить `_category_.json` в каждой папке для красивого sidebar.
-
-**Коммит:** `feat: add 5 demo articles with dependencies`
+**Коммит:** `feat: add 5 demo articles with dependencies` — выполнен
 
 ---
 
