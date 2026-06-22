@@ -5,8 +5,8 @@ sidebar_label: REST API
 level: 4
 category: integration
 tags: [rest, api, http, json]
-prerequisites: [http-protocol, client-server]
-leads_to: [api-openapi]
+prerequisites: [basics/http-protocol, basics/client-server]
+leads_to: [integration/api-openapi]
 related: []
 estimated_time: 20
 difficulty: 3

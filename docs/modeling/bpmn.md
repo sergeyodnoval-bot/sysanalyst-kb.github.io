@@ -7,7 +7,7 @@ category: modeling
 tags: [bpmn, процессы, моделирование, нотация]
 prerequisites: []
 leads_to: []
-related: [api-openapi]
+related: [integration/api-openapi]
 estimated_time: 20
 difficulty: 3
 ---

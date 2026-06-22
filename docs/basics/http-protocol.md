@@ -6,8 +6,8 @@ level: 2
 category: basics
 tags: [http, протоколы, сеть]
 prerequisites: []
-leads_to: [api-rest-basics]
-related: [client-server]
+leads_to: [integration/api-rest-basics]
+related: [basics/client-server]
 estimated_time: 15
 difficulty: 2
 ---

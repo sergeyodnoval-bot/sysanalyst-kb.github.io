@@ -6,8 +6,8 @@ level: 1
 category: basics
 tags: [архитектура, клиент-сервер, основы]
 prerequisites: []
-leads_to: [api-rest-basics]
-related: [http-protocol]
+leads_to: [integration/api-rest-basics]
+related: [basics/http-protocol]
 estimated_time: 10
 difficulty: 1
 ---

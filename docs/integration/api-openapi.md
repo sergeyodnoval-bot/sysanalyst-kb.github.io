@@ -5,9 +5,9 @@ sidebar_label: OpenAPI
 level: 5
 category: integration
 tags: [openapi, swagger, api, документация]
-prerequisites: [api-rest-basics]
+prerequisites: [integration/api-rest-basics]
 leads_to: []
-related: [bpmn]
+related: [modeling/bpmn]
 estimated_time: 25
 difficulty: 4
 ---

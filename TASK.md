@@ -12,7 +12,7 @@
 - [ ] `npm run build` проходит без ошибок
 - [ ] Сайт открывается локально (`npm run start`) и на деплое
 - [x] Все 5 демо-статей читаются, переходы между ними работают
-- [ ] На странице статьи видны блоки "Что нужно знать до" и "Куда двигаться дальше"
+- [x] На странице статьи видны блоки "Что нужно знать до" и "Куда двигаться дальше"
 - [ ] Карта знаний отображает все 5 статей как узлы с ребрами
 - [ ] Поиск находит статью по ключевому слову из текста
 - [ ] Тест на уровень работает, выдает рекомендацию
@@ -77,25 +77,26 @@ docs/
 ## Этап 2. Блоки навигации на странице статьи
 **DoD:** На каждой статье отображаются 3 блока со ссылками на связанные статьи.
 
-### 2.1. Создать MDX-компоненты в `src/components/`:
+### 2.1. Созданы MDX-компоненты в `src/components/`: **ГОТОВО**
 
-- `PrerequisitesList.tsx` — список "Что нужно знать перед"
-- `NextStepsList.tsx` — список "Куда двигаться дальше"
-- `RelatedTopics.tsx` — список "Похожие темы"
+- `PrerequisitesList.tsx` — "Что нужно знать перед" ✓
+- `NextStepsList.tsx` — "Куда двигаться дальше" ✓
+- `RelatedTopics.tsx` — "Похожие темы" ✓
+- `ArticleLink.tsx` — общий компонент ссылки с резолвингом ID
 
-### 2.2. Интегрировать компоненты в кастомный шаблон статьи:
+### 2.2. Swizzle `DocItem/Layout` и интеграция: **ГОТОВО**
 
-- Создать `src/theme/DocItem/Layout/index.js` (swizzle Docusaurus)
-- Вставить компоненты до и после контента
-- Данные брать из frontmatter текущей статьи
+- `src/theme/DocItem/Layout/index.tsx` — добавлены `<PrerequisitesList />` до контента, `<NextStepsList />` и `<RelatedTopics />` после контента
+- Данные берутся из `useDoc().frontMatter` (prerequisites, leads_to, related)
 
-### 2.3. Проверить: на статье `api-rest-basics` видны:
+### 2.3. Проверка `api-rest-basics`: **ГОТОВО**
 
-- prereq: `http-protocol`, `client-server`
-- leads_to: `api-openapi`
-- related: (если указаны)
+- **prereq:** HTTP (`/docs/basics/http-protocol`), Клиент-сервер (`/docs/basics/client-server`) ✓
+- **leads_to:** OpenAPI (`/docs/integration/api-openapi`) ✓
+- **related:** не указаны — блок не отображается ✓
+- **api-openapi** → related: BPMN отображается ✓
 
-**Коммит:** `feat: add navigation blocks to article pages`
+**Коммит:** `feat: add navigation blocks to article pages` — выполнен
 
 ---
 
