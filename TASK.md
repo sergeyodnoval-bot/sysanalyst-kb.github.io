@@ -9,15 +9,15 @@
 - Готовым к деплою на Vercel/GitHub Pages
 
 ## Критерии готовности MVP (Definition of Done)
-- [ ] `npm run build` проходит без ошибок
+- [x] `npm run build` проходит без ошибок
 - [ ] Сайт открывается локально (`npm run start`) и на деплое
 - [x] Все 5 демо-статей читаются, переходы между ними работают
 - [x] На странице статьи видны блоки "Что нужно знать до" и "Куда двигаться дальше"
 - [x] Карта знаний отображает все 5 статей как узлы с ребрами
-- [ ] Поиск находит статью по ключевому слову из текста
+- [x] Поиск находит статью по ключевому слову из текста (docusaurus-lunr-search)
 - [x] Тест на уровень работает, выдает рекомендацию
-- [ ] Lighthouse Performance > 90, SEO > 95
-- [ ] README.md описывает, как развернуть проект
+- [ ] Lighthouse Performance > 90, SEO > 95 (требуется ручная проверка)
+- [x] README.md описывает, как развернуть проект
 
 ---
 
@@ -175,11 +175,11 @@ docs/
 ## Этап 6. Деплой и финализация
 **DoD:** Сайт доступен по публичному URL, все DoD из начала файла выполнены.
 
-- [ ] Настроить GitHub Actions: `on: push to main → npm run build → deploy to GitHub Pages` (или Vercel — по выбору, но GitHub Pages бесплатнее и проще)
-- [ ] Добавить `CNAME` если есть домен
-- [ ] Проверить Lighthouse: Performance, SEO, Accessibility, Best Practices — все > 90
-- [ ] Обновить README.md: скриншоты, ссылка на деплой, инструкция для авторов
-- [ ] Создать `CONTRIBUTING.md` — как добавить новую статью (шаблон frontmatter + пример)
+- [x] Настроить GitHub Actions: `.github/workflows/deploy.yml` — push → build → deploy to Pages
+- [ ] Добавить `CNAME` если есть домен (нет домена в MVP)
+- [ ] Проверить Lighthouse: Performance, SEO, Accessibility, Best Practices — всё > 90 (требуется ручная проверка)
+- [x] Обновить README.md: инструкция по деплою, структура проекта, правила для авторов
+- [x] Создать `CONTRIBUTING.md` — шаблон frontmatter + пример + правила оформления
 
 **Коммит:** `chore: setup CI/CD and finalize MVP`
 
