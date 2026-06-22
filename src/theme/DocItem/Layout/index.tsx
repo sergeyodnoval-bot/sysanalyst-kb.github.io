@@ -14,6 +14,8 @@ import ContentVisibility from '@theme/ContentVisibility';
 import PrerequisitesList from '@site/src/components/PrerequisitesList';
 import NextStepsList from '@site/src/components/NextStepsList';
 import RelatedTopics from '@site/src/components/RelatedTopics';
+import UsedTechnologies from '@site/src/components/UsedTechnologies';
+import PracticalTasks from '@site/src/components/PracticalTasks';
 import type {Props} from '@theme/DocItem/Layout';
 
 import styles from './styles.module.css';
@@ -58,6 +60,8 @@ export default function DocItemLayout({children}: Props): ReactNode {
             <PrerequisitesList />
             <DocItemContent>{children}</DocItemContent>
             <NextStepsList />
+            <UsedTechnologies />
+            <PracticalTasks />
             <RelatedTopics />
             <DocItemFooter />
           </article>
