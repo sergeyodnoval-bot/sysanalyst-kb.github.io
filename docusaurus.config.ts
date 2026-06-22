@@ -57,13 +57,13 @@ const config: Config = {
       return {
         name: 'knowledge-graph',
         async loadContent() {
-          const docsDir = path.resolve(__dirname, 'docs');
-          const graph: {nodes: {id: string; title: string; label: string; level: number; category: string}[]; edges: {from: string; to: string; type: string}[]} = {
+          const graph: {nodes: {id: string; title: string; label: string; level: number; category: string; tech_type?: string}[]; edges: {from: string; to: string; type: string}[]} = {
             nodes: [],
             edges: [],
           };
 
           function walkDir(dir: string, prefix: string = '') {
+            if (!fs.existsSync(dir)) return;
             const entries = fs.readdirSync(dir, {withFileTypes: true});
             for (const entry of entries) {
               const fullPath = path.join(dir, entry.name);
@@ -76,13 +76,18 @@ const config: Config = {
 
                 const fullId = prefix ? `${prefix}/${data.id}` : data.id;
 
-                graph.nodes.push({
+                const node: {id: string; title: string; label: string; level: number; category: string; tech_type?: string} = {
                   id: fullId,
                   title: data.title || data.id,
                   label: data.sidebar_label || data.title || data.id,
                   level: data.level || 1,
                   category: data.category || 'other',
-                });
+                };
+                if (data.tech_type) {
+                  node.tech_type = data.tech_type;
+                }
+
+                graph.nodes.push(node);
 
                 const addEdges = (field: string, type: string) => {
                   const items = data[field];
@@ -93,11 +98,13 @@ const config: Config = {
                   }
                 };
                 addEdges('prerequisites', 'prerequisite');
+                addEdges('leads_to', 'leads_to');
               }
             }
           }
 
-          walkDir(docsDir);
+          walkDir(path.resolve(__dirname, 'docs'));
+          walkDir(path.resolve(__dirname, 'tech'));
           return graph;
         },
         async contentLoaded({content, actions}) {
