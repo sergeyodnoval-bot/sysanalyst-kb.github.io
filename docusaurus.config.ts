@@ -53,22 +53,33 @@ const config: Config = {
         sidebarPath: './sidebars-tech.ts',
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'tasks',
+        path: 'tasks',
+        routeBasePath: 'tasks',
+        sidebarPath: './sidebars-tasks.ts',
+      },
+    ],
     function knowledgeGraphPlugin() {
       return {
         name: 'knowledge-graph',
         async loadContent() {
-          const graph: {nodes: {id: string; title: string; label: string; level: number; category: string; tech_type?: string}[]; edges: {from: string; to: string; type: string}[]} = {
+          type GraphNode = {id: string; title: string; label: string; level: number; category: string; type: string; tech_type?: string; difficulty?: number};
+          type GraphEdge = {from: string; to: string; type: string};
+          const graph: {nodes: GraphNode[]; edges: GraphEdge[]} = {
             nodes: [],
             edges: [],
           };
 
-          function walkDir(dir: string, prefix: string = '') {
+          function walkDir(dir: string, prefix: string = '', nodeType: string = 'article') {
             if (!fs.existsSync(dir)) return;
             const entries = fs.readdirSync(dir, {withFileTypes: true});
             for (const entry of entries) {
               const fullPath = path.join(dir, entry.name);
               if (entry.isDirectory() && entry.name !== 'category') {
-                walkDir(fullPath, prefix ? `${prefix}/${entry.name}` : entry.name);
+                walkDir(fullPath, prefix ? `${prefix}/${entry.name}` : entry.name, nodeType);
               } else if (entry.name.endsWith('.md') || entry.name.endsWith('.mdx')) {
                 const content = fs.readFileSync(fullPath, 'utf-8');
                 const {data} = matter(content);
@@ -76,12 +87,14 @@ const config: Config = {
 
                 const fullId = prefix ? `${prefix}/${data.id}` : data.id;
 
-                const node: {id: string; title: string; label: string; level: number; category: string; tech_type?: string} = {
+                const node: GraphNode = {
                   id: fullId,
                   title: data.title || data.id,
                   label: data.sidebar_label || data.title || data.id,
                   level: data.level || 1,
                   category: data.category || 'other',
+                  type: nodeType,
+                  difficulty: data.difficulty,
                 };
                 if (data.tech_type) {
                   node.tech_type = data.tech_type;
@@ -99,12 +112,16 @@ const config: Config = {
                 };
                 addEdges('prerequisites', 'prerequisite');
                 addEdges('leads_to', 'leads_to');
+                addEdges('requires_articles', 'enables');
+                addEdges('requires_tech', 'required_for');
+                addEdges('next_tasks', 'next_task');
               }
             }
           }
 
-          walkDir(path.resolve(__dirname, 'docs'));
-          walkDir(path.resolve(__dirname, 'tech'));
+          walkDir(path.resolve(__dirname, 'docs'), '', 'article');
+          walkDir(path.resolve(__dirname, 'tech'), '', 'technology');
+          walkDir(path.resolve(__dirname, 'tasks'), '', 'task');
           return graph;
         },
         async contentLoaded({content, actions}) {
@@ -140,6 +157,13 @@ const config: Config = {
           docsPluginId: 'tech',
           position: 'left',
           label: 'Технологии',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'tasksSidebar',
+          docsPluginId: 'tasks',
+          position: 'left',
+          label: 'Задачи',
         },
         {to: '/map', label: 'Карта знаний', position: 'left'},
         {to: '/test', label: 'Тест на уровень', position: 'left'},
