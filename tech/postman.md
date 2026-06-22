@@ -7,7 +7,7 @@ tech_type: tool
 level: 2
 category: testing
 tags: [postman, api, testing, collections, automation]
-prerequisites: [basics/http-protocol]
+prerequisites: [tech/http]
 leads_to: []
 related: [integration/api-rest-basics, tech/openapi]
 estimated_time: 15

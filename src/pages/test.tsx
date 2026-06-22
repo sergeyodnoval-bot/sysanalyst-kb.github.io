@@ -42,7 +42,7 @@ function calculateResult(
 
   const articleLevels: Record<string, number> = {
     'basics/client-server': 1,
-    'basics/http-protocol': 2,
+    'basics/what-is-protocol': 2,
     'modeling/bpmn': 3,
     'integration/api-rest-basics': 4,
     'integration/api-openapi': 5,
@@ -102,7 +102,7 @@ export default function LevelTest(): React.ReactElement {
   if (finished) {
     const articleNames: Record<string, string> = {
       'basics/client-server': 'Клиент-серверная архитектура',
-      'basics/http-protocol': 'HTTP — протокол передачи данных',
+      'basics/what-is-protocol': 'Что такое протокол взаимодействия',
       'modeling/bpmn': 'BPMN — моделирование бизнес-процессов',
       'integration/api-rest-basics': 'Основы REST API',
       'integration/api-openapi': 'Документирование API со спецификацией OpenAPI',
@@ -112,6 +112,7 @@ export default function LevelTest(): React.ReactElement {
       openapi: 'OpenAPI Specification (Swagger)',
       postman: 'Postman',
       scrum: 'Scrum',
+      http: 'HTTP — HyperText Transfer Protocol',
     };
 
     return (

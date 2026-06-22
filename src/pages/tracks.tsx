@@ -18,7 +18,7 @@ const tracks: Track[] = [
     id: 'junior-track',
     title: 'Путь Junior System Analyst',
     description: 'С нуля до первой работы. Подойдёт тем, кто только начинает изучать системный анализ.',
-    articles: ['basics/client-server', 'basics/http-protocol', 'modeling/bpmn', 'integration/api-rest-basics', 'integration/api-openapi'],
+    articles: ['basics/client-server', 'basics/what-is-protocol', 'modeling/bpmn', 'integration/api-rest-basics', 'integration/api-openapi'],
     technologies: ['openapi', 'postman'],
     tasks: ['design-rest-api'],
   },
@@ -26,7 +26,7 @@ const tracks: Track[] = [
     id: 'api-track',
     title: 'Путь API-интегратора',
     description: 'Фокус на интеграциях — от протоколов до документирования.',
-    articles: ['basics/http-protocol', 'integration/api-rest-basics', 'integration/api-openapi'],
+    articles: ['basics/what-is-protocol', 'integration/api-rest-basics', 'integration/api-openapi'],
     technologies: ['openapi', 'postman'],
     tasks: ['design-rest-api'],
   },
@@ -34,7 +34,7 @@ const tracks: Track[] = [
 
 const articleNames: Record<string, string> = {
   'basics/client-server': 'Клиент-серверная архитектура',
-  'basics/http-protocol': 'HTTP — протокол передачи данных',
+  'basics/what-is-protocol': 'Что такое протокол взаимодействия',
   'modeling/bpmn': 'BPMN — моделирование бизнес-процессов',
   'integration/api-rest-basics': 'Основы REST API',
   'integration/api-openapi': 'Документирование API со спецификацией OpenAPI',
@@ -44,6 +44,7 @@ const techNames: Record<string, string> = {
   openapi: 'OpenAPI Specification (Swagger)',
   postman: 'Postman',
   scrum: 'Scrum',
+  http: 'HTTP — HyperText Transfer Protocol',
 };
 
 const taskNames: Record<string, string> = {

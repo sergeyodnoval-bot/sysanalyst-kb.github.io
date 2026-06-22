@@ -6,11 +6,11 @@ import ArticleLink from './ArticleLink';
 function useDocsMap(): Record<string, {title?: string; path: string}> {
   const allDocs = useAllDocsData();
   const map: Record<string, {title?: string; path: string}> = {};
-  const defaultPlugin = allDocs['default'];
-  if (!defaultPlugin) return map;
-  for (const version of defaultPlugin.versions ?? []) {
-    for (const doc of version.docs ?? []) {
-      map[doc.id] = {title: doc.title, path: doc.path};
+  for (const plugin of Object.values(allDocs)) {
+    for (const version of plugin.versions ?? []) {
+      for (const doc of version.docs ?? []) {
+        map[doc.id] = {title: doc.title, path: doc.path};
+      }
     }
   }
   return map;

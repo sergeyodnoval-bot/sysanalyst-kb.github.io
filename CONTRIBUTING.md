@@ -48,7 +48,7 @@ sidebar_label: REST
 level: 4
 category: integration
 tags: [rest, http, json]
-prerequisites: [basics/http-protocol]
+prerequisites: [tech/http]
 leads_to: [integration/openapi]
 related: [basics/client-server]
 estimated_time: 15

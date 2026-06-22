@@ -8,8 +8,8 @@ category: integration
 difficulty: 2
 estimated_time: 90
 requires_articles:
-  - basics/http-protocol
-  - basics/client-server
+  - tech/http
+  - basics/client-server-basics
   - integration/api-rest-basics
   - integration/api-openapi
 requires_tech:

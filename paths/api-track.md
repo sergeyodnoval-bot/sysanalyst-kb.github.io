@@ -3,10 +3,12 @@ id: api-track
 title: Путь API-интегратора
 description: Фокус на интеграциях — от протоколов до документирования.
 articles:
-  - basics/http-protocol
+  - basics/what-is-protocol
+  - tech/http
   - integration/api-rest-basics
   - integration/api-openapi
 technologies:
+  - http
   - openapi
   - postman
 tasks:

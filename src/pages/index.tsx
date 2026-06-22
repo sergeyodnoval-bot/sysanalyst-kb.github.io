@@ -20,7 +20,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/basics/http-protocol">
+            to="/docs/basics/what-is-protocol">
             Начать изучение →
           </Link>
         </div>

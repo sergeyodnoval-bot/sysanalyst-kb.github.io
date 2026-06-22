@@ -5,14 +5,16 @@
       "text": "Какой HTTP-метод является идемпотентным?",
       "options": ["POST", "GET", "PATCH", "Все перечисленные"],
       "correct": 1,
-      "maps_to": "basics/http-protocol"
+      "maps_to": "http",
+      "maps_to_type": "technology"
     },
     {
       "id": "q2",
       "text": "Какой класс кодов HTTP-ответа означает ошибку сервера?",
       "options": ["2xx", "3xx", "4xx", "5xx"],
       "correct": 3,
-      "maps_to": "basics/http-protocol"
+      "maps_to": "http",
+      "maps_to_type": "technology"
     },
     {
       "id": "q3",

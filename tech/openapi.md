@@ -7,7 +7,7 @@ tech_type: standard
 level: 3
 category: integration
 tags: [openapi, swagger, rest, api, specification]
-prerequisites: [basics/http-protocol, integration/api-rest-basics]
+prerequisites: [tech/http, integration/api-rest-basics]
 leads_to: [integration/api-openapi]
 related: [tech/postman]
 estimated_time: 25

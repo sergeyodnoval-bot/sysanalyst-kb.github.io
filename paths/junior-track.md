@@ -4,7 +4,7 @@ title: Путь Junior System Analyst
 description: С нуля до первой работы. Подойдёт тем, кто только начинает изучать системный анализ.
 articles:
   - basics/client-server
-  - basics/http-protocol
+  - basics/what-is-protocol
   - modeling/bpmn
   - integration/api-rest-basics
   - integration/api-openapi
