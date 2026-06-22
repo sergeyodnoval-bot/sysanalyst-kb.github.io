@@ -123,6 +123,7 @@ const config: Config = {
                 addEdges('requires_articles', 'enables');
                 addEdges('requires_tech', 'required_for');
                 addEdges('next_tasks', 'next_task');
+                addEdges('alternatives', 'alternative');
               }
             }
           }

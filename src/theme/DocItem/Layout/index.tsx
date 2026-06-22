@@ -16,6 +16,12 @@ import NextStepsList from '@site/src/components/NextStepsList';
 import RelatedTopics from '@site/src/components/RelatedTopics';
 import UsedTechnologies from '@site/src/components/UsedTechnologies';
 import PracticalTasks from '@site/src/components/PracticalTasks';
+import RequiredKnowledge from '@site/src/components/RequiredKnowledge';
+import AppliedInTasks from '@site/src/components/AppliedInTasks';
+import AlternativesList from '@site/src/components/AlternativesList';
+import CitationBlock from '@site/src/components/CitationBlock';
+import NextTasksList from '@site/src/components/NextTasksList';
+import TypicalPitfalls from '@site/src/components/TypicalPitfalls';
 import type {Props} from '@theme/DocItem/Layout';
 
 import styles from './styles.module.css';
@@ -58,10 +64,28 @@ export default function DocItemLayout({children}: Props): ReactNode {
             <DocVersionBadge />
             {docTOC.mobile}
             <PrerequisitesList />
+            <RequiredKnowledge />
             <DocItemContent>{children}</DocItemContent>
             <NextStepsList />
-            <UsedTechnologies />
-            <PracticalTasks />
+            {metadata.pluginId === 'tech' && (
+              <>
+                <AppliedInTasks />
+                <AlternativesList />
+                <CitationBlock />
+              </>
+            )}
+            {metadata.pluginId === 'tasks' && (
+              <>
+                <NextTasksList />
+                <TypicalPitfalls />
+              </>
+            )}
+            {metadata.pluginId === 'default' && (
+              <>
+                <UsedTechnologies />
+                <PracticalTasks />
+              </>
+            )}
             <RelatedTopics />
             <DocItemFooter />
           </article>

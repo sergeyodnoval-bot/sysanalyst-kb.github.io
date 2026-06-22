@@ -11,6 +11,11 @@ leads_to: []
 related: []
 estimated_time: 20
 difficulty: 2
+official_url: https://scrumguides.org/
+first_seen: 1995
+requires_articles: []
+used_in_tasks: []
+alternatives: []
 ---
 
 # Scrum

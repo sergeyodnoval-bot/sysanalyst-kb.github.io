@@ -2,7 +2,7 @@
 id: openapi
 title: OpenAPI Specification (Swagger)
 sidebar_label: OpenAPI / Swagger
-tech_type: specification
+tech_type: standard
 level: 3
 category: integration
 tags: [openapi, swagger, rest, api, specification]
@@ -11,6 +11,14 @@ leads_to: [integration/api-openapi]
 related: [tech/postman]
 estimated_time: 25
 difficulty: 3
+official_url: https://spec.openapis.org/oas/latest.html
+version: "3.1.0"
+published_date: 2021-02-15
+first_seen: 2010
+citation_key: openapi31
+requires_articles: [integration/api-rest-basics]
+used_in_tasks: [design-rest-api]
+alternatives: []
 ---
 
 # OpenAPI Specification (Swagger)

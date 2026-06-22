@@ -11,6 +11,12 @@ leads_to: []
 related: [integration/api-rest-basics, tech/openapi]
 estimated_time: 15
 difficulty: 2
+vendor: Postman Inc.
+official_url: https://www.postman.com/
+first_seen: 2012
+requires_articles: [integration/api-rest-basics]
+used_in_tasks: [design-rest-api]
+alternatives: []
 ---
 
 # Postman
