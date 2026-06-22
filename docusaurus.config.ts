@@ -66,7 +66,7 @@ const config: Config = {
       return {
         name: 'knowledge-graph',
         async loadContent() {
-          type GraphNode = {id: string; title: string; label: string; level: number; category: string; type: string; tech_type?: string; difficulty?: number};
+          type GraphNode = {id: string; title: string; label: string; level: number; category: string; type: string; tech_type?: string; difficulty?: number; first_seen?: number; link: string};
           type GraphEdge = {from: string; to: string; type: string};
           const graph: {nodes: GraphNode[]; edges: GraphEdge[]} = {
             nodes: [],
@@ -87,6 +87,12 @@ const config: Config = {
 
                 const fullId = prefix ? `${prefix}/${data.id}` : data.id;
 
+                const linkMap: Record<string, string> = {
+                  article: '/docs/',
+                  technology: '/tech/',
+                  task: '/tasks/',
+                };
+
                 const node: GraphNode = {
                   id: fullId,
                   title: data.title || data.id,
@@ -95,6 +101,8 @@ const config: Config = {
                   category: data.category || 'other',
                   type: nodeType,
                   difficulty: data.difficulty,
+                  first_seen: data.first_seen,
+                  link: `${linkMap[nodeType] || '/docs/'}${fullId}`,
                 };
                 if (data.tech_type) {
                   node.tech_type = data.tech_type;
