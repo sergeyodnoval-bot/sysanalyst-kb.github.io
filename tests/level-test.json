@@ -1,0 +1,79 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Какой HTTP-метод является идемпотентным?",
+      "options": ["POST", "GET", "PATCH", "Все перечисленные"],
+      "correct": 1,
+      "maps_to": "basics/http-protocol"
+    },
+    {
+      "id": "q2",
+      "text": "Какой класс кодов HTTP-ответа означает ошибку сервера?",
+      "options": ["2xx", "3xx", "4xx", "5xx"],
+      "correct": 3,
+      "maps_to": "basics/http-protocol"
+    },
+    {
+      "id": "q3",
+      "text": "Кто инициирует соединение в клиент-серверной архитектуре?",
+      "options": ["Сервер", "Клиент", "Оба одновременно", "База данных"],
+      "correct": 1,
+      "maps_to": "basics/client-server"
+    },
+    {
+      "id": "q4",
+      "text": "Какое преимущество даёт трёхзвенная архитектура по сравнению с двухзвенной?",
+      "options": [
+        "Меньше кода",
+        "Выделенный слой бизнес-логики",
+        "Отсутствие сети",
+        "Более быстрый клиент"
+      ],
+      "correct": 1,
+      "maps_to": "basics/client-server"
+    },
+    {
+      "id": "q5",
+      "text": "Какой архитектурный стиль НАИБОЛЕЕ распространён для веб-API?",
+      "options": ["SOAP", "REST", "GraphQL", "gRPC"],
+      "correct": 1,
+      "maps_to": "integration/api-rest-basics"
+    },
+    {
+      "id": "q6",
+      "text": "Какой принцип REST означает, что каждый запрос содержит всю информацию для его обработки?",
+      "options": ["Кэширование", "Единый интерфейс", "Отсутствие состояния", "Многоуровневость"],
+      "correct": 2,
+      "maps_to": "integration/api-rest-basics"
+    },
+    {
+      "id": "q7",
+      "text": "Какой формат используется для описания OpenAPI-спецификации?",
+      "options": ["Только XML", "Только JSON", "JSON или YAML", "Только YAML"],
+      "correct": 2,
+      "maps_to": "integration/api-openapi"
+    },
+    {
+      "id": "q8",
+      "text": "Какой инструмент позволяет отправлять запросы к API прямо из OpenAPI-спецификации?",
+      "options": ["Postman", "Swagger UI", "SoapUI", "cURL"],
+      "correct": 1,
+      "maps_to": "integration/api-openapi"
+    },
+    {
+      "id": "q9",
+      "text": "Как в BPMN обозначается шлюз (gateway)?",
+      "options": ["Круг", "Прямоугольник", "Ромб", "Стрелка"],
+      "correct": 2,
+      "maps_to": "modeling/bpmn"
+    },
+    {
+      "id": "q10",
+      "text": "Какой элемент BPMN отвечает за ветвление процесса?",
+      "options": ["Событие", "Действие", "Шлюз", "Поток сообщений"],
+      "correct": 2,
+      "maps_to": "modeling/bpmn"
+    }
+  ]
+}
