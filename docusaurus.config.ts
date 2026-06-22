@@ -44,6 +44,15 @@ const config: Config = {
 
   plugins: [
     'docusaurus-lunr-search',
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'tech',
+        path: 'tech',
+        routeBasePath: 'tech',
+        sidebarPath: './sidebars-tech.ts',
+      },
+    ],
     function knowledgeGraphPlugin() {
       return {
         name: 'knowledge-graph',
@@ -117,6 +126,13 @@ const config: Config = {
           sidebarId: 'mainSidebar',
           position: 'left',
           label: 'Статьи',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'techSidebar',
+          docsPluginId: 'tech',
+          position: 'left',
+          label: 'Технологии',
         },
         {to: '/map', label: 'Карта знаний', position: 'left'},
         {to: '/test', label: 'Тест на уровень', position: 'left'},
