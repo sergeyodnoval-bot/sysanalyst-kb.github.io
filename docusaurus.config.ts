@@ -119,11 +119,17 @@ const config: Config = {
                   }
                 };
                 addEdges('prerequisites', 'prerequisite');
-                addEdges('leads_to', 'leads_to');
                 addEdges('requires_articles', 'enables');
                 addEdges('requires_tech', 'required_for');
                 addEdges('next_tasks', 'next_task');
                 addEdges('alternatives', 'alternative');
+
+                const leadsToItems = data['leads_to'];
+                if (Array.isArray(leadsToItems)) {
+                  for (const target of leadsToItems) {
+                    graph.edges.push({from: fullId, to: target, type: 'leads_to'});
+                  }
+                }
               }
             }
           }

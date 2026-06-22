@@ -7,7 +7,7 @@ category: basics
 tags: [http, протоколы, сеть]
 prerequisites: []
 leads_to: [integration/api-rest-basics]
-related: [basics/client-server]
+related: [basics/client-server-basics]
 estimated_time: 15
 difficulty: 2
 ---
