@@ -8,6 +8,11 @@ articles:
   - modeling/bpmn
   - integration/api-rest-basics
   - integration/api-openapi
+technologies:
+  - openapi
+  - postman
+tasks:
+  - design-rest-api
 ---
 
 # Путь Junior System Analyst

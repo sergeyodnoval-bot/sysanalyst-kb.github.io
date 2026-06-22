@@ -6,6 +6,11 @@ articles:
   - basics/http-protocol
   - integration/api-rest-basics
   - integration/api-openapi
+technologies:
+  - openapi
+  - postman
+tasks:
+  - design-rest-api
 ---
 
 # Путь API-интегратора

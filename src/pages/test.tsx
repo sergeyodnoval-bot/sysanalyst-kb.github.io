@@ -9,6 +9,7 @@ interface Question {
   options: string[];
   correct: number;
   maps_to: string;
+  maps_to_type?: string;
 }
 
 interface TestResult {
@@ -22,15 +23,22 @@ function calculateResult(
   questions: Question[],
 ): TestResult {
   const wrongArticleIds: Set<string> = new Set();
+  const wrongTechNames: Set<string> = new Set();
 
   for (const q of questions) {
     const userAnswer = answers.get(q.id);
     if (userAnswer === undefined || userAnswer !== q.correct) {
-      wrongArticleIds.add(q.maps_to);
+      if (q.maps_to_type === 'technology') {
+        wrongTechNames.add(q.maps_to);
+      } else {
+        wrongArticleIds.add(q.maps_to);
+      }
     }
   }
 
-  if (wrongArticleIds.size === 0) return {wrongCount: 0, userLevel: 7, recommendedArticle: ''};
+  if (wrongArticleIds.size === 0 && wrongTechNames.size === 0) {
+    return {wrongCount: 0, userLevel: 7, recommendedArticle: ''};
+  }
 
   const articleLevels: Record<string, number> = {
     'basics/client-server': 1,
@@ -54,7 +62,7 @@ function calculateResult(
   const recommended = sortedArticles.find(([, lvl]) => lvl <= userLevel + 1);
   const recommendedArticle = recommended ? recommended[0] : sortedArticles[0][0];
 
-  return {wrongCount: wrongArticleIds.size, userLevel, recommendedArticle};
+  return {wrongCount: wrongArticleIds.size + wrongTechNames.size, userLevel, recommendedArticle};
 }
 
 export default function LevelTest(): React.ReactElement {
@@ -100,6 +108,12 @@ export default function LevelTest(): React.ReactElement {
       'integration/api-openapi': 'Документирование API со спецификацией OpenAPI',
     };
 
+    const techNames: Record<string, string> = {
+      openapi: 'OpenAPI Specification (Swagger)',
+      postman: 'Postman',
+      scrum: 'Scrum',
+    };
+
     return (
       <Layout title="Результат теста" description="Результаты теста на определение уровня">
         <div className="container" style={{paddingTop: '2rem', paddingBottom: '2rem', maxWidth: 600}}>
@@ -118,6 +132,21 @@ export default function LevelTest(): React.ReactElement {
                 <Link to={`/docs/${result.recommendedArticle}`}>
                   {articleNames[result.recommendedArticle] || result.recommendedArticle}
                 </Link>
+              </div>
+            </div>
+          )}
+          {result.wrongCount > 0 && !result.recommendedArticle && (
+            <div className="alert alert--warning" style={{marginTop: '1rem'}}>
+              <strong>Рекомендуем изучить технологии:</strong>
+              <div style={{marginTop: '0.5rem'}}>
+                {questions.filter((q) => {
+                  const ans = answers.get(q.id);
+                  return q.maps_to_type === 'technology' && (ans === undefined || ans !== q.correct);
+                }).map((q) => (
+                  <div key={q.id}>
+                    <Link to={`/tech/${q.maps_to}`}>{techNames[q.maps_to] || q.maps_to}</Link>
+                  </div>
+                ))}
               </div>
             </div>
           )}

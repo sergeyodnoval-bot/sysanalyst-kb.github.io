@@ -74,6 +74,30 @@
       "options": ["Событие", "Действие", "Шлюз", "Поток сообщений"],
       "correct": 2,
       "maps_to": "modeling/bpmn"
+    },
+    {
+      "id": "q11",
+      "text": "Какой стандарт описывает REST API?",
+      "options": ["OpenAPI", "ISO 25010", "RFC 2616", "BPMN 2.0"],
+      "correct": 0,
+      "maps_to": "openapi",
+      "maps_to_type": "technology"
+    },
+    {
+      "id": "q12",
+      "text": "Какой инструмент используется для ручного тестирования API?",
+      "options": ["Swagger Editor", "Postman", "OpenAPI Generator", "Newman"],
+      "correct": 1,
+      "maps_to": "postman",
+      "maps_to_type": "technology"
+    },
+    {
+      "id": "q13",
+      "text": "Какой фреймворк НЕ является Agile-методологией?",
+      "options": ["Scrum", "Kanban", "Waterfall", "XP"],
+      "correct": 2,
+      "maps_to": "scrum",
+      "maps_to_type": "technology"
     }
   ]
 }
