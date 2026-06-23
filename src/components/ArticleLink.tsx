@@ -13,6 +13,8 @@ interface ArticleLinkProps {
 
 function formatLabel(docId: string): string {
   const map: Record<string, string> = {
+    'basics/what-is-data': 'Что такое данные, информация, знания',
+    'basics/what-is-network': 'Что такое интернет и компьютерная сеть',
     'basics/what-is-protocol': 'Что такое протокол взаимодействия',
     'basics/client-server': 'Клиент-серверная архитектура',
     'basics/client-server-basics': 'Клиент-серверная архитектура',

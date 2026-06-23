@@ -6,7 +6,7 @@ sidebar_label: "Что такое протокол"
 level: 1
 category: basics
 tags: [basics, l0, beginner, protocol, communication]
-prerequisites: [basics/client-server-basics]
+prerequisites: [basics/client-server-basics, basics/what-is-network]
 leads_to: []
 related: []
 estimated_time: 8

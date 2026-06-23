@@ -9,7 +9,9 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
         'basics/what-is-software',
+        'basics/what-is-data',
         'basics/how-computer-works',
+        'basics/what-is-network',
         'basics/what-is-programming',
         'basics/who-is-system-analyst',
         'basics/client-server-basics',
