@@ -11,10 +11,10 @@ const sidebars: SidebarsConfig = {
         'basics/what-is-software',
         'basics/how-computer-works',
         'basics/what-is-network',
-        'basics/what-is-programming',
         {
           type: 'category',
-          label: 'Разработка и инструменты',
+          label: 'Что такое программирование',
+          link: {type: 'doc', id: 'basics/what-is-programming'},
           collapsible: true,
           collapsed: true,
           items: [
@@ -22,10 +22,10 @@ const sidebars: SidebarsConfig = {
             'basics/git-overview',
           ],
         },
-        'basics/who-is-system-analyst',
         {
           type: 'category',
-          label: 'Профессия аналитика',
+          label: 'Кто такой системный аналитик',
+          link: {type: 'doc', id: 'basics/who-is-system-analyst'},
           collapsible: true,
           collapsed: true,
           items: [
@@ -36,10 +36,10 @@ const sidebars: SidebarsConfig = {
             'basics/sa-day-in-life',
           ],
         },
-        'basics/client-server-basics',
         {
           type: 'category',
-          label: 'Взаимодействие систем',
+          label: 'Клиент-серверная архитектура',
+          link: {type: 'doc', id: 'basics/client-server-basics'},
           collapsible: true,
           collapsed: true,
           items: [
@@ -48,10 +48,10 @@ const sidebars: SidebarsConfig = {
             'basics/what-is-app-types',
           ],
         },
-        'basics/what-is-data',
         {
           type: 'category',
-          label: 'Базы данных',
+          label: 'Что такое данные, информация, знания',
+          link: {type: 'doc', id: 'basics/what-is-data'},
           collapsible: true,
           collapsed: true,
           items: [

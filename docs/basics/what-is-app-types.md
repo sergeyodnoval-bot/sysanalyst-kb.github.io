@@ -1,8 +1,8 @@
 ---
 id: what-is-app-types
 sidebar_position: 13
-title: "Типы приложений: веб, мобайл, десктоп"
-sidebar_label: "Типы приложений"
+title: "Какими бывают приложения: веб, мобайл, десктоп"
+sidebar_label: "Какие бывают приложения"
 level: 1
 category: basics
 tags: [basics, l0, beginner, app-types, web, mobile, desktop]

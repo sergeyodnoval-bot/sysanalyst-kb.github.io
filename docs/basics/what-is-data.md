@@ -2,7 +2,7 @@
 id: what-is-data
 sidebar_position: 10
 title: "Что такое данные, информация, знания"
-sidebar_label: "Что такое данные"
+sidebar_label: "Что такое данные, информация, знания"
 level: 1
 category: basics
 tags: [basics, l0, beginner, data, information, knowledge]

@@ -2,7 +2,7 @@
 id: what-is-network
 sidebar_position: 11
 title: "Что такое интернет и компьютерная сеть"
-sidebar_label: "Что такое сеть"
+sidebar_label: "Что такое интернет и сеть"
 level: 1
 category: basics
 tags: [basics, l0, beginner, network, internet, ip, dns]

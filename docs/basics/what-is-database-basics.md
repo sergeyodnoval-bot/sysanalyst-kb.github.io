@@ -1,8 +1,8 @@
 ---
 id: what-is-database-basics
 sidebar_position: 15
-title: "Основы баз данных — обзорно"
-sidebar_label: "Основы баз данных"
+title: "Как устроены базы данных"
+sidebar_label: "Как устроены базы данных"
 level: 1
 category: basics
 tags: [basics, l0, beginner, database, db, sql]

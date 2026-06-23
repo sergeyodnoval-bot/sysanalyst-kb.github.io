@@ -2,7 +2,7 @@
 id: client-server-basics
 sidebar_position: 5
 title: "Клиент-серверная архитектура"
-sidebar_label: "Клиент-сервер"
+sidebar_label: "Клиент-серверная архитектура"
 level: 1
 category: basics
 tags: [basics, l0, beginner, architecture, client, server]

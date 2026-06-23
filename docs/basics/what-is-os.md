@@ -2,7 +2,7 @@
 id: what-is-os
 sidebar_position: 12
 title: "Что такое операционная система"
-sidebar_label: "Что такое ОС"
+sidebar_label: "Что такое операционная система"
 level: 1
 category: basics
 tags: [basics, l0, beginner, os, operating-system]

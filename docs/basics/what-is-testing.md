@@ -1,8 +1,8 @@
 ---
 id: what-is-testing
 sidebar_position: 16
-title: "Основы тестирования и QA"
-sidebar_label: "Основы тестирования"
+title: "Как тестируют программное обеспечение"
+sidebar_label: "Как тестируют программы"
 level: 1
 category: basics
 tags: [basics, l0, beginner, testing, qa, quality]

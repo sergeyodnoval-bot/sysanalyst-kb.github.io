@@ -1,8 +1,8 @@
 ---
 id: what-is-sdlc
 sidebar_position: 14
-title: "Жизненный цикл ПО (SDLC) — обзорно"
-sidebar_label: "Жизненный цикл ПО"
+title: "Как разрабатывают программное обеспечение (SDLC)"
+sidebar_label: "Как разрабатывают ПО (SDLC)"
 level: 1
 category: basics
 tags: [basics, l0, beginner, sdlc, software-lifecycle, methodology]

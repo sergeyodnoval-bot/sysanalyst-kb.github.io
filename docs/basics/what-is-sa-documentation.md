@@ -1,8 +1,8 @@
 ---
 id: what-is-sa-documentation
 sidebar_position: 17
-title: "Основы документации системного аналитика"
-sidebar_label: "Документация SA"
+title: "Какие документы создаёт системный аналитик"
+sidebar_label: "Какие документы создаёт аналитик"
 level: 1
 category: basics
 tags: [basics, l0, beginner, documentation, sa-docs]

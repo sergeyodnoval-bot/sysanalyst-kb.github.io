@@ -1,8 +1,8 @@
 ---
 id: it-roles
 sidebar_position: 8
-title: "Роли в IT-команде"
-sidebar_label: "Роли в IT"
+title: "Какие есть роли в IT-команде"
+sidebar_label: "Какие есть роли в IT-команде"
 level: 1
 category: basics
 tags: [basics, l0, beginner, roles, team]

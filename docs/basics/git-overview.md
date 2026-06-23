@@ -1,8 +1,8 @@
 ---
 id: git-overview
 sidebar_position: 18
-title: "Git и контроль версий — обзорно"
-sidebar_label: "Git и контроль версий"
+title: "Что такое Git и зачем он нужен аналитику"
+sidebar_label: "Зачем аналитику Git"
 level: 1
 category: basics
 tags: [basics, l0, beginner, git, version-control, vcs]

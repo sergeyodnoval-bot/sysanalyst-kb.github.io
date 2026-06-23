@@ -1,8 +1,8 @@
 ---
 id: sa-day-in-life
 sidebar_position: 9
-title: "Один день из жизни системного аналитика"
-sidebar_label: "День из жизни SA"
+title: "Как выглядит рабочий день системного аналитика"
+sidebar_label: "Как выглядит рабочий день"
 level: 1
 category: basics
 tags: [basics, l0, beginner, day-in-life, workflow]
