@@ -15,6 +15,13 @@ function formatLabel(docId: string): string {
   const map: Record<string, string> = {
     'basics/what-is-data': 'Что такое данные, информация, знания',
     'basics/what-is-network': 'Что такое интернет и компьютерная сеть',
+    'basics/what-is-os': 'Что такое операционная система',
+    'basics/what-is-app-types': 'Типы приложений: веб, мобайл, десктоп',
+    'basics/what-is-sdlc': 'Жизненный цикл ПО (SDLC) — обзорно',
+    'basics/what-is-database-basics': 'Основы баз данных — обзорно',
+    'basics/what-is-testing': 'Основы тестирования и QA',
+    'basics/what-is-sa-documentation': 'Основы документации системного аналитика',
+    'basics/git-overview': 'Git и контроль версий — обзорно',
     'basics/what-is-protocol': 'Что такое протокол взаимодействия',
     'basics/client-server': 'Клиент-серверная архитектура',
     'basics/client-server-basics': 'Клиент-серверная архитектура',
