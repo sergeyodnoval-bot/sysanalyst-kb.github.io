@@ -14,11 +14,11 @@ const config: Config = {
     v4: true,
   },
 
-  url: 'https://sysanalyst-kb.github.io',
-  baseUrl: '/',
+  url: 'https://sergeyodnoval-bot.github.io',
+  baseUrl: '/sysanalyst-kb.github.io/',
 
-  organizationName: 'sysanalyst-kb',
-  projectName: 'sysanalyst-kb',
+  organizationName: 'sergeyodnoval-bot',
+  projectName: 'sysanalyst-kb.github.io',
 
   onBrokenLinks: 'warn',
 
