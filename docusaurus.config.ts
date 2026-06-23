@@ -20,6 +20,7 @@ const config: Config = {
   organizationName: 'sergeyodnoval-bot',
   projectName: 'sysanalyst-kb.github.io',
 
+  trailingSlash: true,
   onBrokenLinks: 'warn',
 
   i18n: {
