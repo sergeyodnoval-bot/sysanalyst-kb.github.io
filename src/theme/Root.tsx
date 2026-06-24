@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 function useMermaidZoom() {
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
-      const target = (e.target as HTMLElement).closest('.mermaid');
+      const target = (e.target as HTMLElement).closest('.docusaurus-mermaid-container');
       if (!target) return;
       const svg = target.querySelector('svg');
       if (!svg) return;

@@ -17,7 +17,7 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-.mermaid {
+.docusaurus-mermaid-container {
   cursor: zoom-in;
 }
 
