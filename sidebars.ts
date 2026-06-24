@@ -77,8 +77,10 @@ const sidebars: SidebarsConfig = {
       label: 'Моделирование',
       collapsible: true,
       collapsed: false,
-      link: {type: 'generated-index', title: 'Моделирование'},
       items: [
+        'modeling/what-is-model',
+        'modeling/use-case-diagram',
+        'modeling/sequence-diagram',
         'modeling/bpmn',
       ],
     },
@@ -91,6 +93,17 @@ const sidebars: SidebarsConfig = {
       items: [
         'integration/api-rest-basics',
         'integration/api-openapi',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Данные и БД',
+      collapsible: true,
+      collapsed: false,
+      items: [
+        'data/what-is-database',
+        'data/sql-basics',
+        'data/json-xml',
       ],
     },
   ],
