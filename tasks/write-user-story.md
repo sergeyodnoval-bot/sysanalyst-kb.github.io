@@ -31,7 +31,8 @@ pitfalls:
   - 'Слишком крупная story — не укладывается в один спринт'
   - 'Не указывать конкретные acceptance criteria'
   - 'Путать BDD-сценарий с инструкцией для тестировщика'
-part_of_tracks: []
+part_of_tracks:
+  - junior-track
 previous_tasks: [elicit-requirements]
 next_tasks: []
 ---
