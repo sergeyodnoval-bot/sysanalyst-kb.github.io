@@ -6,9 +6,9 @@ import {
   type TrackDef,
   type TrackStage,
   itemLabels,
-  basePaths,
   itemColors,
   itemIcons,
+  trackItemPath,
 } from '@site/src/data/tracks-data';
 
 const stageColors = ['#6366f1', '#4f8ef7', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444'];
@@ -19,7 +19,7 @@ function StageBlock({stage}: {stage: TrackStage}): React.ReactElement {
       <ol style={{paddingLeft: '1.25rem', margin: 0}}>
         {stage.items.map((item) => {
           const label = itemLabels[item.type]?.[item.id] || item.id;
-          const base = basePaths[item.type];
+          const link = trackItemPath(item);
           const color = itemColors[item.type];
           const icon = itemIcons[item.type];
           return (
@@ -28,7 +28,7 @@ function StageBlock({stage}: {stage: TrackStage}): React.ReactElement {
               style={{padding: '0.45rem 0', fontSize: '0.9rem', lineHeight: 1.5}}
             >
               <Link
-                to={`${base}/${item.id}`}
+                to={link}
                 style={{
                   color: 'var(--ifm-link-color)',
                   fontWeight: 500,

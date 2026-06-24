@@ -1,6 +1,7 @@
 export interface TrackItem {
   type: 'article' | 'tech' | 'task';
   id: string;
+  folder?: string; // for articles: source folder (basics, data, modeling, requirements, integration)
 }
 
 export interface TrackStage {
@@ -24,8 +25,8 @@ export interface NavInfo {
   stageIndex: number;
   index: number;
   total: number;
-  prev: {type: string; id: string} | null;
-  next: {type: string; id: string} | null;
+  prev: {type: string; id: string; folder?: string} | null;
+  next: {type: string; id: string; folder?: string} | null;
 }
 
 export const basePaths: Record<string, string> = {
@@ -33,6 +34,13 @@ export const basePaths: Record<string, string> = {
   tech: '/tech',
   task: '/tasks',
 };
+
+/** Build the correct URL path for a track item. */
+export function trackItemPath(item: {type: string; id: string; folder?: string}): string {
+  const base = basePaths[item.type] || '/docs';
+  const path = item.folder ? `${item.folder}/${item.id}` : item.id;
+  return `${base}/${path}`;
+}
 
 export const itemColors: Record<string, string> = {
   article: '#4f8ef7',
@@ -120,26 +128,26 @@ const juniorTrack: TrackDef = {
       title: '0. Погружение в IT',
       description: 'Поймите, как устроен компьютер, программы и интернет.',
       items: [
-        {type: 'article', id: 'how-computer-works'},
-        {type: 'article', id: 'what-is-programming'},
-        {type: 'article', id: 'what-is-software'},
-        {type: 'article', id: 'what-is-os'},
-        {type: 'article', id: 'what-is-network'},
+        {type: 'article', id: 'how-computer-works', folder: 'basics'},
+        {type: 'article', id: 'what-is-programming', folder: 'basics'},
+        {type: 'article', id: 'what-is-software', folder: 'basics'},
+        {type: 'article', id: 'what-is-os', folder: 'basics'},
+        {type: 'article', id: 'what-is-network', folder: 'basics'},
         {type: 'tech', id: 'browser'},
-        {type: 'article', id: 'what-is-app-types'},
+        {type: 'article', id: 'what-is-app-types', folder: 'basics'},
       ],
     },
     {
       title: '1. Профессия системного аналитика',
       description: 'Узнайте, кто такой SA, чем занимается, как встроен в команду.',
       items: [
-        {type: 'article', id: 'who-is-system-analyst'},
-        {type: 'article', id: 'it-roles'},
-        {type: 'article', id: 'sa-day-in-life'},
-        {type: 'article', id: 'what-is-sdlc'},
-        {type: 'article', id: 'what-is-testing'},
-        {type: 'article', id: 'what-is-sa-documentation'},
-        {type: 'article', id: 'git-overview'},
+        {type: 'article', id: 'who-is-system-analyst', folder: 'basics'},
+        {type: 'article', id: 'it-roles', folder: 'basics'},
+        {type: 'article', id: 'sa-day-in-life', folder: 'basics'},
+        {type: 'article', id: 'what-is-sdlc', folder: 'basics'},
+        {type: 'article', id: 'what-is-testing', folder: 'basics'},
+        {type: 'article', id: 'what-is-sa-documentation', folder: 'basics'},
+        {type: 'article', id: 'git-overview', folder: 'basics'},
         {type: 'task', id: 'find-analyst-in-team'},
       ],
     },
@@ -147,10 +155,10 @@ const juniorTrack: TrackDef = {
       title: '2. Работа с требованиями',
       description: 'Научитесь собирать, формулировать и документировать требования.',
       items: [
-        {type: 'article', id: 'what-is-requirement'},
-        {type: 'article', id: 'stakeholder-communication'},
-        {type: 'article', id: 'user-stories'},
-        {type: 'article', id: 'bdd-scenarios'},
+        {type: 'article', id: 'what-is-requirement', folder: 'requirements'},
+        {type: 'article', id: 'stakeholder-communication', folder: 'requirements'},
+        {type: 'article', id: 'user-stories', folder: 'requirements'},
+        {type: 'article', id: 'bdd-scenarios', folder: 'requirements'},
         {type: 'tech', id: 'jira'},
         {type: 'tech', id: 'confluence'},
         {type: 'task', id: 'elicit-requirements'},
@@ -161,10 +169,10 @@ const juniorTrack: TrackDef = {
       title: '3. Моделирование',
       description: 'Визуализируйте процессы, архитектуру и сценарии.',
       items: [
-        {type: 'article', id: 'what-is-model'},
-        {type: 'article', id: 'bpmn'},
-        {type: 'article', id: 'use-case-diagram'},
-        {type: 'article', id: 'sequence-diagram'},
+        {type: 'article', id: 'what-is-model', folder: 'modeling'},
+        {type: 'article', id: 'bpmn', folder: 'modeling'},
+        {type: 'article', id: 'use-case-diagram', folder: 'modeling'},
+        {type: 'article', id: 'sequence-diagram', folder: 'modeling'},
         {type: 'tech', id: 'drawio'},
         {type: 'tech', id: 'plantuml'},
       ],
@@ -173,10 +181,10 @@ const juniorTrack: TrackDef = {
       title: '4. Данные и базы данных',
       description: 'Поймите данные, SQL и форматы обмена.',
       items: [
-        {type: 'article', id: 'what-is-data'},
-        {type: 'article', id: 'what-is-database-basics'},
-        {type: 'article', id: 'sql-basics'},
-        {type: 'article', id: 'json-xml'},
+        {type: 'article', id: 'what-is-data', folder: 'basics'},
+        {type: 'article', id: 'what-is-database-basics', folder: 'basics'},
+        {type: 'article', id: 'sql-basics', folder: 'data'},
+        {type: 'article', id: 'json-xml', folder: 'data'},
         {type: 'tech', id: 'postgresql'},
         {type: 'tech', id: 'dbeaver'},
         {type: 'task', id: 'sql-query'},
@@ -186,12 +194,12 @@ const juniorTrack: TrackDef = {
       title: '5. Интеграции и API',
       description: 'Клиент-сервер, протоколы, REST, OpenAPI.',
       items: [
-        {type: 'article', id: 'client-server-basics'},
-        {type: 'article', id: 'what-is-protocol'},
-        {type: 'article', id: 'what-is-api'},
-        {type: 'article', id: 'api-rest-basics'},
+        {type: 'article', id: 'client-server-basics', folder: 'basics'},
+        {type: 'article', id: 'what-is-protocol', folder: 'basics'},
+        {type: 'article', id: 'what-is-api', folder: 'basics'},
+        {type: 'article', id: 'api-rest-basics', folder: 'integration'},
         {type: 'tech', id: 'http'},
-        {type: 'article', id: 'api-openapi'},
+        {type: 'article', id: 'api-openapi', folder: 'integration'},
         {type: 'tech', id: 'openapi'},
         {type: 'tech', id: 'curl'},
         {type: 'tech', id: 'postman'},
@@ -236,8 +244,8 @@ function buildLookup(): Map<string, NavInfo[]> {
         stageIndex: item.stageIndex,
         index: idx,
         total,
-        prev: idx > 0 ? {type: flat[idx - 1].type, id: flat[idx - 1].id} : null,
-        next: idx < total - 1 ? {type: flat[idx + 1].type, id: flat[idx + 1].id} : null,
+        prev: idx > 0 ? {type: flat[idx - 1].type, id: flat[idx - 1].id, folder: (flat[idx - 1] as TrackItem).folder} : null,
+        next: idx < total - 1 ? {type: flat[idx + 1].type, id: flat[idx + 1].id, folder: (flat[idx + 1] as TrackItem).folder} : null,
       });
     });
   }

@@ -3,10 +3,10 @@ import Link from '@docusaurus/Link';
 import {useDoc} from '@docusaurus/plugin-content-docs/client';
 import {
   trackLookup,
-  basePaths,
   itemLabels,
   itemIcons,
   itemColors,
+  trackItemPath,
   type NavInfo,
 } from '@site/src/data/tracks-data';
 
@@ -17,11 +17,6 @@ const pluginTypeMap: Record<string, 'article' | 'tech' | 'task'> = {
 };
 
 const stageColors = ['#6366f1', '#4f8ef7', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444'];
-
-function itemPath(item: {type: string; id: string}): string {
-  const base = basePaths[item.type] || '/docs';
-  return `${base}/${item.id}`;
-}
 
 export default function TrackNav(): React.ReactElement | null {
   const {metadata} = useDoc();
@@ -142,7 +137,7 @@ export default function TrackNav(): React.ReactElement | null {
         <div style={{flex: 1, minWidth: 0}}>
           {nav.prev ? (
             <Link
-              to={itemPath(nav.prev)}
+              to={trackItemPath(nav.prev)}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -184,7 +179,7 @@ export default function TrackNav(): React.ReactElement | null {
         <div style={{flex: 1, minWidth: 0, textAlign: 'right'}}>
           {nav.next ? (
             <Link
-              to={itemPath(nav.next)}
+              to={trackItemPath(nav.next)}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
