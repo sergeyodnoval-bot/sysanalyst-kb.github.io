@@ -11,6 +11,7 @@ import {
 } from '@site/src/data/tracks-data';
 
 const pluginTypeMap: Record<string, 'article' | 'tech' | 'task'> = {
+  '': 'article',
   default: 'article',
   tech: 'tech',
   tasks: 'task',
@@ -24,28 +25,11 @@ export default function TrackNav(): React.ReactElement | null {
   const pluginId = metadata.pluginId;
   const docId = metadata.id;
   const type = pluginTypeMap[pluginId];
+  if (!type) return null;
+
   const key = `${type}:${docId}`;
   const positions = trackLookup.get(key);
-
-  // Debug info for dev
-  const isInTrack = positions && positions.length > 0;
-  const allKeys = Array.from(trackLookup.keys()).slice(0, 10);
-
-  if (!type) {
-    return (
-      <div style={{padding: '0.5rem', background: '#fee', fontSize: '0.75rem', borderRadius: 4}}>
-        TrackNav debug: unknown pluginId="{pluginId}", id="{docId}"
-      </div>
-    );
-  }
-
-  if (!isInTrack) {
-    return (
-      <div style={{padding: '0.5rem', background: '#ffe', fontSize: '0.75rem', borderRadius: 4}}>
-        TrackNav debug: NOT in track — key="{key}", trackLookup keys: {allKeys.join(', ') || '(empty)'}
-      </div>
-    );
-  }
+  if (!positions || positions.length === 0) return null;
 
   const [activeIdx, setActiveIdx] = useState(0);
 
