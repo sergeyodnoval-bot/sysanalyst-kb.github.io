@@ -117,9 +117,9 @@
 
 | # | Статья | Статус | Prereq | Leads to | Tasks |
 |---|--------|--------|--------|----------|-------|
-| 1 | Что такое модель и зачем моделировать | 🔜 | ITB-5 | MOD-2 | — |
-| 2 | Use Case diagram | 🔜 | MOD-1, REQ-3 | MOD-3, MOD-5 | `write-use-case` |
-| 3 | Sequence diagram | 🔜 | MOD-2 | MOD-4, INT-2 | `create-sequence-diagram` |
+| 1 | Что такое модель и зачем моделировать | ✅ | ITB-5 | MOD-2 | — |
+| 2 | Use Case diagram | ✅ | MOD-1, REQ-3 | MOD-3, MOD-5 | `write-use-case` |
+| 3 | Sequence diagram | ✅ | MOD-2 | MOD-4, INT-2 | `create-sequence-diagram` |
 | 4 | BPMN — базовый уровень | ✅ | ITB-5 | MOD-6 | `model-bpmn-process` |
 
 #### L2 — Strong Junior (level: 3–4)
@@ -191,9 +191,9 @@
 
 | # | Статья | Статус | Prereq | Leads to | Tech | Tasks |
 |---|--------|--------|--------|----------|------|-------|
-| 1 | Что такое база данных | 🔜 | ITB-10 | DAT-2 | — | — |
-| 2 | Основы SQL (SELECT, JOIN, WHERE) | 🔜 | DAT-1 | DAT-3 | `postgres`, `dbeaver` | — |
-| 3 | JSON и XML — форматы данных | 🔜 | ITB-7 | DAT-5 | — | — |
+| 1 | Что такое база данных | ✅ | ITB-10 | DAT-2 | — | — |
+| 2 | Основы SQL (SELECT, JOIN, WHERE) | ✅ | DAT-1 | DAT-3 | `postgres`, `dbeaver` | — |
+| 3 | JSON и XML — форматы данных | ✅ | ITB-7 | DAT-5 | — | — |
 
 #### L2 — Strong Junior (level: 3–4)
 
@@ -484,7 +484,7 @@ scrum ──→ PRO-2 (Scrum основы)
 |-------|-------|--------|--------|
 | **0** | L0 completion | ITB-10–18: data, network, OS, app types, SDLC, DB overview, testing, documentation, git | 🔜 |
 | **1** | L1 requirements | REQ-1–4, tech/jira, tech/confluence, 2 tasks | ✅ готово |
-| **2** | L1 modeling + data | MOD-1–3, DAT-1–3, tech/drawio, tasks/model-bpmn, create-sequence-diagram | 🔜 |
+| **2** | L1 modeling + data | MOD-1–3, DAT-1–3, tech/drawio, tasks/model-bpmn, create-sequence-diagram | ✅ готово |
 | **3** | L1 processes + soft | PRO-1–3, SFT-1–3, tech/git | 🔜 |
 | **4** | L2 API | INT-4–7, tasks/write-openapi-spec | ⏳ |
 | **5** | L2 modeling | MOD-5–10, tech/drawio, tasks/design-database-schema | ⏳ |
@@ -501,7 +501,7 @@ scrum ──→ PRO-2 (Scrum основы)
 
 | Тип | Существующие | Запланированные (🔜+⏳+💡) | Всего |
 |-----|-------------|--------------------------|-------|
-| Статьи (docs/) | 18 | 83 | ~101 |
+| Статьи (docs/) | 24 | 77 | ~101 |
 | Технологии (tech/) | 8 | 13 | ~21 |
 | Задачи (tasks/) | 6 | 11 | ~17 |
 | Треки | 3 | 4 | ~7 |
