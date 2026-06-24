@@ -20,12 +20,32 @@ const stageColors = ['#6366f1', '#4f8ef7', '#8b5cf6', '#06b6d4', '#10b981', '#f5
 
 export default function TrackNav(): React.ReactElement | null {
   const {metadata} = useDoc();
-  const type = pluginTypeMap[metadata.pluginId];
-  if (!type) return null;
 
-  const key = `${type}:${metadata.id}`;
+  const pluginId = metadata.pluginId;
+  const docId = metadata.id;
+  const type = pluginTypeMap[pluginId];
+  const key = `${type}:${docId}`;
   const positions = trackLookup.get(key);
-  if (!positions || positions.length === 0) return null;
+
+  // Debug info for dev
+  const isInTrack = positions && positions.length > 0;
+  const allKeys = Array.from(trackLookup.keys()).slice(0, 10);
+
+  if (!type) {
+    return (
+      <div style={{padding: '0.5rem', background: '#fee', fontSize: '0.75rem', borderRadius: 4}}>
+        TrackNav debug: unknown pluginId="{pluginId}", id="{docId}"
+      </div>
+    );
+  }
+
+  if (!isInTrack) {
+    return (
+      <div style={{padding: '0.5rem', background: '#ffe', fontSize: '0.75rem', borderRadius: 4}}>
+        TrackNav debug: NOT in track — key="{key}", trackLookup keys: {allKeys.join(', ') || '(empty)'}
+      </div>
+    );
+  }
 
   const [activeIdx, setActiveIdx] = useState(0);
 
@@ -38,7 +58,7 @@ export default function TrackNav(): React.ReactElement | null {
   const pct = ((nav.index + 1) / nav.total) * 100;
 
   const icon = itemIcons[type] || '📄';
-  const label = itemLabels[type]?.[metadata.id] || metadata.id;
+  const label = itemLabels[type]?.[docId] || docId;
 
   return (
     <div
