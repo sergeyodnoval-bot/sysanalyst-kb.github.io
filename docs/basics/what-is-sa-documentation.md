@@ -154,7 +154,7 @@ audience: beginner
 
 ## Что дальше
 
-- [SRS — Software Requirements Specification](/docs/requirements/software-requirements-specification) (готовится) — подробный разбор структуры SRS
+- SRS — Software Requirements Specification (готовится) — подробный разбор структуры SRS
 - [Что такое требование](/docs/requirements/what-is-requirement) — с чего начинается документация
 - User Stories — как писать хорошие user stories
 

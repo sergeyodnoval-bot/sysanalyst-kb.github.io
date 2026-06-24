@@ -132,8 +132,8 @@ SDLC — это **контекст** всей работы аналитика.
 
 ## Что дальше
 
-- [Модели жизненного цикла ПО](/docs/process/sdlc-models) (готовится) — Waterfall, Agile, Scrum, Kanban — детально
-- [Scrum — основы](/docs/process/scrum-basics) (готовится) — самый популярный Agile-фреймворк
+- Модели жизненного цикла ПО (готовится) — Waterfall, Agile, Scrum, Kanban — детально
+- Scrum — основы (готовится) — самый популярный Agile-фреймворк
 - [Что такое требование](/docs/requirements/what-is-requirement) — с чего начинается SDLC
 
 ## Проверь себя
