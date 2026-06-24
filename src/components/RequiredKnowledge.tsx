@@ -13,11 +13,11 @@ export default function RequiredKnowledge(): React.ReactElement | null {
   }
 
   const allDocs = useAllDocsData();
-  function getDocPath(id: string): string | undefined {
+  function getDocInfo(id: string): {title: string; path: string} | undefined {
     for (const plugin of Object.values(allDocs)) {
       for (const version of plugin.versions ?? []) {
         for (const doc of version.docs ?? []) {
-          if (doc.id === id) return doc.path;
+          if (doc.id === id) return {title: doc.title, path: doc.path};
         }
       }
     }
@@ -39,10 +39,10 @@ export default function RequiredKnowledge(): React.ReactElement | null {
           <div style={{fontSize: 12, fontWeight: 600, color: '#666', marginTop: '0.5rem', marginBottom: 4}}>Статьи</div>
           <ul style={{margin: 0}}>
             {requiresArticles.map((id) => {
-              const path = getDocPath(id);
+              const info = getDocInfo(id);
               return (
                 <li key={id}>
-                  {path ? <Link to={path}>{id.split('/').pop()}</Link> : <span>{id.split('/').pop()}</span>}
+                  {info ? <Link to={info.path}>{info.title}</Link> : <span>{id}</span>}
                 </li>
               );
             })}

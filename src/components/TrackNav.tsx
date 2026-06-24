@@ -33,7 +33,8 @@ export default function TrackNav(): React.ReactElement | null {
   const progress = ((pos.index + 1) / pos.total) * 100;
   const icon = itemIcons[type] || '📄';
   const labelMap = itemLabels[type];
-  const label = labelMap ? labelMap[metadata.id] || metadata.id : metadata.id;
+  const docId = metadata.id.split('/').pop()!;
+  const label = labelMap ? labelMap[docId] || metadata.id : metadata.id;
 
   return (
     <div
