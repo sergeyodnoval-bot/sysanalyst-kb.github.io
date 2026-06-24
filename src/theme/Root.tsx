@@ -15,6 +15,8 @@ function useMermaidZoom() {
       const svg = target.querySelector('svg');
       if (!svg) return;
 
+      const origRect = svg.getBoundingClientRect();
+
       let scale = 1;
       let panX = 0;
       let panY = 0;
@@ -40,10 +42,18 @@ function useMermaidZoom() {
 
       const container = document.createElement('div');
       container.className = 'mz-container';
+      container.style.width = `${origRect.width}px`;
+      container.style.height = `${origRect.height}px`;
 
       const serializer = new XMLSerializer();
       const svgStr = serializer.serializeToString(svg);
       container.innerHTML = svgStr;
+
+      const svgEl = container.querySelector('svg')!;
+      svgEl.style.width = '100%';
+      svgEl.style.height = '100%';
+      svgEl.removeAttribute('width');
+      svgEl.removeAttribute('height');
 
       wrapper.appendChild(container);
       overlay.append(controls, wrapper);
@@ -57,20 +67,6 @@ function useMermaidZoom() {
       };
 
       updateTransform();
-
-      requestAnimationFrame(() => {
-        const newSvg = container.querySelector('svg');
-        if (!newSvg) return;
-        const sw = newSvg.getBoundingClientRect().width;
-        const sh = newSvg.getBoundingClientRect().height;
-        if (sw === 0 || sh === 0) return;
-        const rect = wrapper.getBoundingClientRect();
-        const fit = Math.min((rect.width * 0.9) / sw, (rect.height * 0.9) / sh, 1);
-        if (fit < 1) {
-          scale = fit;
-          updateTransform();
-        }
-      });
 
       const zoomAtPoint = (newScale: number, cx: number, cy: number) => {
         const rect = wrapper.getBoundingClientRect();
