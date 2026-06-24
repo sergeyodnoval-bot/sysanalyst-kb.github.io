@@ -22,6 +22,7 @@ import AlternativesList from '@site/src/components/AlternativesList';
 import CitationBlock from '@site/src/components/CitationBlock';
 import NextTasksList from '@site/src/components/NextTasksList';
 import TypicalPitfalls from '@site/src/components/TypicalPitfalls';
+import TrackNav from '@site/src/components/TrackNav';
 import type {Props} from '@theme/DocItem/Layout';
 
 import styles from './styles.module.css';
@@ -87,6 +88,7 @@ export default function DocItemLayout({children}: Props): ReactNode {
               </>
             )}
             <RelatedTopics />
+            <TrackNav />
             <DocItemFooter />
           </article>
           <DocItemPaginator />
