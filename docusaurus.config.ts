@@ -6,6 +6,10 @@ import path from 'path';
 import matter from 'gray-matter';
 
 const config: Config = {
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
   title: 'База знаний системного аналитика',
   tagline: 'Структурированные знания для системных аналитиков — от простого к сложному',
   favicon: 'img/favicon.ico',

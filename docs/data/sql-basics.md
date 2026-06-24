@@ -69,6 +69,22 @@ FROM orders
 JOIN clients ON orders.client_id = clients.id;
 ```
 
+```mermaid
+flowchart LR
+    subgraph A[Таблица orders]
+        o1["id: 1, client_id: 1, total: 1500"]
+        o2["id: 2, client_id: 2, total: 500"]
+        o3["id: 3, client_id: 5, total: 3000"]
+    end
+    subgraph B[Таблица clients]
+        c1["id: 1, name: Иван"]
+        c2["id: 2, name: Мария"]
+        c3["id: 3, name: Пётр"]
+    end
+    A -- INNER JOIN --> R1["id:1, Иван, 1500<br/>id:2, Мария, 500"]
+    A -- LEFT JOIN --> R2["id:1, Иван, 1500<br/>id:2, Мария, 500<br/>id:3, NULL, 3000"]
+```
+
 Основные типы `JOIN`:
 - `INNER JOIN` — только строки, у которых есть совпадение в обеих таблицах.
 - `LEFT JOIN` — все строки из левой таблицы, даже если в правой нет совпадения (тогда правые колонки будут `NULL`).

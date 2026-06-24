@@ -46,6 +46,31 @@ audience: junior
 
 **Внешний ключ (Foreign Key)** — ссылка на запись в другой таблице. Например, в таблице «Заказы» есть поле «ID клиента», которое ссылается на таблицу «Клиенты».
 
+```mermaid
+erDiagram
+    Клиенты {
+        int id PK
+        string name
+        string email
+        string phone
+    }
+    Заказы {
+        int id PK
+        int client_id FK
+        date created_at
+        decimal total
+        string status
+    }
+    Товары {
+        int id PK
+        string title
+        decimal price
+        int stock
+    }
+    Клиенты ||--o{ Заказы : делает
+    Заказы }o--|| Товары : содержит
+```
+
 **СУБД (СУБД)** — система управления базами данных. Это программа, которая управляет БД: PostgreSQL, MySQL, Oracle, Microsoft SQL Server.
 
 ## Реляционные vs нереляционные
