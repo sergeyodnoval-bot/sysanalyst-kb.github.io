@@ -64,6 +64,7 @@ export default function DocItemLayout({children}: Props): ReactNode {
             <DocBreadcrumbs />
             <DocVersionBadge />
             {docTOC.mobile}
+            <TrackNav />
             <PrerequisitesList />
             <RequiredKnowledge />
             <DocItemContent>{children}</DocItemContent>
@@ -88,7 +89,6 @@ export default function DocItemLayout({children}: Props): ReactNode {
               </>
             )}
             <RelatedTopics />
-            <TrackNav />
             <DocItemFooter />
           </article>
           <DocItemPaginator />

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Link from '@docusaurus/Link';
 import {useDoc} from '@docusaurus/plugin-content-docs/client';
 import {
@@ -16,13 +16,11 @@ const pluginTypeMap: Record<string, 'article' | 'tech' | 'task'> = {
   tasks: 'task',
 };
 
+const stageColors = ['#6366f1', '#4f8ef7', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444'];
+
 function itemPath(item: {type: string; id: string}): string {
   const base = basePaths[item.type] || '/docs';
   return `${base}/${item.id}`;
-}
-
-function navHref(nav: NavInfo): string {
-  return `/tracks#${nav.trackId}`;
 }
 
 export default function TrackNav(): React.ReactElement | null {
@@ -35,13 +33,22 @@ export default function TrackNav(): React.ReactElement | null {
   if (!positions || positions.length === 0) return null;
 
   const [activeIdx, setActiveIdx] = useState(0);
+
+  useEffect(() => {
+    setActiveIdx(0);
+  }, [key]);
+
   const curIdx = Math.min(activeIdx, positions.length - 1);
   const nav = positions[curIdx];
+  const pct = ((nav.index + 1) / nav.total) * 100;
+
+  const icon = itemIcons[type] || '📄';
+  const label = itemLabels[type]?.[metadata.id] || metadata.id;
 
   return (
     <div
       style={{
-        marginTop: '2rem',
+        marginBottom: '2rem',
         padding: '1rem 1.25rem',
         background: 'var(--ifm-color-emphasis-100)',
         borderRadius: 8,
@@ -55,44 +62,73 @@ export default function TrackNav(): React.ReactElement | null {
           justifyContent: 'space-between',
           flexWrap: 'wrap',
           gap: '0.5rem',
-          marginBottom: '0.75rem',
+          marginBottom: '0.5rem',
         }}
       >
         <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap'}}>
-          <span style={{fontSize: '0.8rem', color: '#6b7280', whiteSpace: 'nowrap'}}>
-            🎓 Трек:
+          <span style={{fontSize: '0.85rem', fontWeight: 600}}>
+            🎓{' '}
+            {positions.length > 1 ? (
+              <select
+                value={activeIdx}
+                onChange={(e) => setActiveIdx(Number(e.target.value))}
+                style={{
+                  fontSize: '0.85rem',
+                  fontWeight: 600,
+                  border: 'none',
+                  background: 'transparent',
+                  cursor: 'pointer',
+                  color: 'var(--ifm-link-color)',
+                }}
+              >
+                {positions.map((p, i) => (
+                  <option key={p.trackId} value={i}>
+                    {p.trackTitle}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <span style={{color: 'var(--ifm-link-color)'}}>{nav.trackTitle}</span>
+            )}
           </span>
-          {positions.length > 1 ? (
-            <select
-              value={activeIdx}
-              onChange={(e) => setActiveIdx(Number(e.target.value))}
-              style={{
-                fontSize: '0.85rem',
-                fontWeight: 600,
-                border: 'none',
-                background: 'transparent',
-                cursor: 'pointer',
-                color: 'var(--ifm-font-color-base)',
-              }}
-            >
-              {positions.map((p, i) => (
-                <option key={p.trackId} value={i}>
-                  {p.trackTitle}
-                </option>
-              ))}
-            </select>
-          ) : (
-            <Link
-              to={navHref(nav)}
-              style={{fontSize: '0.85rem', fontWeight: 600, color: 'var(--ifm-link-color)'}}
-            >
-              {nav.trackTitle}
-            </Link>
-          )}
-          <span style={{fontSize: '0.75rem', color: '#9ca3af'}}>
-            {nav.stageTitle.replace(/^\d+\.\s*/, '')} · Шаг {nav.index + 1} из {nav.total}
+          <span style={{fontSize: '0.75rem', color: '#6b7280'}}>
+            {nav.stageTitle.replace(/^\d+\.\s*/, '')}
           </span>
         </div>
+        <span style={{fontSize: '0.75rem', color: '#9ca3af', whiteSpace: 'nowrap'}}>
+          Шаг {nav.index + 1} из {nav.total}
+        </span>
+      </div>
+
+      <div
+        style={{
+          width: '100%',
+          height: 6,
+          background: '#e5e7eb',
+          borderRadius: 3,
+          marginBottom: '0.75rem',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            width: `${pct}%`,
+            height: '100%',
+            background: stageColors[nav.stageIndex] || '#6366f1',
+            borderRadius: 3,
+            transition: 'width 0.3s ease',
+          }}
+        />
+      </div>
+
+      <div
+        style={{
+          fontSize: '0.8rem',
+          color: '#6b7280',
+          marginBottom: '0.75rem',
+        }}
+      >
+        {icon} <strong>{label}</strong> — текущий шаг
       </div>
 
       <div
@@ -117,18 +153,18 @@ export default function TrackNav(): React.ReactElement | null {
                 fontWeight: 500,
               }}
             >
-              <span style={{fontSize: '0.75rem'}}>←</span>
+              <span style={{fontSize: '0.8rem'}}>←</span>
               <span
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: 18,
-                  height: 18,
+                  width: 20,
+                  height: 20,
                   borderRadius: '50%',
                   background: itemColors[nav.prev.type] || '#6b7280',
                   color: '#fff',
-                  fontSize: '0.55rem',
+                  fontSize: '0.6rem',
                   flexShrink: 0,
                 }}
               >
@@ -139,7 +175,9 @@ export default function TrackNav(): React.ReactElement | null {
               </span>
             </Link>
           ) : (
-            <span style={{fontSize: '0.8rem', color: '#9ca3af'}}>Начало трека</span>
+            <span style={{fontSize: '0.8rem', color: '#9ca3af'}}>
+              ← Начало трека
+            </span>
           )}
         </div>
 
@@ -166,21 +204,23 @@ export default function TrackNav(): React.ReactElement | null {
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: 18,
-                  height: 18,
+                  width: 20,
+                  height: 20,
                   borderRadius: '50%',
                   background: itemColors[nav.next.type] || '#6b7280',
                   color: '#fff',
-                  fontSize: '0.55rem',
+                  fontSize: '0.6rem',
                   flexShrink: 0,
                 }}
               >
                 {itemIcons[nav.next.type] || '?'}
               </span>
-              <span style={{fontSize: '0.75rem'}}>→</span>
+              <span style={{fontSize: '0.8rem'}}>→</span>
             </Link>
           ) : (
-            <span style={{fontSize: '0.8rem', color: '#9ca3af'}}>Конец трека</span>
+            <span style={{fontSize: '0.8rem', color: '#9ca3af'}}>
+              Конец трека →
+            </span>
           )}
         </div>
       </div>
