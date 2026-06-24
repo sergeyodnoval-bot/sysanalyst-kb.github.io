@@ -29,7 +29,13 @@ export default function TrackNav(): React.ReactElement | null {
 
   const key = `${type}:${docId}`;
   const positions = trackLookup.get(key);
-  if (!positions || positions.length === 0) return null;
+  if (!positions || positions.length === 0) {
+    return (
+      <div style={{padding: '0.5rem', marginBottom: '1rem', background: '#fff3cd', border: '1px solid #ffc107', borderRadius: 4, fontSize: '0.75rem', color: '#856404'}}>
+        TrackNav: key="{key}" не найден в треках. Доступные ключи: {Array.from(trackLookup.keys()).slice(0, 8).join(', ') || '(пусто)'}
+      </div>
+    );
+  }
 
   const [activeIdx, setActiveIdx] = useState(0);
 
