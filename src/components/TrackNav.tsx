@@ -17,50 +17,23 @@ export default function TrackNav(): React.ReactElement | null {
 
   const {metadata} = useDoc();
   const type = getItemType(metadata.pluginId);
-  if (!type || !isClient) return null;
-
-  const key = `${type}:${metadata.id}`;
-  const positions = trackLookup.get(key);
-  if (!positions || positions.length === 0) return null;
+  const key = type ? `${type}:${metadata.id}` : '';
+  const positions = key ? trackLookup.get(key) : undefined;
 
   const [current, setCurrent] = useState(0);
   useEffect(() => {
     setCurrent(0);
   }, [key]);
 
+  if (!type || !isClient) return null;
+  if (!positions || positions.length === 0) return null;
+
   const clamped = Math.min(current, positions.length - 1);
   const pos = positions[clamped];
   const progress = ((pos.index + 1) / pos.total) * 100;
-
-  return (
-    <TrackNavInner
-      type={type}
-      id={metadata.id}
-      positions={positions}
-      clamped={clamped}
-      pos={pos}
-      progress={progress}
-      current={current}
-      setCurrent={setCurrent}
-    />
-  );
-}
-
-function TrackNavInner({
-  type, id, positions, clamped, pos, progress, current, setCurrent,
-}: {
-  type: string;
-  id: string;
-  positions: any[];
-  clamped: number;
-  pos: any;
-  progress: number;
-  current: number;
-  setCurrent: (n: number) => void;
-}): React.ReactElement {
   const icon = itemIcons[type] || '📄';
   const labelMap = itemLabels[type];
-  const label = labelMap ? labelMap[id] || id : id;
+  const label = labelMap ? labelMap[metadata.id] || metadata.id : metadata.id;
 
   return (
     <div
