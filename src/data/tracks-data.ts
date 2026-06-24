@@ -224,6 +224,18 @@ const juniorTrack: TrackDef = {
   ],
 };
 
+/** Map from Docusaurus pluginId to item type for track lookup */
+export const pluginTypeMap: Record<string, string> = {
+  '': 'article',
+  default: 'article',
+  tech: 'tech',
+  tasks: 'task',
+};
+
+export function getItemType(pluginId: string | undefined): string | undefined {
+  return pluginId ? pluginTypeMap[pluginId] : pluginTypeMap[''];
+}
+
 export const allTracks: TrackDef[] = [juniorTrack];
 
 function buildLookup(): Map<string, NavInfo[]> {
@@ -234,7 +246,7 @@ function buildLookup(): Map<string, NavInfo[]> {
     );
     const total = flat.length;
     flat.forEach((item, idx) => {
-      const key = `${item.type}:${item.id}`;
+      const key = item.folder ? `${item.type}:${item.folder}/${item.id}` : `${item.type}:${item.id}`;
       if (!map.has(key)) map.set(key, []);
       map.get(key)!.push({
         trackId: track.id,
