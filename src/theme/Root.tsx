@@ -51,16 +51,18 @@ function useMermaidZoom() {
       overlayRef.current = overlay;
 
       const updateTransform = () => {
-        container.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+        container.style.transform =
+          `translate(calc(-50% + ${panX}px), calc(-50% + ${panY}px)) scale(${scale})`;
         controls.querySelector('.mz-scale')!.textContent = `${Math.round(scale * 100)}%`;
       };
 
       const zoomAtPoint = (newScale: number, cx: number, cy: number) => {
         const rect = wrapper.getBoundingClientRect();
-        const mx = cx - rect.left;
-        const my = cy - rect.top;
-        panX = mx - (mx - panX) * (newScale / scale);
-        panY = my - (my - panY) * (newScale / scale);
+        const hw = rect.width / 2;
+        const hh = rect.height / 2;
+        const factor = newScale / scale;
+        panX = (cx - rect.left - hw) * (1 - factor) + panX * factor;
+        panY = (cy - rect.top - hh) * (1 - factor) + panY * factor;
         scale = Math.min(Math.max(newScale, 0.1), 10);
         updateTransform();
       };

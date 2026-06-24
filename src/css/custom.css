@@ -80,22 +80,23 @@
 }
 
 .mz-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
   width: 100%;
   height: 100%;
   padding: 4rem 2rem 2rem;
   cursor: grab;
+  overflow: hidden;
 }
 
 .mz-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
   background: #fff;
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   transform-origin: center center;
-  transition: none;
 }
 
 [data-theme='dark'] .mz-container {
