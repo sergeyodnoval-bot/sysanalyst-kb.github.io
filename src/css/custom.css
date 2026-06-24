@@ -105,8 +105,6 @@
 
 .mz-container svg {
   display: block;
-  max-width: 85vw;
-  max-height: 80vh;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */

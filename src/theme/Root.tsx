@@ -56,6 +56,22 @@ function useMermaidZoom() {
         controls.querySelector('.mz-scale')!.textContent = `${Math.round(scale * 100)}%`;
       };
 
+      updateTransform();
+
+      requestAnimationFrame(() => {
+        const newSvg = container.querySelector('svg');
+        if (!newSvg) return;
+        const sw = newSvg.getBoundingClientRect().width;
+        const sh = newSvg.getBoundingClientRect().height;
+        if (sw === 0 || sh === 0) return;
+        const rect = wrapper.getBoundingClientRect();
+        const fit = Math.min((rect.width * 0.9) / sw, (rect.height * 0.9) / sh, 1);
+        if (fit < 1) {
+          scale = fit;
+          updateTransform();
+        }
+      });
+
       const zoomAtPoint = (newScale: number, cx: number, cy: number) => {
         const rect = wrapper.getBoundingClientRect();
         const hw = rect.width / 2;
