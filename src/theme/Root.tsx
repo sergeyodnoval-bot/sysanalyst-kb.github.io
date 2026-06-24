@@ -41,10 +41,10 @@ function useMermaidZoom() {
       const container = document.createElement('div');
       container.className = 'mz-container';
 
-      const cloned = svg.cloneNode(true) as SVGElement;
-      cloned.removeAttribute('width');
-      cloned.removeAttribute('height');
-      container.appendChild(cloned);
+      const serializer = new XMLSerializer();
+      const svgStr = serializer.serializeToString(svg);
+      container.innerHTML = svgStr;
+
       wrapper.appendChild(container);
       overlay.append(controls, wrapper);
       document.body.appendChild(overlay);
