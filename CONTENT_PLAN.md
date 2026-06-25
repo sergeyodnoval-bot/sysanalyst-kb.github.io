@@ -199,9 +199,9 @@
 
 | # | Статья | Статус | Prereq | Leads to | Tech | Tasks |
 |---|--------|--------|--------|----------|------|-------|
-| 4 | Нормализация БД | ⏳ | DAT-2 | DAT-6 | — | `design-database-schema` |
-| 5 | NoSQL — когда и зачем | ⏳ | DAT-1 | — | `mongodb` | — |
-| 6 | Моделирование данных (ER) | ⏳ | MOD-5, DAT-4 | — | `drawio`, `dbeaver` | `design-database-schema` |
+| 4 | Нормализация БД | ✅ | DAT-2 | DAT-6 | — | `design-database-schema` |
+| 5 | NoSQL — когда и зачем | ✅ | DAT-1 | — | `mongodb` | — |
+| 6 | Моделирование данных (ER) | ✅ | MOD-5, DAT-4 | — | `drawio`, `dbeaver` | `design-database-schema` |
 
 #### L3 — Middle (level: 5–6)
 
