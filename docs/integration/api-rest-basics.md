@@ -7,7 +7,7 @@ level: 4
 category: integration
 tags: [rest, api, http, json]
 prerequisites: [tech/http, basics/what-is-protocol, basics/client-server-basics]
-leads_to: [integration/api-openapi]
+leads_to: [integration/api-openapi, integration/api-design-detailed]
 related: []
 estimated_time: 20
 difficulty: 3
