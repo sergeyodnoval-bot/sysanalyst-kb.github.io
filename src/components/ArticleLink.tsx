@@ -49,7 +49,11 @@ function formatLabel(docId: string): string {
 }
 
 export default function ArticleLink({docId, docsMap}: ArticleLinkProps): React.ReactElement {
-  const doc = docsMap[docId];
+  let doc = docsMap[docId];
+  if (!doc && docId.includes('/')) {
+    const shortId = docId.split('/').pop()!;
+    doc = docsMap[shortId];
+  }
   if (!doc) {
     return <span className="badge badge--secondary">{formatLabel(docId)}</span>;
   }
