@@ -137,10 +137,10 @@
 
 | # | Статья | Статус | Prereq | Leads to | Tech | Tasks |
 |---|--------|--------|--------|----------|------|-------|
-| 11 | DMN — Decision Model and Notation | ⏳ | MOD-8 | — | — | — |
-| 12 | DFD — Data Flow Diagram | ⏳ | MOD-5 | — | — | — |
-| 13 | Activity diagram (UML) | ⏳ | MOD-3 | — | — | — |
-| 14 | ArchiMate — базовый обзор | ⏳ | MOD-9 | SPC-3 | — | — |
+| 11 | User Story Mapping | ✅ | MOD-6 | — | `miro` | — |
+| 12 | Impact Mapping | ✅ | MOD-11 | — | `miro` | — |
+| 13 | Data Flow Diagram (DFD) | ✅ | MOD-4 | — | `drawio` | — |
+| 14 | UML — Component diagram | ✅ | MOD-7 | — | — | — |
 
 ---
 
@@ -230,11 +230,11 @@
 
 | # | Статья | Статус | Prereq | Leads to | Tech | Tasks |
 |---|--------|--------|--------|----------|------|-------|
-| 4 | Микросервисы — базовые паттерны | ⏳ | ARC-3 | ARC-5, INT-11 | `docker` | — |
-| 5 | CQRS — Command Query Responsibility Segregation | ⏳ | ARC-4 | — | — | — |
-| 6 | Event-Driven Architecture (детально) | ⏳ | ARC-5, INT-12 | — | `kafka` | `design-event-scheme` |
-| 7 | SOLID для системного аналитика | ⏳ | ARC-1 | — | — | — |
-| 8 | ADR — Architecture Decision Records | ⏳ | ARC-1 | — | `confluence` | `write-adr` |
+| 4 | Микросервисы — базовые паттерны | ✅ | ARC-3 | ARC-5, INT-11 | `docker` | — |
+| 5 | CQRS — Command Query Responsibility Segregation | ✅ | ARC-4 | — | — | — |
+| 6 | Event-Driven Architecture (детально) | ✅ | ARC-5, INT-12 | — | `kafka` | `design-event-scheme` |
+| 7 | SOLID для системного аналитика | ✅ | ARC-1 | — | — | — |
+| 8 | ADR — Architecture Decision Records | ✅ | ARC-1 | — | `confluence` | `write-adr` |
 
 #### L4 — Senior (level: 7–8)
 
@@ -491,7 +491,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **6** | L2 architecture | ARC-1–3, tasks/integrate-two-systems | ✅ готово |
 | **7** | L2 processes | PRO-4–7, tech/miro | ✅ готово |
 | **8** | L3 integration | INT-8–12, tech/kafka, tech/rabbitmq | ✅ готово |
-| **9** | L3 architecture + modeling | ARC-4–8, MOD-11–14 | ⏳ |
+| **9** | L3 architecture + modeling | ARC-4–8, MOD-11–14 | ✅ готово |
 | **10** | L3 processes + data | PRO-8–12, DAT-7–10 | ⏳ |
 | **11** | L4+ | ARC-9–12, INT-13–15, SPC-1–4 | ⏳ |
 

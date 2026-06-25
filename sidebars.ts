@@ -88,6 +88,10 @@ const sidebars: SidebarsConfig = {
         'modeling/bpmn-advanced',
         'modeling/c4-context',
         'modeling/c4-container',
+        'modeling/user-story-mapping',
+        'modeling/impact-mapping',
+        'modeling/dfd',
+        'modeling/component-diagram',
       ],
     },
     {
@@ -100,6 +104,11 @@ const sidebars: SidebarsConfig = {
         'architecture/what-is-architecture',
         'architecture/layered-architecture',
         'architecture/monolith-vs-microservices',
+        'architecture/microservices-patterns',
+        'architecture/cqrs',
+        'architecture/eda-detailed',
+        'architecture/solid',
+        'architecture/adr',
       ],
     },
     {
