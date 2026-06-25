@@ -16,7 +16,14 @@ export default function TrackNav(): React.ReactElement | null {
   }, []);
 
   const {metadata} = useDoc();
-  const type = getItemType(metadata.pluginId);
+  // metadata.pluginId is undefined on client for all plugin types
+  let type = getItemType(metadata.pluginId);
+  if (!type) {
+    const path = typeof window !== 'undefined' ? window.location.pathname : '';
+    if (path.includes('/tech/')) type = 'tech';
+    else if (path.includes('/tasks/')) type = 'task';
+    else type = 'article';
+  }
   const key = type ? `${type}:${metadata.id}` : '';
   const positions = key ? trackLookup.get(key) : undefined;
 
@@ -25,26 +32,8 @@ export default function TrackNav(): React.ReactElement | null {
     setCurrent(0);
   }, [key]);
 
-  console.log('[TrackNav]', {
-    pluginId: metadata.pluginId,
-    metadataId: metadata.id,
-    type,
-    key,
-    hasPositions: !!positions,
-    positionsLen: positions?.length,
-    isClient,
-    isClientTrue: isClient,
-    trackLookupKeys: [...trackLookup.keys()].filter(k => k.startsWith(type || 'x')),
-  });
-
-  if (!type || !isClient) {
-    console.log('[TrackNav] early return: !type=' + !type + ' !isClient=' + !isClient);
-    return null;
-  }
-  if (!positions || positions.length === 0) {
-    console.log('[TrackNav] no positions:', positions);
-    return null;
-  }
+  if (!type || !isClient) return null;
+  if (!positions || positions.length === 0) return null;
 
   const clamped = Math.min(current, positions.length - 1);
   const pos = positions[clamped];
