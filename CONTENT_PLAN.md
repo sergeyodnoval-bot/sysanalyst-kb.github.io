@@ -263,10 +263,10 @@
 
 | # | Статья | Статус | Prereq | Tech | Tasks |
 |---|--------|--------|--------|------|-------|
-| 4 | Scrum — роли, артефакты, события (детально) | ⏳ | PRO-2 | `jira` | — |
-| 5 | Оценка задач (story points, t-shirt sizing) | ⏳ | REQ-3 | `jira` | — |
-| 6 | Ретроспективы — техники и фасилитация | ⏳ | PRO-4, SFT-3 | — | — |
-| 7 | Требования в Agile | ⏳ | REQ-3, PRO-2 | `jira`, `confluence` | — |
+| 4 | Scrum — роли, артефакты, события (детально) | ✅ | PRO-2 | `jira` | — |
+| 5 | Оценка задач (story points, t-shirt sizing) | ✅ | REQ-3 | `jira` | — |
+| 6 | Ретроспективы — техники и фасилитация | ✅ | PRO-4, SFT-3 | — | — |
+| 7 | Требования в Agile | ✅ | REQ-3, PRO-2 | `jira`, `confluence` | — |
 
 #### L3 — Middle (level: 5–6)
 
@@ -489,7 +489,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **4** | L2 API | INT-4–7, tasks/write-openapi-spec | ✅ готово |
 | **5** | L2 modeling | MOD-5–10, tech/drawio, tasks/design-database-schema | ✅ готово |
 | **6** | L2 architecture | ARC-1–3, tasks/integrate-two-systems | ✅ готово |
-| **7** | L2 processes | PRO-4–7, tech/miro | ⏳ |
+| **7** | L2 processes | PRO-4–7, tech/miro | ✅ готово |
 | **8** | L3 integration | INT-8–12, tech/kafka, tech/rabbitmq | ⏳ |
 | **9** | L3 architecture + modeling | ARC-4–8, MOD-11–14 | ⏳ |
 | **10** | L3 processes + data | PRO-8–12, DAT-7–10 | ⏳ |

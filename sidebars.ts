@@ -112,6 +112,10 @@ const sidebars: SidebarsConfig = {
         'process/sdlc-models',
         'process/scrum-basics',
         'process/kanban-basics',
+        'process/scrum-detailed',
+        'process/estimation',
+        'process/retrospectives',
+        'process/agile-requirements',
       ],
     },
     {
