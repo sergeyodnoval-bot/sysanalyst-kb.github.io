@@ -17,11 +17,12 @@ export default function TrackNav(): React.ReactElement | null {
 
   const {metadata} = useDoc();
   // metadata.pluginId is undefined on client for all plugin types
-  let type = getItemType(metadata.pluginId);
-  if (!type) {
+  const pluginId = metadata.pluginId;
+  let type = getItemType(pluginId);
+  if (!pluginId) {
     const path = typeof window !== 'undefined' ? window.location.pathname : '';
-    if (path.includes('/tech/')) type = 'tech';
-    else if (path.includes('/tasks/')) type = 'task';
+    if (path.startsWith('/tech/') || path.includes('/tech/')) type = 'tech';
+    else if (path.startsWith('/tasks/') || path.includes('/tasks/')) type = 'task';
     else type = 'article';
   }
   const key = type ? `${type}:${metadata.id}` : '';

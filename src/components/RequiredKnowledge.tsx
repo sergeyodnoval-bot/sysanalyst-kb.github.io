@@ -18,6 +18,8 @@ export default function RequiredKnowledge(): React.ReactElement | null {
       for (const version of plugin.versions ?? []) {
         for (const doc of version.docs ?? []) {
           if (doc.id === id) return {title: doc.title, path: doc.path};
+          const short = doc.id.split('/').pop();
+          if (short && short === id) return {title: doc.title, path: doc.path};
         }
       }
     }
