@@ -104,6 +104,30 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Процессы разработки',
+      collapsible: true,
+      collapsed: false,
+      link: {type: 'generated-index'},
+      items: [
+        'process/sdlc-models',
+        'process/scrum-basics',
+        'process/kanban-basics',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Soft skills',
+      collapsible: true,
+      collapsed: false,
+      link: {type: 'generated-index'},
+      items: [
+        'soft/soft-skills',
+        'soft/critical-thinking',
+        'soft/business-writing',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Интеграция',
       collapsible: true,
       collapsed: false,

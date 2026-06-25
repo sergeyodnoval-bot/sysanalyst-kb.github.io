@@ -255,9 +255,9 @@
 
 | # | Статья | Статус | Prereq | Tech |
 |---|--------|--------|--------|------|
-| 1 | SDLC — модели жизненного цикла ПО | 🔜 | ITB-4 | — |
-| 2 | Scrum — основы (фреймворк) | 🔜 | PRO-1 | `scrum`, `jira` |
-| 3 | Kanban — основы | 🔜 | PRO-1 | `jira` |
+| 1 | SDLC — модели жизненного цикла ПО | ✅ | ITB-4 | — |
+| 2 | Scrum — основы (фреймворк) | ✅ | PRO-1 | `scrum`, `jira` |
+| 3 | Kanban — основы | ✅ | PRO-1 | `jira` |
 
 #### L2 — Strong Junior (level: 3–4)
 
@@ -288,9 +288,9 @@
 
 | # | Статья | Статус | Prereq | Leads to | Tasks |
 |---|--------|--------|--------|----------|-------|
-| 1 | Как задавать вопросы | 🔜 | — | SFT-2 | `conduct-stakeholder-interview` |
-| 2 | Основы визуализации для аналитика | 🔜 | ITB-9 | MOD-2 | — |
-| 3 | Презентация результатов | 🔜 | SFT-1 | SFT-4 | — |
+| 1 | Что такое soft skills и зачем они аналитику | ✅ | — | SFT-2 | — |
+| 2 | Критическое мышление | ✅ | SFT-1 | SFT-4 | — |
+| 3 | Деловая переписка и презентации | ✅ | SFT-1 | SFT-7 | — |
 
 #### L2 — Strong Junior (level: 3–4)
 
@@ -349,7 +349,7 @@
 
 | ID | Название | tech_type | Связанные статьи | Статус |
 |----|----------|-----------|-----------------|--------|
-| `git` | Git / GitHub | tool | ITB-3 | 🔜 |
+| `git` | Git / GitHub | tool | ITB-3 | ✅ |
 | `docker` | Docker | technology | ARC-4 | 🔜 |
 | `drawio` | draw.io / diagrams.net | tool | MOD-2, MOD-3 | ✅ |
 | `miro` | Miro | tool | SFT-6 | 🔜 |
@@ -485,7 +485,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **0** | L0 completion | ITB-10–18: data, network, OS, app types, SDLC, DB overview, testing, documentation, git | 🔜 |
 | **1** | L1 requirements | REQ-1–4, tech/jira, tech/confluence, 2 tasks | ✅ готово |
 | **2** | L1 modeling + data | MOD-1–3, DAT-1–3, tech/drawio, tasks/model-bpmn, create-sequence-diagram | ✅ готово |
-| **3** | L1 processes + soft | PRO-1–3, SFT-1–3, tech/git | 🔜 |
+| **3** | L1 processes + soft | PRO-1–3, SFT-1–3, tech/git | ✅ готово |
 | **4** | L2 API | INT-4–7, tasks/write-openapi-spec | ✅ готово |
 | **5** | L2 modeling | MOD-5–10, tech/drawio, tasks/design-database-schema | ✅ готово |
 | **6** | L2 architecture | ARC-1–3, tasks/integrate-two-systems | ✅ готово |
