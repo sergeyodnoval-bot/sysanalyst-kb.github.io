@@ -382,34 +382,42 @@ Docusaurus позволяет swizzle шаблоны для конкретных
 - Поддержка `maps_to_type: "technology"` — рекомендация ведёт на `/tech/[id]`
 - Если пользователь ошибся на технологии — рекомендовать изучить соответствующую статью
 
-### F.3. Расширить треки в `paths/`
+### F.3. Создать треки в `src/data/tracks-data.ts`
 
-Добавить в frontmatter треков новые поля:
+Треки определяются как TypeScript-объекты, а не MD-файлы в `paths/`:
 
-```yaml
----
-id: junior-track
-title: "Путь Junior System Analyst"
-description: "С нуля до первой работы"
-articles:
-  - basics/http-protocol
-  - basics/client-server
-  - integration/api-rest-basics
-  - integration/api-openapi
-  - modeling/bpmn
-technologies:        # новое поле
-  - openapi
-  - postman
-tasks:               # новое поле
-  - design-rest-api
----
+```typescript
+// src/data/tracks-data.ts
+const juniorTrack: TrackDef = {
+  id: 'junior-track',
+  title: 'Junior System Analyst',
+  description: '...',
+  stages: [
+    {
+      title: '0. Погружение в IT',
+      description: '...',
+      items: [
+        {type: 'article', id: 'how-computer-works', folder: 'basics'},
+        {type: 'tech', id: 'browser'},
+        {type: 'task', id: 'find-analyst-in-team'},
+      ],
+    },
+  ],
+};
 ```
+
+Также в `tracks-data.ts` определяются:
+- `itemLabels` — отображаемые названия для каждого ID по типу контента
+- `itemColors` — цвета для маркеров типов
+- `itemIcons` — иконки для маркеров типов
+- `trackItemPath()` — функция построения URL по типу и ID
+- `allTracks` — экспортируемый массив всех треков
 
 ### F.4. Обновить `src/pages/tracks.tsx` и детальный view
 
-- Отображать три секции: Статьи → Технологии → Задачи
-- Для каждой технологии/задачи — индикатор типа (бейдж)
-- Прогресс-бар учитывать все три типа
+- Отображать треки списком-карточек (свёрнуто), клик — разворачивает состав
+- Прогресс-бар учитывает все этапы трека
+- Сводка: N статей · M технологий · K задач
 
 ### F.5. Проверить
 - Тест включает вопросы по OpenAPI

@@ -45,7 +45,7 @@
 - Видеоконтент собственного производства (только встраивание YouTube)
 
 ## Успех проекта измеряется
-- Количество статей в графе (цель MVP: 30-50 штук с валидными связями)
+- Количество статей в графе (цель MVP: 70+ штук с валидными связями)
 - Глубина просмотра (пользователь читает >1 статьи за сессию)
 - Прохождение теста на уровень до конца
 - SEO-трафик по запросам "системный аналитик + [тема]"
@@ -53,7 +53,58 @@
 ## Треки обучения
 Треки определяются в `src/data/tracks-data.ts` как TypeScript-объекты с типом `TrackDef`.
 Каждый трек состоит из этапов (`stages`), а этапы — из элементов (`items`) трёх типов:
-`article`, `tech`, `task`. Отображаемые названия задаются в `itemLabels`.
+`article`, `tech`, `task`. 
+
+### Структура трека
+```typescript
+interface TrackDef {
+  id: string;          // уникальный ID
+  title: string;       // название трека
+  description: string; // описание
+  stages: TrackStage[]; // этапы
+}
+interface TrackStage {
+  title: string;
+  description: string;
+  items: TrackItem[];   // {type: 'article'|'tech'|'task', id: string, folder?: string}
+}
+```
+
+### Сопутствующие данные
+- `itemLabels` — маппинг `{type → {id → label}}` для отображения названий в треках
+- `itemColors` — цвет для каждого типа (`article`, `tech`, `task`)
+- `itemIcons` — иконка (односимвольная) для каждого типа
+- `trackItemPath(item)` — функция, генерирующая URL: `/docs/{folder}/{id}`, `/tech/{id}` или `/tasks/{id}`
+- Массив `allTracks` экспортируется и используется на странице `/tracks`
+
+## Статьи (контент)
+Статьи организованы по папкам-категориям в `docs/`. Всего 8 категорий:
+- `basics/` — основы IT (компьютер, ОС, сеть, программирование, профессия SA)
+- `requirements/` — требования (user stories, BDD, стейкхолдеры)
+- `modeling/` — моделирование (BPMN, UML, C4, DFD, ERD, State, Component)
+- `integration/` — интеграции (REST, OpenAPI, SOAP, брокеры, EDA, Event Storming)
+- `data/` — данные (SQL, нормализация, NoSQL, ER-моделирование)
+- `architecture/` — архитектура (слои, монолит vs микросервисы, CQRS, SOLID, ADR, EDA)
+- `process/` — процессы (SDLC, Scrum, Kanban, estimation, ретроспективы)
+- `soft/` — soft skills (критическое мышление, деловая переписка)
+
+### Frontmatter статьи
+Обязательные поля: `id`, `title`, `sidebar_label`, `level` (1-10), `category`, `tags`, 
+`prerequisites` (массив ID формата `category/article-id`), `leads_to`, `related`, 
+`estimated_time`, `difficulty` (1-5).
+
+## Swizzle-компонент Layout
+Единый swizzle в `src/theme/DocItem/Layout/index.tsx` обрабатывает все три типа контента:
+- `pluginId === 'default'` (статьи) — блоки UsedTechnologies, PracticalTasks
+- `pluginId === 'tech'` (технологии) — блоки AppliedInTasks, AlternativesList, CitationBlock
+- `pluginId === 'tasks'` (задачи) — блоки NextTasksList, TypicalPitfalls
+- Для всех типов — PrerequisitesList, RequiredKnowledge, NextStepsList, TrackNav, RelatedTopics
+
+## Плагин графа знаний
+Определён inline в `docusaurus.config.ts` как `knowledgeGraphPlugin()`. Читает frontmatter
+из `docs/**/*.md`, `tech/**/*.md` и `tasks/**/*.md`. Строит узлы и рёбра 5 типов
+(prerequisite, enables, required_for, next_task, alternative). Данные доступны через
+`useAllPluginInstancesData('knowledge-graph')`.
 
 ## Архитектурные решения (высокоуровнево)
 - **Docusaurus 3** как основа — из коробки есть docs, sidebar, поиск, версии.
