@@ -278,21 +278,51 @@ part_of_tracks:
 
 ## Как добавить трек обучения
 
-Создайте MD-файл в `paths/`:
+Треки определяются в `src/data/tracks-data.ts`. Добавьте новый объект `TrackDef`:
 
-```yaml
----
-id: my-track
-title: Название трека
-description: Описание трека
-articles:
-  - category/article-1
-  - category/article-2
-technologies:
-  - tech-id-1
-tasks:
-  - task-id-1
----
+```typescript
+const myTrack: TrackDef = {
+  id: 'my-track',
+  title: 'Название трека',
+  description: 'Описание трека',
+  stages: [
+    {
+      title: '1. Первый этап',
+      description: 'Описание этапа',
+      items: [
+        {type: 'article', id: 'article-id', folder: 'category'},
+        {type: 'tech', id: 'tech-id'},
+        {type: 'task', id: 'task-id'},
+      ],
+    },
+  ],
+};
+```
+
+Затем добавьте трек в массив `allTracks`:
+
+```typescript
+export const allTracks: TrackDef[] = [juniorTrack, middleTrack, myTrack];
+```
+
+### Формат элементов трека
+
+| Поле | Тип | Значение |
+|------|-----|----------|
+| `type` | `'article'` \| `'tech'` \| `'task'` | Тип контента |
+| `id` | string | ID элемента (без префикса папки) |
+| `folder` | string | Только для `article`: категория (basics, modeling, ...) |
+
+### Добавление отображаемых названий
+
+Для каждого нового ID добавьте запись в `itemLabels` в `src/data/tracks-data.ts`:
+
+```typescript
+itemLabels: {
+  article: { 'new-article-id': 'Название статьи', ... },
+  tech: { 'new-tech-id': 'Название технологии', ... },
+  task: { 'new-task-id': 'Название задачи', ... },
+}
 ```
 
 ## Процесс разработки

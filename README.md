@@ -51,23 +51,29 @@ npm run serve    # просмотр production-билда локально
 
 ```
 docs/                  # статьи в Markdown/MDX
-├── basics/            #   основы (HTTP, клиент-сервер)
-├── integration/       #   интеграции (REST, OpenAPI)
-└── modeling/          #   моделирование (BPMN)
-tech/                  # технологии
-├── openapi.md         #   стандарт OpenAPI
-├── postman.md         #   инструмент Postman
-└── scrum.md           #   методология Scrum
-tasks/                 # практические задачи
-├── design-rest-api.md #   проектирование REST API
-└── conduct-stakeholder-interview.md
+├── basics/            #   основы (компьютер, программирование, HTTP, ОС)
+├── requirements/      #   требования и стейкхолдеры
+├── modeling/          #   моделирование (BPMN, UML, C4, DFD)
+├── integration/       #   интеграции (REST, OpenAPI, брокеры сообщений)
+├── data/              #   данные и SQL
+├── architecture/      #   архитектура и паттерны
+├── process/           #   процессы и методологии (Scrum, Kanban)
+└── soft/              #   soft skills и деловая переписка
+tech/                  # технологии (стандарты, инструменты, методологии)
+├── openapi.md         #   стандарт
+├── postman.md         #   инструмент
+└── scrum.md           #   методология
+tasks/                 # практические задачи с пошаговым подходом
+├── design-rest-api.md
+├── conduct-stakeholder-interview.md
+└── ...
 src/                   # React-компоненты и страницы
-├── pages/             #   страницы (map, test, tracks)
-├── components/        #   переиспользуемые компоненты
-└── theme/             #   swizzled-компоненты Docusaurus
+├── pages/             #   страницы (map — граф, test — тест, tracks — треки)
+├── components/        #   переиспользуемые компоненты (UsedTechnologies, RequiredKnowledge и др.)
+├── data/              #   данные треков и метаданные
+└── theme/             #   swizzled-компоненты Docusaurus (Layout с блоками)
 static/                # статические файлы (img, favicon)
-tests/                 # данные тестов
-paths/                 # треки обучения
+tests/                 # данные теста на уровень
 ```
 
 ## Как добавить контент
@@ -78,7 +84,7 @@ paths/                 # треки обучения
 - **Статью** — создать `.md` в `docs/` с frontmatter (prerequisites, leads_to)
 - **Технологию** — создать `.md` в `tech/` с `tech_type` (standard/tool/methodology)
 - **Задачу** — создать `.md` в `tasks/` с `type: task` и difficulty
-- **Трек** — добавить в `paths/` с references на статьи, технологии и задачи
+- **Трек** — добавить в `src/data/tracks-data.ts` с этапами и ссылками на статьи, технологии и задачи
 
 ## Лицензия
 
