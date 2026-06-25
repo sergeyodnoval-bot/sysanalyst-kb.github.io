@@ -222,9 +222,9 @@
 
 | # | Статья | Статус | Prereq | Leads to | Tasks |
 |---|--------|--------|--------|----------|-------|
-| 1 | Что такое архитектура ПО | 🔜 | ITB-5, INT-2 | ARC-2 | — |
-| 2 | Слоистая архитектура (layered) | 🔜 | ARC-1 | ARC-3 | — |
-| 3 | Монолит vs Микросервисы | ⏳ | ARC-2 | ARC-4 | — |
+| 1 | Что такое архитектура ПО | ✅ | ITB-5, INT-2 | ARC-2 | — |
+| 2 | Слоистая архитектура (layered) | ✅ | ARC-1 | ARC-3 | — |
+| 3 | Монолит vs Микросервисы | ✅ | ARC-2 | ARC-4 | — |
 
 #### L3 — Middle (level: 5–6)
 
@@ -391,7 +391,7 @@
 | `prioritize-backlog` | Приоритизировать бэклог | 2 | REQ-7 | `jira` | ⏳ |
 | `facilitate-workshop` | Провести воркшоп | 3 | SFT-4, SFT-6 | `miro`, `figma`, `confluence` | ⏳ |
 | `write-openapi-spec` | Написать OpenAPI-спецификацию | 2 | INT-3 | `openapi`, `swagger-editor` | 🔜 |
-| `integrate-two-systems` | Описать интеграцию двух систем | 3 | INT-4, INT-11, ARC-9 | — | ⏳ |
+| `integrate-two-systems` | Проектирование интеграции двух систем | 3 | INT-4, INT-11, ARC-9 | — | ✅ |
 | `write-adr` | Зафиксировать архитектурное решение | 3 | ARC-8 | `confluence` | ⏳ |
 | `design-event-scheme` | Спроектировать событийную схему | 4 | INT-12, ARC-6 | `kafka` | ⏳ |
 
@@ -488,7 +488,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **3** | L1 processes + soft | PRO-1–3, SFT-1–3, tech/git | 🔜 |
 | **4** | L2 API | INT-4–7, tasks/write-openapi-spec | ✅ готово |
 | **5** | L2 modeling | MOD-5–10, tech/drawio, tasks/design-database-schema | ✅ готово |
-| **6** | L2 architecture | ARC-1–3, tasks/integrate-two-systems | ⏳ |
+| **6** | L2 architecture | ARC-1–3, tasks/integrate-two-systems | ✅ готово |
 | **7** | L2 processes | PRO-4–7, tech/miro | ⏳ |
 | **8** | L3 integration | INT-8–12, tech/kafka, tech/rabbitmq | ⏳ |
 | **9** | L3 architecture + modeling | ARC-4–8, MOD-11–14 | ⏳ |
