@@ -68,5 +68,5 @@ for (const [key, label] of Object.entries(LABELS)) {
 }
 
 export function getDocLabel(id: string): string {
-  return LABELS[id] || SHORT_LOOKUP[id] || id.split('/').pop() || id;
+  return LABELS[id] || SHORT_LOOKUP[id] || SHORT_LOOKUP[id.split('/').pop() ?? ''] || id.split('/').pop() || id;
 }
