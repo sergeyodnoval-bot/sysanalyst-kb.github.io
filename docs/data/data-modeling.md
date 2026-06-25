@@ -8,7 +8,7 @@ category: data
 tags: [data, l2, strong-junior, database, er, modeling]
 prerequisites: [modeling/er-diagrams, data/normalization]
 leads_to: []
-related: [data/sql-basics, tools/dbeaver]
+related: [data/sql-basics, dbeaver]
 estimated_time: 25
 difficulty: 4
 ---
