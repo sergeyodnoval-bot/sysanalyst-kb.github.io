@@ -7,7 +7,7 @@ level: 5
 category: integration
 tags: [rest, api, проектирование, http, ресурсы]
 prerequisites: [integration/api-rest-basics, integration/api-openapi]
-leads_to: []
+leads_to: [integration/api-versioning]
 related: []
 estimated_time: 30
 difficulty: 4

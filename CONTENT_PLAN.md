@@ -158,10 +158,10 @@
 | # | Статья | Статус | Prereq | Tech | Tasks |
 |---|--------|--------|--------|------|-------|
 | 3 | Документирование API с OpenAPI | ✅ | INT-2, INT-1 | `openapi`, `swagger-editor`, `swagger-ui` | `design-rest-api` |
-| 4 | Проектирование REST API (детально) | ⏳ | INT-2, INT-3 | `postman` | `design-rest-api` |
-| 5 | Версионирование API | ⏳ | INT-4 | — | — |
-| 6 | Аутентификация и авторизация в API | ⏳ | INT-2 | `postman` | — |
-| 7 | SOAP / WSDL для legacy | ⏳ | INT-1 | — | — |
+| 4 | Проектирование REST API (детально) | ✅ | INT-2, INT-3 | `postman` | `design-rest-api` |
+| 5 | Версионирование API | ✅ | INT-4 | — | — |
+| 6 | Аутентификация и авторизация в API | ✅ | INT-2 | `postman` | — |
+| 7 | SOAP / WSDL для legacy | ✅ | INT-1 | — | — |
 
 #### L3 — Middle (level: 5–6)
 
@@ -486,7 +486,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **1** | L1 requirements | REQ-1–4, tech/jira, tech/confluence, 2 tasks | ✅ готово |
 | **2** | L1 modeling + data | MOD-1–3, DAT-1–3, tech/drawio, tasks/model-bpmn, create-sequence-diagram | ✅ готово |
 | **3** | L1 processes + soft | PRO-1–3, SFT-1–3, tech/git | 🔜 |
-| **4** | L2 API | INT-4–7, tasks/write-openapi-spec | ⏳ |
+| **4** | L2 API | INT-4–7, tasks/write-openapi-spec | ✅ готово |
 | **5** | L2 modeling | MOD-5–10, tech/drawio, tasks/design-database-schema | ⏳ |
 | **6** | L2 architecture | ARC-1–3, tasks/integrate-two-systems | ⏳ |
 | **7** | L2 processes | PRO-4–7, tech/miro | ⏳ |
