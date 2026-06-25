@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import {
@@ -62,25 +62,96 @@ function StageBlock({stage}: {stage: TrackStage}): React.ReactElement {
   );
 }
 
-function TrackDetail({track}: {track: TrackDef}): React.ReactElement {
+function TrackCard({track, expanded, onToggle}: {track: TrackDef; expanded: boolean; onToggle: () => void}): React.ReactElement {
   const totalItems = track.stages.reduce((s, st) => s + st.items.length, 0);
-  return (
-    <>
-      <h1>{track.title}</h1>
-      <p style={{color: '#6b7280', marginBottom: '0.5rem'}}>{track.description}</p>
+  const articleCount = track.stages.reduce((s, st) => s + st.items.filter(i => i.type === 'article').length, 0);
+  const techCount = track.stages.reduce((s, st) => s + st.items.filter(i => i.type === 'tech').length, 0);
+  const taskCount = track.stages.reduce((s, st) => s + st.items.filter(i => i.type === 'task').length, 0);
 
+  if (!expanded) {
+    return (
       <div
+        onClick={onToggle}
         style={{
-          display: 'flex',
-          gap: '0.25rem',
-          width: '100%',
-          height: 8,
-          background: '#e5e7eb',
-          borderRadius: 4,
-          marginTop: '1rem',
-          marginBottom: '1.5rem',
+          border: '1px solid #e5e7eb',
+          borderRadius: 12,
+          padding: '1.25rem 1.5rem',
+          marginBottom: '1rem',
+          cursor: 'pointer',
+          background: '#fff',
+          transition: 'box-shadow 0.2s',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
         }}
+        onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)'}
+        onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.06)'}
       >
+        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+          <div>
+            <div style={{fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.25rem'}}>{track.title}</div>
+            <div style={{fontSize: '0.875rem', color: '#6b7280'}}>{track.description}</div>
+          </div>
+          <div style={{fontSize: '1.5rem', color: '#9ca3af'}}>▸</div>
+        </div>
+
+        <div style={{display: 'flex', gap: '0.25rem', width: '100%', height: 6, background: '#e5e7eb', borderRadius: 3, marginTop: '1rem'}}>
+          {track.stages.map((s, i) => {
+            const pct = (s.items.length / totalItems) * 100;
+            return (
+              <div
+                key={i}
+                style={{
+                  width: `${pct}%`,
+                  height: '100%',
+                  background: stageColors[i] || '#9ca3af',
+                  borderRadius: i === 0 ? '3px 0 0 3px' : i === track.stages.length - 1 ? '0 3px 3px 0' : 0,
+                }}
+                title={s.title}
+              />
+            );
+          })}
+        </div>
+
+        <div style={{display: 'flex', gap: '1rem', marginTop: '0.5rem', fontSize: '0.8rem', color: '#9ca3af'}}>
+          <span>{articleCount} статей</span>
+          <span>{techCount} технологий</span>
+          <span>{taskCount} задач</span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      style={{
+        border: '2px solid #6366f1',
+        borderRadius: 12,
+        padding: '1.5rem',
+        marginBottom: '1rem',
+        background: '#fff',
+      }}
+    >
+      <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.75rem'}}>
+        <div>
+          <div style={{fontSize: '1.25rem', fontWeight: 700}}>{track.title}</div>
+          <p style={{color: '#6b7280', fontSize: '0.875rem', margin: '0.25rem 0 0'}}>{track.description}</p>
+        </div>
+        <button
+          onClick={onToggle}
+          style={{
+            background: 'none',
+            border: 'none',
+            fontSize: '1.25rem',
+            color: '#6366f1',
+            cursor: 'pointer',
+            padding: '0.25rem 0.5rem',
+            fontWeight: 700,
+          }}
+        >
+          ✕
+        </button>
+      </div>
+
+      <div style={{display: 'flex', gap: '0.25rem', width: '100%', height: 8, background: '#e5e7eb', borderRadius: 4, marginBottom: '1rem'}}>
         {track.stages.map((s, i) => {
           const pct = (s.items.length / totalItems) * 100;
           return (
@@ -90,8 +161,7 @@ function TrackDetail({track}: {track: TrackDef}): React.ReactElement {
                 width: `${pct}%`,
                 height: '100%',
                 background: stageColors[i] || '#9ca3af',
-                borderRadius:
-                  i === 0 ? '4px 0 0 4px' : i === track.stages.length - 1 ? '0 4px 4px 0' : 0,
+                borderRadius: i === 0 ? '4px 0 0 4px' : i === track.stages.length - 1 ? '0 4px 4px 0' : 0,
               }}
               title={s.title}
             />
@@ -99,16 +169,7 @@ function TrackDetail({track}: {track: TrackDef}): React.ReactElement {
         })}
       </div>
 
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '0.5rem 1.25rem',
-          fontSize: '0.8rem',
-          color: '#6b7280',
-          marginBottom: '2rem',
-        }}
-      >
+      <div style={{display: 'flex', flexWrap: 'wrap', gap: '0.5rem 1.25rem', fontSize: '0.8rem', color: '#6b7280', marginBottom: '1.5rem'}}>
         {track.stages.map((s, i) => (
           <span key={i}>
             <span style={{color: stageColors[i], fontWeight: 700}}>▬</span>{' '}
@@ -118,42 +179,35 @@ function TrackDetail({track}: {track: TrackDef}): React.ReactElement {
       </div>
 
       {track.stages.map((stage, i) => (
-        <div key={i} style={{marginBottom: '2rem'}}>
-          <h2 style={{fontSize: '1.15rem', marginBottom: '0.3rem'}}>{stage.title}</h2>
-          <p style={{fontSize: '0.875rem', color: '#6b7280', marginBottom: '0.75rem'}}>
-            {stage.description}
-          </p>
+        <div key={i} style={{marginBottom: '1.5rem'}}>
+          <h3 style={{fontSize: '1.05rem', marginBottom: '0.2rem'}}>{stage.title}</h3>
+          <p style={{fontSize: '0.85rem', color: '#6b7280', marginBottom: '0.5rem'}}>{stage.description}</p>
           <StageBlock stage={stage} />
         </div>
       ))}
 
-      <div
-        style={{
-          marginTop: '1rem',
-          padding: '1.25rem',
-          background: 'var(--ifm-color-emphasis-100)',
-          borderRadius: 8,
-          fontSize: '0.875rem',
-          color: '#6b7280',
-        }}
-      >
+      <div style={{marginTop: '1rem', padding: '1rem', background: 'var(--ifm-color-emphasis-100)', borderRadius: 8, fontSize: '0.85rem', color: '#6b7280'}}>
         <strong style={{color: 'var(--ifm-font-color-base)'}}>Всего в треке:</strong>{' '}
-        {track.stages.reduce((s, st) => s + st.items.filter(i => i.type === 'article').length, 0)} статей ·{' '}
-        {track.stages.reduce((s, st) => s + st.items.filter(i => i.type === 'tech').length, 0)} технологий ·{' '}
-        {track.stages.reduce((s, st) => s + st.items.filter(i => i.type === 'task').length, 0)} задач
+        {articleCount} статей · {techCount} технологий · {taskCount} задач
       </div>
-    </>
+    </div>
   );
 }
 
 export default function TracksPage(): React.ReactElement {
+  const [openTrack, setOpenTrack] = useState<string | null>(null);
+
   return (
     <Layout title="Треки" description="Треки обучения системного аналитика">
       <div className="container" style={{paddingTop: '2rem', paddingBottom: '3rem', maxWidth: 720}}>
+        <h1 style={{marginBottom: '1.5rem'}}>Треки обучения</h1>
         {allTracks.map((track) => (
-          <div key={track.id} style={{marginBottom: '3rem'}}>
-            <TrackDetail track={track} />
-          </div>
+          <TrackCard
+            key={track.id}
+            track={track}
+            expanded={openTrack === track.id}
+            onToggle={() => setOpenTrack(openTrack === track.id ? null : track.id)}
+          />
         ))}
       </div>
     </Layout>
