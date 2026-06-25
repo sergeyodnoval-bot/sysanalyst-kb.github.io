@@ -139,6 +139,11 @@ const sidebars: SidebarsConfig = {
       items: [
         'integration/api-rest-basics',
         'integration/api-openapi',
+        'integration/async-message-queue',
+        'integration/rabbitmq',
+        'integration/kafka',
+        'integration/event-driven-architecture',
+        'integration/event-storming',
       ],
     },
     {
