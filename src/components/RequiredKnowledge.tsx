@@ -44,7 +44,7 @@ export default function RequiredKnowledge(): React.ReactElement | null {
               const info = getDocInfo(id);
               return (
                 <li key={id}>
-                  {info ? <Link to={info.path}>{info.title}</Link> : <span>{id}</span>}
+                  {info ? <Link to={info.path}>{info.title || id.split('/').pop()}</Link> : <span>{id}</span>}
                 </li>
               );
             })}
