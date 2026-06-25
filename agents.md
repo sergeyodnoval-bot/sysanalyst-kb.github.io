@@ -41,6 +41,17 @@
 - Не удалять и не переименовывать поля frontmatter без обновления всех статей.
 - Не писать контент за автора — только структуру и примеры-заглушки.
 
+## Важные факты, которые легко забыть
+- **Треки** живут в `src/data/tracks-data.ts` (TypeScript), НЕ в `paths/` (нет такой папки)
+- **Типы контента** определяются полем `type` в frontmatter: статьи — неявно (default), технологии — `tech_type`, задачи — `type: task`
+- **Плагины**: default (docs/), tech (id: 'tech'), tasks (id: 'tasks'), knowledge-graph (inline в docusaurus.config.ts)
+- **Плагин графа** — inline-функция в `docusaurus.config.ts`, не отдельный файл в `src/plugins/`
+- **Swizzle Layout** — единый для всех типов, в `src/theme/DocItem/Layout/index.tsx`, ветвление по `metadata.pluginId`
+- **docLabels.ts** — маппинг articleID → русское название для ссылок в компонентах; обновлять при добавлении статьи
+- **tracks-data.ts itemLabels** — маппинг id → название для отображения в треках; обновлять при добавлении элемента
+- **folder в TrackItem** — только для `type: 'article'`, указывает на подпапку в docs/
+- **Контент-гайд**: `CONTENT_GUIDE.md` — правила и шаблоны для статей/технологий/задач
+
 ## Если что-то пошло не так
 - Ошибка сборки → сначала `npm run clear && npm run build`, потом гуглить.
 - Неясная задача → остановиться, задать вопрос, предложить 2-3 варианта решения.
