@@ -86,6 +86,47 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'bdd-scenarios': 'BDD-сценарии',
     'sql-basics': 'Основы SQL',
     'json-xml': 'JSON и XML',
+    'what-is-database': 'Что такое база данных',
+    'sdlc-models': 'SDLC — модели разработки',
+    'scrum-basics': 'Scrum — основы',
+    'kanban-basics': 'Kanban — основы',
+    'scrum-detailed': 'Scrum — детально',
+    'estimation': 'Оценка задач',
+    'retrospectives': 'Ретроспективы',
+    'agile-requirements': 'Требования в Agile',
+    'soft-skills': 'Что такое soft skills',
+    'critical-thinking': 'Критическое мышление',
+    'business-writing': 'Деловая переписка',
+    'normalization': 'Нормализация БД',
+    'nosql': 'NoSQL',
+    'data-modeling': 'Моделирование данных (ER)',
+    'er-diagrams': 'ER-диаграммы',
+    'state-diagram': 'State diagram',
+    'class-diagram': 'Class diagram',
+    'bpmn-advanced': 'BPMN — продвинутый',
+    'c4-context': 'C4 — Context diagram',
+    'c4-container': 'C4 — Container diagram',
+    'dfd': 'Data Flow Diagram (DFD)',
+    'component-diagram': 'Component diagram',
+    'user-story-mapping': 'User Story Mapping',
+    'impact-mapping': 'Impact Mapping',
+    'api-design-detailed': 'Проектирование REST API',
+    'api-versioning': 'Версионирование API',
+    'api-auth': 'Аутентификация в API',
+    'api-soap-wsdl': 'SOAP / WSDL',
+    'async-message-queue': 'Асинхронное взаимодействие',
+    'rabbitmq': 'RabbitMQ',
+    'kafka': 'Kafka',
+    'event-driven-architecture': 'EDA введение',
+    'event-storming': 'Event Storming',
+    'what-is-architecture': 'Что такое архитектура ПО',
+    'layered-architecture': 'Слоистая архитектура',
+    'monolith-vs-microservices': 'Монолит vs Микросервисы',
+    'microservices-patterns': 'Микросервисы — паттерны',
+    'cqrs': 'CQRS',
+    'eda-detailed': 'EDA детально',
+    'solid': 'SOLID для аналитика',
+    'adr': 'ADR',
   },
   tech: {
     browser: 'Веб-браузер',
@@ -103,6 +144,8 @@ export const itemLabels: Record<string, Record<string, string>> = {
     scrum: 'Scrum',
     figma: 'Figma',
     git: 'Git',
+    kafka: 'Apache Kafka',
+    rabbitmq: 'RabbitMQ',
   },
   task: {
     'find-analyst-in-team': 'Найти аналитика в знакомых',
@@ -116,6 +159,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'bug-report': 'Баг-репорт',
     'grooming': 'Refinement (grooming)',
     'describe-system-to-friend': 'Объяснить другу интернет',
+    'conduct-stakeholder-interview': 'Интервью со стейкхолдером',
+    'design-database-schema': 'Проектирование схемы БД',
+    'integrate-two-systems': 'Проектирование интеграции',
   },
 };
 
@@ -224,6 +270,108 @@ const juniorTrack: TrackDef = {
   ],
 };
 
+const middleTrack: TrackDef = {
+  id: 'middle-track',
+  title: 'Middle System Analyst',
+  description: 'Путь от Junior до Middle: процессы, данные, продвинутое моделирование, интеграции и архитектура',
+  stages: [
+    {
+      title: '0. Процессы разработки',
+      description: 'Углублённое знание методологий: Scrum, Kanban, оценка задач, ретроспективы.',
+      items: [
+        {type: 'article', id: 'sdlc-models', folder: 'process'},
+        {type: 'article', id: 'scrum-basics', folder: 'process'},
+        {type: 'article', id: 'kanban-basics', folder: 'process'},
+        {type: 'article', id: 'scrum-detailed', folder: 'process'},
+        {type: 'article', id: 'estimation', folder: 'process'},
+        {type: 'article', id: 'retrospectives', folder: 'process'},
+        {type: 'article', id: 'agile-requirements', folder: 'process'},
+        {type: 'tech', id: 'scrum'},
+        {type: 'tech', id: 'jira'},
+        {type: 'task', id: 'grooming'},
+      ],
+    },
+    {
+      title: '1. Профессиональные навыки',
+      description: 'Soft skills, критическое мышление и деловая коммуникация.',
+      items: [
+        {type: 'article', id: 'soft-skills', folder: 'soft'},
+        {type: 'article', id: 'critical-thinking', folder: 'soft'},
+        {type: 'article', id: 'business-writing', folder: 'soft'},
+      ],
+    },
+    {
+      title: '2. Проектирование данных',
+      description: 'Нормализация, NoSQL, моделирование данных и схемы БД.',
+      items: [
+        {type: 'article', id: 'normalization', folder: 'data'},
+        {type: 'article', id: 'nosql', folder: 'data'},
+        {type: 'article', id: 'data-modeling', folder: 'data'},
+        {type: 'tech', id: 'postgresql'},
+        {type: 'tech', id: 'dbeaver'},
+        {type: 'task', id: 'design-database-schema'},
+      ],
+    },
+    {
+      title: '3. Продвинутое моделирование',
+      description: 'C4, BPMN advanced, UML-диаграммы, DFD и компонентные диаграммы.',
+      items: [
+        {type: 'article', id: 'bpmn-advanced', folder: 'modeling'},
+        {type: 'article', id: 'er-diagrams', folder: 'modeling'},
+        {type: 'article', id: 'state-diagram', folder: 'modeling'},
+        {type: 'article', id: 'class-diagram', folder: 'modeling'},
+        {type: 'article', id: 'c4-context', folder: 'modeling'},
+        {type: 'article', id: 'c4-container', folder: 'modeling'},
+        {type: 'article', id: 'dfd', folder: 'modeling'},
+        {type: 'article', id: 'component-diagram', folder: 'modeling'},
+        {type: 'tech', id: 'drawio'},
+        {type: 'tech', id: 'plantuml'},
+      ],
+    },
+    {
+      title: '4. Интеграции — глубокий уровень',
+      description: 'Детальное проектирование REST, версионирование, auth, SOAP, асинхронное взаимодействие.',
+      items: [
+        {type: 'article', id: 'api-design-detailed', folder: 'integration'},
+        {type: 'article', id: 'api-versioning', folder: 'integration'},
+        {type: 'article', id: 'api-auth', folder: 'integration'},
+        {type: 'article', id: 'api-soap-wsdl', folder: 'integration'},
+        {type: 'article', id: 'async-message-queue', folder: 'integration'},
+        {type: 'tech', id: 'openapi'},
+        {type: 'tech', id: 'postman'},
+        {type: 'task', id: 'design-rest-api'},
+      ],
+    },
+    {
+      title: '5. Асинхронная архитектура',
+      description: 'Брокеры сообщений, Event-Driven Architecture и Event Storming.',
+      items: [
+        {type: 'article', id: 'rabbitmq', folder: 'integration'},
+        {type: 'article', id: 'kafka', folder: 'integration'},
+        {type: 'article', id: 'event-driven-architecture', folder: 'integration'},
+        {type: 'article', id: 'event-storming', folder: 'integration'},
+        {type: 'tech', id: 'kafka'},
+        {type: 'tech', id: 'rabbitmq'},
+      ],
+    },
+    {
+      title: '6. Архитектура и проектирование',
+      description: 'Архитектурные стили, паттерны, SOLID, ADR и проектирование микросервисов.',
+      items: [
+        {type: 'article', id: 'what-is-architecture', folder: 'architecture'},
+        {type: 'article', id: 'layered-architecture', folder: 'architecture'},
+        {type: 'article', id: 'monolith-vs-microservices', folder: 'architecture'},
+        {type: 'article', id: 'microservices-patterns', folder: 'architecture'},
+        {type: 'article', id: 'cqrs', folder: 'architecture'},
+        {type: 'article', id: 'eda-detailed', folder: 'architecture'},
+        {type: 'article', id: 'solid', folder: 'architecture'},
+        {type: 'article', id: 'adr', folder: 'architecture'},
+        {type: 'task', id: 'integrate-two-systems'},
+      ],
+    },
+  ],
+};
+
 /** Map from Docusaurus pluginId to item type for track lookup */
 export const pluginTypeMap: Record<string, string> = {
   '': 'article',
@@ -236,7 +384,7 @@ export function getItemType(pluginId: string | undefined): string | undefined {
   return pluginId ? pluginTypeMap[pluginId] : pluginTypeMap[''];
 }
 
-export const allTracks: TrackDef[] = [juniorTrack];
+export const allTracks: TrackDef[] = [juniorTrack, middleTrack];
 
 function buildLookup(): Map<string, NavInfo[]> {
   const map = new Map<string, NavInfo[]>();
