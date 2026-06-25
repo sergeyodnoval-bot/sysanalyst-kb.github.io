@@ -1,93 +1,64 @@
 ---
 id: drawio
 title: "Draw.io (diagrams.net)"
-sidebar_label: Draw.io
+sidebar_label: "Draw.io"
 type: technology
 tech_type: tool
 category: modeling
-tags: [modeling, diagram, bpmn, uml, tool]
+tags: [modeling, tool, diagram, uml, bpmn]
 official_url: "https://www.diagrams.net/"
 vendor: "JGraph Ltd"
 license: "Apache 2.0"
 first_seen: 2012
-requires_articles: [basics/what-is-model]
-used_in_tasks: []
-alternatives: [plantuml]
+requires_articles: [modeling/what-is-model]
+used_in_tasks: [design-database-schema]
+alternatives: [miro, figma]
 difficulty: 1
-estimated_time: 10
+estimated_time: 5
 ---
 
 # Draw.io (diagrams.net)
 
-Draw.io — это бесплатный инструмент для создания диаграмм. Работает в браузере (можно интегрировать с Google Drive, GitHub, Confluence) и как настольное приложение. Поддерживает BPMN, UML, ERD, flowchart и десятки других нотаций.
+Draw.io (сейчас развивается под именем diagrams.net) — бесплатный инструмент для создания диаграмм. Не требует установки: работает в браузере, но есть и desktop-версия.
 
-## Для чего используется
+## Основные возможности
 
-- Моделирование бизнес-процессов (BPMN, flowchart)
-- Создание архитектурных схем (C4, AWS, Kubernetes)
-- Прототипирование интерфейсов (wireframes)
-- Визуализация ER-диаграмм (для БД)
-- Документация в Confluence (есть плагин)
+- **Все популярные нотации:** BPMN, UML (все типы диаграмм), ER, C4, блок-схемы, майнд-карты
+- **Интеграция с облаками:** Google Drive, OneDrive, GitHub, GitLab, Dropbox
+- **Экспорт:** PNG, SVG, PDF, HTML (встраиваемый)
+- **Шаблоны:** стартовые наборы для BPMN, UML, ER, C4
+- **Совместная работа:** через облачное хранение (но не real-time, как в Miro)
 
-## Ключевые концепции
+## Форматы файлов
 
-### Форматы файлов
+Draw.io сохраняет диаграммы в формате `.drawio` — это XML, который можно положить в Git и отслеживать изменения. При экспорте в SVG ссылки сохраняются кликабельными.
 
-Draw.io использует собственный формат `.drawio` (XML), но поддерживает экспорт в PNG, SVG, PDF, HTML.
+## Как аналитик использует Draw.io
 
-### Интеграции
+Draw.io — основной инструмент для ежедневной работы с диаграммами:
 
-- **Google Drive** — диаграммы хранятся как Google-документы
-- **GitHub** — `.drawio` файлы можно хранить в репозитории и ревьювить изменения
-- **Confluence/Notion** — есть плагины для вставки диаграмм
-- **VS Code** — расширение для редактирования `.drawio` прямо в IDE
+- Быстро набросать BPMN-схему на созвоне
+- Нарисовать ER-диаграмму для документации
+- Собрать C4-диаграмму для архитектурного описания
+- Сохранить диаграмму в репозиторий проекта
 
-### Нотации
+## Альтернативы
 
-В Draw.io есть готовые наборы фигур для большинства нотаций:
+- **Miro** — лучше для воркшопов и совместной работы в реальном времени
+- **Figma** — лучше для UI/UX, но есть и diagram-плагины
+- **Lucidchart** — мощнее, но платный
 
-| Нотация | Когда использовать |
-|---------|------------------|
-| BPMN 2.0 | Бизнес-процессы |
-| UML | Class, Use Case, Sequence, Activity |
-| ERD | Модели данных |
-| C4 | Архитектура ПО |
-| Flowchart | Алгоритмы и логика |
-| Wireframe | Прототипы интерфейсов |
+## Когда выбрать Draw.io
 
-## Почему это выбор №1 для аналитика в РФ
-
-В российских компаниях Draw.io — стандарт де-факто:
-
-- Бесплатный, не требует лицензии
-- Не зависит от санкционных ограничений
-- Работает офлайн (настольная версия)
-- Файлы в Git — можно делать code review диаграмм
-- В Confluence Cloud и Data Center есть официальный плагин
-
-## Когда использовать
-
-- Быстро набросать схму для обсуждения на встрече
-- Создать BPMN-диаграмму процесса
-- Задокументировать архитектуру решения
-- Сделать wireframe нового экрана
-
-## Когда НЕ использовать
-
-- **Сложные BPMN-диаграммы с исполнителями/пулами** — Camunda Modeler удобнее
-- **Текстовое описание диаграмм** — PlantUML лучше (диаграмма = код)
-- **Enterprise-документирование** — Enterprise Architect или Sparx более формальны
-
-## Как начать
-
-1. Откройте [app.diagrams.net](https://app.diagrams.net/) — не требует установки
-2. Выберите, куда сохранять файлы (Google Drive / GitHub / устройство)
-3. Начните с шаблона или пустого холста
-4. Попробуйте нарисовать простой flowchart
+| Сценарий | Draw.io | Miro | Figma |
+|----------|---------|------|-------|
+| Схема для документации | ★★★★★ | ★★★ | ★★★ |
+| Воркшоп с командой | ★★ | ★★★★★ | ★★★ |
+| Встраивание в git | ★★★★★ | ★ | ★ |
+| Быстрый скетч | ★★★★ | ★★★★ | ★★★ |
 
 ## Ссылки
 
 - [Официальный сайт](https://www.diagrams.net/)
-- [Библиотека шаблонов](https://app.diagrams.net/templates)
-- [Draw.io в VS Code](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio)
-- [Плагин для Confluence](https://marketplace.atlassian.com/apps/1211404/draw-io-diagrams-for-confluence)
+- [Draw.io на GitHub](https://github.com/jgraph/drawio)
+- [Библиотеки для C4](https://github.com/structurizr/drawio)

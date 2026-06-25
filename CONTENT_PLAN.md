@@ -126,12 +126,12 @@
 
 | # | Статья | Статус | Prereq | Leads to | Tech | Tasks |
 |---|--------|--------|--------|----------|------|-------|
-| 5 | ER-диаграммы (Entity-Relationship) | ⏳ | DAT-3 | DAT-4 | — | `design-database-schema` |
-| 6 | State diagram (UML State) | ⏳ | MOD-3 | — | — | — |
-| 7 | Class diagram для SA (упрощённо) | ⏳ | MOD-2 | — | — | — |
-| 8 | BPMN — продвинутый (подпроцессы, события, исключения) | ⏳ | MOD-4 | MOD-9 | — | `model-bpmn-process` |
-| 9 | C4 — Context diagram | ⏳ | MOD-2 | ARC-1 | — | — |
-| 10 | C4 — Container diagram | ⏳ | MOD-9 | ARC-2 | `drawio` | — |
+| 5 | ER-диаграммы (Entity-Relationship) | ✅ | DAT-3 | DAT-4 | — | `design-database-schema` |
+| 6 | State diagram (UML State) | ✅ | MOD-3 | — | — | — |
+| 7 | Class diagram для SA (упрощённо) | ✅ | MOD-2 | — | — | — |
+| 8 | BPMN — продвинутый (подпроцессы, события, исключения) | ✅ | MOD-4 | MOD-9 | — | `model-bpmn-process` |
+| 9 | C4 — Context diagram | ✅ | MOD-2 | ARC-1 | — | — |
+| 10 | C4 — Container diagram | ✅ | MOD-9 | ARC-2 | `drawio` | — |
 
 #### L3 — Middle (level: 5–6)
 
@@ -351,7 +351,7 @@
 |----|----------|-----------|-----------------|--------|
 | `git` | Git / GitHub | tool | ITB-3 | 🔜 |
 | `docker` | Docker | technology | ARC-4 | 🔜 |
-| `drawio` | draw.io / diagrams.net | tool | MOD-2, MOD-3 | 🔜 |
+| `drawio` | draw.io / diagrams.net | tool | MOD-2, MOD-3 | ✅ |
 | `miro` | Miro | tool | SFT-6 | 🔜 |
 | `swagger-editor` | Swagger Editor | tool | INT-3 | 🔜 |
 | `swagger-ui` | Swagger UI | tool | INT-3 | 🔜 |
@@ -487,7 +487,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **2** | L1 modeling + data | MOD-1–3, DAT-1–3, tech/drawio, tasks/model-bpmn, create-sequence-diagram | ✅ готово |
 | **3** | L1 processes + soft | PRO-1–3, SFT-1–3, tech/git | 🔜 |
 | **4** | L2 API | INT-4–7, tasks/write-openapi-spec | ✅ готово |
-| **5** | L2 modeling | MOD-5–10, tech/drawio, tasks/design-database-schema | ⏳ |
+| **5** | L2 modeling | MOD-5–10, tech/drawio, tasks/design-database-schema | ✅ готово |
 | **6** | L2 architecture | ARC-1–3, tasks/integrate-two-systems | ⏳ |
 | **7** | L2 processes | PRO-4–7, tech/miro | ⏳ |
 | **8** | L3 integration | INT-8–12, tech/kafka, tech/rabbitmq | ⏳ |
