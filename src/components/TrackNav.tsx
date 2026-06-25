@@ -25,8 +25,26 @@ export default function TrackNav(): React.ReactElement | null {
     setCurrent(0);
   }, [key]);
 
-  if (!type || !isClient) return null;
-  if (!positions || positions.length === 0) return null;
+  console.log('[TrackNav]', {
+    pluginId: metadata.pluginId,
+    metadataId: metadata.id,
+    type,
+    key,
+    hasPositions: !!positions,
+    positionsLen: positions?.length,
+    isClient,
+    isClientTrue: isClient,
+    trackLookupKeys: [...trackLookup.keys()].filter(k => k.startsWith(type || 'x')),
+  });
+
+  if (!type || !isClient) {
+    console.log('[TrackNav] early return: !type=' + !type + ' !isClient=' + !isClient);
+    return null;
+  }
+  if (!positions || positions.length === 0) {
+    console.log('[TrackNav] no positions:', positions);
+    return null;
+  }
 
   const clamped = Math.min(current, positions.length - 1);
   const pos = positions[clamped];
