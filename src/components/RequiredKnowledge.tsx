@@ -2,6 +2,7 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 import {useDoc} from '@docusaurus/plugin-content-docs/client';
 import {useAllDocsData} from '@docusaurus/plugin-content-docs/client';
+import {getDocLabel} from './docLabels';
 
 export default function RequiredKnowledge(): React.ReactElement | null {
   const {frontMatter, metadata} = useDoc();
@@ -44,7 +45,7 @@ export default function RequiredKnowledge(): React.ReactElement | null {
               const info = getDocInfo(id);
               return (
                 <li key={id}>
-                  {info ? <Link to={info.path}>{info.title || id.split('/').pop()}</Link> : <span>{id}</span>}
+                  {info ? <Link to={info.path}>{info.title || getDocLabel(id)}</Link> : <span>{getDocLabel(id)}</span>}
                 </li>
               );
             })}
