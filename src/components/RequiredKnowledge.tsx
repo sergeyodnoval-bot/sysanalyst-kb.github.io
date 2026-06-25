@@ -59,7 +59,7 @@ export default function RequiredKnowledge(): React.ReactElement | null {
           <ul style={{margin: 0}}>
             {requiresTech.map((id) => (
               <li key={id}>
-                <Link to={techLinkMap[id] || `/tech/${id}`}>{id}</Link>
+                <Link to={techLinkMap[id] || `/tech/${id}`}>{getDocLabel(id)}</Link>
               </li>
             ))}
           </ul>
