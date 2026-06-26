@@ -365,6 +365,62 @@
 | 24 | **Open Banking / PSD2 — API, SCA, Berlin Group** | ✅ | SPC-20, SPC-22 |
 | 25 | **Фрод-мониторинг — антифрод-системы** | ✅ | SPC-20, SPC-22 |
 | 26 | **Кредитный конвейер — loan origination, scoring, amortization** | ✅ | SPC-20, SPC-22 |
+| 27 | **E-commerce & Retail — путь аналитика** | ✅ | — |
+| 28 | **OMS — Order Management System и статусы заказа** | ✅ | SPC-27 |
+| 29 | **Каталог товаров и управление инвентаризацией** | ✅ | SPC-28 |
+| 30 | **Ценообразование, промо и скидки** | ✅ | SPC-28 |
+| 31 | **Маркетплейсы — модель и интеграции** | ✅ | SPC-28 |
+| 32 | **Фулфилмент и логистика в Retail** | ✅ | SPC-28 |
+| 33 | **Программы лояльности и кешбэк** | ✅ | SPC-28 |
+| 34 | **Retail-аналитика и персонализация** | ✅ | SPC-28, SPC-33 |
+| 35 | **Telecom — путь аналитика** | 🔜 | — |
+| 36 | **BSS/OSS — архитектура Telecom-систем** | 🔜 | SPC-35 |
+| 37 | **Billing и Charging (online/offline)** | 🔜 | SPC-36 |
+| 38 | **CRM и Order Management в Telecom** | 🔜 | SPC-36 |
+| 39 | **Provisioning и активация услуг** | 🔜 | SPC-36 |
+| 40 | **Регуляторика в Telecom (СОРМ, ПД, лицензии)** | 🔜 | SPC-36 |
+| 41 | **MVNO — модель виртуальных операторов** | 🔜 | SPC-36, SPC-37 |
+| 42 | **5G, IoT и новые технологии в Telecom** | 🔜 | SPC-36 |
+| 43 | **GovTech — путь аналитика в госсекторе** | 🔜 | — |
+| 44 | **Архитектура ГИС — государственные информсистемы** | 🔜 | SPC-43 |
+| 45 | **Госуслуги и порталы — проектирование** | 🔜 | SPC-44 |
+| 46 | **СМЭВ — межведомственное взаимодействие** | 🔜 | SPC-44 |
+| 47 | **Импортозамещение и реестр ПО** | 🔜 | SPC-44 |
+| 48 | **Безопасность и аттестация (ФСТЭК, Криптография)** | 🔜 | SPC-44 |
+| 49 | **Госзакупки (44-ФЗ, 223-ФЗ)** | 🔜 | SPC-44 |
+| 50 | **ЭДО и документооборот в госсекторе** | 🔜 | SPC-44, SPC-48 |
+| 51 | **MedTech — путь аналитика в медицине и фарме** | 🔜 | — |
+| 52 | **ЭМК — электронные медицинские карты** | 🔜 | SPC-51 |
+| 53 | **МИС — медицинские информационные системы** | 🔜 | SPC-51 |
+| 54 | **ЛИС — лабораторные информационные системы** | 🔜 | SPC-51, SPC-53 |
+| 55 | **Фарма — учёт лекарств и маркировка (Честный ЗНАК)** | 🔜 | SPC-51 |
+| 56 | **Телемедицина и дистанционные консультации** | 🔜 | SPC-51, SPC-53 |
+| 57 | **PACS / DICOM — медицинские изображения** | 🔜 | SPC-53 |
+| 58 | **Регуляторика в медицине (323-ФЗ, 152-ФЗ, оборот лекарств)** | 🔜 | SPC-51 |
+| 59 | **Логистика — путь аналитика** | 🔜 | — |
+| 60 | **TMS — система управления перевозками** | 🔜 | SPC-59 |
+| 61 | **Складская логистика и WMS** | 🔜 | SPC-59 |
+| 62 | **Доставка последней мили и трекинг** | 🔜 | SPC-59, SPC-60 |
+| 63 | **Маршрутизация и оптимизация** | 🔜 | SPC-60 |
+| 64 | **ЭДО и документооборот в логистике** | 🔜 | SPC-59 |
+| 65 | **Интеграции с маркетплейсами и курьерами** | 🔜 | SPC-59, SPC-62 |
+| 66 | **Аналитика в логистике** | 🔜 | SPC-59, SPC-63 |
+| 67 | **GameDev — путь аналитика** | 🔜 | — |
+| 68 | **Архитектура игровых проектов** | 🔜 | SPC-67 |
+| 69 | **Матчмейкинг и игровые сессии** | 🔜 | SPC-67, SPC-68 |
+| 70 | **Игровая экономика и баланс** | 🔜 | SPC-67 |
+| 71 | **Социальные механики и друзья** | 🔜 | SPC-67, SPC-69 |
+| 72 | **Монетизация (IAP, реклама, подписки)** | 🔜 | SPC-67, SPC-70 |
+| 73 | **LiveOps — управление живым продуктом** | 🔜 | SPC-67, SPC-72 |
+| 74 | **Game Analytics** | 🔜 | SPC-67, SPC-73 |
+| 75 | **Соцсети и контентные платформы — путь аналитика** | 🔜 | — |
+| 76 | **Лента контента (feed, ranking, рекомендации)** | 🔜 | SPC-75 |
+| 77 | **Мессенджеры и real-time коммуникации** | 🔜 | SPC-75 |
+| 78 | **Модерация контента и безопасность** | 🔜 | SPC-75 |
+| 79 | **Социальный граф и друзья** | 🔜 | SPC-75, SPC-77 |
+| 80 | **Монетизация соцсетей (реклама, подписки)** | 🔜 | SPC-75 |
+| 81 | **Платформа контента (видео, музыка, stories)** | 🔜 | SPC-75 |
+| 82 | **Платформенные механики (API, SDK, маркетплейс приложений)** | 🔜 | SPC-75, SPC-81 |
 
 ---
 
@@ -395,6 +451,27 @@
 | `iso20022` | ISO 20022 — финансовые сообщения | standard | SPC-19, SPC-21 | ✅ |
 | `pci-dss` | PCI DSS — стандарт безопасности карт | standard | SPC-20 | ✅ |
 | `swift` | SWIFT — межбанковские сообщения | standard | SPC-19, SPC-21 | ✅ |
+| `elasticsearch` | Elasticsearch — поиск и каталог | technology | SPC-29 | ✅ |
+| `erp` | ERP-системы (SAP, 1С, Oracle) | system | SPC-28, SPC-32 | ✅ |
+| `wms` | WMS — складские системы | system | SPC-32 | ✅ |
+| `tmforum` | TM Forum Open API — стандарт Telecom | standard | SPC-36 | 🔜 |
+| `diameter` | Diameter / HTTP2 — telecom-протоколы | protocol | SPC-36 | 🔜 |
+| `kubernetes` | Kubernetes — оркестрация контейнеров | tool | ARC-4 | 🔜 |
+| `smev` | СМЭВ — система межведомственного взаимодействия | system | SPC-46 | 🔜 |
+| `crypto` | Криптография (УКЭП, PKI, ГОСТ) | technology | SPC-48 | 🔜 |
+| `astra-linux` | Astra Linux / ГосОС | os | SPC-47 | 🔜 |
+| `hl7` | HL7 FHIR — медицинский обмен данными | standard | SPC-52, SPC-53 | 🔜 |
+| `emias` | ЕГИСЗ / ЕМИАС — госмедицина | system | SPC-53 | 🔜 |
+| `dicom` | PACS / DICOM — медицинские изображения | standard | SPC-57 | 🔜 |
+| `tms` | TMS — транспортные системы | system | SPC-60 | 🔜 |
+| `geodata` | Геоданные (Яндекс.Карты, 2GIS, Mapbox) | technology | SPC-63 | 🔜 |
+| `edi` | EDI — электронный обмен данными | standard | SPC-64 | 🔜 |
+| `unity` | Unity / Unreal Engine | engine | SPC-68 | 🔜 |
+| `photon` | Photon / Netcode — мультиплеер | technology | SPC-69 | 🔜 |
+| `appsflyer` | AppsFlyer / Adjust — mobile analytics | tool | SPC-74 | 🔜 |
+| `recommendation` | Рекомендательные системы (ML, collaborative filtering) | technology | SPC-76 | 🔜 |
+| `websocket` | WebSocket / SSE — real-time протоколы | protocol | SPC-77 | 🔜 |
+| `cdn` | CDN — доставка контента | infrastructure | SPC-81 | 🔜 |
 
 ### Запланированные
 
@@ -435,6 +512,62 @@
 | `fintech-design-payment` | Проектирование платёжной интеграции (BNPL) | 6 | SPC-18, SPC-19 | `iso20022`, `swift` | ✅ |
 | `fintech-reconciliation` | Проектирование системы сверки | 6 | SPC-23 | — | ✅ |
 | `fintech-pci-checklist` | PCI DSS compliance checklist для платёжного шлюза | 6 | SPC-20 | `pci-dss` | ✅ |
+
+### E-commerce / Retail
+
+| ID | Название | difficulty | requires_articles | requires_tech | Статус |
+|----|----------|-----------|-------------------|---------------|--------|
+| `ecommerce-design-catalog` | Проектирование каталога товаров | 6 | SPC-29 | `elasticsearch` | ✅ |
+| `ecommerce-oms-flow` | Проектирование OMS (статусы и переходы) | 6 | SPC-28 | — | ✅ |
+| `ecommerce-loyalty` | Проектирование программы лояльности | 6 | SPC-33 | — | ✅ |
+
+### Telecom
+
+| ID | Название | difficulty | requires_articles | requires_tech | Статус |
+|----|----------|-----------|-------------------|---------------|--------|
+| `telecom-design-billing` | Проектирование биллинговой модели | 6 | SPC-37 | — | 🔜 |
+| `telecom-oss-integration` | Интеграция OSS-систем (TM Forum API) | 6 | SPC-36 | `tmforum` | 🔜 |
+| `telecom-compliance` | Чек-лист соответствия регулятору (СОРМ) | 6 | SPC-40 | — | 🔜 |
+
+### GovTech / Госсектор
+
+| ID | Название | difficulty | requires_articles | requires_tech | Статус |
+|----|----------|-----------|-------------------|---------------|--------|
+| `gov-design-service` | Проектирование госуслуги | 6 | SPC-45 | — | 🔜 |
+| `gov-smev-integration` | Интеграция через СМЭВ | 6 | SPC-46 | `smev` | 🔜 |
+| `gov-security-audit` | Чек-лист аттестации ГИС (ФСТЭК) | 6 | SPC-48 | `crypto`, `astra-linux` | 🔜 |
+
+### MedTech / Медицина
+
+| ID | Название | difficulty | requires_articles | requires_tech | Статус |
+|----|----------|-----------|-------------------|---------------|--------|
+| `medtech-design-emk` | Проектирование электронной медкарты (ЭМК) | 6 | SPC-52 | `hl7`, `emias` | 🔜 |
+| `medtech-lis-integration` | Интеграция ЛИС с МИС | 6 | SPC-54 | `hl7` | 🔜 |
+| `medtech-compliance` | Чек-лист соответствия 323-ФЗ | 6 | SPC-58 | — | 🔜 |
+
+### Logistics / Логистика
+
+| ID | Название | difficulty | requires_articles | requires_tech | Статус |
+|----|----------|-----------|-------------------|---------------|--------|
+| `logistics-design-delivery` | Проектирование системы доставки | 6 | SPC-62 | `geodata` | 🔜 |
+| `logistics-integration-courier` | Интеграция с курьерской службой | 6 | SPC-65 | `edi` | 🔜 |
+| `logistics-optimization` | Оптимизация маршрутов доставки | 6 | SPC-63 | — | 🔜 |
+
+### GameDev
+
+| ID | Название | difficulty | requires_articles | requires_tech | Статус |
+|----|----------|-----------|-------------------|---------------|--------|
+| `gamedev-design-economy` | Проектирование игровой экономики | 6 | SPC-70 | — | 🔜 |
+| `gamedev-matchmaking-flow` | Проектирование матчмейкинга | 6 | SPC-69 | `photon` | 🔜 |
+| `gamedev-liveops` | Проектирование LiveOps-кампании | 6 | SPC-73 | `appsflyer` | 🔜 |
+
+### Соцсети / Контентные платформы
+
+| ID | Название | difficulty | requires_articles | requires_tech | Статус |
+|----|----------|-----------|-------------------|---------------|--------|
+| `socnet-design-feed` | Проектирование ленты контента | 6 | SPC-76 | `recommendation` | 🔜 |
+| `socnet-moderation-flow` | Проектирование системы модерации | 6 | SPC-78 | — | 🔜 |
+| `socnet-recommendations` | Проектирование рекомендательной системы | 6 | SPC-76 | `recommendation`, `mlflow` | 🔜 |
 
 ### Запланированные
 
@@ -477,6 +610,13 @@
 | **AI / ML Analyst** | SPC-5 → SPC-6 → SPC-7 → SPC-8 → SPC-9 → SPC-10 → SPC-11 | ✅ |
 | **Senior SA** | REQ-9–15, SFT-4–9, PRO-8–12 | ✅ |
 | **Lead SA** | SFT-4, SFT-7–9, PRO-8–10, PRO-12, SPC-1–4 | ✅ |
+| **E-commerce / Retail** | SPC-27–34: путь, OMS, каталог, ценообразование, маркетплейсы, фулфилмент, лояльность, аналитика | ✅ |
+| **Telecom** | SPC-35–42: путь, BSS/OSS, биллинг, CRM, provisioning, регуляторика, MVNO, 5G/IoT | 🔜 |
+| **GovTech** | SPC-43–50: путь, ГИС, госуслуги, СМЭВ, импортозамещение, безопасность, закупки, ЭДО | 🔜 |
+| **MedTech** | SPC-51–58: путь, ЭМК, МИС, ЛИС, фарма, телемедицина, PACS, регуляторика | 🔜 |
+| **Logistics** | SPC-59–66: путь, TMS, WMS, доставка, маршрутизация, ЭДО, интеграции, аналитика | 🔜 |
+| **GameDev** | SPC-67–74: путь, архитектура, матчмейкинг, экономика, соцмеханики, монетизация, LiveOps, аналитика | 🔜 |
+| **Соцсети / Контент** | SPC-75–82: путь, лента, мессенджеры, модерация, соцграф, монетизация, контент, платформа | 🔜 |
 
 ---
 
@@ -560,6 +700,13 @@ scrum ──→ PRO-2 (Scrum основы)
 | **13** | AI-агенты | SPC-14–17: введение, мультиагентность, MCP, разработка агентов + tech/mcp + task/design-agent-system | ✅ готово |
 | **14** | Cross-cutting (системные компоненты) | ARC-13–18: логирование, мониторинг, tracing, авторизация, resilience, кэширование + tech/docker, prometheus, redis | ✅ готово |
 | **15** | FinTech-специализация | SPC-18–26: путь, платежи, регуляторика, протоколы, ledger, сверка, Open Banking, фрод, кредиты + tech/iso20022, pci-dss, swift + tasks/fintech-design-payment, fintech-reconciliation, fintech-pci-checklist + FinTech-трек | ✅ готово |
+| **16** | E-commerce / Retail | SPC-27–34: путь, OMS, каталог, ценообразование, маркетплейсы, фулфилмент, лояльность, аналитика + tech/elasticsearch, erp, wms + tasks/ecommerce-design-catalog, ecommerce-oms-flow, ecommerce-loyalty + Retail-трек | ✅ готово |
+| **17** | Telecom | SPC-35–42: путь, BSS/OSS, биллинг, CRM, provisioning, регуляторика, MVNO, 5G/IoT + tech/tmforum, diameter, kubernetes + tasks/telecom-design-billing, telecom-oss-integration, telecom-compliance + Telecom-трек | 🔜 |
+| **18** | GovTech / Госсектор | SPC-43–50: путь, ГИС, госуслуги, СМЭВ, импортозамещение, безопасность, закупки, ЭДО + tech/smev, crypto, astra-linux + tasks/gov-design-service, gov-smev-integration, gov-security-audit + GovTech-трек | 🔜 |
+| **19** | MedTech / Медицина | SPC-51–58: путь, ЭМК, МИС, ЛИС, фарма, телемедицина, PACS, регуляторика + tech/hl7, emias, dicom + tasks/medtech-design-emk, medtech-lis-integration, medtech-compliance + MedTech-трек | 🔜 |
+| **20** | Logistics / Логистика | SPC-59–66: путь, TMS, WMS, доставка, маршрутизация, ЭДО, интеграции, аналитика + tech/tms, geodata, edi + tasks/logistics-design-delivery, logistics-integration-courier, logistics-optimization + Logistics-трек | 🔜 |
+| **21** | GameDev | SPC-67–74: путь, архитектура, матчмейкинг, экономика, соцмеханики, монетизация, LiveOps, аналитика + tech/unity, photon, appsflyer + tasks/gamedev-design-economy, gamedev-matchmaking-flow, gamedev-liveops + GameDev-трек | 🔜 |
+| **22** | Соцсети / Контент | SPC-75–82: путь, лента, мессенджеры, модерация, соцграф, монетизация, контент, платформа + tech/recommendation, websocket, cdn + tasks/socnet-design-feed, socnet-moderation-flow, socnet-recommendations + SocNet-трек | 🔜 |
 
 ---
 
@@ -567,9 +714,9 @@ scrum ──→ PRO-2 (Scrum основы)
 
 | Тип | Существующие | Запланированные (🔜+⏳+💡) | Всего |
 |-----|-------------|--------------------------|-------|
-| Статьи (docs/) | 52 | 71 | ~123 |
-| Технологии (tech/) | 21 | 5 | ~26 |
-| Задачи (tasks/) | 13 | 8 | ~21 |
-| Треки | 9 | 0 | ~9 |
+| Статьи (docs/) | 60 | 125 (71 + 24 + 24 новых) | ~185 |
+| Технологии (tech/) | 24 | 23 (5 + 9 + 9 новых) | ~47 |
+| Задачи (tasks/) | 16 | 26 (8 + 9 + 9 новых) | ~42 |
+| Треки | 10 | 6 | ~16 |
 
-**Всего единиц контента:** ~192 (полный охват L0–L5)
+**Всего единиц контента:** ~297 (полный охват L0–L5 + 8 отраслевых специализаций)

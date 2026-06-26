@@ -187,6 +187,20 @@ const LABELS: Record<string, string> = {
   'fintech-design-payment': 'Проектирование платёжной интеграции (BNPL)',
   'fintech-reconciliation': 'Проектирование системы сверки',
   'fintech-pci-checklist': 'PCI DSS compliance checklist для платёжного шлюза',
+  'specialization/ecommerce-retail-path': 'E-commerce — роль, специфика, путь',
+  'specialization/ecommerce-oms': 'OMS — Order Management System',
+  'specialization/ecommerce-catalog': 'Каталог товаров и инвентаризация',
+  'specialization/ecommerce-pricing': 'Ценообразование, промо и скидки',
+  'specialization/ecommerce-marketplace': 'Маркетплейсы — модель и интеграции',
+  'specialization/ecommerce-fulfillment': 'Фулфилмент и логистика',
+  'specialization/ecommerce-loyalty': 'Программы лояльности и кешбэк',
+  'specialization/ecommerce-analytics': 'Retail-аналитика и персонализация',
+  'elasticsearch': 'Elasticsearch — поиск и каталог',
+  'erp': 'ERP-системы (SAP, 1С, Oracle)',
+  'wms': 'WMS — складские системы',
+  'ecommerce-design-catalog': 'Проектирование каталога товаров',
+  'ecommerce-oms-flow': 'Проектирование OMS (статусы и переходы)',
+  'ecommerce-loyalty': 'Проектирование программы лояльности',
 };
 
 const SHORT_LOOKUP: Record<string, string> = {};

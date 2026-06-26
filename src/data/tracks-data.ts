@@ -192,6 +192,14 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'fintech-open-banking': 'Open Banking / PSD2',
     'fintech-fraud': 'Фрод-мониторинг',
     'fintech-lending': 'Кредитный конвейер',
+    'ecommerce-retail-path': 'E-commerce — роль, специфика, путь',
+    'ecommerce-oms': 'OMS — управление заказами',
+    'ecommerce-catalog': 'Каталог товаров',
+    'ecommerce-pricing': 'Ценообразование и промо',
+    'ecommerce-marketplace': 'Маркетплейсы',
+    'ecommerce-fulfillment': 'Фулфилмент и логистика',
+    'ecommerce-loyalty': 'Программы лояльности',
+    'ecommerce-analytics': 'Retail-аналитика',
   },
   tech: {
     browser: 'Веб-браузер',
@@ -224,6 +232,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     iso20022: 'ISO 20022',
     'pci-dss': 'PCI DSS',
     swift: 'SWIFT',
+    elasticsearch: 'Elasticsearch',
+    erp: 'ERP',
+    wms: 'WMS',
   },
   task: {
     'find-analyst-in-team': 'Найти аналитика в знакомых',
@@ -247,6 +258,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'fintech-design-payment': 'Проектирование платёжной интеграции',
     'fintech-reconciliation': 'Проектирование системы сверки',
     'fintech-pci-checklist': 'PCI DSS compliance checklist',
+    'ecommerce-design-catalog': 'Проектирование каталога товаров',
+    'ecommerce-oms-flow': 'Проектирование OMS (статусы)',
+    'ecommerce-loyalty': 'Проектирование программы лояльности',
   },
 };
 
@@ -831,6 +845,70 @@ const fintechTrack: TrackDef = {
   ],
 };
 
+const ecommerceTrack: TrackDef = {
+  id: 'ecommerce-track',
+  title: 'E-commerce / Retail Analyst',
+  description: 'Специализация в E-commerce: OMS, каталог товаров, ценообразование, маркетплейсы, фулфилмент, лояльность и аналитика',
+  stages: [
+    {
+      title: '0. E-commerce — введение и OMS',
+      description: 'Поймите специфику E-commerce и устройство заказов.',
+      items: [
+        {type: 'article', id: 'ecommerce-retail-path', folder: 'specialization'},
+        {type: 'article', id: 'ecommerce-oms', folder: 'specialization'},
+      ],
+    },
+    {
+      title: '1. Каталог товаров и инвентаризация',
+      description: 'Изучите структуру каталога, SKU, атрибуты, поиск, остатки.',
+      items: [
+        {type: 'article', id: 'ecommerce-catalog', folder: 'specialization'},
+        {type: 'tech', id: 'elasticsearch'},
+      ],
+    },
+    {
+      title: '2. Ценообразование и промо',
+      description: 'Поймите, как работают скидки, промокоды и динамические цены.',
+      items: [
+        {type: 'article', id: 'ecommerce-pricing', folder: 'specialization'},
+      ],
+    },
+    {
+      title: '3. Маркетплейсы',
+      description: 'Изучите модели FBO/FBS/DBS, комиссии и интеграции с продавцами.',
+      items: [
+        {type: 'article', id: 'ecommerce-marketplace', folder: 'specialization'},
+      ],
+    },
+    {
+      title: '4. Фулфилмент и логистика',
+      description: 'Pick → Pack → Ship, WMS, службы доставки, возвраты.',
+      items: [
+        {type: 'article', id: 'ecommerce-fulfillment', folder: 'specialization'},
+        {type: 'tech', id: 'wms'},
+        {type: 'tech', id: 'erp'},
+        {type: 'task', id: 'ecommerce-oms-flow'},
+      ],
+    },
+    {
+      title: '5. Программы лояльности',
+      description: 'Баллы, уровни, кешбэк, реферальные программы.',
+      items: [
+        {type: 'article', id: 'ecommerce-loyalty', folder: 'specialization'},
+        {type: 'task', id: 'ecommerce-loyalty'},
+      ],
+    },
+    {
+      title: '6. Аналитика и персонализация',
+      description: 'Метрики, воронки, рекомендации, A/B тесты.',
+      items: [
+        {type: 'article', id: 'ecommerce-analytics', folder: 'specialization'},
+        {type: 'task', id: 'ecommerce-design-catalog'},
+      ],
+    },
+  ],
+};
+
 const aiAnalystTrack: TrackDef = {
   id: 'ai-analyst-track',
   title: 'AI / ML Analyst',
@@ -923,7 +1001,7 @@ export function getItemType(pluginId: string | undefined): string | undefined {
   return pluginId ? pluginTypeMap[pluginId] : pluginTypeMap[''];
 }
 
-export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack, aiAnalystTrack, fintechTrack];
+export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack, aiAnalystTrack, fintechTrack, ecommerceTrack];
 
 function buildLookup(): Map<string, NavInfo[]> {
   const map = new Map<string, NavInfo[]>();
