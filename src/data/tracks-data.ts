@@ -165,6 +165,8 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'solution-architect-path': 'Путь Solution-архитектора',
     'industry-analytics': 'Отраслевая аналитика',
     'ai-analyst-intro': 'AI-аналитик — введение и роль',
+    'ai-ml-basics': 'Основы ML для аналитика',
+    'ai-ml-eda': 'EDA — разведочный анализ данных',
     'ai-ml-requirements': 'Сбор требований для ML-систем',
     'ai-ml-data': 'Данные для ML: качество, разметка, пайплайны',
     'ai-ml-metrics': 'Метрики ML-продуктов',
@@ -195,6 +197,7 @@ export const itemLabels: Record<string, Record<string, string>> = {
     huggingface: 'Hugging Face',
     mlflow: 'MLflow',
     'vector-database': 'Vector Database',
+    grpc: 'gRPC',
   },
   task: {
     'find-analyst-in-team': 'Найти аналитика в знакомых',
@@ -743,6 +746,7 @@ const aiAnalystTrack: TrackDef = {
       description: 'Поймите роль AI-аналитика и отличие от других ролей.',
       items: [
         {type: 'article', id: 'ai-analyst-intro', folder: 'specialization'},
+        {type: 'article', id: 'ai-ml-basics', folder: 'specialization'},
         {type: 'tech', id: 'llm'},
       ],
     },
@@ -751,6 +755,7 @@ const aiAnalystTrack: TrackDef = {
       description: 'Научитесь формулировать ML-задачи и специфицировать ML-компоненты.',
       items: [
         {type: 'article', id: 'ai-ml-requirements', folder: 'specialization'},
+        {type: 'article', id: 'ai-ml-eda', folder: 'specialization'},
         {type: 'article', id: 'ai-ml-data', folder: 'specialization'},
         {type: 'task', id: 'frame-ml-problem'},
       ],
@@ -787,6 +792,7 @@ const aiAnalystTrack: TrackDef = {
       items: [
         {type: 'article', id: 'ai-ml-architecture', folder: 'specialization'},
         {type: 'tech', id: 'mlflow'},
+        {type: 'tech', id: 'grpc'},
       ],
     },
   ],

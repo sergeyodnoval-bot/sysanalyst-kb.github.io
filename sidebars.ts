@@ -218,6 +218,8 @@ const sidebars: SidebarsConfig = {
         'specialization/solution-architect-path',
         'specialization/industry-analytics',
         'specialization/ai-analyst-intro',
+        'specialization/ai-ml-basics',
+        'specialization/ai-ml-eda',
         'specialization/ai-ml-requirements',
         'specialization/ai-ml-data',
         'specialization/ai-ml-metrics',

@@ -333,12 +333,14 @@
 | # | Статья | Статус | Prereq |
 |---|--------|--------|--------|
 | 5 | AI-аналитик — введение и роль | ✅ | ITB-7, DAT-6 |
-| 6 | AI-аналитик — сбор требований для ML-систем | ✅ | REQ-3, SPC-5 |
-| 7 | AI-аналитик — данные для ML: качество, разметка, пайплайны | ✅ | DAT-6, SPC-5 |
-| 8 | AI-аналитик — метрики ML-продуктов | ✅ | SPC-5 |
-| 9 | AI-аналитик — LLM, RAG и промпт-инжиниринг | ✅ | INT-8, SPC-5 |
-| 10 | AI-аналитик — этика, bias и регуляторика ИИ | ✅ | SPC-5 |
-| 11 | AI-аналитик — архитектура AI-решений (MLOps, feature store) | ✅ | ARC-7, SPC-5 |
+| 6 | Основы ML для аналитика | ✅ | ITB-7, DAT-6 |
+| 7 | EDA — разведочный анализ данных | ✅ | SPC-6 |
+| 8 | AI-аналитик — сбор требований для ML-систем | ✅ | REQ-3, SPC-5 |
+| 9 | AI-аналитик — данные для ML: качество, разметка, пайплайны | ✅ | DAT-6, SPC-5 |
+| 10 | AI-аналитик — метрики ML-продуктов | ✅ | SPC-5 |
+| 11 | AI-аналитик — LLM, RAG и промпт-инжиниринг | ✅ | INT-8, SPC-5 |
+| 12 | AI-аналитик — этика, bias и регуляторика ИИ | ✅ | SPC-5 |
+| 13 | AI-аналитик — архитектура AI-решений (MLOps, feature store) | ✅ | ARC-7, SPC-5 |
 
 ---
 
@@ -361,6 +363,7 @@
 | `huggingface` | Hugging Face | tool | SPC-5, SPC-9 | ✅ |
 | `mlflow` | MLflow | tool | SPC-11 | ✅ |
 | `vector-database` | Vector Database (Qdrant, Pinecone) | technology | SPC-9 | ✅ |
+| `grpc` | gRPC | technology | INT-1 | ✅ |
 
 ### Запланированные
 
@@ -515,7 +518,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **9** | L3 architecture + modeling | ARC-4–8, MOD-11–14 | ✅ готово |
 | **10** | L3 processes + data | PRO-8–12, DAT-7–10 | ✅ готово |
 | **11** | L4+ | ARC-9–12, INT-13–15, SPC-1–4 | ✅ готово |
-| **12** | AI / ML Analyst | SPC-5–11: AI-аналитик (введение, ML-требования, данные, метрики, LLM, этика, MLOps) + tech/llm, langchain, huggingface, mlflow, vector-database + tasks/frame-ml-problem, define-ml-metrics, design-rag-pipeline | ✅ готово |
+| **12** | AI / ML Analyst | SPC-5–13: AI-аналитик (введение, ML basics, EDA, ML-требования, данные, метрики, LLM, этика, MLOps) + tech/llm, langchain, huggingface, mlflow, vector-database, grpc + tasks/frame-ml-problem, define-ml-metrics, design-rag-pipeline | ✅ готово |
 
 ---
 
@@ -523,9 +526,9 @@ scrum ──→ PRO-2 (Scrum основы)
 
 | Тип | Существующие | Запланированные (🔜+⏳+💡) | Всего |
 |-----|-------------|--------------------------|-------|
-| Статьи (docs/) | 31 | 77 | ~108 |
-| Технологии (tech/) | 13 | 8 | ~21 |
+| Статьи (docs/) | 33 | 77 | ~110 |
+| Технологии (tech/) | 14 | 7 | ~21 |
 | Задачи (tasks/) | 9 | 8 | ~17 |
 | Треки | 8 | 0 | ~8 |
 
-**Всего единиц контента:** ~165 (полный охват L0–L5)
+**Всего единиц контента:** ~167 (полный охват L0–L5)
