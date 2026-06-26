@@ -177,9 +177,9 @@
 
 | # | Статья | Статус | Prereq | Tech | Tasks |
 |---|--------|--------|--------|------|-------|
-| 13 | Enterprise Integration Patterns | 💡 | INT-11, INT-12 | — | — |
-| 14 | API Gateway pattern | 💡 | INT-4, ARC-3 | — | — |
-| 15 | Event Storming | 💡 | INT-12 | `miro` | — |
+| 13 | Enterprise Integration Patterns | ✅ | INT-11, INT-12 | — | — |
+| 14 | API Gateway pattern | ✅ | INT-4, ARC-3 | — | — |
+| 15 | Event Storming (продвинутый) | ✅ | INT-12 | `miro` | — |
 
 ---
 
@@ -240,10 +240,10 @@
 
 | # | Статья | Статус | Prereq | Tech | Tasks |
 |---|--------|--------|--------|------|-------|
-| 9 | DDD — Domain-Driven Design (введение) | ⏳ | ARC-7, ARC-8 | — | — |
-| 10 | Hexagonal Architecture (Ports & Adapters) | 💡 | ARC-4 | — | — |
-| 11 | Saga pattern — управление транзакциями | 💡 | ARC-5 | `kafka` | — |
-| 12 | Strangler Fig — миграция legacy | 💡 | ARC-3 | — | — |
+| 9 | DDD — Domain-Driven Design (введение) | ✅ | ARC-7, ARC-8 | — | — |
+| 10 | Hexagonal Architecture (Ports & Adapters) | ✅ | ARC-4 | — | — |
+| 11 | Saga pattern — управление транзакциями | ✅ | ARC-5 | `kafka` | — |
+| 12 | Strangler Fig — миграция legacy | ✅ | ARC-3 | — | — |
 
 ---
 
@@ -318,15 +318,15 @@
 
 | # | Статья | Статус | Prereq |
 |---|--------|--------|--------|
-| 1 | Бизнес-аналитик vs Системный аналитик | 💡 | ITB-4 |
+| 1 | Бизнес-аналитик vs Системный аналитик | ✅ | ITB-4 |
 
 #### L3 (level: 5–6)
 
 | # | Статья | Статус | Prereq |
 |---|--------|--------|--------|
-| 2 | Путь Data-аналитика | 💡 | DAT-6 |
-| 3 | Путь Solution-архитектора | 💡 | ARC-9, MOD-14 |
-| 4 | Отраслевая аналитика (FinTech, Retail, Logistics) | 💡 | — |
+| 2 | Путь Data-аналитика | ✅ | DAT-6 |
+| 3 | Путь Solution-архитектора | ✅ | ARC-9, MOD-14 |
+| 4 | Отраслевая аналитика (FinTech, Retail, Logistics) | ✅ | — |
 
 ---
 
@@ -493,7 +493,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **8** | L3 integration | INT-8–12, tech/kafka, tech/rabbitmq | ✅ готово |
 | **9** | L3 architecture + modeling | ARC-4–8, MOD-11–14 | ✅ готово |
 | **10** | L3 processes + data | PRO-8–12, DAT-7–10 | ✅ готово |
-| **11** | L4+ | ARC-9–12, INT-13–15, SPC-1–4 | ⏳ |
+| **11** | L4+ | ARC-9–12, INT-13–15, SPC-1–4 | ✅ готово |
 
 ---
 

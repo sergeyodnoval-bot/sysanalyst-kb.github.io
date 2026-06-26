@@ -111,6 +111,17 @@ const LABELS: Record<string, string> = {
   'process/stakeholder-analysis': 'Анализ стейкхолдеров (Power/Interest Grid)',
   'process/cost-benefit-analysis': 'Cost-Benefit Analysis (CBA)',
   'process/risk-management': 'Управление рисками',
+  'architecture/ddd-intro': 'DDD — Domain-Driven Design (введение)',
+  'architecture/hexagonal-architecture': 'Hexagonal Architecture (Ports & Adapters)',
+  'architecture/saga-pattern': 'Saga pattern — управление транзакциями',
+  'architecture/strangler-fig': 'Strangler Fig — миграция legacy',
+  'integration/enterprise-integration-patterns': 'Enterprise Integration Patterns (EIP)',
+  'integration/api-gateway': 'API Gateway pattern',
+  'integration/event-storming-advanced': 'Event Storming — продвинутый уровень',
+  'specialization/ba-vs-sa': 'Бизнес-аналитик vs Системный аналитик',
+  'specialization/data-analyst-path': 'Путь Data-аналитика',
+  'specialization/solution-architect-path': 'Путь Solution-архитектора',
+  'specialization/industry-analytics': 'Отраслевая аналитика (FinTech, Retail, Logistics)',
 };
 
 const SHORT_LOOKUP: Record<string, string> = {};
