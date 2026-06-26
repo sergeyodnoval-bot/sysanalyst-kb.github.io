@@ -92,14 +92,14 @@
 
 | # | Статья | Статус | Prereq | Leads to | Tech | Tasks |
 |---|--------|--------|--------|----------|------|-------|
-| 5 | Функциональные требования (детально) | 🔜 | REQ-1 | REQ-6 | `jira`, `confluence` | `write-user-story` |
-| 6 | Нефункциональные требования (NFR) | 🔜 | REQ-1 | REQ-7, ARC-1 | — | `analyze-nfr` |
-| 7 | Приоритизация требований (MoSCoW, Kano, RICE) | 🔜 | REQ-1 | — | `jira` | `prioritize-backlog` |
-| 8 | Use Cases (формальные) | ⏳ | REQ-3 | REQ-4, MOD-2 | — | `write-use-case` |
-| 9 | User Story Mapping | ⏳ | REQ-3 | — | `miro`, `jira` | — |
-| 10 | Acceptance Criteria (детально) | ⏳ | REQ-3, REQ-4 | — | — | `write-user-story` |
-| 11 | Валидация требований | ⏳ | REQ-1 | — | — | — |
-| 12 | Управление изменениями требований | ⏳ | REQ-1 | — | `jira` | — |
+| 5 | Функциональные требования (детально) | ✅ | REQ-1 | REQ-6 | `jira`, `confluence` | `write-user-story` |
+| 6 | Нефункциональные требования (NFR) | ✅ | REQ-1 | REQ-7, ARC-1 | — | `analyze-nfr` |
+| 7 | Приоритизация требований (MoSCoW, Kano, RICE) | ✅ | REQ-1 | — | `jira` | `prioritize-backlog` |
+| 8 | Use Cases (формальные) | ✅ | REQ-3 | REQ-4, MOD-2 | — | `write-use-case` |
+| 9 | User Story Mapping (требования) | ✅ | REQ-3 | — | `miro`, `jira` | — |
+| 10 | Acceptance Criteria (детально) | ✅ | REQ-3, REQ-4 | — | — | `write-user-story` |
+| 11 | Валидация требований | ✅ | REQ-1 | — | — | — |
+| 12 | Управление изменениями требований | ✅ | REQ-1 | — | `jira` | — |
 
 #### L2 — Strong Junior (level: 3–4)
 
