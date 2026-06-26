@@ -105,9 +105,9 @@
 
 | # | Статья | Статус | Prereq | Tech | Tasks |
 |---|--------|--------|--------|------|-------|
-| 13 | SRS — Software Requirements Specification | ⏳ | REQ-1, REQ-3, REQ-4 | `confluence` | `elicit-requirements` |
-| 14 | Трассировка требований | ⏳ | REQ-1 | `jira` | — |
-| 15 | Decision Log | 💡 | REQ-1 | `confluence` | `write-adr` |
+| 13 | SRS — Software Requirements Specification | ✅ | REQ-1, REQ-3, REQ-4 | `confluence` | `elicit-requirements` |
+| 14 | Трассировка требований | ✅ | REQ-1 | `jira` | — |
+| 15 | Decision Log | ✅ | REQ-1 | `confluence` | `write-adr` |
 
 ---
 
@@ -296,17 +296,17 @@
 
 | # | Статья | Статус | Prereq | Tasks |
 |---|--------|--------|--------|-------|
-| 4 | Фасилитация встреч | ⏳ | SFT-3 | `facilitate-workshop` |
-| 5 | Деловая переписка и коммуникация | ⏳ | SFT-1 | — |
-| 6 | Техники воркшопов | ⏳ | SFT-4 | `facilitate-workshop` |
-| 7 | Переговоры и работа с возражениями | ⏳ | SFT-1, SFT-5 | — |
+| 4 | Фасилитация встреч | ✅ | SFT-3 | `facilitate-workshop` |
+| 5 | Деловая переписка и коммуникация | ✅ | SFT-1 | — |
+| 6 | Техники воркшопов | ✅ | SFT-4 | `facilitate-workshop` |
+| 7 | Переговоры и работа с возражениями | ✅ | SFT-1, SFT-5 | — |
 
 #### L3 — Middle (level: 5–6)
 
 | # | Статья | Статус | Prereq |
 |---|--------|--------|--------|
-| 8 | Менторство для аналитиков | ⏳ | — |
-| 9 | Коучинг — базовые техники | 💡 | SFT-8 |
+| 8 | Менторство для аналитиков | ✅ | — |
+| 9 | Коучинг — базовые техники | ✅ | SFT-8 |
 
 ---
 

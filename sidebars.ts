@@ -78,6 +78,9 @@ const sidebars: SidebarsConfig = {
         'requirements/acceptance-criteria-detailed',
         'requirements/requirements-validation',
         'requirements/change-management',
+        'requirements/srs',
+        'requirements/traceability',
+        'requirements/decision-log',
       ],
     },
     {
@@ -154,6 +157,12 @@ const sidebars: SidebarsConfig = {
         'soft/soft-skills',
         'soft/critical-thinking',
         'soft/business-writing',
+        'soft/facilitation',
+        'soft/business-writing-deep',
+        'soft/workshop-techniques',
+        'soft/negotiations',
+        'soft/mentoring',
+        'soft/coaching',
       ],
     },
     {
