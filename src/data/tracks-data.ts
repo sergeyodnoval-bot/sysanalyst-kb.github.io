@@ -441,6 +441,283 @@ const middleTrack: TrackDef = {
   ],
 };
 
+const seniorTrack: TrackDef = {
+  id: 'senior-track',
+  title: 'Senior System Analyst',
+  description: 'Путь от Middle до Senior: владение требованиями, стратегическая коммуникация, лидерство и архитектурное мышление',
+  stages: [
+    {
+      title: '0. Детальная работа с требованиями',
+      description: 'Освойте функциональные и нефункциональные требования, приоритизацию и Use Cases.',
+      items: [
+        {type: 'article', id: 'functional-requirements-detailed', folder: 'requirements'},
+        {type: 'article', id: 'nfr', folder: 'requirements'},
+        {type: 'article', id: 'prioritization', folder: 'requirements'},
+        {type: 'article', id: 'use-cases-formal', folder: 'requirements'},
+        {type: 'article', id: 'acceptance-criteria-detailed', folder: 'requirements'},
+      ],
+    },
+    {
+      title: '1. Управление документацией требований',
+      description: 'Научитесь вести SRS, трассировку, Decision Log и управлять изменениями.',
+      items: [
+        {type: 'article', id: 'requirements-validation', folder: 'requirements'},
+        {type: 'article', id: 'change-management', folder: 'requirements'},
+        {type: 'article', id: 'srs', folder: 'requirements'},
+        {type: 'article', id: 'traceability', folder: 'requirements'},
+        {type: 'article', id: 'decision-log', folder: 'requirements'},
+        {type: 'article', id: 'requirements-management', folder: 'process'},
+      ],
+    },
+    {
+      title: '2. Стратегическая коммуникация',
+      description: 'Фасилитация встреч, деловая переписка, техники воркшопов и переговоры.',
+      items: [
+        {type: 'article', id: 'facilitation', folder: 'soft'},
+        {type: 'article', id: 'business-writing-deep', folder: 'soft'},
+        {type: 'article', id: 'workshop-techniques', folder: 'soft'},
+        {type: 'article', id: 'negotiations', folder: 'soft'},
+        {type: 'article', id: 'business-writing', folder: 'soft'},
+      ],
+    },
+    {
+      title: '3. Развитие команды',
+      description: 'Менторство и коучинг: передавайте знания, растите джуниоров, развивайте культуру.',
+      items: [
+        {type: 'article', id: 'mentoring', folder: 'soft'},
+        {type: 'article', id: 'coaching', folder: 'soft'},
+        {type: 'article', id: 'critical-thinking', folder: 'soft'},
+      ],
+    },
+    {
+      title: '4. Продвинутое моделирование требований',
+      description: 'User Story Mapping, Impact Mapping и анализ стейкхолдеров для сложных проектов.',
+      items: [
+        {type: 'article', id: 'user-story-mapping-req', folder: 'requirements'},
+        {type: 'article', id: 'user-story-mapping', folder: 'modeling'},
+        {type: 'article', id: 'impact-mapping', folder: 'modeling'},
+        {type: 'article', id: 'stakeholder-analysis', folder: 'process'},
+      ],
+    },
+    {
+      title: '5. Комплексные задачи сеньора',
+      description: 'Реальные сценарии: интервью со стейкхолдерами, проектирование интеграций.',
+      items: [
+        {type: 'task', id: 'conduct-stakeholder-interview'},
+        {type: 'task', id: 'integrate-two-systems'},
+      ],
+    },
+  ],
+};
+
+const solutionArchitectTrack: TrackDef = {
+  id: 'solution-architect-track',
+  title: 'Solution Architect',
+  description: 'Путь от Senior до Solution Architect: архитектурные стили, паттерны, Enterprise-интеграции и стратегическое проектирование',
+  stages: [
+    {
+      title: '0. Архитектурный фундамент',
+      description: 'Поймите архитектуру ПО, SOLID, ADR и многослойные системы.',
+      items: [
+        {type: 'article', id: 'what-is-architecture', folder: 'architecture'},
+        {type: 'article', id: 'layered-architecture', folder: 'architecture'},
+        {type: 'article', id: 'solid', folder: 'architecture'},
+        {type: 'article', id: 'adr', folder: 'architecture'},
+      ],
+    },
+    {
+      title: '1. Микросервисы и распределённые системы',
+      description: 'Монолит vs микросервисы, паттерны микросервисов, CQRS.',
+      items: [
+        {type: 'article', id: 'monolith-vs-microservices', folder: 'architecture'},
+        {type: 'article', id: 'microservices-patterns', folder: 'architecture'},
+        {type: 'article', id: 'cqrs', folder: 'architecture'},
+      ],
+    },
+    {
+      title: '2. Domain-Driven Design и событийное моделирование',
+      description: 'DDD, Hexagonal Architecture, Saga, Event Storming для сложных предметных областей.',
+      items: [
+        {type: 'article', id: 'ddd-intro', folder: 'architecture'},
+        {type: 'article', id: 'hexagonal-architecture', folder: 'architecture'},
+        {type: 'article', id: 'saga-pattern', folder: 'architecture'},
+        {type: 'article', id: 'event-storming', folder: 'integration'},
+        {type: 'article', id: 'event-storming-advanced', folder: 'integration'},
+      ],
+    },
+    {
+      title: '3. Enterprise-интеграции',
+      description: 'Паттерны интеграции, API Gateway, версионирование, аутентификация API.',
+      items: [
+        {type: 'article', id: 'enterprise-integration-patterns', folder: 'integration'},
+        {type: 'article', id: 'api-gateway', folder: 'integration'},
+        {type: 'article', id: 'api-design-detailed', folder: 'integration'},
+        {type: 'article', id: 'api-versioning', folder: 'integration'},
+        {type: 'article', id: 'api-auth', folder: 'integration'},
+      ],
+    },
+    {
+      title: '4. Асинхронные и событийные системы',
+      description: 'EDA детально, брокеры сообщений, асинхронные очереди и Kafka.',
+      items: [
+        {type: 'article', id: 'eda-detailed', folder: 'architecture'},
+        {type: 'article', id: 'event-driven-architecture', folder: 'integration'},
+        {type: 'article', id: 'async-message-queue', folder: 'integration'},
+        {type: 'article', id: 'rabbitmq', folder: 'integration'},
+        {type: 'article', id: 'kafka', folder: 'integration'},
+      ],
+    },
+    {
+      title: '5. Стратегия и миграции',
+      description: 'Strangler Fig, миграция данных, управление рисками и оценка затрат.',
+      items: [
+        {type: 'article', id: 'strangler-fig', folder: 'architecture'},
+        {type: 'article', id: 'data-migration', folder: 'data'},
+        {type: 'article', id: 'risk-management', folder: 'process'},
+        {type: 'article', id: 'cost-benefit-analysis', folder: 'process'},
+        {type: 'article', id: 'solution-architect-path', folder: 'specialization'},
+      ],
+    },
+  ],
+};
+
+const leadTrack: TrackDef = {
+  id: 'lead-track',
+  title: 'Lead System Analyst / Руководитель аналитиков',
+  description: 'Путь от Senior до Lead: управление практикой анализа, стандарты качества, менторство и стратегия',
+  stages: [
+    {
+      title: '0. Менторство и развитие команды',
+      description: 'Обучайте аналитиков, проводите коуч-сессии, развивайте культуру фасилитации.',
+      items: [
+        {type: 'article', id: 'mentoring', folder: 'soft'},
+        {type: 'article', id: 'coaching', folder: 'soft'},
+        {type: 'article', id: 'facilitation', folder: 'soft'},
+      ],
+    },
+    {
+      title: '1. Управление коммуникациями',
+      description: 'Переговоры, глубокая деловая переписка, техники воркшопов для больших групп.',
+      items: [
+        {type: 'article', id: 'negotiations', folder: 'soft'},
+        {type: 'article', id: 'business-writing-deep', folder: 'soft'},
+        {type: 'article', id: 'workshop-techniques', folder: 'soft'},
+      ],
+    },
+    {
+      title: '2. Стандарты и качество',
+      description: 'BABOK, управление требованиями, валидация и управление изменениями.',
+      items: [
+        {type: 'article', id: 'babok-overview', folder: 'process'},
+        {type: 'article', id: 'requirements-management', folder: 'process'},
+        {type: 'article', id: 'requirements-validation', folder: 'requirements'},
+        {type: 'article', id: 'change-management', folder: 'requirements'},
+      ],
+    },
+    {
+      title: '3. Стратегическое управление',
+      description: 'Анализ стейкхолдеров, Cost-Benefit Analysis, управление рисками на уровне практики.',
+      items: [
+        {type: 'article', id: 'stakeholder-analysis', folder: 'process'},
+        {type: 'article', id: 'cost-benefit-analysis', folder: 'process'},
+        {type: 'article', id: 'risk-management', folder: 'process'},
+      ],
+    },
+    {
+      title: '4. Профессия и карьерные пути',
+      description: 'Понимание ролей: BA vs SA, пути развития аналитиков и архитекторов.',
+      items: [
+        {type: 'article', id: 'ba-vs-sa', folder: 'specialization'},
+        {type: 'article', id: 'data-analyst-path', folder: 'specialization'},
+        {type: 'article', id: 'solution-architect-path', folder: 'specialization'},
+        {type: 'article', id: 'industry-analytics', folder: 'specialization'},
+      ],
+    },
+    {
+      title: '5. Ключевые артефакты лида',
+      description: 'SRS, трассировка, Decision Log — артефакты, которые определяют стандарты команды.',
+      items: [
+        {type: 'article', id: 'srs', folder: 'requirements'},
+        {type: 'article', id: 'traceability', folder: 'requirements'},
+        {type: 'article', id: 'decision-log', folder: 'requirements'},
+        {type: 'article', id: 'acceptance-criteria-detailed', folder: 'requirements'},
+      ],
+    },
+  ],
+};
+
+const dataAnalystTrack: TrackDef = {
+  id: 'data-analyst-track',
+  title: 'Data Analyst (специализация)',
+  description: 'Углублённый путь в data-аналитику: нормализация, хранилища данных, ETL, миграции и карьера',
+  stages: [
+    {
+      title: '0. Глубокие данные',
+      description: 'Нормализация, NoSQL, моделирование данных и обзор БД.',
+      items: [
+        {type: 'article', id: 'what-is-database', folder: 'data'},
+        {type: 'article', id: 'normalization', folder: 'data'},
+        {type: 'article', id: 'nosql', folder: 'data'},
+        {type: 'article', id: 'data-modeling', folder: 'data'},
+      ],
+    },
+    {
+      title: '1. Инфраструктура данных',
+      description: 'Хранилища данных, ETL, миграции, API-first подход.',
+      items: [
+        {type: 'article', id: 'dwh-basics', folder: 'data'},
+        {type: 'article', id: 'etl-basics', folder: 'data'},
+        {type: 'article', id: 'data-migration', folder: 'data'},
+        {type: 'article', id: 'api-first-design', folder: 'data'},
+      ],
+    },
+    {
+      title: '2. Профессия Data Analyst',
+      description: 'Карьерный путь, отличия от SA, отраслевая специфика.',
+      items: [
+        {type: 'article', id: 'data-analyst-path', folder: 'specialization'},
+        {type: 'article', id: 'ba-vs-sa', folder: 'specialization'},
+        {type: 'article', id: 'industry-analytics', folder: 'specialization'},
+      ],
+    },
+  ],
+};
+
+const industryAnalystTrack: TrackDef = {
+  id: 'industry-analyst-track',
+  title: 'Domain / Industry Analyst (специализация)',
+  description: 'Специализация в отраслевой аналитике: работа с доменом, регуляторами и бизнес-процессами',
+  stages: [
+    {
+      title: '0. Отраслевая аналитика',
+      description: 'Поймите специфику отраслей, стандарты и доменные процессы.',
+      items: [
+        {type: 'article', id: 'industry-analytics', folder: 'specialization'},
+        {type: 'article', id: 'babok-overview', folder: 'process'},
+        {type: 'article', id: 'stakeholder-analysis', folder: 'process'},
+      ],
+    },
+    {
+      title: '1. Экономика и риски',
+      description: 'Cost-Benefit Analysis, управление рисками для доменных проектов.',
+      items: [
+        {type: 'article', id: 'cost-benefit-analysis', folder: 'process'},
+        {type: 'article', id: 'risk-management', folder: 'process'},
+        {type: 'article', id: 'requirements-management', folder: 'process'},
+      ],
+    },
+    {
+      title: '2. Коммуникация в домене',
+      description: 'Переговоры с бизнесом, фасилитация доменных воркшопов.',
+      items: [
+        {type: 'article', id: 'negotiations', folder: 'soft'},
+        {type: 'article', id: 'facilitation', folder: 'soft'},
+        {type: 'article', id: 'workshop-techniques', folder: 'soft'},
+      ],
+    },
+  ],
+};
+
 /** Map from Docusaurus pluginId to item type for track lookup */
 export const pluginTypeMap: Record<string, string> = {
   '': 'article',
@@ -453,7 +730,7 @@ export function getItemType(pluginId: string | undefined): string | undefined {
   return pluginId ? pluginTypeMap[pluginId] : pluginTypeMap[''];
 }
 
-export const allTracks: TrackDef[] = [juniorTrack, middleTrack];
+export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack];
 
 function buildLookup(): Map<string, NavInfo[]> {
   const map = new Map<string, NavInfo[]>();
