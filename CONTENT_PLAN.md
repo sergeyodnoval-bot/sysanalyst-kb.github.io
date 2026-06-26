@@ -332,13 +332,13 @@
 
 | # | Статья | Статус | Prereq |
 |---|--------|--------|--------|
-| 5 | AI-аналитик — введение и роль | 💡 | ITB-7, DAT-6 |
-| 6 | AI-аналитик — сбор требований для ML-систем | 💡 | REQ-3, SPC-5 |
-| 7 | AI-аналитик — данные для ML: качество, разметка, пайплайны | 💡 | DAT-6, SPC-5 |
-| 8 | AI-аналитик — метрики ML-продуктов | 💡 | SPC-5 |
-| 9 | AI-аналитик — LLM, RAG и промпт-инжиниринг | 💡 | INT-8, SPC-5 |
-| 10 | AI-аналитик — этика, bias и регуляторика ИИ | 💡 | SPC-5 |
-| 11 | AI-аналитик — архитектура AI-решений (MLOps, feature store) | 💡 | ARC-7, SPC-5 |
+| 5 | AI-аналитик — введение и роль | ✅ | ITB-7, DAT-6 |
+| 6 | AI-аналитик — сбор требований для ML-систем | ✅ | REQ-3, SPC-5 |
+| 7 | AI-аналитик — данные для ML: качество, разметка, пайплайны | ✅ | DAT-6, SPC-5 |
+| 8 | AI-аналитик — метрики ML-продуктов | ✅ | SPC-5 |
+| 9 | AI-аналитик — LLM, RAG и промпт-инжиниринг | ✅ | INT-8, SPC-5 |
+| 10 | AI-аналитик — этика, bias и регуляторика ИИ | ✅ | SPC-5 |
+| 11 | AI-аналитик — архитектура AI-решений (MLOps, feature store) | ✅ | ARC-7, SPC-5 |
 
 ---
 
@@ -356,6 +356,11 @@
 | `confluence` | Confluence | tool | REQ-1, REQ-3 | ✅ |
 | `figma` | Figma | tool | *планируется* | ✅ |
 | `browser` | Браузер | tool | ITB-7 | ✅ |
+| `llm` | Large Language Model | technology | SPC-5, SPC-9 | ✅ |
+| `langchain` | LangChain | tool | SPC-9 | ✅ |
+| `huggingface` | Hugging Face | tool | SPC-5, SPC-9 | ✅ |
+| `mlflow` | MLflow | tool | SPC-11 | ✅ |
+| `vector-database` | Vector Database (Qdrant, Pinecone) | technology | SPC-9 | ✅ |
 
 ### Запланированные
 
@@ -404,6 +409,9 @@
 | `facilitate-workshop` | Провести воркшоп | 3 | SFT-4, SFT-6 | `miro`, `figma`, `confluence` | ⏳ |
 | `write-openapi-spec` | Написать OpenAPI-спецификацию | 2 | INT-3 | `openapi`, `swagger-editor` | 🔜 |
 | `integrate-two-systems` | Проектирование интеграции двух систем | 3 | INT-4, INT-11, ARC-9 | — | ✅ |
+| `frame-ml-problem` | Формулировка ML-задачи | 4 | SPC-5, SPC-6 | — | ✅ |
+| `define-ml-metrics` | Определение метрик ML-продукта | 4 | SPC-8 | — | ✅ |
+| `design-rag-pipeline` | Проектирование RAG-пайплайна | 5 | SPC-9, SPC-11, SPC-7 | `llm`, `langchain`, `vector-database` | ✅ |
 | `write-adr` | Зафиксировать архитектурное решение | 3 | ARC-8 | `confluence` | ⏳ |
 | `design-event-scheme` | Спроектировать событийную схему | 4 | INT-11, ARC-6 | `kafka` | ⏳ |
 
@@ -423,10 +431,11 @@
 
 | Трек | Состав (уровни) | Статус |
 |------|----------------|--------|
-| **Data-аналитик** | DAT-1 → DAT-2 → DAT-3 → DAT-4 → DAT-6 | ⏳ |
-| **Solution Architect** | ARC-1 → ARC-2 → ARC-3 → ARC-4 → ARC-9 → MOD-14 | ⏳ |
-| **Интегратор (продвинутый)** | INT-2 → INT-3 → INT-4 → INT-11 → INT-12 | ⏳ |
-| **Мастер коммуникации** | SFT-1 → SFT-3 → SFT-4 → SFT-6 → SFT-7 | ⏳ |
+| **Data-аналитик** | DAT-1 → DAT-2 → DAT-3 → DAT-4 → DAT-6 | ✅ |
+| **Solution Architect** | ARC-1 → ARC-2 → ARC-3 → ARC-4 → ARC-9 → MOD-14 | ✅ |
+| **AI / ML Analyst** | SPC-5 → SPC-6 → SPC-7 → SPC-8 → SPC-9 → SPC-10 → SPC-11 | ✅ |
+| **Senior SA** | REQ-9–15, SFT-4–9, PRO-8–12 | ✅ |
+| **Lead SA** | SFT-4, SFT-7–9, PRO-8–10, PRO-12, SPC-1–4 | ✅ |
 
 ---
 
@@ -506,7 +515,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **9** | L3 architecture + modeling | ARC-4–8, MOD-11–14 | ✅ готово |
 | **10** | L3 processes + data | PRO-8–12, DAT-7–10 | ✅ готово |
 | **11** | L4+ | ARC-9–12, INT-13–15, SPC-1–4 | ✅ готово |
-| **12** | AI / ML Analyst | SPC-5–11: AI-аналитик (введение, ML-требования, данные, метрики, LLM, этика, MLOps) | 💡 idea |
+| **12** | AI / ML Analyst | SPC-5–11: AI-аналитик (введение, ML-требования, данные, метрики, LLM, этика, MLOps) + tech/llm, langchain, huggingface, mlflow, vector-database + tasks/frame-ml-problem, define-ml-metrics, design-rag-pipeline | ✅ готово |
 
 ---
 
@@ -514,9 +523,9 @@ scrum ──→ PRO-2 (Scrum основы)
 
 | Тип | Существующие | Запланированные (🔜+⏳+💡) | Всего |
 |-----|-------------|--------------------------|-------|
-| Статьи (docs/) | 24 | 84 | ~108 |
-| Технологии (tech/) | 8 | 13 | ~21 |
-| Задачи (tasks/) | 6 | 11 | ~17 |
-| Треки | 3 | 4 | ~7 |
+| Статьи (docs/) | 31 | 77 | ~108 |
+| Технологии (tech/) | 13 | 8 | ~21 |
+| Задачи (tasks/) | 9 | 8 | ~17 |
+| Треки | 8 | 0 | ~8 |
 
-**Всего единиц контента:** ~160 (полный охват L0–L5)
+**Всего единиц контента:** ~165 (полный охват L0–L5)

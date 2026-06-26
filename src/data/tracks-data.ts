@@ -164,6 +164,13 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'data-analyst-path': 'Путь Data-аналитика',
     'solution-architect-path': 'Путь Solution-архитектора',
     'industry-analytics': 'Отраслевая аналитика',
+    'ai-analyst-intro': 'AI-аналитик — введение и роль',
+    'ai-ml-requirements': 'Сбор требований для ML-систем',
+    'ai-ml-data': 'Данные для ML: качество, разметка, пайплайны',
+    'ai-ml-metrics': 'Метрики ML-продуктов',
+    'ai-llm-rag': 'LLM, RAG и промпт-инжиниринг',
+    'ai-ethics': 'Этика, bias и регуляторика ИИ',
+    'ai-ml-architecture': 'Архитектура AI-решений (MLOps, feature store)',
   },
   tech: {
     browser: 'Веб-браузер',
@@ -183,6 +190,11 @@ export const itemLabels: Record<string, Record<string, string>> = {
     git: 'Git',
     kafka: 'Apache Kafka',
     rabbitmq: 'RabbitMQ',
+    llm: 'Large Language Model (LLM)',
+    langchain: 'LangChain',
+    huggingface: 'Hugging Face',
+    mlflow: 'MLflow',
+    'vector-database': 'Vector Database',
   },
   task: {
     'find-analyst-in-team': 'Найти аналитика в знакомых',
@@ -199,6 +211,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'conduct-stakeholder-interview': 'Интервью со стейкхолдером',
     'design-database-schema': 'Проектирование схемы БД',
     'integrate-two-systems': 'Проектирование интеграции',
+    'frame-ml-problem': 'Формулировка ML-задачи',
+    'define-ml-metrics': 'Определение метрик ML-продукта',
+    'design-rag-pipeline': 'Проектирование RAG-пайплайна',
   },
 };
 
@@ -718,6 +733,65 @@ const industryAnalystTrack: TrackDef = {
   ],
 };
 
+const aiAnalystTrack: TrackDef = {
+  id: 'ai-analyst-track',
+  title: 'AI / ML Analyst',
+  description: 'Полный путь от Middle-аналитика до AI-аналитика: ML-требования, данные, метрики, LLM, RAG, этика и архитектура AI-решений',
+  stages: [
+    {
+      title: '0. Введение в AI-аналитику',
+      description: 'Поймите роль AI-аналитика и отличие от других ролей.',
+      items: [
+        {type: 'article', id: 'ai-analyst-intro', folder: 'specialization'},
+        {type: 'tech', id: 'llm'},
+      ],
+    },
+    {
+      title: '1. Сбор требований для ML',
+      description: 'Научитесь формулировать ML-задачи и специфицировать ML-компоненты.',
+      items: [
+        {type: 'article', id: 'ai-ml-requirements', folder: 'specialization'},
+        {type: 'article', id: 'ai-ml-data', folder: 'specialization'},
+        {type: 'task', id: 'frame-ml-problem'},
+      ],
+    },
+    {
+      title: '2. Метрики и оценка качества',
+      description: 'Определяйте метрики ML-продуктов: от accuracy до бизнес-показателей.',
+      items: [
+        {type: 'article', id: 'ai-ml-metrics', folder: 'specialization'},
+        {type: 'task', id: 'define-ml-metrics'},
+      ],
+    },
+    {
+      title: '3. LLM, RAG и генеративные системы',
+      description: 'Промпт-инжиниринг, RAG-пайплайны, работа с векторными БД.',
+      items: [
+        {type: 'article', id: 'ai-llm-rag', folder: 'specialization'},
+        {type: 'tech', id: 'langchain'},
+        {type: 'tech', id: 'vector-database'},
+        {type: 'tech', id: 'huggingface'},
+        {type: 'task', id: 'design-rag-pipeline'},
+      ],
+    },
+    {
+      title: '4. Этика и регуляторика',
+      description: 'Bias, fairness, EU AI Act, объяснимость — требования к AI-системам.',
+      items: [
+        {type: 'article', id: 'ai-ethics', folder: 'specialization'},
+      ],
+    },
+    {
+      title: '5. Архитектура AI-решений',
+      description: 'MLOps, feature store, мониторинг, CI/CD для ML, NFR для AI-систем.',
+      items: [
+        {type: 'article', id: 'ai-ml-architecture', folder: 'specialization'},
+        {type: 'tech', id: 'mlflow'},
+      ],
+    },
+  ],
+};
+
 /** Map from Docusaurus pluginId to item type for track lookup */
 export const pluginTypeMap: Record<string, string> = {
   '': 'article',
@@ -730,7 +804,7 @@ export function getItemType(pluginId: string | undefined): string | undefined {
   return pluginId ? pluginTypeMap[pluginId] : pluginTypeMap[''];
 }
 
-export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack];
+export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack, aiAnalystTrack];
 
 function buildLookup(): Map<string, NavInfo[]> {
   const map = new Map<string, NavInfo[]>();

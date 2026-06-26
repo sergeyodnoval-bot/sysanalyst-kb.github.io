@@ -139,6 +139,21 @@ const LABELS: Record<string, string> = {
   'specialization/data-analyst-path': 'Путь Data-аналитика',
   'specialization/solution-architect-path': 'Путь Solution-архитектора',
   'specialization/industry-analytics': 'Отраслевая аналитика (FinTech, Retail, Logistics)',
+  'specialization/ai-analyst-intro': 'AI-аналитик — введение и роль',
+  'specialization/ai-ml-requirements': 'Сбор требований для ML-систем',
+  'specialization/ai-ml-data': 'Данные для ML — качество, разметка, пайплайны',
+  'specialization/ai-ml-metrics': 'Метрики ML-продуктов',
+  'specialization/ai-llm-rag': 'LLM, RAG и промпт-инжиниринг',
+  'specialization/ai-ethics': 'Этика, bias и регуляторика ИИ',
+  'specialization/ai-ml-architecture': 'Архитектура AI-решений (MLOps, feature store)',
+  'llm': 'Large Language Model (LLM)',
+  'langchain': 'LangChain',
+  'huggingface': 'Hugging Face',
+  'mlflow': 'MLflow',
+  'vector-database': 'Vector Database (Qdrant, Pinecone, Weaviate)',
+  'frame-ml-problem': 'Формулировка ML-задачи (ML problem framing)',
+  'define-ml-metrics': 'Определение метрик ML-продукта',
+  'design-rag-pipeline': 'Проектирование RAG-пайплайна',
 };
 
 const SHORT_LOOKUP: Record<string, string> = {};
