@@ -5,83 +5,109 @@ sidebar_label: PostgreSQL
 type: technology
 tech_type: technology
 category: data
-tags: [database, sql, postgres, relational]
+tags: [database, sql, postgres, relational, acid]
 official_url: "https://www.postgresql.org/"
 license: "PostgreSQL License (Open Source)"
 first_seen: 1996
 requires_articles: [basics/what-is-database, data/sql-basics]
 used_in_tasks: []
-alternatives: [mysql, oracle]
+alternatives: [mysql, oracle, sqlserver]
 difficulty: 2
-estimated_time: 15
+estimated_time: 20
 ---
 
 # PostgreSQL
 
-PostgreSQL (Postgres) — это самая популярная открытая реляционная база данных. Считается одной из самых надёжных и функциональных СУБД. Используется от стартапов до крупных корпораций.
+PostgreSQL — самая популярная открытая реляционная база данных. Считается одной из самых надёжных, функциональных и стандартных СУБД. Используется от стартапов до крупных корпораций.
 
 ## Для чего используется
 
-- Хранение структурированных данных в таблицах
-- Обработка транзакционных нагрузок (OLTP)
-- Аналитические запросы (OLAP с партиционированием)
-- Геопространственные данные (через PostGIS)
-- Хранение JSON-документов (NoSQL-режим)
+- **Хранение структурированных данных** — таблицы, связи, индексы
+- **Транзакционные нагрузки (OLTP)** — банки, CRM, ERP
+- **Аналитические запросы (OLAP)** — агрегации, окна, партиционирование
+- **Геопространственные данные** — через расширение PostGIS (альтернатива Oracle Spatial)
+- **JSON-документы (NoSQL-режим)** — JSONB с индексацией GIN
+- **Full-text search** — встроенный поиск (альтернатива Elasticsearch в простых случаях)
 
-## Ключевые концепции
-
-### Почему PostgreSQL
+## Почему PostgreSQL
 
 | Характеристика | PostgreSQL |
 |---------------|-----------|
 | Модель | Реляционная + объектно-реляционная |
 | SQL | Полная поддержка SQL:2016 |
-| Расширяемость | Типы данных, индексы, функции |
 | Транзакции | ACID, MVCC, Serializable |
-| Репликация | Streaming, Logical |
-| JSON | JSONB с индексацией |
-| Лицензия | PostgreSQL License (Free) |
+| Репликация | Streaming, Logical (каскадная) |
+| Расширяемость | Свои типы данных, индексы, функции на PL/pgSQL / Python / C |
+| JSON | JSONB с GIN-индексами |
+| Полнотекстовый поиск | Встроенный (tsvector/tsquery) |
+| Индексы | B-tree, Hash, GiST, GIN, SP-GiST, BRIN |
+| Лицензия | PostgreSQL License (Free, как MIT) |
 
-### Типы данных
+## Типы данных
 
-PostgreSQL поддерживает все стандартные типы SQL плюс собственные:
-
-- Числовые: `INTEGER`, `BIGINT`, `DECIMAL`, `NUMERIC`
-- Строковые: `VARCHAR`, `CHAR`, `TEXT`
+- Числовые: `INTEGER`, `BIGINT`, `DECIMAL`, `NUMERIC`, `SERIAL`
+- Строковые: `VARCHAR(n)`, `CHAR(n)`, `TEXT`
 - Даты: `DATE`, `TIMESTAMP`, `TIMESTAMPTZ`, `INTERVAL`
-- JSON: `JSON`, `JSONB`
+- JSON: `JSON`, `JSONB` (бинарный, с индексацией)
 - Массивы: `TEXT[]`, `INTEGER[]`
-- Сетевые: `INET`, `CIDR`
-- Гео: `GEOMETRY` (через PostGIS)
+- Сетевые: `INET`, `CIDR`, `MACADDR`
+- Гео: `GEOMETRY`, `GEOGRAPHY` (через PostGIS)
+- UUID, Range types, ENUM, XML, BIT
 
-### Инструменты для работы
+## Сравнение: PostgreSQL vs MySQL vs Microsoft SQL Server
 
-- **DBeaver** — универсальный GUI-клиент
-- **pgAdmin** — официальная админка
-- **psql** — консольный клиент
+| Критерий | PostgreSQL | MySQL (Oracle) | SQL Server (Microsoft) |
+|----------|-----------|---------------|----------------------|
+| **Лицензия** | Open Source (Free) | Open Source + Enterprise | Proprietary (дорого) |
+| **Стандарт SQL** | SQL:2016 (полный) | SQL:2016 (частично) | SQL:2016 (наибольшее расширение) |
+| **JSON** | JSONB (индексируемый) | JSON (не индексируется) | JSON (с OPENJSON) |
+| **Полнотекстовый поиск** | Встроенный | Встроенный (MyISAM/InnoDB) | Встроенный (очень мощный) |
+| **Геоданные** | PostGIS (лучший open source) | Spatial Extensions | MSSQL Spatial |
+| **Репликация** | Streaming, Logical | Master-Slave, Group, InnoDB Cluster | Always On, Mirroring, Replication |
+| **ACID** | Полный (MVCC) | InnoDB — да, MyISAM — нет | Полный |
+| **CTE / Window Functions** | Да (сложные рекурсии) | Да (с MySQL 8.0) | Да |
+| **Экосистема** | Большая (DevOps, CI) | Огромная (каждый хостинг) | MSSQL-стек (.NET, Azure) |
+| **Сложность** | Средняя | Низкая (LAMP-стек) | Высокая (Windows / Docker) |
+| **Когда выбирать** | Нужна функциональность, надёжность, open source | Простота хостинга, WordPress, LAMP | Компания на .NET / Azure |
 
-## Когда использовать
+## Когда использовать PostgreSQL
 
-- Нужна надёжная БД с ACID-транзакциями
-- Стандартный SQL без vendor-specific расширений
-- Проект с открытым исходным кодом или без бюджета на лицензии
-- JSONB для гибридного хранения
+- **Начинаете новый проект** — PostgreSQL лучший выбор по умолчанию
+- **Нужна функциональность** — JSONB, PostGIS, full-text search, расширения
+- **Open source / без бюджета на лицензии**
+- **Стандартный SQL** — портируемость между СУБД (легче migrate)
+- **Сложные запросы** — CTE, window functions, recursive queries
 
-## Когда НЕ использовать
+## Когда НЕ использовать PostgreSQL
 
 - **Высоконагруженная аналитика (> 10 ТБ)** — ClickHouse или Greenplum
-- **Простые key-value сценарии** — Redis
+- **Простые key-value сценарии** — Redis (быстрее и проще)
 - **Когда в компании стандарт Microsoft** — SQL Server
+- **Высокая нагрузка на запись (> 100K writes/сек)** — рассмотрите Cassandra / ScyllaDB
+- **LAMP-стек (Legacy)** — MySQL всё ещё де-факто для WordPress
+- **Встроенная БД (mobile, desktop)** — SQLite
+
+## Инструменты для работы
+
+- **DBeaver** — универсальный GUI-клиент (рекомендуется для аналитика)
+- **pgAdmin** — официальная админка от PostgreSQL
+- **psql** — консольный клиент (для DevOps)
+- **DataGrip** — IDE от JetBrains (платный)
 
 ## Как начать
 
-1. Установите PostgreSQL через `sudo apt install postgresql` (Linux) или [официальный инсталлятор](https://www.postgresql.org/download/) (Windows/macOS)
-2. Запустите сервер и создайте свою первую базу
-3. Подключитесь через psql или DBeaver
-4. Создайте таблицу, вставьте данные, выполните SELECT
+1. Установите через `sudo apt install postgresql` (Linux) или [официальный инсталлятор](https://www.postgresql.org/download/) (Windows/macOS)
+2. Запустите: `sudo systemctl start postgresql`
+3. Создайте БД: `sudo -u postgres createdb mydb`
+4. Подключитесь: `psql -U postgres -d mydb`
+5. Создайте таблицу: `CREATE TABLE users (id SERIAL PRIMARY KEY, name TEXT);`
+6. Вставьте: `INSERT INTO users (name) VALUES ('Аналитик');`
+7. Выберите: `SELECT * FROM users;`
 
 ## Ссылки
 
 - [Официальный сайт](https://www.postgresql.org/)
-- [Документация](https://www.postgresql.org/docs/)
+- [Документация (лучшая в своём классе)](https://www.postgresql.org/docs/)
 - [PostgreSQL Tutorial](https://www.postgresqltutorial.com/)
+- [PostgreSQL vs MySQL (сравнение)](https://www.postgresqltutorial.com/postgresql-getting-started/postgresql-vs-mysql/)
+- [Use the Index, Luke — курс по индексам](https://use-the-index-luke.com/)
