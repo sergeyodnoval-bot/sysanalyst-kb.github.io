@@ -341,6 +341,10 @@
 | 11 | AI-аналитик — LLM, RAG и промпт-инжиниринг | ✅ | INT-8, SPC-5 |
 | 12 | AI-аналитик — этика, bias и регуляторика ИИ | ✅ | SPC-5 |
 | 13 | AI-аналитик — архитектура AI-решений (MLOps, feature store) | ✅ | ARC-7, SPC-5 |
+| 14 | AI-агенты — введение и архитектура | ✅ | SPC-11, SPC-13 |
+| 15 | Мультиагентные системы — паттерны, оркестрация | ✅ | SPC-14 |
+| 16 | MCP — Model Context Protocol для подключения инструментов | ✅ | SPC-14, SPC-11 |
+| 17 | Разработка AI-агентов — скилы, LSP, best practices | ✅ | SPC-14, SPC-16 |
 
 ---
 
@@ -364,6 +368,7 @@
 | `mlflow` | MLflow | tool | SPC-11 | ✅ |
 | `vector-database` | Vector Database (Qdrant, Pinecone) | technology | SPC-9 | ✅ |
 | `grpc` | gRPC | technology | INT-1 | ✅ |
+| `mcp` | MCP — Model Context Protocol | protocol | SPC-14 | ✅ |
 
 ### Запланированные
 
@@ -415,6 +420,7 @@
 | `frame-ml-problem` | Формулировка ML-задачи | 4 | SPC-5, SPC-6 | — | ✅ |
 | `define-ml-metrics` | Определение метрик ML-продукта | 4 | SPC-8 | — | ✅ |
 | `design-rag-pipeline` | Проектирование RAG-пайплайна | 5 | SPC-9, SPC-11, SPC-7 | `llm`, `langchain`, `vector-database` | ✅ |
+| `design-agent-system` | Проектирование AI-агента для продакшна | 5 | SPC-14, SPC-15, SPC-16, SPC-17 | `mcp` | ✅ |
 | `write-adr` | Зафиксировать архитектурное решение | 3 | ARC-8 | `confluence` | ⏳ |
 | `design-event-scheme` | Спроектировать событийную схему | 4 | INT-11, ARC-6 | `kafka` | ⏳ |
 
@@ -519,6 +525,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **10** | L3 processes + data | PRO-8–12, DAT-7–10 | ✅ готово |
 | **11** | L4+ | ARC-9–12, INT-13–15, SPC-1–4 | ✅ готово |
 | **12** | AI / ML Analyst | SPC-5–13: AI-аналитик (введение, ML basics, EDA, ML-требования, данные, метрики, LLM, этика, MLOps) + tech/llm, langchain, huggingface, mlflow, vector-database, grpc + tasks/frame-ml-problem, define-ml-metrics, design-rag-pipeline | ✅ готово |
+| **13** | AI-агенты | SPC-14–17: введение, мультиагентность, MCP, разработка агентов + tech/mcp + task/design-agent-system | ✅ готово |
 
 ---
 
@@ -526,9 +533,9 @@ scrum ──→ PRO-2 (Scrum основы)
 
 | Тип | Существующие | Запланированные (🔜+⏳+💡) | Всего |
 |-----|-------------|--------------------------|-------|
-| Статьи (docs/) | 33 | 77 | ~110 |
-| Технологии (tech/) | 14 | 7 | ~21 |
-| Задачи (tasks/) | 9 | 8 | ~17 |
+| Статьи (docs/) | 37 | 77 | ~114 |
+| Технологии (tech/) | 15 | 7 | ~22 |
+| Задачи (tasks/) | 10 | 8 | ~18 |
 | Треки | 8 | 0 | ~8 |
 
-**Всего единиц контента:** ~167 (полный охват L0–L5)
+**Всего единиц контента:** ~171 (полный охват L0–L5)

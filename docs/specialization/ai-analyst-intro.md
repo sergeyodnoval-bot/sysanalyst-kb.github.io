@@ -6,7 +6,7 @@ level: 7
 category: specialization
 tags: [ai, ml, role, career, specialization]
 prerequisites: [basics/what-is-api, data/what-is-database]
-leads_to: [specialization/ai-ml-basics, specialization/ai-ml-requirements, specialization/ai-ml-data, specialization/ai-ml-metrics, specialization/ai-llm-rag, specialization/ai-ethics, specialization/ai-ml-architecture]
+leads_to: [specialization/ai-ml-basics, specialization/ai-ml-requirements, specialization/ai-ml-data, specialization/ai-ml-metrics, specialization/ai-llm-rag, specialization/ai-ethics, specialization/ai-ml-architecture, specialization/ai-agents-intro]
 related: [specialization/data-analyst-path, specialization/ba-vs-sa]
 estimated_time: 15
 difficulty: 4

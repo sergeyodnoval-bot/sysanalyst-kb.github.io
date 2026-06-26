@@ -173,6 +173,10 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'ai-llm-rag': 'LLM, RAG и промпт-инжиниринг',
     'ai-ethics': 'Этика, bias и регуляторика ИИ',
     'ai-ml-architecture': 'Архитектура AI-решений (MLOps, feature store)',
+    'ai-agents-intro': 'AI-агенты — введение и архитектура',
+    'ai-agents-multi': 'Мультиагентные системы',
+    'ai-agents-mcp': 'MCP — Model Context Protocol',
+    'ai-agents-dev': 'Разработка AI-агентов',
   },
   tech: {
     browser: 'Веб-браузер',
@@ -198,6 +202,7 @@ export const itemLabels: Record<string, Record<string, string>> = {
     mlflow: 'MLflow',
     'vector-database': 'Vector Database',
     grpc: 'gRPC',
+    mcp: 'MCP — Model Context Protocol',
   },
   task: {
     'find-analyst-in-team': 'Найти аналитика в знакомых',
@@ -217,6 +222,7 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'frame-ml-problem': 'Формулировка ML-задачи',
     'define-ml-metrics': 'Определение метрик ML-продукта',
     'design-rag-pipeline': 'Проектирование RAG-пайплайна',
+    'design-agent-system': 'Проектирование AI-агента',
   },
 };
 
@@ -793,6 +799,24 @@ const aiAnalystTrack: TrackDef = {
         {type: 'article', id: 'ai-ml-architecture', folder: 'specialization'},
         {type: 'tech', id: 'mlflow'},
         {type: 'tech', id: 'grpc'},
+      ],
+    },
+    {
+      title: '6. AI-агенты — введение',
+      description: 'Поймите архитектуру AI-агентов, их скилы и протоколы взаимодействия.',
+      items: [
+        {type: 'article', id: 'ai-agents-intro', folder: 'specialization'},
+        {type: 'article', id: 'ai-agents-mcp', folder: 'specialization'},
+        {type: 'tech', id: 'mcp'},
+      ],
+    },
+    {
+      title: '7. AI-агенты — продвинутый уровень',
+      description: 'Мультиагентные системы и разработка агентов для продакшна.',
+      items: [
+        {type: 'article', id: 'ai-agents-multi', folder: 'specialization'},
+        {type: 'article', id: 'ai-agents-dev', folder: 'specialization'},
+        {type: 'task', id: 'design-agent-system'},
       ],
     },
   ],

@@ -148,15 +148,21 @@ const LABELS: Record<string, string> = {
   'specialization/ai-llm-rag': 'LLM, RAG и промпт-инжиниринг',
   'specialization/ai-ethics': 'Этика, bias и регуляторика ИИ',
   'specialization/ai-ml-architecture': 'Архитектура AI-решений (MLOps, feature store)',
+  'specialization/ai-agents-intro': 'AI-агенты — введение и архитектура',
+  'specialization/ai-agents-multi': 'Мультиагентные системы — паттерны, оркестрация',
+  'specialization/ai-agents-mcp': 'MCP — Model Context Protocol для подключения инструментов',
+  'specialization/ai-agents-dev': 'Разработка AI-агентов — скилы, LSP, best practices',
   'llm': 'Large Language Model (LLM)',
   'langchain': 'LangChain',
   'huggingface': 'Hugging Face',
   'mlflow': 'MLflow',
   'vector-database': 'Vector Database (Qdrant, Pinecone, Weaviate)',
   'grpc': 'gRPC',
+  'mcp': 'MCP — Model Context Protocol',
   'frame-ml-problem': 'Формулировка ML-задачи (ML problem framing)',
   'define-ml-metrics': 'Определение метрик ML-продукта',
   'design-rag-pipeline': 'Проектирование RAG-пайплайна',
+  'design-agent-system': 'Проектирование AI-агента для продакшна',
 };
 
 const SHORT_LOOKUP: Record<string, string> = {};
