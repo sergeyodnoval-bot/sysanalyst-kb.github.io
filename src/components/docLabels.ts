@@ -201,6 +201,20 @@ const LABELS: Record<string, string> = {
   'ecommerce-design-catalog': 'Проектирование каталога товаров',
   'ecommerce-oms-flow': 'Проектирование OMS (статусы и переходы)',
   'ecommerce-loyalty': 'Проектирование программы лояльности',
+  'specialization/telecom-path': 'Telecom — роль, специфика, путь',
+  'specialization/telecom-bss-oss': 'BSS/OSS — архитектура Telecom-систем',
+  'specialization/telecom-billing': 'Billing и Charging (online/offline)',
+  'specialization/telecom-crm-order': 'CRM и Order Management в Telecom',
+  'specialization/telecom-provisioning': 'Provisioning и активация услуг',
+  'specialization/telecom-regulations': 'Регуляторика в Telecom (СОРМ, ПД, лицензии)',
+  'specialization/telecom-mvno': 'MVNO — модель виртуальных операторов',
+  'specialization/telecom-5g-iot': '5G, IoT и новые технологии в Telecom',
+  'tmforum': 'TM Forum Open API — стандарт Telecom',
+  'diameter': 'Diameter — базовый протокол Telecom',
+  'kubernetes': 'Kubernetes — оркестрация контейнеров',
+  'telecom-design-billing': 'Проектирование биллинговой модели',
+  'telecom-oss-integration': 'Интеграция OSS-систем (TM Forum API)',
+  'telecom-compliance': 'Чек-лист соответствия регулятору для оператора связи',
 };
 
 const SHORT_LOOKUP: Record<string, string> = {};

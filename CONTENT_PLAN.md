@@ -373,14 +373,14 @@
 | 32 | **Фулфилмент и логистика в Retail** | ✅ | SPC-28 |
 | 33 | **Программы лояльности и кешбэк** | ✅ | SPC-28 |
 | 34 | **Retail-аналитика и персонализация** | ✅ | SPC-28, SPC-33 |
-| 35 | **Telecom — путь аналитика** | 🔜 | — |
-| 36 | **BSS/OSS — архитектура Telecom-систем** | 🔜 | SPC-35 |
-| 37 | **Billing и Charging (online/offline)** | 🔜 | SPC-36 |
-| 38 | **CRM и Order Management в Telecom** | 🔜 | SPC-36 |
-| 39 | **Provisioning и активация услуг** | 🔜 | SPC-36 |
-| 40 | **Регуляторика в Telecom (СОРМ, ПД, лицензии)** | 🔜 | SPC-36 |
-| 41 | **MVNO — модель виртуальных операторов** | 🔜 | SPC-36, SPC-37 |
-| 42 | **5G, IoT и новые технологии в Telecom** | 🔜 | SPC-36 |
+| 35 | **Telecom — путь аналитика** | ✅ | — |
+| 36 | **BSS/OSS — архитектура Telecom-систем** | ✅ | SPC-35 |
+| 37 | **Billing и Charging (online/offline)** | ✅ | SPC-36 |
+| 38 | **CRM и Order Management в Telecom** | ✅ | SPC-36 |
+| 39 | **Provisioning и активация услуг** | ✅ | SPC-36 |
+| 40 | **Регуляторика в Telecom (СОРМ, ПД, лицензии)** | ✅ | SPC-36 |
+| 41 | **MVNO — модель виртуальных операторов** | ✅ | SPC-36, SPC-37 |
+| 42 | **5G, IoT и новые технологии в Telecom** | ✅ | SPC-36 |
 | 43 | **GovTech — путь аналитика в госсекторе** | 🔜 | — |
 | 44 | **Архитектура ГИС — государственные информсистемы** | 🔜 | SPC-43 |
 | 45 | **Госуслуги и порталы — проектирование** | 🔜 | SPC-44 |
@@ -454,9 +454,9 @@
 | `elasticsearch` | Elasticsearch — поиск и каталог | technology | SPC-29 | ✅ |
 | `erp` | ERP-системы (SAP, 1С, Oracle) | system | SPC-28, SPC-32 | ✅ |
 | `wms` | WMS — складские системы | system | SPC-32 | ✅ |
-| `tmforum` | TM Forum Open API — стандарт Telecom | standard | SPC-36 | 🔜 |
-| `diameter` | Diameter / HTTP2 — telecom-протоколы | protocol | SPC-36 | 🔜 |
-| `kubernetes` | Kubernetes — оркестрация контейнеров | tool | ARC-4 | 🔜 |
+| `tmforum` | TM Forum Open API — стандарт Telecom | standard | SPC-36 | ✅ |
+| `diameter` | Diameter / HTTP2 — telecom-протоколы | protocol | SPC-36 | ✅ |
+| `kubernetes` | Kubernetes — оркестрация контейнеров | tool | ARC-4 | ✅ |
 | `smev` | СМЭВ — система межведомственного взаимодействия | system | SPC-46 | 🔜 |
 | `crypto` | Криптография (УКЭП, PKI, ГОСТ) | technology | SPC-48 | 🔜 |
 | `astra-linux` | Astra Linux / ГосОС | os | SPC-47 | 🔜 |
@@ -525,9 +525,9 @@
 
 | ID | Название | difficulty | requires_articles | requires_tech | Статус |
 |----|----------|-----------|-------------------|---------------|--------|
-| `telecom-design-billing` | Проектирование биллинговой модели | 6 | SPC-37 | — | 🔜 |
-| `telecom-oss-integration` | Интеграция OSS-систем (TM Forum API) | 6 | SPC-36 | `tmforum` | 🔜 |
-| `telecom-compliance` | Чек-лист соответствия регулятору (СОРМ) | 6 | SPC-40 | — | 🔜 |
+| `telecom-design-billing` | Проектирование биллинговой модели | 6 | SPC-37 | — | ✅ |
+| `telecom-oss-integration` | Интеграция OSS-систем (TM Forum API) | 6 | SPC-36 | `tmforum` | ✅ |
+| `telecom-compliance` | Чек-лист соответствия регулятору (СОРМ) | 6 | SPC-40 | — | ✅ |
 
 ### GovTech / Госсектор
 
@@ -611,7 +611,7 @@
 | **Senior SA** | REQ-9–15, SFT-4–9, PRO-8–12 | ✅ |
 | **Lead SA** | SFT-4, SFT-7–9, PRO-8–10, PRO-12, SPC-1–4 | ✅ |
 | **E-commerce / Retail** | SPC-27–34: путь, OMS, каталог, ценообразование, маркетплейсы, фулфилмент, лояльность, аналитика | ✅ |
-| **Telecom** | SPC-35–42: путь, BSS/OSS, биллинг, CRM, provisioning, регуляторика, MVNO, 5G/IoT | 🔜 |
+| **Telecom** | SPC-35–42: путь, BSS/OSS, биллинг, CRM, provisioning, регуляторика, MVNO, 5G/IoT | ✅ |
 | **GovTech** | SPC-43–50: путь, ГИС, госуслуги, СМЭВ, импортозамещение, безопасность, закупки, ЭДО | 🔜 |
 | **MedTech** | SPC-51–58: путь, ЭМК, МИС, ЛИС, фарма, телемедицина, PACS, регуляторика | 🔜 |
 | **Logistics** | SPC-59–66: путь, TMS, WMS, доставка, маршрутизация, ЭДО, интеграции, аналитика | 🔜 |
@@ -701,7 +701,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **14** | Cross-cutting (системные компоненты) | ARC-13–18: логирование, мониторинг, tracing, авторизация, resilience, кэширование + tech/docker, prometheus, redis | ✅ готово |
 | **15** | FinTech-специализация | SPC-18–26: путь, платежи, регуляторика, протоколы, ledger, сверка, Open Banking, фрод, кредиты + tech/iso20022, pci-dss, swift + tasks/fintech-design-payment, fintech-reconciliation, fintech-pci-checklist + FinTech-трек | ✅ готово |
 | **16** | E-commerce / Retail | SPC-27–34: путь, OMS, каталог, ценообразование, маркетплейсы, фулфилмент, лояльность, аналитика + tech/elasticsearch, erp, wms + tasks/ecommerce-design-catalog, ecommerce-oms-flow, ecommerce-loyalty + Retail-трек | ✅ готово |
-| **17** | Telecom | SPC-35–42: путь, BSS/OSS, биллинг, CRM, provisioning, регуляторика, MVNO, 5G/IoT + tech/tmforum, diameter, kubernetes + tasks/telecom-design-billing, telecom-oss-integration, telecom-compliance + Telecom-трек | 🔜 |
+| **17** | Telecom | SPC-35–42: путь, BSS/OSS, биллинг, CRM, provisioning, регуляторика, MVNO, 5G/IoT + tech/tmforum, diameter, kubernetes + tasks/telecom-design-billing, telecom-oss-integration, telecom-compliance + Telecom-трек | ✅ готово |
 | **18** | GovTech / Госсектор | SPC-43–50: путь, ГИС, госуслуги, СМЭВ, импортозамещение, безопасность, закупки, ЭДО + tech/smev, crypto, astra-linux + tasks/gov-design-service, gov-smev-integration, gov-security-audit + GovTech-трек | 🔜 |
 | **19** | MedTech / Медицина | SPC-51–58: путь, ЭМК, МИС, ЛИС, фарма, телемедицина, PACS, регуляторика + tech/hl7, emias, dicom + tasks/medtech-design-emk, medtech-lis-integration, medtech-compliance + MedTech-трек | 🔜 |
 | **20** | Logistics / Логистика | SPC-59–66: путь, TMS, WMS, доставка, маршрутизация, ЭДО, интеграции, аналитика + tech/tms, geodata, edi + tasks/logistics-design-delivery, logistics-integration-courier, logistics-optimization + Logistics-трек | 🔜 |
@@ -714,9 +714,9 @@ scrum ──→ PRO-2 (Scrum основы)
 
 | Тип | Существующие | Запланированные (🔜+⏳+💡) | Всего |
 |-----|-------------|--------------------------|-------|
-| Статьи (docs/) | 60 | 125 (71 + 24 + 24 новых) | ~185 |
-| Технологии (tech/) | 24 | 23 (5 + 9 + 9 новых) | ~47 |
-| Задачи (tasks/) | 16 | 26 (8 + 9 + 9 новых) | ~42 |
-| Треки | 10 | 6 | ~16 |
+| Статьи (docs/) | 68 | 117 (63 + 24 + 24 новых) | ~185 |
+| Технологии (tech/) | 27 | 20 (5 + 6 + 9 новых) | ~47 |
+| Задачи (tasks/) | 19 | 23 (8 + 6 + 9 новых) | ~42 |
+| Треки | 11 | 5 | ~16 |
 
-**Всего единиц контента:** ~297 (полный охват L0–L5 + 8 отраслевых специализаций)
+**Всего единиц контента:** ~300 (полный охват L0–L5 + 8 отраслевых специализаций)

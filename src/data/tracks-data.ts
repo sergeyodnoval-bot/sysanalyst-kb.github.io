@@ -235,6 +235,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     elasticsearch: 'Elasticsearch',
     erp: 'ERP',
     wms: 'WMS',
+    tmforum: 'TM Forum Open API',
+    diameter: 'Diameter',
+    kubernetes: 'Kubernetes',
   },
   task: {
     'find-analyst-in-team': 'Найти аналитика в знакомых',
@@ -261,6 +264,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'ecommerce-design-catalog': 'Проектирование каталога товаров',
     'ecommerce-oms-flow': 'Проектирование OMS (статусы)',
     'ecommerce-loyalty': 'Проектирование программы лояльности',
+    'telecom-design-billing': 'Проектирование биллинговой модели',
+    'telecom-oss-integration': 'Интеграция OSS-систем',
+    'telecom-compliance': 'Чек-лист соответствия регулятору',
   },
 };
 
@@ -909,6 +915,70 @@ const ecommerceTrack: TrackDef = {
   ],
 };
 
+const telecomTrack: TrackDef = {
+  id: 'telecom-track',
+  title: 'Telecom Analyst',
+  description: 'Специализация в Telecom: BSS/OSS, биллинг, CRM, provisioning, регуляторика, MVNO, 5G и IoT',
+  stages: [
+    {
+      title: '0. Telecom — введение и архитектура BSS/OSS',
+      description: 'Поймите специфику Telecom и архитектуру операторских систем.',
+      items: [
+        {type: 'article', id: 'telecom-path', folder: 'specialization'},
+        {type: 'article', id: 'telecom-bss-oss', folder: 'specialization'},
+        {type: 'tech', id: 'tmforum'},
+      ],
+    },
+    {
+      title: '1. Биллинг и тарификация',
+      description: 'Online/offline charging, OCS, рейтинг, pre-paid и post-paid.',
+      items: [
+        {type: 'article', id: 'telecom-billing', folder: 'specialization'},
+        {type: 'task', id: 'telecom-design-billing'},
+      ],
+    },
+    {
+      title: '2. CRM и Order Management',
+      description: 'Управление заказами, жизненный цикл абонента, интеграция с сетью.',
+      items: [
+        {type: 'article', id: 'telecom-crm-order', folder: 'specialization'},
+      ],
+    },
+    {
+      title: '3. Provisioning и активация услуг',
+      description: 'Provisioning-процессы, интеграция с HLR/HSS, активация сервисов.',
+      items: [
+        {type: 'article', id: 'telecom-provisioning', folder: 'specialization'},
+        {type: 'task', id: 'telecom-oss-integration'},
+      ],
+    },
+    {
+      title: '4. Регуляторика и лицензирование',
+      description: 'СОРМ, 152-ФЗ, лицензии РКН, anti-fraud, требования к MVNO.',
+      items: [
+        {type: 'article', id: 'telecom-regulations', folder: 'specialization'},
+        {type: 'task', id: 'telecom-compliance'},
+      ],
+    },
+    {
+      title: '5. MVNO и партнёрства',
+      description: 'Модели MVNO, договор с MNO, MVNE/MVNA.',
+      items: [
+        {type: 'article', id: 'telecom-mvno', folder: 'specialization'},
+      ],
+    },
+    {
+      title: '6. 5G, IoT и сетевые технологии',
+      description: '5G SA/NSA, IoT, Network Slicing, Edge Computing.',
+      items: [
+        {type: 'article', id: 'telecom-5g-iot', folder: 'specialization'},
+        {type: 'tech', id: 'diameter'},
+        {type: 'tech', id: 'kubernetes'},
+      ],
+    },
+  ],
+};
+
 const aiAnalystTrack: TrackDef = {
   id: 'ai-analyst-track',
   title: 'AI / ML Analyst',
@@ -1001,7 +1071,7 @@ export function getItemType(pluginId: string | undefined): string | undefined {
   return pluginId ? pluginTypeMap[pluginId] : pluginTypeMap[''];
 }
 
-export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack, aiAnalystTrack, fintechTrack, ecommerceTrack];
+export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack, aiAnalystTrack, fintechTrack, ecommerceTrack, telecomTrack];
 
 function buildLookup(): Map<string, NavInfo[]> {
   const map = new Map<string, NavInfo[]>();
