@@ -102,6 +102,15 @@ const LABELS: Record<string, string> = {
   'describe-system-to-friend': 'Объяснить другу, что такое интернет',
   'design-database-schema': 'Проектирование схемы БД',
   'integrate-two-systems': 'Проектирование интеграции двух систем',
+  'data/dwh-basics': 'Хранилища данных (DWH) — основы',
+  'data/etl-basics': 'ETL — основы',
+  'data/data-migration': 'Миграции данных — стратегии',
+  'data/api-first-design': 'API-first design',
+  'process/babok-overview': 'BABOK — обзор для системного аналитика',
+  'process/requirements-management': 'Управление требованиями (Requirements Management)',
+  'process/stakeholder-analysis': 'Анализ стейкхолдеров (Power/Interest Grid)',
+  'process/cost-benefit-analysis': 'Cost-Benefit Analysis (CBA)',
+  'process/risk-management': 'Управление рисками',
 };
 
 const SHORT_LOOKUP: Record<string, string> = {};

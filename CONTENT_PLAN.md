@@ -207,10 +207,10 @@
 
 | # | Статья | Статус | Prereq | Tech | Tasks |
 |---|--------|--------|--------|------|-------|
-| 7 | Хранилища данных (DWH) — основы | ⏳ | DAT-6 | — | — |
-| 8 | ETL — основы | ⏳ | DAT-7 | — | — |
-| 9 | Миграции данных — стратегии | ⏳ | DAT-6 | — | — |
-| 10 | API-first design | ⏳ | INT-4 | `openapi` | `design-rest-api` |
+| 7 | Хранилища данных (DWH) — основы | ✅ | DAT-6 | — | — |
+| 8 | ETL — основы | ✅ | DAT-7 | — | — |
+| 9 | Миграции данных — стратегии | ✅ | DAT-6 | — | — |
+| 10 | API-first design | ✅ | INT-4 | `openapi` | `design-rest-api` |
 
 ---
 
@@ -272,11 +272,11 @@
 
 | # | Статья | Статус | Prereq | Tech | Tasks |
 |---|--------|--------|--------|------|-------|
-| 8 | BABOK — обзор для системного аналитика | ⏳ | REQ-1 | — | — |
-| 9 | Управление требованиями (Requirements Management) | ⏳ | REQ-1, REQ-12 | `jira` | — |
-| 10 | Анализ стейкхолдеров (Power/Interest Grid) | ⏳ | REQ-2 | — | `conduct-stakeholder-interview` |
-| 11 | Cost-Benefit Analysis (CBA) | ⏳ | REQ-1 | — | — |
-| 12 | Управление рисками | ⏳ | PRO-1 | — | — |
+| 8 | BABOK — обзор для системного аналитика | ✅ | REQ-1 | — | — |
+| 9 | Управление требованиями (Requirements Management) | ✅ | REQ-1, REQ-12 | `jira` | — |
+| 10 | Анализ стейкхолдеров (Power/Interest Grid) | ✅ | REQ-2 | — | `conduct-stakeholder-interview` |
+| 11 | Cost-Benefit Analysis (CBA) | ✅ | REQ-1 | — | — |
+| 12 | Управление рисками | ✅ | PRO-1 | — | — |
 
 ---
 
@@ -492,7 +492,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **7** | L2 processes | PRO-4–7, tech/miro | ✅ готово |
 | **8** | L3 integration | INT-8–12, tech/kafka, tech/rabbitmq | ✅ готово |
 | **9** | L3 architecture + modeling | ARC-4–8, MOD-11–14 | ✅ готово |
-| **10** | L3 processes + data | PRO-8–12, DAT-7–10 | ⏳ |
+| **10** | L3 processes + data | PRO-8–12, DAT-7–10 | ✅ готово |
 | **11** | L4+ | ARC-9–12, INT-13–15, SPC-1–4 | ⏳ |
 
 ---
