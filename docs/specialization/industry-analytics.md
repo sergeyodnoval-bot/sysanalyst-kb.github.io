@@ -27,26 +27,11 @@ difficulty: 5
 
 ## FinTech (Финансовые технологии)
 
-**Ключевые особенности:**
-- **Регуляция** — ЦБ, KYC/AML, 115-ФЗ, 152-ФЗ (персональные данные)
-- **Транзакции** — высокая точность, financial reconciliation, аудит
-- **Безопасность** — PCI DSS, шифрование, OAuth2, токенизация
-- **Скорость** — реальное время для платежей
-- **Отказоустойчивость** — 24/7, zero downtime для core banking
+> Подробный разбор FinTech — в специализации [FinTech-аналитик](/docs/specialization/fintech-analyst-path).
 
-**Типовые задачи:**
-- Интеграция с платёжными шлюзами (CardPay, Alfa, SberPay)
-- Проектирование личного кабинета клиента (LKK)
-- Миграция с legacy banking core на микросервисы
-- Отчётность для ЦБ / регулятора
+FinTech — одна из самых сложных и регулируемых отраслей. Ключевые особенности: высокая точность транзакций, жёсткая регуляция (ЦБ, 115-ФЗ, PCI DSS, PSD2), real-time обработка платежей, сверка (reconciliation) и работа с double-entry accounting.
 
-**Что нужно знать:**
-- Платёжные протоколы (ISO 8583, ISO 20022)
-- Double-entry accounting
-- Saga pattern (как работает перевод денег между счетами)
-- Data reconciliation (сверка транзакций между системами)
-
-**Где работать:** банки, финтех-стартапы, платёжные системы, страховые компании.
+**Статьи специализации:** [Платёжные системы](/docs/specialization/fintech-payments), [Регуляторика](/docs/specialization/fintech-regulation), [Протоколы](/docs/specialization/fintech-protocols), [Ledger](/docs/specialization/fintech-ledger), [Сверка](/docs/specialization/fintech-reconciliation), [Open Banking](/docs/specialization/fintech-open-banking), [Фрод-мониторинг](/docs/specialization/fintech-fraud), [Кредитный конвейер](/docs/specialization/fintech-lending).
 
 ## Retail (Ритейл / E-commerce)
 

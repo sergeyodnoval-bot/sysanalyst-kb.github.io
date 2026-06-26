@@ -356,6 +356,15 @@
 | 15 | Мультиагентные системы — паттерны, оркестрация | ✅ | SPC-14 |
 | 16 | MCP — Model Context Protocol для подключения инструментов | ✅ | SPC-14, SPC-11 |
 | 17 | Разработка AI-агентов — скилы, LSP, best practices | ✅ | SPC-14, SPC-16 |
+| 18 | **FinTech-аналитик — путь в финтех** | ✅ | — |
+| 19 | **Платёжные системы — как работают переводы** | ✅ | SPC-18 |
+| 20 | **Регуляторика в FinTech — ЦБ, 115-ФЗ, PCI DSS, PSD2** | ✅ | SPC-19 |
+| 21 | **Платёжные протоколы — ISO 8583, ISO 20022** | ✅ | SPC-19 |
+| 22 | **Double-entry ledger — бухгалтерский учёт в коде** | ✅ | SPC-19, SPC-20 |
+| 23 | **Сверка (reconciliation) — выявление расхождений** | ✅ | SPC-19, SPC-22 |
+| 24 | **Open Banking / PSD2 — API, SCA, Berlin Group** | ✅ | SPC-20, SPC-22 |
+| 25 | **Фрод-мониторинг — антифрод-системы** | ✅ | SPC-20, SPC-22 |
+| 26 | **Кредитный конвейер — loan origination, scoring, amortization** | ✅ | SPC-20, SPC-22 |
 
 ---
 
@@ -383,6 +392,9 @@
 | `docker` | Docker | tool | ARC-4 | ✅ |
 | `prometheus` | Prometheus | tool | ARC-14 | ✅ |
 | `redis` | Redis | technology | ARC-18 | ✅ |
+| `iso20022` | ISO 20022 — финансовые сообщения | standard | SPC-19, SPC-21 | ✅ |
+| `pci-dss` | PCI DSS — стандарт безопасности карт | standard | SPC-20 | ✅ |
+| `swift` | SWIFT — межбанковские сообщения | standard | SPC-19, SPC-21 | ✅ |
 
 ### Запланированные
 
@@ -415,6 +427,14 @@
 | `describe-system-to-friend` | Объяснить систему «ребёнку» | 1 | ITB-5 | — | ✅ |
 | `elicit-requirements` | Сбор требований у стейкхолдера | 2 | REQ-1, REQ-2 | `confluence` | ✅ |
 | `write-user-story` | Написание user story | 1 | REQ-3, REQ-4 | `jira` | ✅ |
+
+### FinTech
+
+| ID | Название | difficulty | requires_articles | requires_tech | Статус |
+|----|----------|-----------|-------------------|---------------|--------|
+| `fintech-design-payment` | Проектирование платёжной интеграции (BNPL) | 6 | SPC-18, SPC-19 | `iso20022`, `swift` | ✅ |
+| `fintech-reconciliation` | Проектирование системы сверки | 6 | SPC-23 | — | ✅ |
+| `fintech-pci-checklist` | PCI DSS compliance checklist для платёжного шлюза | 6 | SPC-20 | `pci-dss` | ✅ |
 
 ### Запланированные
 
@@ -539,6 +559,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **12** | AI / ML Analyst | SPC-5–13: AI-аналитик (введение, ML basics, EDA, ML-требования, данные, метрики, LLM, этика, MLOps) + tech/llm, langchain, huggingface, mlflow, vector-database, grpc + tasks/frame-ml-problem, define-ml-metrics, design-rag-pipeline | ✅ готово |
 | **13** | AI-агенты | SPC-14–17: введение, мультиагентность, MCP, разработка агентов + tech/mcp + task/design-agent-system | ✅ готово |
 | **14** | Cross-cutting (системные компоненты) | ARC-13–18: логирование, мониторинг, tracing, авторизация, resilience, кэширование + tech/docker, prometheus, redis | ✅ готово |
+| **15** | FinTech-специализация | SPC-18–26: путь, платежи, регуляторика, протоколы, ledger, сверка, Open Banking, фрод, кредиты + tech/iso20022, pci-dss, swift + tasks/fintech-design-payment, fintech-reconciliation, fintech-pci-checklist + FinTech-трек | ✅ готово |
 
 ---
 
@@ -546,9 +567,9 @@ scrum ──→ PRO-2 (Scrum основы)
 
 | Тип | Существующие | Запланированные (🔜+⏳+💡) | Всего |
 |-----|-------------|--------------------------|-------|
-| Статьи (docs/) | 43 | 71 | ~114 |
-| Технологии (tech/) | 18 | 5 | ~23 |
-| Задачи (tasks/) | 10 | 8 | ~18 |
-| Треки | 8 | 0 | ~8 |
+| Статьи (docs/) | 52 | 71 | ~123 |
+| Технологии (tech/) | 21 | 5 | ~26 |
+| Задачи (tasks/) | 13 | 8 | ~21 |
+| Треки | 9 | 0 | ~9 |
 
-**Всего единиц контента:** ~177 (полный охват L0–L5)
+**Всего единиц контента:** ~192 (полный охват L0–L5)

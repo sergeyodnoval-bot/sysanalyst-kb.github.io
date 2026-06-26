@@ -183,6 +183,15 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'ai-agents-multi': 'Мультиагентные системы',
     'ai-agents-mcp': 'MCP — Model Context Protocol',
     'ai-agents-dev': 'Разработка AI-агентов',
+    'fintech-analyst-path': 'FinTech-аналитик — путь в финтех',
+    'fintech-payments': 'Платёжные системы',
+    'fintech-regulation': 'Регуляторика в FinTech',
+    'fintech-protocols': 'Платёжные протоколы',
+    'fintech-ledger': 'Double-entry ledger',
+    'fintech-reconciliation': 'Сверка (reconciliation)',
+    'fintech-open-banking': 'Open Banking / PSD2',
+    'fintech-fraud': 'Фрод-мониторинг',
+    'fintech-lending': 'Кредитный конвейер',
   },
   tech: {
     browser: 'Веб-браузер',
@@ -212,6 +221,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     docker: 'Docker',
     prometheus: 'Prometheus',
     redis: 'Redis',
+    iso20022: 'ISO 20022',
+    'pci-dss': 'PCI DSS',
+    swift: 'SWIFT',
   },
   task: {
     'find-analyst-in-team': 'Найти аналитика в знакомых',
@@ -232,6 +244,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'define-ml-metrics': 'Определение метрик ML-продукта',
     'design-rag-pipeline': 'Проектирование RAG-пайплайна',
     'design-agent-system': 'Проектирование AI-агента',
+    'fintech-design-payment': 'Проектирование платёжной интеграции',
+    'fintech-reconciliation': 'Проектирование системы сверки',
+    'fintech-pci-checklist': 'PCI DSS compliance checklist',
   },
 };
 
@@ -751,6 +766,71 @@ const industryAnalystTrack: TrackDef = {
   ],
 };
 
+const fintechTrack: TrackDef = {
+  id: 'fintech-track',
+  title: 'FinTech Analyst',
+  description: 'Специализация в FinTech: платёжные системы, регуляторика, протоколы, сверка, Open Banking, фрод-мониторинг и кредитный конвейер',
+  stages: [
+    {
+      title: '0. FinTech — введение и платёжные системы',
+      description: 'Поймите специфику FinTech, роли и устройство платёжных систем.',
+      items: [
+        {type: 'article', id: 'fintech-analyst-path', folder: 'specialization'},
+        {type: 'article', id: 'fintech-payments', folder: 'specialization'},
+        {type: 'tech', id: 'iso20022'},
+        {type: 'tech', id: 'swift'},
+      ],
+    },
+    {
+      title: '1. Регуляторика и лицензирование',
+      description: 'Разберитесь с регуляторами: ЦБ, 115-ФЗ, PCI DSS, PSD2.',
+      items: [
+        {type: 'article', id: 'fintech-regulation', folder: 'specialization'},
+        {type: 'tech', id: 'pci-dss'},
+      ],
+    },
+    {
+      title: '2. Платёжные протоколы и стандарты',
+      description: 'Изучите протоколы ISO 8583, ISO 20022, SWIFT MT/MX.',
+      items: [
+        {type: 'article', id: 'fintech-protocols', folder: 'specialization'},
+      ],
+    },
+    {
+      title: '3. Double-entry ledger и бухгалтерский учёт',
+      description: 'Поймите, как работают транзакции, проводки, счета.',
+      items: [
+        {type: 'article', id: 'fintech-ledger', folder: 'specialization'},
+      ],
+    },
+    {
+      title: '4. Сверка (reconciliation)',
+      description: 'Научитесь проектировать системы сверки транзакций между системами.',
+      items: [
+        {type: 'article', id: 'fintech-reconciliation', folder: 'specialization'},
+        {type: 'task', id: 'fintech-reconciliation'},
+      ],
+    },
+    {
+      title: '5. Open Banking и PSD2',
+      description: 'Изучите Open Banking API, SCA, Berlin Group, FAPI.',
+      items: [
+        {type: 'article', id: 'fintech-open-banking', folder: 'specialization'},
+      ],
+    },
+    {
+      title: '6. Фрод-мониторинг и кредитный конвейер',
+      description: 'Продвинутые темы: антифрод-системы, кредитный скоринг, BNPL.',
+      items: [
+        {type: 'article', id: 'fintech-fraud', folder: 'specialization'},
+        {type: 'article', id: 'fintech-lending', folder: 'specialization'},
+        {type: 'task', id: 'fintech-design-payment'},
+        {type: 'task', id: 'fintech-pci-checklist'},
+      ],
+    },
+  ],
+};
+
 const aiAnalystTrack: TrackDef = {
   id: 'ai-analyst-track',
   title: 'AI / ML Analyst',
@@ -843,7 +923,7 @@ export function getItemType(pluginId: string | undefined): string | undefined {
   return pluginId ? pluginTypeMap[pluginId] : pluginTypeMap[''];
 }
 
-export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack, aiAnalystTrack];
+export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack, aiAnalystTrack, fintechTrack];
 
 function buildLookup(): Map<string, NavInfo[]> {
   const map = new Map<string, NavInfo[]>();

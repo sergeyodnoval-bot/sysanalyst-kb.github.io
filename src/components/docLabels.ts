@@ -172,6 +172,21 @@ const LABELS: Record<string, string> = {
   'docker': 'Docker — контейнеризация',
   'prometheus': 'Prometheus — сбор метрик',
   'redis': 'Redis — in-memory data store',
+  'specialization/fintech-analyst-path': 'FinTech-аналитик — путь в финтех',
+  'specialization/fintech-payments': 'Платёжные системы — как работают переводы',
+  'specialization/fintech-regulation': 'Регуляторика в FinTech — ЦБ, 115-ФЗ, PCI DSS, PSD2',
+  'specialization/fintech-protocols': 'Платёжные протоколы — ISO 8583, ISO 20022',
+  'specialization/fintech-ledger': 'Double-entry ledger — бухгалтерский учёт в коде',
+  'specialization/fintech-reconciliation': 'Сверка (reconciliation) — выявление расхождений',
+  'specialization/fintech-open-banking': 'Open Banking / PSD2 — API, SCA, Berlin Group',
+  'specialization/fintech-fraud': 'Фрод-мониторинг — антифрод-системы',
+  'specialization/fintech-lending': 'Кредитный конвейер — loan origination, scoring, amortization',
+  'iso20022': 'ISO 20022 — финансовые сообщения',
+  'pci-dss': 'PCI DSS — стандарт безопасности данных карт',
+  'swift': 'SWIFT — межбанковские сообщения',
+  'fintech-design-payment': 'Проектирование платёжной интеграции (BNPL)',
+  'fintech-reconciliation': 'Проектирование системы сверки',
+  'fintech-pci-checklist': 'PCI DSS compliance checklist для платёжного шлюза',
 };
 
 const SHORT_LOOKUP: Record<string, string> = {};
