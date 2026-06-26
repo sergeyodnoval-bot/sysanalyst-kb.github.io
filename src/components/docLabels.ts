@@ -132,6 +132,12 @@ const LABELS: Record<string, string> = {
   'architecture/hexagonal-architecture': 'Hexagonal Architecture (Ports & Adapters)',
   'architecture/saga-pattern': 'Saga pattern — управление транзакциями',
   'architecture/strangler-fig': 'Strangler Fig — миграция legacy',
+  'architecture/logging': 'Логирование — уровни, форматы, агрегация (ELK, Loki)',
+  'architecture/monitoring': 'Мониторинг и observability — метрики, алерты, дашборды',
+  'architecture/tracing': 'Distributed Tracing — трассировка запросов между сервисами',
+  'architecture/authorization': 'Авторизация — RBAC, ABAC, политики доступа',
+  'architecture/resilience-patterns': 'Resilience patterns — circuit breaker, retry, rate limiting',
+  'architecture/caching': 'Кэширование — стратегии, Redis, CDN',
   'integration/enterprise-integration-patterns': 'Enterprise Integration Patterns (EIP)',
   'integration/api-gateway': 'API Gateway pattern',
   'integration/event-storming-advanced': 'Event Storming — продвинутый уровень',
@@ -163,6 +169,9 @@ const LABELS: Record<string, string> = {
   'define-ml-metrics': 'Определение метрик ML-продукта',
   'design-rag-pipeline': 'Проектирование RAG-пайплайна',
   'design-agent-system': 'Проектирование AI-агента для продакшна',
+  'docker': 'Docker — контейнеризация',
+  'prometheus': 'Prometheus — сбор метрик',
+  'redis': 'Redis — in-memory data store',
 };
 
 const SHORT_LOOKUP: Record<string, string> = {};

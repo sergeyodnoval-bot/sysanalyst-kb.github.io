@@ -245,6 +245,17 @@
 | 11 | Saga pattern — управление транзакциями | ✅ | ARC-5 | `kafka` | — |
 | 12 | Strangler Fig — миграция legacy | ✅ | ARC-3 | — | — |
 
+#### L4 — Cross-cutting (level: 7–8)
+
+| # | Статья | Статус | Prereq |
+|---|--------|--------|--------|
+| 13 | Логирование — уровни, форматы, агрегация (ELK, Loki) | ✅ | ARC-4 |
+| 14 | Мониторинг и observability — метрики, алерты, дашборды | ✅ | ARC-13 |
+| 15 | Distributed Tracing — трассировка запросов между сервисами | ✅ | ARC-14, ARC-4 |
+| 16 | Авторизация — RBAC, ABAC, политики доступа | ✅ | INT-6 |
+| 17 | Resilience patterns — circuit breaker, retry, rate limiting | ✅ | ARC-4 |
+| 18 | Кэширование — стратегии, Redis, CDN | ✅ | ARC-4 |
+
 ---
 
 ### 2.7 PRO — Процессы и методологии (process/)
@@ -369,13 +380,15 @@
 | `vector-database` | Vector Database (Qdrant, Pinecone) | technology | SPC-9 | ✅ |
 | `grpc` | gRPC | technology | INT-1 | ✅ |
 | `mcp` | MCP — Model Context Protocol | protocol | SPC-14 | ✅ |
+| `docker` | Docker | tool | ARC-4 | ✅ |
+| `prometheus` | Prometheus | tool | ARC-14 | ✅ |
+| `redis` | Redis | technology | ARC-18 | ✅ |
 
 ### Запланированные
 
 | ID | Название | tech_type | Связанные статьи | Статус |
 |----|----------|-----------|-----------------|--------|
 | `git` | Git / GitHub | tool | ITB-3 | ✅ |
-| `docker` | Docker | technology | ARC-4 | 🔜 |
 | `drawio` | draw.io / diagrams.net | tool | MOD-2, MOD-3 | ✅ |
 | `miro` | Miro | tool | SFT-6 | 🔜 |
 | `swagger-editor` | Swagger Editor | tool | INT-3 | 🔜 |
@@ -386,7 +399,6 @@
 | `mongodb` | MongoDB | technology | DAT-5 | ⏳ |
 | `dbeaver` | DBeaver / DataGrip | tool | DAT-2 | ⏳ |
 | `graphql` | GraphQL | technology | INT-8 | ⏳ |
-| `grpc` | gRPC | technology | INT-9 | ⏳ |
 | `newman` | Newman (CLI для Postman) | tool | INT-4 | ⏳ |
 
 ---
@@ -526,6 +538,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **11** | L4+ | ARC-9–12, INT-13–15, SPC-1–4 | ✅ готово |
 | **12** | AI / ML Analyst | SPC-5–13: AI-аналитик (введение, ML basics, EDA, ML-требования, данные, метрики, LLM, этика, MLOps) + tech/llm, langchain, huggingface, mlflow, vector-database, grpc + tasks/frame-ml-problem, define-ml-metrics, design-rag-pipeline | ✅ готово |
 | **13** | AI-агенты | SPC-14–17: введение, мультиагентность, MCP, разработка агентов + tech/mcp + task/design-agent-system | ✅ готово |
+| **14** | Cross-cutting (системные компоненты) | ARC-13–18: логирование, мониторинг, tracing, авторизация, resilience, кэширование + tech/docker, prometheus, redis | ✅ готово |
 
 ---
 
@@ -533,9 +546,9 @@ scrum ──→ PRO-2 (Scrum основы)
 
 | Тип | Существующие | Запланированные (🔜+⏳+💡) | Всего |
 |-----|-------------|--------------------------|-------|
-| Статьи (docs/) | 37 | 77 | ~114 |
-| Технологии (tech/) | 15 | 7 | ~22 |
+| Статьи (docs/) | 43 | 71 | ~114 |
+| Технологии (tech/) | 18 | 5 | ~23 |
 | Задачи (tasks/) | 10 | 8 | ~18 |
 | Треки | 8 | 0 | ~8 |
 
-**Всего единиц контента:** ~171 (полный охват L0–L5)
+**Всего единиц контента:** ~177 (полный охват L0–L5)

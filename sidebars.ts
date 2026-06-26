@@ -124,6 +124,12 @@ const sidebars: SidebarsConfig = {
         'architecture/hexagonal-architecture',
         'architecture/saga-pattern',
         'architecture/strangler-fig',
+        'architecture/logging',
+        'architecture/monitoring',
+        'architecture/tracing',
+        'architecture/authorization',
+        'architecture/resilience-patterns',
+        'architecture/caching',
       ],
     },
     {
