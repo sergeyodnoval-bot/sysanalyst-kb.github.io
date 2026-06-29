@@ -232,6 +232,14 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'logistics-edo': 'ЭДО в логистике',
     'logistics-integrations': 'Интеграции с marketplace',
     'logistics-analytics': 'Аналитика в логистике',
+    'gamedev-path': 'GameDev — роль, специфика, путь',
+    'gamedev-architecture': 'Архитектура игр',
+    'gamedev-matchmaking': 'Матчмейкинг и сессии',
+    'gamedev-economy': 'Игровая экономика',
+    'gamedev-social': 'Социальные механики',
+    'gamedev-monetization': 'Монетизация (IAP, реклама)',
+    'gamedev-liveops': 'LiveOps',
+    'gamedev-analytics': 'Game Analytics',
   },
   tech: {
     browser: 'Веб-браузер',
@@ -279,6 +287,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     tms: 'TMS',
     geodata: 'Геоданные',
     edi: 'EDI',
+    unity: 'Unity / Unreal',
+    photon: 'Photon / Netcode',
+    appsflyer: 'AppsFlyer / Adjust',
   },
   task: {
     'find-analyst-in-team': 'Найти аналитика в знакомых',
@@ -317,6 +328,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'logistics-design-delivery': 'Проектирование доставки',
     'logistics-integration-courier': 'Интеграция с курьером',
     'logistics-optimization': 'Оптимизация маршрутов',
+    'gamedev-design-economy': 'Проектирование экономики',
+    'gamedev-matchmaking-flow': 'Проектирование матчмейкинга',
+    'gamedev-liveops': 'Проектирование LiveOps',
   },
 };
 
@@ -1271,7 +1285,53 @@ const logisticsTrack: TrackDef = {
   ],
 };
 
-export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack, aiAnalystTrack, fintechTrack, ecommerceTrack, telecomTrack, govtechTrack, medtechTrack, logisticsTrack];
+const gamedevTrack: TrackDef = {
+  id: 'gamedev-track',
+  title: 'GameDev Analyst (геймдев)',
+  description: 'Специализация в GameDev: архитектура, матчмейкинг, экономика, соцмеханики, монетизация, LiveOps, аналитика',
+  stages: [
+    {
+      title: '0. GameDev — введение и архитектура',
+      description: 'Поймите специфику GameDev и устройство игровых проектов.',
+      items: [
+        {type: 'article', id: 'gamedev-path', folder: 'specialization'},
+        {type: 'article', id: 'gamedev-architecture', folder: 'specialization'},
+      ],
+    },
+    {
+      title: '1. Матчмейкинг и сессии',
+      description: 'Подбор игроков, lifecycle сессии, мультиплеер.',
+      items: [
+        {type: 'article', id: 'gamedev-matchmaking', folder: 'specialization'},
+        {type: 'tech', id: 'photon'},
+        {type: 'tech', id: 'unity'},
+        {type: 'task', id: 'gamedev-matchmaking-flow'},
+      ],
+    },
+    {
+      title: '2. Экономика и монетизация',
+      description: 'Игровая экономика, IAP, реклама, подписки, баланс.',
+      items: [
+        {type: 'article', id: 'gamedev-economy', folder: 'specialization'},
+        {type: 'article', id: 'gamedev-social', folder: 'specialization'},
+        {type: 'article', id: 'gamedev-monetization', folder: 'specialization'},
+        {type: 'task', id: 'gamedev-design-economy'},
+      ],
+    },
+    {
+      title: '3. LiveOps и аналитика',
+      description: 'Управление живым продуктом, метрики, event tracking.',
+      items: [
+        {type: 'article', id: 'gamedev-liveops', folder: 'specialization'},
+        {type: 'article', id: 'gamedev-analytics', folder: 'specialization'},
+        {type: 'tech', id: 'appsflyer'},
+        {type: 'task', id: 'gamedev-liveops'},
+      ],
+    },
+  ],
+};
+
+export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack, aiAnalystTrack, fintechTrack, ecommerceTrack, telecomTrack, govtechTrack, medtechTrack, logisticsTrack, gamedevTrack];
 
 function buildLookup(): Map<string, NavInfo[]> {
   const map = new Map<string, NavInfo[]>();

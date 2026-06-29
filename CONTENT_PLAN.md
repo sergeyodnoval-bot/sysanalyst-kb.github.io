@@ -405,14 +405,14 @@
 | 64 | **ЭДО и документооборот в логистике** | ✅ | SPC-59 |
 | 65 | **Интеграции с маркетплейсами и курьерами** | ✅ | SPC-59, SPC-62 |
 | 66 | **Аналитика в логистике** | ✅ | SPC-59, SPC-63 |
-| 67 | **GameDev — путь аналитика** | 🔜 | — |
-| 68 | **Архитектура игровых проектов** | 🔜 | SPC-67 |
-| 69 | **Матчмейкинг и игровые сессии** | 🔜 | SPC-67, SPC-68 |
-| 70 | **Игровая экономика и баланс** | 🔜 | SPC-67 |
-| 71 | **Социальные механики и друзья** | 🔜 | SPC-67, SPC-69 |
-| 72 | **Монетизация (IAP, реклама, подписки)** | 🔜 | SPC-67, SPC-70 |
-| 73 | **LiveOps — управление живым продуктом** | 🔜 | SPC-67, SPC-72 |
-| 74 | **Game Analytics** | 🔜 | SPC-67, SPC-73 |
+| 67 | **GameDev — путь аналитика** | ✅ | — |
+| 68 | **Архитектура игровых проектов** | ✅ | SPC-67 |
+| 69 | **Матчмейкинг и игровые сессии** | ✅ | SPC-67, SPC-68 |
+| 70 | **Игровая экономика и баланс** | ✅ | SPC-67 |
+| 71 | **Социальные механики и друзья** | ✅ | SPC-67, SPC-69 |
+| 72 | **Монетизация (IAP, реклама, подписки)** | ✅ | SPC-67, SPC-70 |
+| 73 | **LiveOps — управление живым продуктом** | ✅ | SPC-67, SPC-72 |
+| 74 | **Game Analytics** | ✅ | SPC-67, SPC-73 |
 | 75 | **Соцсети и контентные платформы — путь аналитика** | 🔜 | — |
 | 76 | **Лента контента (feed, ranking, рекомендации)** | 🔜 | SPC-75 |
 | 77 | **Мессенджеры и real-time коммуникации** | 🔜 | SPC-75 |
@@ -466,9 +466,9 @@
 | `tms` | TMS — транспортные системы | system | SPC-60 | ✅ |
 | `geodata` | Геоданные (Яндекс.Карты, 2GIS, Mapbox) | technology | SPC-63 | ✅ |
 | `edi` | EDI — электронный обмен данными | standard | SPC-64 | ✅ |
-| `unity` | Unity / Unreal Engine | engine | SPC-68 | 🔜 |
-| `photon` | Photon / Netcode — мультиплеер | technology | SPC-69 | 🔜 |
-| `appsflyer` | AppsFlyer / Adjust — mobile analytics | tool | SPC-74 | 🔜 |
+| `unity` | Unity / Unreal Engine | engine | SPC-68 | ✅ |
+| `photon` | Photon / Netcode — мультиплеер | technology | SPC-69 | ✅ |
+| `appsflyer` | AppsFlyer / Adjust — mobile analytics | tool | SPC-74 | ✅ |
 | `recommendation` | Рекомендательные системы (ML, collaborative filtering) | technology | SPC-76 | 🔜 |
 | `websocket` | WebSocket / SSE — real-time протоколы | protocol | SPC-77 | 🔜 |
 | `cdn` | CDN — доставка контента | infrastructure | SPC-81 | 🔜 |
@@ -557,9 +557,9 @@
 
 | ID | Название | difficulty | requires_articles | requires_tech | Статус |
 |----|----------|-----------|-------------------|---------------|--------|
-| `gamedev-design-economy` | Проектирование игровой экономики | 6 | SPC-70 | — | 🔜 |
-| `gamedev-matchmaking-flow` | Проектирование матчмейкинга | 6 | SPC-69 | `photon` | 🔜 |
-| `gamedev-liveops` | Проектирование LiveOps-кампании | 6 | SPC-73 | `appsflyer` | 🔜 |
+| `gamedev-design-economy` | Проектирование игровой экономики | 6 | SPC-70 | — | ✅ |
+| `gamedev-matchmaking-flow` | Проектирование матчмейкинга | 6 | SPC-69 | `photon` | ✅ |
+| `gamedev-liveops` | Проектирование LiveOps-кампании | 6 | SPC-73 | `appsflyer` | ✅ |
 
 ### Соцсети / Контентные платформы
 
@@ -615,7 +615,7 @@
 | **GovTech** | SPC-43–50: путь, ГИС, госуслуги, СМЭВ, импортозамещение, безопасность, закупки, ЭДО | ✅ |
 | **MedTech** | SPC-51–58: путь, ЭМК, МИС, ЛИС, фарма, телемедицина, PACS, регуляторика | ✅ |
 | **Logistics** | SPC-59–66: путь, TMS, WMS, доставка, маршрутизация, ЭДО, интеграции, аналитика | ✅ |
-| **GameDev** | SPC-67–74: путь, архитектура, матчмейкинг, экономика, соцмеханики, монетизация, LiveOps, аналитика | 🔜 |
+| **GameDev** | SPC-67–74: путь, архитектура, матчмейкинг, экономика, соцмеханики, монетизация, LiveOps, аналитика | ✅ |
 | **Соцсети / Контент** | SPC-75–82: путь, лента, мессенджеры, модерация, соцграф, монетизация, контент, платформа | 🔜 |
 
 ---
@@ -705,7 +705,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **18** | GovTech / Госсектор | SPC-43–50: путь, ГИС, госуслуги, СМЭВ, импортозамещение, безопасность, закупки, ЭДО + tech/smev, crypto, astra-linux + tasks/gov-design-service, gov-smev-integration, gov-security-audit + GovTech-трек | ✅ готово |
 | **19** | MedTech / Медицина | SPC-51–58: путь, ЭМК, МИС, ЛИС, фарма, телемедицина, PACS, регуляторика + tech/hl7, emias, dicom + tasks/medtech-design-emk, medtech-lis-integration, medtech-compliance + MedTech-трек | ✅ |
 | **20** | Logistics / Логистика | SPC-59–66: путь, TMS, WMS, доставка, маршрутизация, ЭДО, интеграции, аналитика + tech/tms, geodata, edi + tasks/logistics-design-delivery, logistics-integration-courier, logistics-optimization + Logistics-трек | ✅ |
-| **21** | GameDev | SPC-67–74: путь, архитектура, матчмейкинг, экономика, соцмеханики, монетизация, LiveOps, аналитика + tech/unity, photon, appsflyer + tasks/gamedev-design-economy, gamedev-matchmaking-flow, gamedev-liveops + GameDev-трек | 🔜 |
+| **21** | GameDev | SPC-67–74: путь, архитектура, матчмейкинг, экономика, соцмеханики, монетизация, LiveOps, аналитика + tech/unity, photon, appsflyer + tasks/gamedev-design-economy, gamedev-matchmaking-flow, gamedev-liveops + GameDev-трек | ✅ |
 | **22** | Соцсети / Контент | SPC-75–82: путь, лента, мессенджеры, модерация, соцграф, монетизация, контент, платформа + tech/recommendation, websocket, cdn + tasks/socnet-design-feed, socnet-moderation-flow, socnet-recommendations + SocNet-трек | 🔜 |
 
 ---

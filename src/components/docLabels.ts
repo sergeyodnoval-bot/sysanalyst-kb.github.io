@@ -257,6 +257,20 @@ const LABELS: Record<string, string> = {
   'logistics-design-delivery': 'Проектирование системы доставки',
   'logistics-integration-courier': 'Интеграция с курьерской службой',
   'logistics-optimization': 'Оптимизация маршрутов доставки',
+  'specialization/gamedev-path': 'GameDev — роль, специфика, карьерный путь',
+  'specialization/gamedev-architecture': 'Архитектура игровых проектов',
+  'specialization/gamedev-matchmaking': 'Матчмейкинг и игровые сессии',
+  'specialization/gamedev-economy': 'Игровая экономика и баланс',
+  'specialization/gamedev-social': 'Социальные механики и друзья',
+  'specialization/gamedev-monetization': 'Монетизация — IAP, реклама, подписки',
+  'specialization/gamedev-liveops': 'LiveOps — управление живым продуктом',
+  'specialization/gamedev-analytics': 'Game Analytics',
+  'unity': 'Unity / Unreal Engine',
+  'photon': 'Photon / Netcode — мультиплеер',
+  'appsflyer': 'AppsFlyer / Adjust — mobile analytics',
+  'gamedev-design-economy': 'Проектирование игровой экономики',
+  'gamedev-matchmaking-flow': 'Проектирование матчмейкинга',
+  'gamedev-liveops': 'Проектирование LiveOps-кампании',
 };
 
 const SHORT_LOOKUP: Record<string, string> = {};
