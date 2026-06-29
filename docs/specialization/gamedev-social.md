@@ -160,7 +160,8 @@ sequenceDiagram
     S-->>P1: Player B joined
     P1->>S: POST /matchmaking/join {party_id, mode: "coop_raid"}
     S->>S: Matchmaker ищет рейд
-    S-->>P1,P2: MATCH_FOUND
+    S-->>P1: MATCH_FOUND
+    S-->>P2: MATCH_FOUND
 ```
 
 **Party lifecycle:**
