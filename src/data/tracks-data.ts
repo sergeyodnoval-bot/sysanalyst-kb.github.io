@@ -216,6 +216,14 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'govtech-security': 'Безопасность и аттестация (ФСТЭК)',
     'govtech-procurement': 'Госзакупки (44-ФЗ, 223-ФЗ)',
     'govtech-edo': 'ЭДО и документооборот',
+    'medtech-path': 'MedTech — роль, специфика, путь',
+    'medtech-emk': 'ЭМК — электронные медкарты',
+    'medtech-mis': 'МИС — медицинские ИС',
+    'medtech-lis': 'ЛИС — лабораторные ИС',
+    'medtech-pharma': 'Фарма и Честный ЗНАК',
+    'medtech-telemedicine': 'Телемедицина',
+    'medtech-pacs': 'PACS / DICOM',
+    'medtech-regulations': 'Регуляторика в медицине',
   },
   tech: {
     browser: 'Веб-браузер',
@@ -257,6 +265,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     smev: 'СМЭВ',
     crypto: 'Криптография (ГОСТ)',
     'astra-linux': 'Astra Linux',
+    hl7: 'HL7 FHIR',
+    emias: 'ЕГИСЗ / ЕМИАС',
+    dicom: 'DICOM',
   },
   task: {
     'find-analyst-in-team': 'Найти аналитика в знакомых',
@@ -289,6 +300,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'gov-design-service': 'Проектирование госуслуги',
     'gov-smev-integration': 'Интеграция ГИС с СМЭВ',
     'gov-security-audit': 'Чек-лист аттестации ГИС',
+    'medtech-design-emk': 'Проектирование ЭМК',
+    'medtech-lis-integration': 'Интеграция ЛИС с МИС',
+    'medtech-compliance': 'Чек-лист 323-ФЗ',
   },
 };
 
@@ -1145,7 +1159,59 @@ export function getItemType(pluginId: string | undefined): string | undefined {
   return pluginId ? pluginTypeMap[pluginId] : pluginTypeMap[''];
 }
 
-export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack, aiAnalystTrack, fintechTrack, ecommerceTrack, telecomTrack, govtechTrack];
+const medtechTrack: TrackDef = {
+  id: 'medtech-track',
+  title: 'MedTech Analyst (медицина)',
+  description: 'Специализация в MedTech: ЭМК, МИС, ЛИС, фарма, телемедицина, PACS/DICOM, регуляторика',
+  stages: [
+    {
+      title: '0. MedTech — введение и ЭМК',
+      description: 'Поймите специфику MedTech и устройство электронной медкарты.',
+      items: [
+        {type: 'article', id: 'medtech-path', folder: 'specialization'},
+        {type: 'article', id: 'medtech-emk', folder: 'specialization'},
+      ],
+    },
+    {
+      title: '1. МИС и ЛИС',
+      description: 'Медицинские и лабораторные информационные системы.',
+      items: [
+        {type: 'article', id: 'medtech-mis', folder: 'specialization'},
+        {type: 'article', id: 'medtech-lis', folder: 'specialization'},
+        {type: 'tech', id: 'hl7'},
+        {type: 'task', id: 'medtech-design-emk'},
+        {type: 'task', id: 'medtech-lis-integration'},
+      ],
+    },
+    {
+      title: '2. Фарма и телемедицина',
+      description: 'Учёт лекарств, Честный ЗНАК, удалённые консультации.',
+      items: [
+        {type: 'article', id: 'medtech-pharma', folder: 'specialization'},
+        {type: 'article', id: 'medtech-telemedicine', folder: 'specialization'},
+      ],
+    },
+    {
+      title: '3. PACS и радиология',
+      description: 'Медицинские изображения, DICOM, интеграция с МИС.',
+      items: [
+        {type: 'article', id: 'medtech-pacs', folder: 'specialization'},
+        {type: 'tech', id: 'dicom'},
+      ],
+    },
+    {
+      title: '4. Регуляторика и compliance',
+      description: '323-ФЗ, 152-ФЗ, ЕМИАС/ЕГИСЗ, медизделия.',
+      items: [
+        {type: 'article', id: 'medtech-regulations', folder: 'specialization'},
+        {type: 'tech', id: 'emias'},
+        {type: 'task', id: 'medtech-compliance'},
+      ],
+    },
+  ],
+};
+
+export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack, aiAnalystTrack, fintechTrack, ecommerceTrack, telecomTrack, govtechTrack, medtechTrack];
 
 function buildLookup(): Map<string, NavInfo[]> {
   const map = new Map<string, NavInfo[]>();

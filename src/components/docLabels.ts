@@ -229,6 +229,20 @@ const LABELS: Record<string, string> = {
   'gov-design-service': 'Проектирование госуслуги',
   'gov-smev-integration': 'Интеграция ГИС с СМЭВ 3',
   'gov-security-audit': 'Чек-лист аттестации ГИС (ФСТЭК)',
+  'specialization/medtech-path': 'MedTech — роль, специфика, карьерный путь в медицине и фарме',
+  'specialization/medtech-emk': 'ЭМК — электронные медицинские карты',
+  'specialization/medtech-mis': 'МИС — медицинские информационные системы',
+  'specialization/medtech-lis': 'ЛИС — лабораторные информационные системы',
+  'specialization/medtech-pharma': 'Фарма — учёт лекарств и маркировка (Честный ЗНАК)',
+  'specialization/medtech-telemedicine': 'Телемедицина и дистанционные консультации',
+  'specialization/medtech-pacs': 'PACS / DICOM — медицинские изображения',
+  'specialization/medtech-regulations': 'Регуляторика в медицине (323-ФЗ, 152-ФЗ, оборот лекарств)',
+  'hl7': 'HL7 FHIR — медицинский обмен данными',
+  'emias': 'ЕГИСЗ / ЕМИАС — госмедицина',
+  'dicom': 'DICOM — стандарт медицинских изображений',
+  'medtech-design-emk': 'Проектирование электронной медкарты (ЭМК)',
+  'medtech-lis-integration': 'Интеграция ЛИС с МИС',
+  'medtech-compliance': 'Чек-лист соответствия 323-ФЗ',
 };
 
 const SHORT_LOOKUP: Record<string, string> = {};
