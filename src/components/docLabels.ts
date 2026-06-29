@@ -243,6 +243,20 @@ const LABELS: Record<string, string> = {
   'medtech-design-emk': 'Проектирование электронной медкарты (ЭМК)',
   'medtech-lis-integration': 'Интеграция ЛИС с МИС',
   'medtech-compliance': 'Чек-лист соответствия 323-ФЗ',
+  'specialization/logistics-path': 'Логистика — роль, специфика, карьерный путь',
+  'specialization/logistics-tms': 'TMS — система управления перевозками',
+  'specialization/logistics-wms': 'Складская логистика и WMS',
+  'specialization/logistics-last-mile': 'Доставка последней мили и трекинг',
+  'specialization/logistics-routing': 'Маршрутизация и оптимизация',
+  'specialization/logistics-edo': 'ЭДО и документооборот в логистике',
+  'specialization/logistics-integrations': 'Интеграции с маркетплейсами и курьерами',
+  'specialization/logistics-analytics': 'Аналитика в логистике',
+  'tms': 'TMS — транспортные системы',
+  'geodata': 'Геоданные (карты, маршрутизация)',
+  'edi': 'EDI — электронный обмен данными',
+  'logistics-design-delivery': 'Проектирование системы доставки',
+  'logistics-integration-courier': 'Интеграция с курьерской службой',
+  'logistics-optimization': 'Оптимизация маршрутов доставки',
 };
 
 const SHORT_LOOKUP: Record<string, string> = {};

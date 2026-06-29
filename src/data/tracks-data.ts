@@ -224,6 +224,14 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'medtech-telemedicine': 'Телемедицина',
     'medtech-pacs': 'PACS / DICOM',
     'medtech-regulations': 'Регуляторика в медицине',
+    'logistics-path': 'Логистика — роль, специфика, путь',
+    'logistics-tms': 'TMS — управление перевозками',
+    'logistics-wms': 'WMS — складская ИС',
+    'logistics-last-mile': 'Последняя миля и трекинг',
+    'logistics-routing': 'Маршрутизация и оптимизация',
+    'logistics-edo': 'ЭДО в логистике',
+    'logistics-integrations': 'Интеграции с marketplace',
+    'logistics-analytics': 'Аналитика в логистике',
   },
   tech: {
     browser: 'Веб-браузер',
@@ -268,6 +276,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     hl7: 'HL7 FHIR',
     emias: 'ЕГИСЗ / ЕМИАС',
     dicom: 'DICOM',
+    tms: 'TMS',
+    geodata: 'Геоданные',
+    edi: 'EDI',
   },
   task: {
     'find-analyst-in-team': 'Найти аналитика в знакомых',
@@ -303,6 +314,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'medtech-design-emk': 'Проектирование ЭМК',
     'medtech-lis-integration': 'Интеграция ЛИС с МИС',
     'medtech-compliance': 'Чек-лист 323-ФЗ',
+    'logistics-design-delivery': 'Проектирование доставки',
+    'logistics-integration-courier': 'Интеграция с курьером',
+    'logistics-optimization': 'Оптимизация маршрутов',
   },
 };
 
@@ -1211,7 +1225,53 @@ const medtechTrack: TrackDef = {
   ],
 };
 
-export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack, aiAnalystTrack, fintechTrack, ecommerceTrack, telecomTrack, govtechTrack, medtechTrack];
+const logisticsTrack: TrackDef = {
+  id: 'logistics-track',
+  title: 'Logistics Analyst (логистика)',
+  description: 'Специализация в Logistics: TMS, WMS, последняя миля, маршрутизация, ЭДО, интеграции, аналитика',
+  stages: [
+    {
+      title: '0. Логистика — введение',
+      description: 'Поймите специфику логистики и основные системы.',
+      items: [
+        {type: 'article', id: 'logistics-path', folder: 'specialization'},
+      ],
+    },
+    {
+      title: '1. TMS и WMS',
+      description: 'Системы управления перевозками и складом.',
+      items: [
+        {type: 'article', id: 'logistics-tms', folder: 'specialization'},
+        {type: 'article', id: 'logistics-wms', folder: 'specialization'},
+        {type: 'tech', id: 'tms'},
+      ],
+    },
+    {
+      title: '2. Последняя миля и маршрутизация',
+      description: 'Доставка клиентам, трекинг, оптимизация маршрутов.',
+      items: [
+        {type: 'article', id: 'logistics-last-mile', folder: 'specialization'},
+        {type: 'article', id: 'logistics-routing', folder: 'specialization'},
+        {type: 'tech', id: 'geodata'},
+        {type: 'task', id: 'logistics-design-delivery'},
+        {type: 'task', id: 'logistics-optimization'},
+      ],
+    },
+    {
+      title: '3. ЭДО, интеграции и аналитика',
+      description: 'Документооборот, связи с маркетплейсами и курьерами, метрики.',
+      items: [
+        {type: 'article', id: 'logistics-edo', folder: 'specialization'},
+        {type: 'article', id: 'logistics-integrations', folder: 'specialization'},
+        {type: 'article', id: 'logistics-analytics', folder: 'specialization'},
+        {type: 'tech', id: 'edi'},
+        {type: 'task', id: 'logistics-integration-courier'},
+      ],
+    },
+  ],
+};
+
+export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack, aiAnalystTrack, fintechTrack, ecommerceTrack, telecomTrack, govtechTrack, medtechTrack, logisticsTrack];
 
 function buildLookup(): Map<string, NavInfo[]> {
   const map = new Map<string, NavInfo[]>();

@@ -397,14 +397,14 @@
 | 56 | **Телемедицина и дистанционные консультации** | ✅ | SPC-51, SPC-53 |
 | 57 | **PACS / DICOM — медицинские изображения** | ✅ | SPC-53 |
 | 58 | **Регуляторика в медицине (323-ФЗ, 152-ФЗ, оборот лекарств)** | ✅ | SPC-51 |
-| 59 | **Логистика — путь аналитика** | 🔜 | — |
-| 60 | **TMS — система управления перевозками** | 🔜 | SPC-59 |
-| 61 | **Складская логистика и WMS** | 🔜 | SPC-59 |
-| 62 | **Доставка последней мили и трекинг** | 🔜 | SPC-59, SPC-60 |
-| 63 | **Маршрутизация и оптимизация** | 🔜 | SPC-60 |
-| 64 | **ЭДО и документооборот в логистике** | 🔜 | SPC-59 |
-| 65 | **Интеграции с маркетплейсами и курьерами** | 🔜 | SPC-59, SPC-62 |
-| 66 | **Аналитика в логистике** | 🔜 | SPC-59, SPC-63 |
+| 59 | **Логистика — путь аналитика** | ✅ | — |
+| 60 | **TMS — система управления перевозками** | ✅ | SPC-59 |
+| 61 | **Складская логистика и WMS** | ✅ | SPC-59 |
+| 62 | **Доставка последней мили и трекинг** | ✅ | SPC-59, SPC-60 |
+| 63 | **Маршрутизация и оптимизация** | ✅ | SPC-60 |
+| 64 | **ЭДО и документооборот в логистике** | ✅ | SPC-59 |
+| 65 | **Интеграции с маркетплейсами и курьерами** | ✅ | SPC-59, SPC-62 |
+| 66 | **Аналитика в логистике** | ✅ | SPC-59, SPC-63 |
 | 67 | **GameDev — путь аналитика** | 🔜 | — |
 | 68 | **Архитектура игровых проектов** | 🔜 | SPC-67 |
 | 69 | **Матчмейкинг и игровые сессии** | 🔜 | SPC-67, SPC-68 |
@@ -463,9 +463,9 @@
 | `hl7` | HL7 FHIR — медицинский обмен данными | standard | SPC-52, SPC-53 | ✅ |
 | `emias` | ЕГИСЗ / ЕМИАС — госмедицина | system | SPC-53 | ✅ |
 | `dicom` | PACS / DICOM — медицинские изображения | standard | SPC-57 | ✅ |
-| `tms` | TMS — транспортные системы | system | SPC-60 | 🔜 |
-| `geodata` | Геоданные (Яндекс.Карты, 2GIS, Mapbox) | technology | SPC-63 | 🔜 |
-| `edi` | EDI — электронный обмен данными | standard | SPC-64 | 🔜 |
+| `tms` | TMS — транспортные системы | system | SPC-60 | ✅ |
+| `geodata` | Геоданные (Яндекс.Карты, 2GIS, Mapbox) | technology | SPC-63 | ✅ |
+| `edi` | EDI — электронный обмен данными | standard | SPC-64 | ✅ |
 | `unity` | Unity / Unreal Engine | engine | SPC-68 | 🔜 |
 | `photon` | Photon / Netcode — мультиплеер | technology | SPC-69 | 🔜 |
 | `appsflyer` | AppsFlyer / Adjust — mobile analytics | tool | SPC-74 | 🔜 |
@@ -549,9 +549,9 @@
 
 | ID | Название | difficulty | requires_articles | requires_tech | Статус |
 |----|----------|-----------|-------------------|---------------|--------|
-| `logistics-design-delivery` | Проектирование системы доставки | 6 | SPC-62 | `geodata` | 🔜 |
-| `logistics-integration-courier` | Интеграция с курьерской службой | 6 | SPC-65 | `edi` | 🔜 |
-| `logistics-optimization` | Оптимизация маршрутов доставки | 6 | SPC-63 | — | 🔜 |
+| `logistics-design-delivery` | Проектирование системы доставки | 6 | SPC-62 | `geodata` | ✅ |
+| `logistics-integration-courier` | Интеграция с курьерской службой | 6 | SPC-65 | `edi` | ✅ |
+| `logistics-optimization` | Оптимизация маршрутов доставки | 6 | SPC-63 | — | ✅ |
 
 ### GameDev
 
@@ -614,7 +614,7 @@
 | **Telecom** | SPC-35–42: путь, BSS/OSS, биллинг, CRM, provisioning, регуляторика, MVNO, 5G/IoT | ✅ |
 | **GovTech** | SPC-43–50: путь, ГИС, госуслуги, СМЭВ, импортозамещение, безопасность, закупки, ЭДО | ✅ |
 | **MedTech** | SPC-51–58: путь, ЭМК, МИС, ЛИС, фарма, телемедицина, PACS, регуляторика | ✅ |
-| **Logistics** | SPC-59–66: путь, TMS, WMS, доставка, маршрутизация, ЭДО, интеграции, аналитика | 🔜 |
+| **Logistics** | SPC-59–66: путь, TMS, WMS, доставка, маршрутизация, ЭДО, интеграции, аналитика | ✅ |
 | **GameDev** | SPC-67–74: путь, архитектура, матчмейкинг, экономика, соцмеханики, монетизация, LiveOps, аналитика | 🔜 |
 | **Соцсети / Контент** | SPC-75–82: путь, лента, мессенджеры, модерация, соцграф, монетизация, контент, платформа | 🔜 |
 
@@ -704,7 +704,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **17** | Telecom | SPC-35–42: путь, BSS/OSS, биллинг, CRM, provisioning, регуляторика, MVNO, 5G/IoT + tech/tmforum, diameter, kubernetes + tasks/telecom-design-billing, telecom-oss-integration, telecom-compliance + Telecom-трек | ✅ готово |
 | **18** | GovTech / Госсектор | SPC-43–50: путь, ГИС, госуслуги, СМЭВ, импортозамещение, безопасность, закупки, ЭДО + tech/smev, crypto, astra-linux + tasks/gov-design-service, gov-smev-integration, gov-security-audit + GovTech-трек | ✅ готово |
 | **19** | MedTech / Медицина | SPC-51–58: путь, ЭМК, МИС, ЛИС, фарма, телемедицина, PACS, регуляторика + tech/hl7, emias, dicom + tasks/medtech-design-emk, medtech-lis-integration, medtech-compliance + MedTech-трек | ✅ |
-| **20** | Logistics / Логистика | SPC-59–66: путь, TMS, WMS, доставка, маршрутизация, ЭДО, интеграции, аналитика + tech/tms, geodata, edi + tasks/logistics-design-delivery, logistics-integration-courier, logistics-optimization + Logistics-трек | 🔜 |
+| **20** | Logistics / Логистика | SPC-59–66: путь, TMS, WMS, доставка, маршрутизация, ЭДО, интеграции, аналитика + tech/tms, geodata, edi + tasks/logistics-design-delivery, logistics-integration-courier, logistics-optimization + Logistics-трек | ✅ |
 | **21** | GameDev | SPC-67–74: путь, архитектура, матчмейкинг, экономика, соцмеханики, монетизация, LiveOps, аналитика + tech/unity, photon, appsflyer + tasks/gamedev-design-economy, gamedev-matchmaking-flow, gamedev-liveops + GameDev-трек | 🔜 |
 | **22** | Соцсети / Контент | SPC-75–82: путь, лента, мессенджеры, модерация, соцграф, монетизация, контент, платформа + tech/recommendation, websocket, cdn + tasks/socnet-design-feed, socnet-moderation-flow, socnet-recommendations + SocNet-трек | 🔜 |
 
