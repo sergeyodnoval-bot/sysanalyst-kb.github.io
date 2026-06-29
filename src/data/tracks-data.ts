@@ -208,6 +208,14 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'telecom-regulations': 'Регуляторика в Telecom (СОРМ, ПД, лицензии)',
     'telecom-mvno': 'MVNO — модель виртуальных операторов',
     'telecom-5g-iot': '5G, IoT и новые технологии в Telecom',
+    'govtech-path': 'GovTech — роль, специфика, путь',
+    'govtech-gis-architecture': 'Архитектура ГИС',
+    'govtech-portal': 'Госуслуги и порталы',
+    'govtech-smev': 'СМЭВ — межведомственное взаимодействие',
+    'govtech-import-substitution': 'Импортозамещение и реестр ПО',
+    'govtech-security': 'Безопасность и аттестация (ФСТЭК)',
+    'govtech-procurement': 'Госзакупки (44-ФЗ, 223-ФЗ)',
+    'govtech-edo': 'ЭДО и документооборот',
   },
   tech: {
     browser: 'Веб-браузер',
@@ -246,6 +254,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     tmforum: 'TM Forum Open API',
     diameter: 'Diameter',
     kubernetes: 'Kubernetes',
+    smev: 'СМЭВ',
+    crypto: 'Криптография (ГОСТ)',
+    'astra-linux': 'Astra Linux',
   },
   task: {
     'find-analyst-in-team': 'Найти аналитика в знакомых',
@@ -275,6 +286,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'telecom-design-billing': 'Проектирование биллинговой модели',
     'telecom-oss-integration': 'Интеграция OSS-систем',
     'telecom-compliance': 'Чек-лист соответствия регулятору',
+    'gov-design-service': 'Проектирование госуслуги',
+    'gov-smev-integration': 'Интеграция ГИС с СМЭВ',
+    'gov-security-audit': 'Чек-лист аттестации ГИС',
   },
 };
 
@@ -987,6 +1001,58 @@ const telecomTrack: TrackDef = {
   ],
 };
 
+const govtechTrack: TrackDef = {
+  id: 'govtech-track',
+  title: 'GovTech Analyst (госсектор)',
+  description: 'Специализация в GovTech: архитектура ГИС, порталы госуслуг, СМЭВ, импортозамещение, безопасность, закупки и ЭДО',
+  stages: [
+    {
+      title: '0. GovTech — введение и архитектура ГИС',
+      description: 'Поймите специфику госсектора и устройство ГИС.',
+      items: [
+        {type: 'article', id: 'govtech-path', folder: 'specialization'},
+        {type: 'article', id: 'govtech-gis-architecture', folder: 'specialization'},
+      ],
+    },
+    {
+      title: '1. Портал госуслуг и СМЭВ',
+      description: 'Проектирование порталов и межведомственное взаимодействие.',
+      items: [
+        {type: 'article', id: 'govtech-portal', folder: 'specialization'},
+        {type: 'article', id: 'govtech-smev', folder: 'specialization'},
+        {type: 'tech', id: 'smev'},
+        {type: 'task', id: 'gov-design-service'},
+        {type: 'task', id: 'gov-smev-integration'},
+      ],
+    },
+    {
+      title: '2. Импортозамещение',
+      description: 'Реестр ПО, Astra Linux, Postgres Pro, миграция.',
+      items: [
+        {type: 'article', id: 'govtech-import-substitution', folder: 'specialization'},
+        {type: 'tech', id: 'astra-linux'},
+      ],
+    },
+    {
+      title: '3. Безопасность и аттестация',
+      description: 'ФСТЭК, СЗИ, криптография, аттестация ГИС.',
+      items: [
+        {type: 'article', id: 'govtech-security', folder: 'specialization'},
+        {type: 'tech', id: 'crypto'},
+        {type: 'task', id: 'gov-security-audit'},
+      ],
+    },
+    {
+      title: '4. Госзакупки и ЭДО',
+      description: '44-ФЗ, 223-ФЗ, юридически значимый документооборот.',
+      items: [
+        {type: 'article', id: 'govtech-procurement', folder: 'specialization'},
+        {type: 'article', id: 'govtech-edo', folder: 'specialization'},
+      ],
+    },
+  ],
+};
+
 const aiAnalystTrack: TrackDef = {
   id: 'ai-analyst-track',
   title: 'AI / ML Analyst',
@@ -1079,7 +1145,7 @@ export function getItemType(pluginId: string | undefined): string | undefined {
   return pluginId ? pluginTypeMap[pluginId] : pluginTypeMap[''];
 }
 
-export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack, aiAnalystTrack, fintechTrack, ecommerceTrack, telecomTrack];
+export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack, aiAnalystTrack, fintechTrack, ecommerceTrack, telecomTrack, govtechTrack];
 
 function buildLookup(): Map<string, NavInfo[]> {
   const map = new Map<string, NavInfo[]>();

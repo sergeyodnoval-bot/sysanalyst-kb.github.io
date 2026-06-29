@@ -215,6 +215,20 @@ const LABELS: Record<string, string> = {
   'telecom-design-billing': 'Проектирование биллинговой модели',
   'telecom-oss-integration': 'Интеграция OSS-систем (TM Forum API)',
   'telecom-compliance': 'Чек-лист соответствия регулятору для оператора связи',
+  'specialization/govtech-path': 'GovTech — роль, специфика, путь',
+  'specialization/govtech-gis-architecture': 'Архитектура ГИС',
+  'specialization/govtech-portal': 'Госуслуги и порталы — проектирование',
+  'specialization/govtech-smev': 'СМЭВ — межведомственное взаимодействие',
+  'specialization/govtech-import-substitution': 'Импортозамещение и реестр ПО',
+  'specialization/govtech-security': 'Безопасность и аттестация (ФСТЭК)',
+  'specialization/govtech-procurement': 'Госзакупки (44-ФЗ, 223-ФЗ)',
+  'specialization/govtech-edo': 'ЭДО и документооборот в госсекторе',
+  'smev': 'СМЭВ — межведомственное взаимодействие',
+  'crypto': 'Криптография (ГОСТ, УКЭП, PKI)',
+  'astra-linux': 'Astra Linux — ОС для импортозамещения',
+  'gov-design-service': 'Проектирование госуслуги',
+  'gov-smev-integration': 'Интеграция ГИС с СМЭВ 3',
+  'gov-security-audit': 'Чек-лист аттестации ГИС (ФСТЭК)',
 };
 
 const SHORT_LOOKUP: Record<string, string> = {};
