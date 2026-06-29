@@ -10,7 +10,7 @@ official_url: "https://plantuml.com/"
 vendor: "PlantUML Open Source"
 license: "MIT"
 first_seen: 2009
-requires_articles: [basics/what-is-model]
+requires_articles: [modeling/what-is-model]
 used_in_tasks: []
 alternatives: [drawio, mermaid]
 difficulty: 2

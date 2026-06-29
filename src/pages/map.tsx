@@ -48,6 +48,10 @@ const EDGE_STYLES: Record<string, {style: React.CSSProperties; markerEnd?: {type
   alternative: {
     style: {stroke: '#94a3b8', strokeWidth: 1, strokeDasharray: '4 4'},
   },
+  leads_to: {
+    style: {stroke: '#3b82f6', strokeWidth: 2, strokeDasharray: '8 4'},
+    markerEnd: {type: MarkerType.ArrowClosed, color: '#3b82f6'},
+  },
 };
 
 function ArticleNode({data}: NodeProps) {
@@ -342,6 +346,7 @@ export default function KnowledgeMap(): React.ReactElement {
             <div><span style={{color: '#94a3b8'}}>━━━</span> prerequisite</div>
             <div><span style={{color: '#10b981', borderBottom: '2px dashed #10b981'}}>╌╌╌</span> enables</div>
             <div><span style={{color: '#f59e0b', borderBottom: '2px dashed #f59e0b'}}>╌╌╌</span> required_for</div>
+            <div><span style={{color: '#3b82f6', borderBottom: '2px dashed #3b82f6'}}>╌╌╌</span> leads_to</div>
             <div><span style={{color: '#8b5cf6', fontWeight: 'bold'}}>━━━</span> next_task</div>
           </div>
         </div>

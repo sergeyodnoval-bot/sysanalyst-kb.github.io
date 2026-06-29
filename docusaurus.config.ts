@@ -118,8 +118,10 @@ const config: Config = {
                 const addEdges = (field: string, type: string) => {
                   const items = data[field];
                   if (Array.isArray(items)) {
-                    for (const prereq of items) {
-                      graph.edges.push({from: prereq, to: fullId, type});
+                    for (const ref of items) {
+                      if (typeof ref === 'string') {
+                        graph.edges.push({from: ref, to: fullId, type});
+                      }
                     }
                   }
                 };
@@ -132,7 +134,9 @@ const config: Config = {
                 const leadsToItems = data['leads_to'];
                 if (Array.isArray(leadsToItems)) {
                   for (const target of leadsToItems) {
-                    graph.edges.push({from: fullId, to: target, type: 'leads_to'});
+                    if (typeof target === 'string') {
+                      graph.edges.push({from: fullId, to: target, type: 'leads_to'});
+                    }
                   }
                 }
               }
@@ -142,6 +146,30 @@ const config: Config = {
           walkDir(path.resolve(__dirname, 'docs'), '', 'article');
           walkDir(path.resolve(__dirname, 'tech'), '', 'technology');
           walkDir(path.resolve(__dirname, 'tasks'), '', 'task');
+
+          // Normalize edge references: strip tech/ prefix, resolve bare article IDs
+          const nodeIds = new Set(graph.nodes.map((n: {id: string}) => n.id));
+          const shortToFull: Record<string, string> = {};
+          for (const n of graph.nodes) {
+            const parts = n.id.split('/');
+            const short = parts[parts.length - 1];
+            if (!shortToFull[short]) {
+              shortToFull[short] = n.id;
+            }
+          }
+
+          for (const edge of graph.edges) {
+            const resolve = (id: string): string => {
+              if (id.startsWith('tech/')) id = id.slice(5);
+              if (!id.includes('/') && !nodeIds.has(id) && shortToFull[id]) {
+                return shortToFull[id];
+              }
+              return id;
+            };
+            edge.from = resolve(edge.from);
+            edge.to = resolve(edge.to);
+          }
+
           return graph;
         },
         async contentLoaded({content, actions}) {
