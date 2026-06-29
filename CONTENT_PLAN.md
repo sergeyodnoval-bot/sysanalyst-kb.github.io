@@ -705,7 +705,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **18** | GovTech / Госсектор | SPC-43–50: путь, ГИС, госуслуги, СМЭВ, импортозамещение, безопасность, закупки, ЭДО + tech/smev, crypto, astra-linux + tasks/gov-design-service, gov-smev-integration, gov-security-audit + GovTech-трек | ✅ готово |
 | **19** | MedTech / Медицина | SPC-51–58: путь, ЭМК, МИС, ЛИС, фарма, телемедицина, PACS, регуляторика + tech/hl7, emias, dicom + tasks/medtech-design-emk, medtech-lis-integration, medtech-compliance + MedTech-трек | ✅ |
 | **20** | Logistics / Логистика | SPC-59–66: путь, TMS, WMS, доставка, маршрутизация, ЭДО, интеграции, аналитика + tech/tms, geodata, edi + tasks/logistics-design-delivery, logistics-integration-courier, logistics-optimization + Logistics-трек | ✅ |
-| **21** | GameDev | SPC-67–74: путь, архитектура, матчмейкинг, экономика, соцмеханики, монетизация, LiveOps, аналитика + tech/unity, photon, appsflyer + tasks/gamedev-design-economy, gamedev-matchmaking-flow, gamedev-liveops + GameDev-трек | ✅ |
+| **21** | GameDev | SPC-67–74: путь, GDD, архитектура, матчмейкинг, экономика, соцмеханики, монетизация, LiveOps, аналитика, SDK-интеграции, публикация + tech/unity, photon, appsflyer, firebase + tasks/gamedev-design-economy, gamedev-matchmaking-flow, gamedev-liveops + GameDev-трек | ✅ |
 | **22** | Соцсети / Контент | SPC-75–82: путь, лента, мессенджеры, модерация, соцграф, монетизация, контент, платформа + tech/recommendation, websocket, cdn + tasks/socnet-design-feed, socnet-moderation-flow, socnet-recommendations + SocNet-трек | ✅ |
 
 ---
