@@ -413,14 +413,14 @@
 | 72 | **Монетизация (IAP, реклама, подписки)** | ✅ | SPC-67, SPC-70 |
 | 73 | **LiveOps — управление живым продуктом** | ✅ | SPC-67, SPC-72 |
 | 74 | **Game Analytics** | ✅ | SPC-67, SPC-73 |
-| 75 | **Соцсети и контентные платформы — путь аналитика** | 🔜 | — |
-| 76 | **Лента контента (feed, ranking, рекомендации)** | 🔜 | SPC-75 |
-| 77 | **Мессенджеры и real-time коммуникации** | 🔜 | SPC-75 |
-| 78 | **Модерация контента и безопасность** | 🔜 | SPC-75 |
-| 79 | **Социальный граф и друзья** | 🔜 | SPC-75, SPC-77 |
-| 80 | **Монетизация соцсетей (реклама, подписки)** | 🔜 | SPC-75 |
-| 81 | **Платформа контента (видео, музыка, stories)** | 🔜 | SPC-75 |
-| 82 | **Платформенные механики (API, SDK, маркетплейс приложений)** | 🔜 | SPC-75, SPC-81 |
+| 75 | **Соцсети и контентные платформы — путь аналитика** | ✅ | — |
+| 76 | **Лента контента (feed, ranking, рекомендации)** | ✅ | SPC-75 |
+| 77 | **Мессенджеры и real-time коммуникации** | ✅ | SPC-75 |
+| 78 | **Модерация контента и безопасность** | ✅ | SPC-75 |
+| 79 | **Социальный граф и друзья** | ✅ | SPC-75, SPC-77 |
+| 80 | **Монетизация соцсетей (реклама, подписки)** | ✅ | SPC-75 |
+| 81 | **Платформа контента (видео, музыка, stories)** | ✅ | SPC-75 |
+| 82 | **Платформенные механики (API, SDK, маркетплейс приложений)** | ✅ | SPC-75, SPC-81 |
 
 ---
 
@@ -469,9 +469,9 @@
 | `unity` | Unity / Unreal Engine | engine | SPC-68 | ✅ |
 | `photon` | Photon / Netcode — мультиплеер | technology | SPC-69 | ✅ |
 | `appsflyer` | AppsFlyer / Adjust — mobile analytics | tool | SPC-74 | ✅ |
-| `recommendation` | Рекомендательные системы (ML, collaborative filtering) | technology | SPC-76 | 🔜 |
-| `websocket` | WebSocket / SSE — real-time протоколы | protocol | SPC-77 | 🔜 |
-| `cdn` | CDN — доставка контента | infrastructure | SPC-81 | 🔜 |
+| `recommendation` | Рекомендательные системы (ML, collaborative filtering) | technology | SPC-76 | ✅ |
+| `websocket` | WebSocket / SSE — real-time протоколы | protocol | SPC-77 | ✅ |
+| `cdn` | CDN — доставка контента | infrastructure | SPC-81 | ✅ |
 
 ### Запланированные
 
@@ -565,9 +565,9 @@
 
 | ID | Название | difficulty | requires_articles | requires_tech | Статус |
 |----|----------|-----------|-------------------|---------------|--------|
-| `socnet-design-feed` | Проектирование ленты контента | 6 | SPC-76 | `recommendation` | 🔜 |
-| `socnet-moderation-flow` | Проектирование системы модерации | 6 | SPC-78 | — | 🔜 |
-| `socnet-recommendations` | Проектирование рекомендательной системы | 6 | SPC-76 | `recommendation`, `mlflow` | 🔜 |
+| `socnet-design-feed` | Проектирование ленты контента | 6 | SPC-76 | `recommendation` | ✅ |
+| `socnet-moderation-flow` | Проектирование системы модерации | 6 | SPC-78 | — | ✅ |
+| `socnet-recommendations` | Проектирование рекомендательной системы | 6 | SPC-76 | `recommendation`, `mlflow` | ✅ |
 
 ### Запланированные
 
@@ -616,7 +616,7 @@
 | **MedTech** | SPC-51–58: путь, ЭМК, МИС, ЛИС, фарма, телемедицина, PACS, регуляторика | ✅ |
 | **Logistics** | SPC-59–66: путь, TMS, WMS, доставка, маршрутизация, ЭДО, интеграции, аналитика | ✅ |
 | **GameDev** | SPC-67–74: путь, архитектура, матчмейкинг, экономика, соцмеханики, монетизация, LiveOps, аналитика | ✅ |
-| **Соцсети / Контент** | SPC-75–82: путь, лента, мессенджеры, модерация, соцграф, монетизация, контент, платформа | 🔜 |
+| **Соцсети / Контент** | SPC-75–82: путь, лента, мессенджеры, модерация, соцграф, монетизация, контент, платформа | ✅ |
 
 ---
 
@@ -706,7 +706,7 @@ scrum ──→ PRO-2 (Scrum основы)
 | **19** | MedTech / Медицина | SPC-51–58: путь, ЭМК, МИС, ЛИС, фарма, телемедицина, PACS, регуляторика + tech/hl7, emias, dicom + tasks/medtech-design-emk, medtech-lis-integration, medtech-compliance + MedTech-трек | ✅ |
 | **20** | Logistics / Логистика | SPC-59–66: путь, TMS, WMS, доставка, маршрутизация, ЭДО, интеграции, аналитика + tech/tms, geodata, edi + tasks/logistics-design-delivery, logistics-integration-courier, logistics-optimization + Logistics-трек | ✅ |
 | **21** | GameDev | SPC-67–74: путь, архитектура, матчмейкинг, экономика, соцмеханики, монетизация, LiveOps, аналитика + tech/unity, photon, appsflyer + tasks/gamedev-design-economy, gamedev-matchmaking-flow, gamedev-liveops + GameDev-трек | ✅ |
-| **22** | Соцсети / Контент | SPC-75–82: путь, лента, мессенджеры, модерация, соцграф, монетизация, контент, платформа + tech/recommendation, websocket, cdn + tasks/socnet-design-feed, socnet-moderation-flow, socnet-recommendations + SocNet-трек | 🔜 |
+| **22** | Соцсети / Контент | SPC-75–82: путь, лента, мессенджеры, модерация, соцграф, монетизация, контент, платформа + tech/recommendation, websocket, cdn + tasks/socnet-design-feed, socnet-moderation-flow, socnet-recommendations + SocNet-трек | ✅ |
 
 ---
 

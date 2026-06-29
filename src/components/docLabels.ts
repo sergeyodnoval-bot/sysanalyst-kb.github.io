@@ -271,6 +271,20 @@ const LABELS: Record<string, string> = {
   'gamedev-design-economy': 'Проектирование игровой экономики',
   'gamedev-matchmaking-flow': 'Проектирование матчмейкинга',
   'gamedev-liveops': 'Проектирование LiveOps-кампании',
+  'specialization/socnet-path': 'Соцсети и контентные платформы — путь',
+  'specialization/socnet-feed': 'Лента контента — feed, ranking, рекомендации',
+  'specialization/socnet-messenger': 'Мессенджеры и real-time коммуникации',
+  'specialization/socnet-moderation': 'Модерация контента и безопасность',
+  'specialization/socnet-graph': 'Социальный граф и друзья',
+  'specialization/socnet-monetization': 'Монетизация соцсетей — реклама, подписки',
+  'specialization/socnet-platform': 'Платформа контента — видео, музыка, stories',
+  'specialization/socnet-eco': 'Платформенные механики — API, SDK, маркетплейс',
+  'recommendation': 'Рекомендательные системы (ML)',
+  'websocket': 'WebSocket / SSE — real-time протоколы',
+  'cdn': 'CDN — доставка контента',
+  'socnet-design-feed': 'Проектирование ленты контента',
+  'socnet-moderation-flow': 'Проектирование системы модерации',
+  'socnet-recommendations': 'Проектирование рекомендательной системы',
 };
 
 const SHORT_LOOKUP: Record<string, string> = {};

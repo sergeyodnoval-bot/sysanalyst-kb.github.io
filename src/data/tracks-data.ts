@@ -240,6 +240,14 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'gamedev-monetization': 'Монетизация (IAP, реклама)',
     'gamedev-liveops': 'LiveOps',
     'gamedev-analytics': 'Game Analytics',
+    'socnet-path': 'Соцсети — роль, специфика, путь',
+    'socnet-feed': 'Лента контента (feed)',
+    'socnet-messenger': 'Мессенджеры и real-time',
+    'socnet-moderation': 'Модерация контента',
+    'socnet-graph': 'Социальный граф',
+    'socnet-monetization': 'Монетизация соцсетей',
+    'socnet-platform': 'Платформа контента',
+    'socnet-eco': 'API, SDK, маркетплейс',
   },
   tech: {
     browser: 'Веб-браузер',
@@ -290,6 +298,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     unity: 'Unity / Unreal',
     photon: 'Photon / Netcode',
     appsflyer: 'AppsFlyer / Adjust',
+    recommendation: 'Рекомендательные системы',
+    websocket: 'WebSocket / SSE',
+    cdn: 'CDN',
   },
   task: {
     'find-analyst-in-team': 'Найти аналитика в знакомых',
@@ -331,6 +342,9 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'gamedev-design-economy': 'Проектирование экономики',
     'gamedev-matchmaking-flow': 'Проектирование матчмейкинга',
     'gamedev-liveops': 'Проектирование LiveOps',
+    'socnet-design-feed': 'Проектирование ленты',
+    'socnet-moderation-flow': 'Проектирование модерации',
+    'socnet-recommendations': 'Проектирование рекомендаций',
   },
 };
 
@@ -1331,7 +1345,47 @@ const gamedevTrack: TrackDef = {
   ],
 };
 
-export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack, aiAnalystTrack, fintechTrack, ecommerceTrack, telecomTrack, govtechTrack, medtechTrack, logisticsTrack, gamedevTrack];
+const socnetTrack: TrackDef = {
+  id: 'socnet-track',
+  title: 'Social Network Analyst (соцсети)',
+  description: 'Специализация в соцсетях и контентных платформах: лента, мессенджеры, модерация, соцграф, монетизация, контент, API/SDK',
+  stages: [
+    {
+      title: '0. Соцсети — введение и лента',
+      description: 'Поймите специфику соцсетей и устройство ленты контента.',
+      items: [
+        {type: 'article', id: 'socnet-path', folder: 'specialization'},
+        {type: 'article', id: 'socnet-feed', folder: 'specialization'},
+        {type: 'tech', id: 'recommendation'},
+      ],
+    },
+    {
+      title: '1. Мессенджеры, модерация и граф',
+      description: 'Real-time коммуникации, безопасность, социальные связи.',
+      items: [
+        {type: 'article', id: 'socnet-messenger', folder: 'specialization'},
+        {type: 'article', id: 'socnet-moderation', folder: 'specialization'},
+        {type: 'article', id: 'socnet-graph', folder: 'specialization'},
+        {type: 'tech', id: 'websocket'},
+        {type: 'task', id: 'socnet-design-feed'},
+        {type: 'task', id: 'socnet-moderation-flow'},
+        {type: 'task', id: 'socnet-recommendations'},
+      ],
+    },
+    {
+      title: '2. Монетизация и контент',
+      description: 'Реклама, подписки, видеоплатформа, экосистема.',
+      items: [
+        {type: 'article', id: 'socnet-monetization', folder: 'specialization'},
+        {type: 'article', id: 'socnet-platform', folder: 'specialization'},
+        {type: 'article', id: 'socnet-eco', folder: 'specialization'},
+        {type: 'tech', id: 'cdn'},
+      ],
+    },
+  ],
+};
+
+export const allTracks: TrackDef[] = [juniorTrack, middleTrack, seniorTrack, solutionArchitectTrack, leadTrack, dataAnalystTrack, industryAnalystTrack, aiAnalystTrack, fintechTrack, ecommerceTrack, telecomTrack, govtechTrack, medtechTrack, logisticsTrack, gamedevTrack, socnetTrack];
 
 function buildLookup(): Map<string, NavInfo[]> {
   const map = new Map<string, NavInfo[]>();
