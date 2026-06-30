@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useMemo, useState, useEffect} from 'react';
 import ReactFlow, {
   useNodesState,
   useEdgesState,
@@ -269,8 +269,11 @@ export default function KnowledgeMap(): React.ReactElement {
     });
   }, [filteredNodes, filteredEdges]);
 
-  const [nodes, , onNodesChange] = useNodesState(layoutedNodes);
-  const [edges, , onEdgesChange] = useEdgesState(filteredEdges);
+  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+
+  useEffect(() => { if (layoutedNodes.length) setNodes(layoutedNodes); }, [layoutedNodes, setNodes]);
+  useEffect(() => { if (filteredEdges.length) setEdges(filteredEdges); }, [filteredEdges, setEdges]);
 
   const toggleTech = (key: keyof FilterState['technologies']) => {
     setFilters((f) => ({...f, technologies: {...f.technologies, [key]: !f.technologies[key]}}));
