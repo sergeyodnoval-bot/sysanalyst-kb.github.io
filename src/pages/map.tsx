@@ -13,6 +13,7 @@ import dagre from '@dagrejs/dagre';
 import Layout from '@theme/Layout';
 import {useAllPluginInstancesData} from '@docusaurus/useGlobalData';
 import Link from '@docusaurus/Link';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 
 const CURRENT_YEAR = 2026;
 
@@ -376,25 +377,29 @@ export default function KnowledgeMap(): React.ReactElement {
         </div>
 
         <div style={{flex: 1, height: '100%'}}>
-          <ReactFlow
-            nodes={[...testNode, ...nodes]}
-            edges={edges}
-            onNodesChange={onNodesChange}
-            onEdgesChange={onEdgesChange}
-            nodeTypes={nodeTypes}
-            fitView
-            attributionPosition="bottom-left"
-          >
-            <Controls />
-            <Background />
-            <MiniMap
-              nodeColor={(nd) => {
-                const d = nd.data as Record<string, string>;
-                return CATEGORY_COLORS[d.category] || CATEGORY_COLORS.other;
-              }}
-              style={{width: 200, height: 150}}
-            />
-          </ReactFlow>
+          <BrowserOnly fallback={<div style={{padding: 40, color: '#94a3b8'}}>Загрузка карты знаний...</div>}>
+            {() => (
+              <ReactFlow
+                nodes={[...testNode, ...nodes]}
+                edges={edges}
+                onNodesChange={onNodesChange}
+                onEdgesChange={onEdgesChange}
+                nodeTypes={nodeTypes}
+                fitView
+                attributionPosition="bottom-left"
+              >
+                <Controls />
+                <Background />
+                <MiniMap
+                  nodeColor={(nd) => {
+                    const d = nd.data as Record<string, string>;
+                    return CATEGORY_COLORS[d.category] || CATEGORY_COLORS.other;
+                  }}
+                  style={{width: 200, height: 150}}
+                />
+              </ReactFlow>
+            )}
+          </BrowserOnly>
         </div>
       </div>
     </Layout>
