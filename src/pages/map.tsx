@@ -31,26 +31,26 @@ const CATEGORY_COLORS: Record<string, string> = {
 const EDGE_STYLES: Record<string, {style: React.CSSProperties; markerEnd?: {type: MarkerType}}> = {
   prerequisite: {
     style: {stroke: '#94a3b8', strokeWidth: 2},
-    markerEnd: {type: MarkerType.ArrowClosed, color: '#94a3b8'},
+    markerEnd: {type: MarkerType.ArrowClosed},
   },
   enables: {
     style: {stroke: '#10b981', strokeWidth: 2, strokeDasharray: '6 3'},
-    markerEnd: {type: MarkerType.ArrowClosed, color: '#10b981'},
+    markerEnd: {type: MarkerType.ArrowClosed},
   },
   required_for: {
     style: {stroke: '#f59e0b', strokeWidth: 2, strokeDasharray: '10 4 3 4'},
-    markerEnd: {type: MarkerType.ArrowClosed, color: '#f59e0b'},
+    markerEnd: {type: MarkerType.ArrowClosed},
   },
   next_task: {
     style: {stroke: '#8b5cf6', strokeWidth: 3},
-    markerEnd: {type: MarkerType.ArrowClosed, color: '#8b5cf6'},
+    markerEnd: {type: MarkerType.ArrowClosed},
   },
   alternative: {
     style: {stroke: '#94a3b8', strokeWidth: 1, strokeDasharray: '4 4'},
   },
   leads_to: {
     style: {stroke: '#3b82f6', strokeWidth: 2, strokeDasharray: '8 4'},
-    markerEnd: {type: MarkerType.ArrowClosed, color: '#3b82f6'},
+    markerEnd: {type: MarkerType.ArrowClosed},
   },
 };
 
@@ -185,25 +185,6 @@ export default function KnowledgeMap(): React.ReactElement {
     edges: GraphEdgeData[];
   }> | undefined;
   const graphData = graphPlugin?.default;
-  useEffect(() => {
-    const hasData = !!graphData;
-    const n = graphData?.nodes?.length ?? 0;
-    const e = graphData?.edges?.length ?? 0;
-    const div = document.createElement('div');
-    div.id = 'kg-debug';
-    div.style.cssText = 'position:fixed;bottom:8px;right:8px;background:#1a1a2e;color:#fff;padding:8px 12px;border-radius:6px;font:12px monospace;z-index:9999;';
-    div.textContent = `KG: data=${hasData} nodes=${n} edges=${e}`;
-    document.body.appendChild(div);
-
-    const firstPos = layoutedNodes[0]?.position;
-    const firstNode = layoutedNodes[0]?.id;
-    const log = document.createElement('div');
-    log.id = 'kg-log';
-    log.style.cssText = 'position:fixed;bottom:48px;right:8px;background:#1a1a2e;color:#0f0;padding:8px 12px;border-radius:6px;font:11px monospace;z-index:9999;max-width:500px;white-space:pre-wrap;';
-    log.textContent = `nodes: ${nodes.length}\nedges: ${edges.length}\nfiltered: ${filteredNodes.length}|${filteredEdges.length}\nlayouted: ${layoutedNodes.length}\nfirstNode: ${firstNode}\nfirstPos: ${JSON.stringify(firstPos)}\nhasNaN: ${layoutedNodes.some(n => Number.isNaN(n.position.x) || Number.isNaN(n.position.y))}`;
-    document.body.appendChild(log);
-    return () => { div.remove(); log.remove(); };
-  });
 
   const [filters, setFilters] = useState<FilterState>({
     articles: true,
@@ -294,6 +275,27 @@ export default function KnowledgeMap(): React.ReactElement {
   useEffect(() => { if (layoutedNodes.length) setNodes(layoutedNodes); }, [layoutedNodes, setNodes]);
   useEffect(() => { if (filteredEdges.length) setEdges(filteredEdges); }, [filteredEdges, setEdges]);
 
+  // DEBUG: hardcoded test node
+  const testNode = useMemo(() => [{
+    id: 'test-node',
+    type: 'article',
+    data: {label: 'TEST', category: 'basics', level: 1, type: 'article', link: '#'},
+    position: {x: 400, y: 300},
+  }], []);
+
+  useEffect(() => {
+    const rfContainer = document.querySelector('.react-flow__viewport');
+    const rfNodesContainer = document.querySelector('.react-flow__nodes');
+    const nodeCount = rfNodesContainer?.childElementCount ?? -1;
+    const containerHeight = document.querySelector('.react-flow')?.clientHeight ?? -1;
+    const div = document.createElement('div');
+    div.id = 'kg-debug';
+    div.style.cssText = 'position:fixed;bottom:8px;right:8px;background:#1a1a2e;color:#fff;padding:8px 12px;border-radius:6px;font:12px monospace;z-index:9999;max-width:500px;white-space:pre-wrap;';
+    div.textContent = `state: ${nodes.length}n/${edges.length}e | rndr: ${nodeCount}n | rfH: ${containerHeight}px | firstNode: ${nodes[0]?.id ?? '-'}`;
+    document.body.appendChild(div);
+    return () => div.remove();
+  }, [nodes, edges]);
+
   const toggleTech = (key: keyof FilterState['technologies']) => {
     setFilters((f) => ({...f, technologies: {...f.technologies, [key]: !f.technologies[key]}}));
   };
@@ -375,7 +377,7 @@ export default function KnowledgeMap(): React.ReactElement {
 
         <div style={{flex: 1, height: '100%'}}>
           <ReactFlow
-            nodes={nodes}
+            nodes={[...testNode, ...nodes]}
             edges={edges}
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
