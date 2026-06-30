@@ -313,10 +313,11 @@ export default function KnowledgeMap(): React.ReactElement {
     const nodeSet = new Set(nodes.map(n => n.id));
     const mismatches = edges.filter(e => !nodeSet.has(e.source) || !nodeSet.has(e.target)).length;
 
-    const div = document.createElement('div');
+    const div = document.createElement('textarea');
     div.id = 'kg-debug';
-    div.style.cssText = 'position:fixed;bottom:8px;right:8px;background:#1a1a2e;color:#fff;padding:8px 12px;border-radius:6px;font:12px monospace;z-index:9999;max-width:700px;white-space:pre-wrap;';
-    div.textContent = `state: ${nodes.length}n/${edges.length}e | DOM: ${nodeCount}n/${edgeCount}e | rfH: ${containerHeight}px | badRefs: ${mismatches} | samples: ${edgeSample} | nodes: ${nodeSample}`;
+    div.readOnly = true;
+    div.style.cssText = 'position:fixed;bottom:8px;right:8px;background:#1a1a2e;color:#fff;padding:8px 12px;border-radius:6px;font:12px monospace;z-index:9999;max-width:700px;white-space:pre-wrap;border:1px solid #444;resize:both;user-select:text;pointer-events:auto;';
+    div.value = `state: ${nodes.length}n/${edges.length}e | DOM: ${nodeCount}n/${edgeCount}e | rfH: ${containerHeight}px | badRefs: ${mismatches}\nsamples: ${edgeSample}\nnodes: ${nodeSample}`;
     document.body.appendChild(div);
     return () => div.remove();
   }, [nodes, edges]);
