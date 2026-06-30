@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksysanalyst_kb=self.webpackChunksysanalyst_kb||[]).push([["72109"],{54042(s){s.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"tech"}')}}]);
