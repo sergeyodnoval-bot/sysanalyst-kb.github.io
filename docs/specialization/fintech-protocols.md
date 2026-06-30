@@ -8,7 +8,7 @@ tags: [fintech, iso8583, iso20022, swift, sepa, payments, protocols]
 prerequisites: [specialization/fintech-payments]
 leads_to: [specialization/fintech-reconciliation]
 related: [integration/api-soap-wsdl, integration/async-message-queue]
-estimated_time: 30
+estimated_time: 40
 difficulty: 6
 audience: senior
 ---
@@ -17,32 +17,33 @@ audience: senior
 Платёжные протоколы — форматы сообщений, которыми обмениваются участники платёжного рынка. Аналитик должен уметь читать спецификацию протокола, понимать обязательные и опциональные поля, знать, как транзакция «упаковывается» в сообщение. Основные: ISO 8583 (карточные транзакции), ISO 20022 (новый стандарт платежей), SWIFT MT/MX (межбанковские сообщения), SEPA (европейские платёжные схемы).
 :::
 
+## Для кого эта статья
+
+- Senior SA, работающий с платёжными интеграциями
+- SA, которому предстоит certification с платёжной системой
+- Разработчик, реализующий платёжные протоколы
+
+После прочтения вы:
+- Поймёте структуру ISO 8583 и ISO 20022 сообщений
+- Узнаете разницу между SWIFT MT и MX
+- Сможете составить mapping полей вашей системы на протокол
+
 ## ISO 8583 — стандарт карточных транзакций
 
 Старый (1987), но всё ещё основной протокол для ATM и POS-транзакций. Используется Visa, Mastercard, МИР, НСПК.
 
 ### Структура сообщения
 
-```
-ISO 8583 сообщение
-  │
-  ├── MTI (Message Type Identifier) — 4 цифры: что за сообщение
-  ├── Bitmap — какие поля (Data Elements) присутствуют
-  └── Data Elements — сами данные (поля 2..128)
+```mermaid
+flowchart LR
+    MTI["MTI<br/>4 цифры<br/>Тип сообщения"]
+    BMP["Bitmap<br/>Какие поля есть"]
+    DE["Data Elements<br/>Поля 2..128"]
+
+    MTI --> BMP --> DE
 ```
 
 **MTI (Message Type Identifier):**
-
-```
-0100  — Authorization Request
-0110  — Authorization Response
-0200  — Financial Transaction Request (авторизация + capture)
-0210  — Financial Transaction Response
-0400  — Reversal Request (отмена)
-0420  — Reversal Response
-0800  — Network Management Request
-0810  — Network Management Response
-```
 
 **Data Elements (ключевые поля):**
 
@@ -68,23 +69,28 @@ ISO 8583 сообщение
 
 ### Пример сообщения (raw → decoded)
 
-```
-Raw: 0100 703C 0200 0000 0000 0010000000...
-      │     │    │
-      │     │    └─ Bitmap (какие поля есть)
-      │     └─────── Bitmap (первые 64 поля)
-      └───────────── MTI = 0100 (Authorization Request)
+```mermaid
+flowchart TB
+    RAW["Raw: 0100 703C 0200 0000 0000 0010000000..."]
+    MTI_E["MTI = 0100<br/>Authorization Request"]
+    BMP_E["Bitmap<br/>поле 2..64"]
+    F2["Field 2: 4000001234560000 (PAN)"]
+    F3["Field 3: 000000 (Purchase)"]
+    F4["Field 4: 000000001000 (10.00)"]
+    F11["Field 11: 123456 (STAN)"]
+    F22["Field 22: 051 (Chip)"]
+    F41["Field 41: TERM001"]
+    F42["Field 42: MERCH123"]
 
-Decoded:
-  MTI:        0100 (Authorization Request)
-  Field 2:    4000001234560000 (PAN)
-  Field 3:    000000 (Purchase)
-  Field 4:    000000001000 (10.00)
-  Field 11:   123456 (STAN)
-  Field 22:   051 (Chip)
-  Field 35:   ... (Track 2)
-  Field 41:   TERM001
-  Field 42:   MERCH123
+    RAW --> MTI_E
+    RAW --> BMP_E
+    BMP_E --> F2
+    BMP_E --> F3
+    BMP_E --> F4
+    BMP_E --> F11
+    BMP_E --> F22
+    BMP_E --> F41
+    BMP_E --> F42
 ```
 
 ## ISO 20022 — стандарт нового поколения
@@ -198,6 +204,31 @@ SWIFT (Society for Worldwide Interbank Financial Telecommunication) — глоб
 
 **Для аналитика:** SEPA — пример success story стандартизации. Аналитик должен знать, что если система работает с евро-платежами — она должна поддерживать SEPA-форматы и схемы.
 
+## Практический кейс: Миграция с MT103 на pacs.008
+
+**Проблема:** Российский банк (corporate banking) отправляет международные платежи через SWIFT MT103. SWIFT объявил о прекращении поддержки MT к 2025 году. Банку нужно мигрировать на ISO 20022 (MX). В портфеле: 50 000 MT103-сообщений/месяц, 20+ стран-корреспондентов.
+
+**Анализ:**
+- MT103: 30 полей, из них 12 обязательных, 18 опциональных
+- pacs.008 (ISO 20022): 80+ полей, XML-схема, строгая типизация
+- Маппинг: не 1:1 — в pacs.008 появились новые обязательные поля (Ultimate Debtor, Ultimate Creditor, Purpose Code)
+- 30% MT103-сообщений содержали данные только в полях Free Text (неструктурированные данные)
+- У legacy-системы нет API — генерация MT103 через flat file + FTP
+
+**Решение:**
+1. Разработка middleware-слоя (Translation Engine) для конвертации MT → MX
+2. Доработка core banking: добавление полей Ultimate Debtor/Creditor
+3. Внедрение ISO 20022 validator (XML Schema + бизнес-правила)
+4. Этапный rollout: сначала pacs.008 для EU-корреспондентов, затем для остальных
+5. Parallel run: 3 месяца — отправка дублирующих сообщений (MT + MX)
+
+**Результат:**
+- Миграция за 9 месяцев (до дедлайна SWIFT)
+- 98% сообщений проходят валидацию ISO 20022 с первой попытки
+- Структурированность данных: с 70% до 95% (снижение Free Text)
+- Parallel run: 0 расхождений между MT и MX
+- Стоимость проекта: 35 млн ₽
+
 ## Как аналитик работает с протоколами
 
 1. **Определить, какие протоколы нужны** — зависит от участников (Visa, SWIFT, локальная платёжная система)
@@ -232,3 +263,19 @@ SWIFT (Society for Worldwide Interbank Financial Telecommunication) — глоб
 
 3. **Что такое SCT Inst и чем он отличается от обычного SCT?**
    *Ответ:* SCT Inst (Instant) — мгновенный перевод до 10 секунд, 24/7/365. Обычный SCT — до T+1, только в рабочие дни.
+
+4. **Что такое MTI в ISO 8583 и какие бывают типы?**
+   *Ответ:* Message Type Identifier — 4 цифры, определяющие тип сообщения. Примеры: 0100 (Authorization Request), 0110 (Response), 0200 (Financial Request), 0400 (Reversal).
+
+5. **Какие сообщения ISO 20022 нужны для клиентского перевода?**
+   *Ответ:* pain.001 (клиент инициирует), pacs.008 (межбанковский перевод), camt.053 (выписка получателю).
+
+## Ссылки для самостоятельного изучения
+
+| Что | Описание | URL |
+|-----|----------|-----|
+| ISO 20022 Official | Стандарт платёжных сообщений | iso20022.org |
+| SWIFT MT103 Guide | Описание полей MT103 | swift.com |
+| ISO 8583 Specification | Документация протокола | iso8583.info |
+| SEPA Schemes | Правила SEPA Credit Transfer | europeanpaymentscouncil.eu |
+| Berlin Group NextGenPSD2 | Спецификация API | berlin-group.com

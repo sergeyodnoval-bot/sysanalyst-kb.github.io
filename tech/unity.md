@@ -2,6 +2,8 @@
 id: unity
 title: Unity / Unreal Engine — игровые движки
 sidebar_label: Unity / Unreal
+type: technology
+tech_type: tool
 level: 5
 category: tech
 tags: [gamedev, unity, unreal, engine, rendering, ecs, asset-bundles]
@@ -10,6 +12,11 @@ leads_to: [specialization/gamedev-matchmaking]
 estimated_time: 30
 difficulty: 4
 audience: junior
+official_url: https://docs.unity3d.com/Manual/
+version: "Unity 6 / Unreal 5.5"
+requires_articles: [specialization/gamedev-architecture]
+used_in_tasks: [gamedev-matchmaking-flow]
+alternatives: [unreal-engine, godot, custom-engine]
 ---
 
 :::info[TL;DR]

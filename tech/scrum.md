@@ -3,6 +3,7 @@ id: scrum
 sidebar_position: 3
 title: Scrum
 sidebar_label: Scrum
+type: technology
 tech_type: methodology
 level: 2
 category: process

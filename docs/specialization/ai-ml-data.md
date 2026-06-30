@@ -8,7 +8,7 @@ tags: [ai, ml, data, quality, labeling, pipeline]
 prerequisites: [specialization/ai-analyst-intro, data/what-is-database, data/data-modeling]
 leads_to: [specialization/ai-ml-metrics, specialization/ai-ml-architecture]
 related: [data/dwh-basics, data/etl-basics, data/normalization]
-estimated_time: 20
+estimated_time: 35
 difficulty: 4
 audience: middle
 ---
@@ -16,6 +16,20 @@ audience: middle
 :::info TL;DR
 Качество ML-модели определяется качеством данных, на которых она обучена. AI-аналитик отвечает за спецификацию данных: требования к объёму, качеству, разметке и пайплайнам. Без этой спецификации Data Scientist может построить модель, которая не взлетит в продакшне.
 :::
+
+## Для кого эта статья
+
+- Data-аналитики, которые хотят перейти в ML
+- Junior AI-аналитики, работающие над ML-продуктами
+- Продуктовые менеджеры AI-направлений
+- Все, кто специфицирует требования к данным для ML-моделей
+
+## После прочтения вы узнаете
+
+- Как оценивать достаточность данных для обучения ML-модели
+- Какие метрики качества данных критичны для ML
+- Как специфицировать требования к разметке и пайплайнам
+- Как избежать data leakage при проектировании ML-системы
 
 ## Данные — bottleneck ML-проектов
 
@@ -76,9 +90,14 @@ AI-аналитик должен специфицировать допустим
 
 Как данные будут двигаться от источника к модели:
 
-```
-Источник → Extract → Validate → Transform → Feature Store → Model Training
-                                                              → Model Inference
+```mermaid
+flowchart LR
+    A[Источник] --> B[Extract]
+    B --> C[Validate]
+    C --> D[Transform]
+    D --> E[Feature Store]
+    E --> F[Model Training]
+    E --> G[Model Inference]
 ```
 
 **Ключевые требования к пайплайну:**
@@ -104,6 +123,64 @@ AI-аналитик должен специфицировать допустим
 - **Inter-Annotator Agreement** — метрика согласованности разметчиков: насколько два эксперта сходятся в оценке одного примера
 - **Feature store** — централизованное хранилище признаков для обучения и инференса
 
+## Кейс: пайплайн данных для кредитного скоринга
+
+**Компания:** Финансовая платформа «КредитПлюс»
+**Задача:** Построить ML-модель для скоринга заявок на микрозаймы
+
+**Исходные данные:**
+- 500 фичей (кредитная история, транзакции, демография, поведенческие паттерны)
+- 2M записей за 3 года
+- Quality Score на старте: 0.76
+
+**Построенный пайплайн:**
+
+```mermaid
+flowchart LR
+    A[Источники данных] --> B[CRM]
+    A --> C[Транзакции]
+    A --> D[Внешние API]
+    B --> E[Staging Layer<br/>Kafka + S3]
+    C --> E
+    D --> E
+    E --> F[Data Quality Check<br/>Score: 0.92]
+    F --> G{Quality OK?}
+    G -->|Да| H[Feature Engineering<br/>500 features]
+    G -->|Нет| I[Data Cleaning<br/>Pipeline]
+    I --> F
+    H --> J[Train/Test Split<br/>80/20]
+    J --> K[Train: 1.6M записей]
+    J --> L[Test: 0.4M записей]
+```
+
+**Процесс обеспечения качества:**
+
+```mermaid
+sequenceDiagram
+    participant S as Источник
+    participant Q as Quality Check
+    participant F as Feature Store
+    participant T as Train Pipeline
+    participant I as Inference
+
+    S->>Q: Сырые данные
+    Q->>Q: Валидация схемы
+    Q->>Q: Проверка пропусков &#60; 5%
+    Q->>Q: Детекция выбросов Z-score
+    Q->>F: Очищенные признаки
+    F->>T: Batch-выгрузка 1.6M
+    T->>T: Обучение модели XGBoost
+    T->>F: Сохранение метаданных
+    F->>I: Онлайн-признаки Redis
+    I->>I: Инференс < 80ms
+```
+
+**Результаты:**
+- Data Quality Score повышен с 0.76 до 0.92 за счёт автоматической очистки
+- Выявлено 12% дубликатов и 3% невалидных записей в CRM
+- Построен feature store на Feast — время инференса сократилось с 450 мс до 80 мс
+- ROI за 6 месяцев: 4.2× (экономия на ручной проверке заявок — 1.8M руб/мес)
+
 ## Что дальше
 
 - [Метрики ML-продуктов](/docs/specialization/ai-ml-metrics) — как оценить, что модель работает хорошо
@@ -120,3 +197,17 @@ AI-аналитик должен специфицировать допустим
 
 3. **Как измерить качество ручной разметки?**
    *Ответ:* Inter-Annotator Agreement — дать один и тот же пример двум разметчикам и посчитать процент совпадений. Коэн's Kappa учитывает случайное совпадение.
+
+4. **Что такое стратифицированное разделение выборок и когда оно нужно?**
+   *Ответ:* Стратифицированное разделение сохраняет пропорции классов в train/test/val выборках. Нужно при несбалансированных классах, чтобы в тест не попали только примеры одного класса.
+
+5. **Какая метрика используется для проверки дрейфа распределения признаков?**
+   *Ответ:* KS-тест (Колмогорова-Смирнова) — сравнивает распределения признака на разных временных срезах. Если p-value &#60; 0.05 — распределение значимо изменилось, нужен retrain.
+
+## Ссылки
+
+1. [Feast — Feature Store Documentation](https://docs.feast.dev/)
+2. [DVC — Data Version Control](https://dvc.org/doc)
+3. [Scikit-learn — Train/Test Split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
+4. [AWS — ML Data Quality Best Practices](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-well-architected/data-quality.html)
+5. [Cohen's Kappa — Inter-Annotator Agreement](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.cohen_kappa_score.html)

@@ -8,7 +8,7 @@ tags: [telecom, bss, oss, architecture, enterprise]
 prerequisites: [specialization/telecom-path]
 leads_to: [specialization/telecom-billing, specialization/telecom-crm-order]
 related: [integration/enterprise-integration-patterns, architecture/microservices-patterns]
-estimated_time: 20
+estimated_time: 35
 difficulty: 5
 audience: middle
 ---
@@ -16,6 +16,19 @@ audience: middle
 :::info[TL;DR]
 Архитектура Telecom делится на BSS (Business Support Systems) и OSS (Operations Support Systems). BSS отвечает за абонентов, тарифы, биллинг, заказы. OSS — за оборудование сети, активацию услуг и мониторинг. Стандарты: TM Forum (eTOM, SID, TAM, Open API).
 :::
+
+## Для кого эта статья
+
+- SA, начинающие работу в Telecom-проектах
+- Разработчики и архитекторы, интегрирующие BSS/OSS
+- Технические лиды, выбирающие платформу для оператора связи
+
+## После прочтения вы узнаете
+
+- Из каких компонентов состоит BSS и OSS
+- Как взаимодействуют CRM, Order Management, Provisioning и Billing
+- Какие стандарты TM Forum регулируют архитектуру
+- Какие требования предъявляются к Telecom-системам
 
 ## BSS — Business Support Systems
 
@@ -112,6 +125,24 @@ sequenceDiagram
 | Legacy | TDM → IP, SS7 → Diameter |
 | Стандарты | TM Forum Open API, 3GPP |
 
+## Пример: Интеграция 47 legacy-систем в единую BSS
+
+**Контекст.** Крупный федеральный оператор (10M+ абонентов) имел 47 разрозненных BSS/OSS-систем, накопленных за 15 лет M&A-сделок. Каждый MVNO-партнёр подключался через отдельную интеграцию. Вывод нового тарифа занимал 4-6 недель.
+
+**Задача.** Построить единую BSS-платформу с TM Forum Open API, заместив 12 ключевых legacy-систем, без остановки услуг.
+
+**Решение.**
+- Внедрена ESB-шина (Oracle SOA) с адаптерами под каждый legacy-протокол
+- 5 приоритетных API по TMF622 (Ordering), TMF629 (Customer), TMF620 (Catalog), TMF638 (Inventory), TMF639 (Resource)
+- Разработан единый Product Catalog как источник правды для тарифов
+- Поэтапная миграция: 3 legacy-системы в квартал, параллельная работа 18 месяцев
+
+**Результат.**
+- Время подключения MVNO: с 6 месяцев до 3 недель
+- Вывод нового тарифа: с 4-6 недель до 2 дней
+- Снижение operational cost на BSS: 40%
+- Инциденты при интеграции: с 12/мес до 2/мес
+
 ## Что дальше
 
 - [Billing и Charging](/docs/specialization/telecom-billing)
@@ -127,3 +158,15 @@ sequenceDiagram
 
 3. **Как BSS и OSS взаимодействуют при подключении услуги?**
    *Ответ:* CRM → Order Management → Provisioning → Network. Provisioning подтверждает активацию, Billing начинает тарификацию.
+
+4. **Какой стандарт TM Forum описывает эталонные бизнес-процессы Telecom?**
+   *Ответ:* eTOM (Business Process Framework).
+
+5. **Какие 4 компонента входят в OSS?**
+   *Ответ:* Network Inventory, Provisioning, Assurance (мониторинг), Fulfillment.
+
+## Ссылки
+
+- [TM Forum — Open API Map](https://www.tmforum.org/oda/open-apis/)
+- [eTOM Business Process Framework (ITU-T M.3050)](https://www.itu.int/rec/T-REC-M.3050/)
+- [3GPP TR 21.905 — Vocabulary for 3GPP Specifications](https://www.3gpp.org/specifications)

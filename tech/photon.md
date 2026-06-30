@@ -2,6 +2,8 @@
 id: photon
 title: Photon / Netcode — мультиплеер
 sidebar_label: Photon / Netcode
+type: technology
+tech_type: framework
 level: 6
 category: tech
 tags: [gamedev, photon, multiplayer, netcode, realtime, pun, quantum]
@@ -10,6 +12,11 @@ leads_to: [specialization/gamedev-social]
 estimated_time: 35
 difficulty: 5
 audience: middle
+official_url: https://doc.photonengine.com/
+version: "Photon PUN 2.47 / Quantum 3.0"
+requires_articles: [specialization/gamedev-matchmaking]
+used_in_tasks: [gamedev-matchmaking-flow]
+alternatives: [mirror, nakama, colyseus, unity-netcode]
 ---
 
 :::info[TL;DR]

@@ -8,7 +8,7 @@ tags: [fintech, lending, credit, scoring, amortization, loan-origination, bnpl]
 prerequisites: [specialization/fintech-regulation, specialization/fintech-payments]
 leads_to: []
 related: [specialization/ai-ml-metrics, specialization/ai-ethics, architecture/saga-pattern]
-estimated_time: 25
+estimated_time: 35
 difficulty: 6
 audience: senior
 ---
@@ -17,28 +17,35 @@ audience: senior
 Кредитный конвейер (loan origination system) — процесс от подачи заявки до выдачи кредита и его погашения. Аналитик должен понимать этапы: заявка → скоринг → решение → выдача → обслуживание → погашение. Скоринг — ML-модель, оценивающая вероятность дефолта. Амортизация — график платежей (аннуитетный / дифференцированный). BNPL — отдельный продукт.
 :::
 
+## Для кого эта статья
+
+- Senior SA, работающий над кредитным конвейером
+- SA в банке или МФО
+- Продуктовый аналитик, желающий понять устройство скоринга
+
+После прочтения вы:
+- Поймёте жизненный цикл кредита (заявка → выдача → погашение)
+- Узнаете, как работает скоринг и амортизация
+- Сможете специфицировать требования к кредитному конвейеру
+
 ## Жизненный цикл кредита
 
-```
-1. Заявка (Application)
-       │
-       ▼
-2. Скоринг (Scoring / Underwriting)
-       │
-       ▼
-3. Решение (Decision) — Approve / Decline / Manual review
-       │
-       ▼
-4. Выдача (Disbursement) — перевод денег клиенту
-       │
-       ▼
-5. Обслуживание (Servicing) — платежи, просрочки, пролонгации
-       │
-       ▼
-6. Погашение (Repayment) — полный возврат
-       │
-       ▼
-7. Закрытие (Closed)
+```mermaid
+flowchart TD
+    APP["1. Заявка<br/>Application"]
+    SCORE["2. Скоринг<br/>Scoring / Underwriting"]
+    DECIS["3. Решение<br/>Approve / Decline / Review"]
+    DISB["4. Выдача<br/>Disbursement"]
+    SERV["5. Обслуживание<br/>Servicing"]
+    REPAY["6. Погашение<br/>Repayment"]
+    CLOSE["7. Закрытие<br/>Closed"]
+
+    APP --> SCORE
+    SCORE --> DECIS
+    DECIS --> DISB
+    DISB --> SERV
+    SERV --> REPAY
+    REPAY --> CLOSE
 ```
 
 ## 1. Заявка (Loan Application)
@@ -68,13 +75,20 @@ audience: senior
 
 ### Как работает Application Scoring
 
-```
-Заявка → Feature Engineering → ML Model → Score (300..850)
-                                              │
-                      ┌───────────────────────┴───────────────┐
-                      ▼                                       ▼
-               Score > 700: Approve                    Score < 500: Decline
-               Score 500-700: Manual Review            + причина отказа
+```mermaid
+flowchart LR
+    APP2["Заявка"]
+    FEAT["Feature Engineering"]
+    MLMOD["ML Model"]
+    SCORE["Score (300..850)"]
+    APPR["✅ Approve<br/>Score > 700"]
+    MANUAL["🔍 Manual Review<br/>Score 500-700"]
+    DECL2["❌ Decline<br/>Score < 500"]
+
+    APP2 --> FEAT --> MLMOD --> SCORE
+    SCORE --> APPR
+    SCORE --> MANUAL
+    SCORE --> DECL2
 ```
 
 **Факторы, влияющие на score:**
@@ -108,11 +122,28 @@ audience: senior
 
 **Архитектура:** Saga pattern (списание + открытие счёта + создание графика):
 
-```
-1. Создать ссудный счёт ✓
-2. Зарезервировать лимит ✓
-3. Перевести деньги клиенту ✓  ← если ошибка — компенсация шагов 1-2
-4. Создать график платежей ✓   ← если ошибка — отменить перевод
+```mermaid
+sequenceDiagram
+    participant SAGA as Saga Coordinator
+    participant ACC as Ссудный счёт
+    participant LIMIT as Лимиты
+    participant PAY as Перевод клиенту
+    participant SCHED as График платежей
+
+    SAGA->>ACC: Создать ссудный счёт
+    ACC-->>SAGA: OK
+    SAGA->>LIMIT: Зарезервировать лимит
+    LIMIT-->>SAGA: OK
+    SAGA->>PAY: Перевести деньги клиенту
+    alt Error
+        PAY-->>SAGA: ERROR
+        SAGA->>ACC: COMPENSATE (закрыть счёт)
+        SAGA->>LIMIT: COMPENSATE (снять резерв)
+    else Success
+        PAY-->>SAGA: OK
+        SAGA->>SCHED: Создать график платежей
+        SCHED-->>SAGA: OK
+    end
 ```
 
 ## 5. Амортизация (Amortization)
@@ -156,6 +187,32 @@ audience: senior
 | Сумма | Любая | До 15 000₽ (типично) |
 | Регуляция | Полная | Упрощённая |
 
+## Практический кейс: Цифровой кредитный конвейер для МФО
+
+**Проблема:** МФО (100 тыс. заявок/мес) обрабатывает кредиты вручную: заявка приходит на email, менеджер проверяет документы, передаёт в БКИ, через 2 дня — решение. 70% клиентов уходят к конкурентам, где «одобрение за 5 минут».
+
+**Анализ:**
+- Time-to-decision: 2 дня (конкуренты — 5 минут)
+- Manual review: 100% заявок (вручную проверяются все)
+- Нет интеграции с БКИ (НБКИ, OKB) — запрос через веб-интерфейс
+- Нет ML-скоринга — решение на основе 3 простых правил (возраст, доход, стаж)
+- Отказ: 45% — клиент не дождался решения
+
+**Решение:**
+1. Автоматизация заявки: онлайн-форма + API интеграция с НБКИ (< 2 сек)
+2. ML-скоринг (Gradient Boosting): 30 features → score, threshold Approve/Decline/Review
+3. Decision Engine: Approve (< 1 сек) / Decline с причиной / Manual Review (10% заявок)
+4. Автоматическая выдача через PISP, подписание — SMS-код
+5. Dashboard для мониторинга: конверсия, default rate, time-to-decision
+
+**Результат:**
+- Time-to-decision: 2 дня → 30 секунд (95% заявок)
+- Manual review: 100% → 8% заявок
+- Конверсия (заявка → выдача): 15% → 35% (+20 п.п.)
+- Default rate: 8% → 6% (ML-скоринг лучше отсеивает)
+- Доля рынка: +12% за полгода
+- Стоимость проекта: 15 млн ₽, окупаемость: 4 месяца
+
 ## Требования к кредитному конвейеру (спецификация)
 
 | Параметр | Пример |
@@ -197,3 +254,19 @@ audience: senior
 
 3. **Что такое BNPL и чем отличается от обычного кредита?**
    *Ответ:* BNPL — короткий беспроцентный кредит (6 недель, 4 платежа). Минимальный скоринг, малые суммы, упрощённая регуляция.
+
+4. **Что такое PTI (Payment-to-Income) и зачем он нужен?**
+   *Ответ:* Отношение ежемесячного платежа по кредиту к доходу заёмщика. Стандартное ограничение: PTI < 40-50%. Если выше — клиент не потянет кредит.
+
+5. **Какие виды скоринга существуют?**
+   *Ответ:* Application scoring (по заявке), Behavioral scoring (по истории), Collection scoring (вероятность возврата), Fraud scoring (вероятность мошенничества).
+
+## Ссылки для самостоятельного изучения
+
+| Что | Описание | URL |
+|-----|----------|-----|
+| НБКИ — Бюро кредитных историй | Крупнейшее БКИ в РФ | nbki.ru |
+| FICO Scoring Guide | Классический credit score | fico.com |
+| BNPL — Buy Now Pay Later | Обзор продукта | wikipedia.org |
+| 115-ФЗ (ПОД/ФТ) | Требования к кредитованию | consultant.ru |
+| ML для кредитного скоринга | Практическое руководство | kaggle.com/learn

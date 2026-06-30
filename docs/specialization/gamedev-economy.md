@@ -199,6 +199,15 @@ Level 13 → 14: 100,000 Gold + 500 Cards
 
 **После изменений:** retention D1 вырос с 30% до 42%, revenue +35%.
 
+## Ссылки
+
+- [Game Design Economics — Deconstructor of Fun](https://www.deconstructoroffun.com/)
+- [F2P Monetization — GameAnalytics Blog](https://gameanalytics.com/blog/)
+- [Economy Modeling in Excel — GDC Talk](https://www.gdcvault.com/)
+- [Free-to-Play Economics: Sinks and Sources](https://www.gamesindustry.biz/f2p-economics)
+- [Clash Royale Economy Analysis — GameRefinery](https://www.gamerefinery.com/)
+- [Time-to-Max: Balancing Player Progression](https://gameanalytics.com/blog/balancing-player-progression/)
+
 ## Проверь себя
 
 1. **Какие типы валют бывают в F2P-играх?**

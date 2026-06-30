@@ -3,7 +3,18 @@ id: telecom-design-billing
 title: Спроектировать биллинговую модель для pre-paid тарифа
 sidebar_label: Проектирование биллинговой модели
 type: task
+category: specialization
 level: 7
+difficulty: 5
+estimated_time: 120
+requires_articles: [specialization/telecom-billing, specialization/telecom-bss-oss]
+requires_tech: [diameter, tmforum]
+deliverables:
+  - Таблица тарификации (4+ типа услуг с примерами)
+  - Алгоритм работы OCS (шаг за шагом)
+  - Описание zero-rating (2+ метода идентификации)
+  - Rollover-логика переноса остатков
+  - CDR-спецификация (10+ полей)
 tags: [telecom, billing, ocs, rating, tariff]
 ---
 

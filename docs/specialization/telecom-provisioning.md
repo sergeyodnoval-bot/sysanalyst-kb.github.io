@@ -8,7 +8,7 @@ tags: [telecom, provisioning, activation, hlr, hss, network]
 prerequisites: [specialization/telecom-bss-oss, specialization/telecom-crm-order]
 leads_to: [specialization/telecom-5g-iot]
 related: [integration/async-message-queue, architecture/event-driven-architecture]
-estimated_time: 20
+estimated_time: 35
 difficulty: 5
 audience: middle
 ---
@@ -16,6 +16,19 @@ audience: middle
 :::info[TL;DR]
 Provisioning — мост между BSS и сетью. Получает заказ из Order Management и конфигурирует сетевое оборудование: HLR/HSS (голос), PGW/GGSN (данные), OCS (тарификация). Без Provisioning абонент не получит услугу.
 :::
+
+## Для кого эта статья
+
+- SA, работающие над интеграцией BSS и OSS
+- Разработчики Provisioning-систем
+- Архитекторы, проектирующие активацию услуг
+
+## После прочтения вы узнаете
+
+- Что такое Provisioning и зачем он нужен
+- Какие сетевые элементы конфигурирует Provisioning
+- Как выглядят типовые сценарии активации, смены тарифа и блокировки
+- Какие требования к SLA предъявляются к Provisioning
 
 ## Что такое Provisioning
 
@@ -114,6 +127,24 @@ flowchart LR
 | Rollback | Откат всех изменений при ошибке |
 | Мониторинг | Алерт при падении успешности ниже 99.5% |
 
+## Пример: Автоматизация Provisioning для оператора с 12M абонентов
+
+**Контекст.** Федеральный оператор (12M абонентов) использовал ручной Provisioning: заказ из CRM попадал в тикет-систему, инженер вручную конфигурировал HLR, PGW и OCS через CLI. Среднее время активации — 4 часа, ошибки человеческого фактора — 8% заказов.
+
+**Задача.** Автоматизировать Provisioning: заказ → автоматическая активация за < 5 минут, zero-touch для 90% сценариев.
+
+**Решение.**
+- Внедрён Provisioning-движок с оркестрацией на Camunda BPMN
+- 12 адаптеров: HLR (MAP/SS7), PGW (RADIUS/Diameter), OCS (Diameter Ro), SMSC (SMPP)
+- Для каждого сценария — BPMN-диаграмма с шагами, retry-механизмом и rollback-компенсацией
+- Мониторинг: успешность > 99.5%, алерт при отклонении
+
+**Результат.**
+- Среднее время активации: с 4 часов до 3.2 минут
+- Ошибки: с 8% до 0.3%
+- FTE-экономия: 12 инженеров высвобождены для других задач
+- Rollback при сбое: автоматический, среднее время отката — 45 секунд
+
 ## Что дальше
 
 - [Регуляторика в Telecom](/docs/specialization/telecom-regulations)
@@ -129,3 +160,16 @@ flowchart LR
 
 3. **Что такое Saga в контексте Provisioning?**
    *Ответ:* Цепочка вызовов: если один шаг упал — откатить предыдущие (rollback). Аналог Saga pattern.
+
+4. **Какие протоколы использует Provisioning для настройки HLR?**
+   *Ответ:* MAP/SS7, Diameter, LDAP.
+
+5. **Какой SLA на активацию нового абонента?**
+   *Ответ:* < 5 минут (в автоматизированном Provisioning).
+
+## Ссылки
+
+- [3GPP TS 23.002 — Network Architecture](https://www.3gpp.org/specifications)
+- [TM Forum — Service Activation and Configuration](https://www.tmforum.org/oda/open-apis/)
+- [Camunda BPMN для оркестрации Provisioning](https://camunda.com/)
+- [Diameter Protocol — IETF RFC 6733](https://datatracker.ietf.org/doc/html/rfc6733)

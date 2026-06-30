@@ -8,7 +8,7 @@ tags: [ai, ethics, bias, regulation, compliance, fairness]
 prerequisites: [specialization/ai-analyst-intro, specialization/ai-ml-metrics]
 leads_to: [specialization/ai-ml-architecture]
 related: [process/risk-management, requirements/nfr]
-estimated_time: 20
+estimated_time: 35
 difficulty: 4
 audience: middle
 ---
@@ -16,6 +16,20 @@ audience: middle
 :::info TL;DR
 AI-системы могут дискриминировать, нарушать приватность и принимать необъяснимые решения. Регуляторы (EU AI Act, ГОСТы) вводят обязательные требования к «высокорисковым» ИИ-системам. AI-аналитик отвечает за то, чтобы эти требования были специфицированы и проверены, — так же как для безопасности или производительности.
 :::
+
+## Для кого эта статья
+
+- AI-аналитики, специфицирующие требования к ML-моделям
+- Compliance- и risk-менеджеры AI-продуктов
+- Data Scientist, внедряющие fairness-проверки
+- Все, кто работает над внедрением EU AI Act и этических стандартов
+
+## После прочтения вы узнаете
+
+- Какие виды bias существуют и как их обнаружить
+- Как измерять fairness модели с помощью метрик
+- Какие требования EU AI Act применимы к AI-продуктам
+- Как специфицировать требования к объяснимости и приватности
 
 ## Почему AI-этика — часть работы аналитика
 
@@ -104,13 +118,65 @@ GDPR (и российский закон 152-ФЗ) требуют:
 3. **Bias Audit Report** — результаты проверки модели на fairness-метриках
 4. **Risk Assessment** — анализ рисков внедрения модели для разных групп пользователей
 
-## Ключевые термины
+## Кейс: Bias detection в модели отбора резюме
 
-- **Bias** — систематическая ошибка модели, приводящая к несправедливым результатам
-- **Fairness** — свойство модели: одинаковое качество работы для всех групп пользователей
-- **EU AI Act** — европейский закон, регулирующий AI-системы по уровню риска
-- **Explainability** — способность объяснить, почему модель приняла то или иное решение
-- **Human-in-the-loop** — архитектурный паттерн, где критичные решения принимает человек, а модель только предлагает
+**Компания:** Платформа для поиска работы «КарьерныйРост»
+**Задача:** Проверить ML-модель ранжирования кандидатов на fairness
+
+**Исходные данные:**
+- Модель: градиентный бустинг (XGBoost) на 120 признаках
+- Датасет: 50K резюме за 2 года, целевая метрика — приглашение на собеседование
+- Признаки: опыт, образование, навыки, пол (неявно через ФИО), возраст
+
+**Обнаруженный bias:**
+- Женщины на 23% реже проходили отбор при равном опыте и навыках
+- Кандидаты 45+ на 17% реже — при аналогичной квалификации
+- Disparate impact ratio по полу: 0.67 (ниже порога 0.8)
+
+**Сравнение fairness-метрик до и после ретрофита:**
+
+```mermaid
+flowchart LR
+    subgraph Before[До ретрофита]
+        DP_B[Demographic Parity: 0.67]
+        EO_B[Equal Opportunity: 0.71]
+        DI_B[Disparate Impact: 0.67]
+    end
+    subgraph After[После ретрофита]
+        DP_A[Demographic Parity: 0.91]
+        EO_A[Equal Opportunity: 0.94]
+        DI_A[Disparate Impact: 0.91]
+    end
+    Before -->|Fair ML<br/>ретрофит| After
+```
+
+**Процесс этического аудита AI-системы:**
+
+```mermaid
+flowchart TD
+    A[ML-модель готова<br/>к деплою] --> B[Сбор demographic data<br/>по тестовой выборке]
+    B --> C[Расчёт fairness-метрик]
+    C --> D{Disparate Impact > 0.8?}
+    D -->|Да| E[Equal Opportunity OK?]
+    D -->|Нет| F[Bias Mitigation<br/>- Reweighting<br/>- Adversarial debiasing<br/>- Threshold tuning]
+    F --> C
+    E -->|Да| G[Model Card<br/>+ Bias Audit Report]
+    E -->|Нет| F
+    G --> H[Human oversight<br/>approval]
+    H --> I[Deploy with<br/>monitoring]
+    I --> J{Quarterly<br/>fairness audit}
+    J -->|Pass| I
+    J -->|Fail| F
+```
+
+**Результаты ретрофита:**
+- 1. Применён adversarial debiasing — удаление корреляции между полом и предсказанием
+- 2. Threshold tuning для подгрупп — разный порог срабатывания для компенсации bias
+- 3. Добавлен feature «деперсонализация» — удалены признаки, коррелирующие с полом (ФИО, хобби)
+- 4. Fairness-метрики после ретрофита: Demographic Parity 0.91, Equal Opportunity 0.94, Disparate Impact 0.91
+- 5. Quality модели (NDCG@10) снизился на 2% — приемлемая цена за fairness
+- 6. Дополнительно: внедрён ежеквартальный fairness audit с автоматическим алертом при падении DI < 0.82
+- 7. Стоимость ретрофита: 2.8M руб (3 недели работы команды)
 
 ## Что дальше
 
@@ -128,3 +194,17 @@ GDPR (и российский закон 152-ФЗ) требуют:
 
 3. **Зачем нужна explainability в AI-продуктах?**
    *Ответ:* Чтобы соответствовать регуляторным требованиям, доверять модели, отлаживать ошибки и объяснять пользователям причины решений.
+
+4. **В чём разница между Demographic Parity и Equal Opportunity?**
+   *Ответ:* Demographic Parity требует одинаковой вероятности положительного исхода для всех групп независимо от факта. Equal Opportunity требует одинакового True Positive Rate — модель должна одинаково хорошо находить положительные примеры во всех группах.
+
+5. **Какие три уровня explainability существуют и какой минимум нужен для кредитного скоринга?**
+   *Ответ:* L1 — глобальная (как модель работает в целом), L2 — локальная (почему принято конкретное решение), L3 — контрафактическая (что изменило бы решение). Для кредитного скоринга минимум L2 (локальная объяснимость).
+
+## Ссылки
+
+1. [EU AI Act — Official Text](https://artificialintelligenceact.eu/)
+2. [Google — Fairness Indicators](https://www.tensorflow.org/responsible_ai/fairness_indicators/guide)
+3. [SHAP — Explainability Library](https://shap.readthedocs.io/en/latest/)
+4. [NIST — AI Risk Management Framework](https://www.nist.gov/artificial-intelligence/executive-order-safe-secure-and-trustworthy-artificial-intelligence)
+5. [Microsoft — Responsible AI Resources](https://www.microsoft.com/en-us/ai/responsible-ai)

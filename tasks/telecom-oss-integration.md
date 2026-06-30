@@ -3,7 +3,18 @@ id: telecom-oss-integration
 title: Интеграция OSS-систем (TM Forum API)
 sidebar_label: Интеграция OSS-систем
 type: task
+category: specialization
 level: 7
+difficulty: 5
+estimated_time: 150
+requires_articles: [specialization/telecom-bss-oss, specialization/telecom-provisioning]
+requires_tech: [tmforum, diameter, kubernetes]
+deliverables:
+  - Выбор 3+ TM Forum API с обоснованием
+  - Sequence diagram (7+ шагов, BSS → OSS → Network)
+  - Маппинг статусов (8+ статусов)
+  - Async vs Sync decision matrix
+  - Error handling и rollback-сценарий
 tags: [telecom, oss, integration, tm-forum, provisioning]
 ---
 

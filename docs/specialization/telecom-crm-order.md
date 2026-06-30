@@ -8,7 +8,7 @@ tags: [telecom, crm, order-management, customer]
 prerequisites: [specialization/telecom-bss-oss]
 leads_to: [specialization/telecom-provisioning]
 related: [integration/api-design-detailed, requirements/user-stories]
-estimated_time: 20
+estimated_time: 35
 difficulty: 5
 audience: middle
 ---
@@ -16,6 +16,19 @@ audience: middle
 :::info[TL;DR]
 CRM в Telecom — не просто контакты, а управление жизненным циклом абонента: регистрация, смена тарифа, блокировка, отключение, MNP (перенос номера). Order Management — заказы на услуги, которые идут в Provisioning и далее в сеть.
 :::
+
+## Для кого эта статья
+
+- SA, проектирующие CRM и Order Management в Telecom
+- Разработчики BSS-решений
+- Продуктовые менеджеры Telecom-компаний
+
+## После прочтения вы узнаете
+
+- Какие этапы проходит абонент в CRM оператора связи
+- Чем Order Management в Telecom отличается от e-commerce
+- Как работает сквозной процесс Fulfillment (заказ → сеть)
+- Какие требования предъявляются к CRM/OM
 
 ## Жизненный цикл абонента в CRM
 
@@ -100,6 +113,26 @@ sequenceDiagram
 | KYC | Проверка паспорта, ЕСИА |
 | Compliance | 152-ФЗ, СОРМ, anti-fraud |
 
+## Пример: Внедрение CRM и OM для MVNO с 500K абонентов
+
+**Контекст.** Банковская группа запускала MVNO (виртуальный оператор) на сети MNO «Мегафон». Цель: 500K абонентов за первый год. Свои CRM, OM, Billing — интеграция с MNO через TM Forum API и Diameter.
+
+**Задача.** Спроектировать и внедрить CRM + Order Management за 6 месяцев, с поддержкой MNP, KYC (паспорт через ЕСИА), zero-rating на банковское приложение и автоматической активацией SIM.
+
+**Решение.**
+- CRM: Salesforce Telecom Cloud (настроено 4 бизнес-процесса: регистрация, MNP, смена тарифа, блокировка)
+- OM: кастомный Order Manager на Java с BPMN-движком (Camunda)
+- Интеграция с MNO: TMF622 (Ordering) — активация SIM, TMF629 (Customer) — KYC
+- MNP: интеграция с ЦСП (ГИС «Перенос номера») через SOAP, SLA 24 часа
+- Zero-rating: OCS банка проверяет IP-адрес назначения через DPI
+
+**Результат.**
+- Запуск: 5.5 месяцев (на 2 недели раньше плана)
+- 500K абонентов достигнуто на 10-й месяц
+- KYC online: 92% абонентов прошли идентификацию без посещения салона
+- MNP: среднее время переноса — 4 часа (при SLA 24 часа)
+- NPS: 62 (выше среднего по Telecom — 45)
+
 ## Что дальше
 
 - [Provisioning и активация услуг](/docs/specialization/telecom-provisioning)
@@ -115,3 +148,16 @@ sequenceDiagram
 
 3. **Что такое MNP и какой SLA?**
    *Ответ:* Mobile Number Portability — перенос номера к другому оператору. SLA: < 24 часа.
+
+4. **Какие типы заказов бывают в Telecom?**
+   *Ответ:* Активация SIM, смена тарифа, подключение услуги, блокировка, MNP, отключение.
+
+5. **Какие системы конфигурирует Provisioning при активации абонента?**
+   *Ответ:* HLR/HSS (голосовые услуги), PGW/GGSN (интернет), OCS (тарификация), SMSC (SMS).
+
+## Ссылки
+
+- [TM Forum TMF622 — Product Ordering API](https://www.tmforum.org/oda/open-apis/)
+- [Salesforce Telecom Cloud](https://www.salesforce.com/eu/industries/communications/)
+- [Camunda BPMN for Order Management](https://camunda.com/)
+- [3GPP TS 23.228 — IP Multimedia Subsystem](https://www.3gpp.org/specifications)

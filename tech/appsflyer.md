@@ -2,6 +2,8 @@
 id: appsflyer
 title: AppsFlyer / Adjust — mobile attribution и аналитика
 sidebar_label: AppsFlyer / Adjust
+type: technology
+tech_type: tool
 level: 6
 category: tech
 tags: [gamedev, appsflyer, adjust, analytics, attribution, mobile, ua, skadnetwork]
@@ -10,6 +12,11 @@ leads_to: []
 estimated_time: 30
 difficulty: 4
 audience: middle
+official_url: https://dev.appsflyer.com/
+version: "SDK 6.x"
+requires_articles: [specialization/gamedev-analytics, specialization/gamedev-sdk]
+used_in_tasks: [gamedev-liveops]
+alternatives: [adjust, singular, kochava]
 ---
 
 :::info[TL;DR]

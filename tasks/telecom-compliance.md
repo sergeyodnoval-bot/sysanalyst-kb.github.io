@@ -3,7 +3,18 @@ id: telecom-compliance
 title: Чек-лист соответствия регулятору для оператора связи
 sidebar_label: Telecom compliance чек-лист
 type: task
+category: specialization
 level: 7
+difficulty: 5
+estimated_time: 90
+requires_articles: [specialization/telecom-regulations, specialization/telecom-mvno]
+requires_tech: []
+deliverables:
+  - Список лицензий для MVNO
+  - Scope СОРМ (зоны ответственности MVNO vs MNO)
+  - Требования 152-ФЗ (согласие, хранение, локализация)
+  - Anti-fraud требования (3+ пункта)
+  - Архитектурные требования (3+ к системе)
 tags: [telecom, compliance, regulations, sorm, pci-dss, 152-fz]
 ---
 

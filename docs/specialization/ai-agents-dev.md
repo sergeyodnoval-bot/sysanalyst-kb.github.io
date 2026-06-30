@@ -8,7 +8,7 @@ tags: [ai, agents, skills, lsp, development, function-calling]
 prerequisites: [specialization/ai-agents-intro, specialization/ai-agents-mcp]
 leads_to: []
 related: [specialization/ai-agents-multi, specialization/ai-ml-architecture, specialization/ai-ethics]
-estimated_time: 30
+estimated_time: 40
 difficulty: 5
 audience: senior
 ---
@@ -16,6 +16,21 @@ audience: senior
 :::info TL;DR
 Проектирование AI-агента для продакшна требует не только понимания LLM и инструментов, но и навыков спецификации: как описывать скилы (skills), как обеспечивать надёжность, как тестировать и мониторить. Аналитик отвечает за требования к поведению агента, его ограничениям, качеству и безопасности. LSP (Language Server Protocol) — важный пример того, как агенты получают контекст для работы с кодом.
 :::
+
+## Для кого эта статья
+
+- Системные аналитики, специфицирующие скилы и ограничения AI-агентов
+- Разработчики, проектирующие архитектуру агентных систем
+- Tech leads, оценивающие надёжность и стоимость агентных решений
+- QA-инженеры, тестирующие AI-агентов
+
+## После прочтения вы узнаете
+
+- Как проектировать скилы (skills) агента: структура, типы, требования
+- Как LSP помогает кодинг-агентам работать с кодовой базой
+- Какие фреймворки существуют для разработки агентов (LangGraph, CrewAI, AutoGen)
+- Как обеспечивать надёжность и тестировать агентов
+- Какие ключевые решения принимает аналитик при проектировании агентной системы
 
 ## Скилы агента: проектирование инструментов
 
@@ -65,23 +80,31 @@ Quality criteria:
 
 Для кодинг-агентов (Copilot, Cursor, Claude Code) LSP критичен, потому что:
 
-```
-Запрос: «исправь баг в функции calculateTax»
-                    │
-                    ▼
-┌──────────────────────────────────┐
-│          Coding Agent            │
-│  ┌────────────────────────────┐  │
-│  │ LSP Client ◄──── LSP Server│  │
-│  │   └─ getDefinition        │  │  ← LSP даёт контекст: где объявлена функция
-│  │   └─ getReferences        │  │  ← какие строки кода её используют
-│  │   └─ getHover             │  │  ← документация функции
-│  │   └─ getDiagnostics       │  │  ← текущие ошибки в файле
-│  └────────────────────────────┘  │
-│  ┌────────────────────────────┐  │
-│  │ MCP Client ◄──── MCP Server│  │  ← доступ к инструментам
-│  └────────────────────────────┘  │
-└──────────────────────────────────┘
+```mermaid
+flowchart TD
+    Request[Запрос: исправь баг в функции calculateTax] --> CA[Coding Agent]
+
+    subgraph CA[Coding Agent]
+        subgraph LSP[LSP Client]
+            L1[getDefinition]
+            L2[getReferences]
+            L3[getHover]
+            L4[getDiagnostics]
+        end
+        LSP <--> LS[LSP Server]
+
+        subgraph MCP[MCP Client]
+            M1[MCP Client]
+        end
+        M1 <--> MS[MCP Server]
+    end
+
+    LS -->|контекст: где объявлена функция| CA
+    LS -->|какие строки кода используют| CA
+    LS -->|документация функции| CA
+    LS -->|текущие ошибки в файле| CA
+
+    MS -->|доступ к инструментам| CA
 ```
 
 ### Что LSP даёт агенту
@@ -173,6 +196,38 @@ Quality criteria:
 6. **Как мониторить?** — success rate, cost, latency, safety
 7. **Какие протоколы?** — MCP (инструменты), LSP (код), API
 
+## Процесс разработки AI-агента
+
+```mermaid
+flowchart LR
+    A[Design] --> B[Skill Definition]
+    B --> C[Test]
+    C --> D[Deploy]
+    D --> E[Monitor]
+
+    A --> A1[Определение цели агента]
+    A --> A2[Выбор архитектуры single/multi]
+    A --> A3[Спецификация guardrails]
+
+    B --> B1[Описание инструментов]
+    B --> B2[JSON Schema параметров]
+    B --> B3[Ограничения и критерии]
+
+    C --> C1[Scenario testing]
+    C --> C2[Tool call validation]
+    C --> C3[Safety testing]
+
+    D --> D1[Развёртывание MCP-сервера]
+    D --> D2[Интеграция с LLM]
+    D --> D3[Human-in-the-loop]
+
+    E --> E1[Task success rate]
+    E --> E2[Cost per task]
+    E --> E3[Latency P95]
+
+    E -.->|обратная связь| A
+```
+
 ## Ключевые термины
 
 - **Skill** — описание возможности агента: инструменты, ограничения, критерии качества
@@ -181,6 +236,63 @@ Quality criteria:
 - **Guardrails** — программные ограничения на действия агента
 - **Scenario testing** — тестирование агента на типовых сценариях (не unit-тесты)
 - **Prompt injection** — атака, при которой пользователь пытается переопределить поведение агента
+
+## Практический кейс: Разработка AI-агента для QA-тестирования
+
+### Контекст
+
+Продуктовая IT-компания «СофтВерификация» выпускает 50 релизов в месяц. Ручное QA-тестирование занимает 200 часов в неделю, при этом пропускается 15% багов. Решение — разработать AI-агента для автоматизации QA-процесса.
+
+### Архитектура решения
+
+```mermaid
+flowchart TD
+    Dev[Новый релиз] --> QA[QA Agent]
+
+    subgraph QA[QA Agent]
+        TC[Test Case Generator]
+        TE[Test Executor]
+        BR[Bug Reporter]
+
+        TC -->|сценарии тестов| TE
+        TE -->|результаты| BR
+    end
+
+    QA --> Passed{Результат}
+    Passed -->|тесты пройдены| Prod[Деплой в production]
+    Passed -->|найдены баги| Jira[Jira задача]
+    Passed -->|неопределённо| Human[Ручная проверка]
+
+    BR --> Jira
+
+    subgraph Skills[Скилы агента]
+        S1[generate_test_cases]
+        S2[execute_test]
+        S3[analyze_results]
+        S4[create_bug_report]
+    end
+
+    TC --> S1
+    TE --> S2
+    TE --> S3
+    BR --> S4
+```
+
+### Результаты
+
+| Метрика | До внедрения | После внедрения | Улучшение |
+|---------|-------------|----------------|-----------|
+| Скорость тестирования | 200 часов/нед | 1000 тестов/час | 10x |
+| Bug detection rate | 85% | 92% | +7% |
+| False positive rate | 12% | 8% | -33% |
+| Время от релиза до отчёта | 24 часа | 45 минут | 97% |
+| Cost на один релиз | $4,000 | $600 | -85% |
+
+**ROI:** При 50 релизах/месяц и cost $4,000 → $600 экономия составляет $170,000/месяц. Агент обрабатывает 1000 тестов в час с точностью обнаружения багов 92% и всего 8% ложных срабатываний. Окупаемость — 1 месяц.
+
+### Вывод
+
+AI-агент для QA-тестирования увеличил скорость проверки релизов в 10 раз (1000 тестов/час), повысил точность обнаружения багов до 92% и снизил стоимость одного релиза на 85%.
 
 ## Что дальше
 
@@ -198,3 +310,17 @@ Quality criteria:
 
 3. **Почему unit-тесты не подходят для агентов?**
    *Ответ:* Результат агента недетерминирован — LLM может дать разные ответы на один запрос. Вместо этого используют scenario testing (тестовые сценарии) и tool call validation (проверка вызова инструментов).
+
+4. **Какие пять типов скилов агента существуют?**
+   *Ответ:* Read (чтение), Write (запись), Compute (вычисления), Control (управление), Sensory (внешняя среда).
+
+5. **Какие метрики качества агента нужно отслеживать в продакшне?**
+   *Ответ:* Task success rate, Average steps, Tool accuracy, Human escalation rate, Average cost, Latency P95.
+
+## Ссылки
+
+1. [LangChain — Agent development guide](https://python.langchain.com/docs/how_to/#agents)
+2. [Microsoft AutoGen — Getting Started](https://microsoft.github.io/autogen/stable/)
+3. [OpenAI Agents SDK documentation](https://platform.openai.com/docs/guides/agents)
+4. [Anthropic — Tool use (function calling)](https://docs.anthropic.com/en/docs/build-with-claude/tool-use)
+5. [CrewAI — Building multi-agent systems](https://docs.crewai.com/)

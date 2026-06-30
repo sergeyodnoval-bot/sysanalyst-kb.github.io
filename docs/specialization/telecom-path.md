@@ -8,7 +8,7 @@ tags: [telecom, bss-oss, billing, role, career]
 prerequisites: [specialization/industry-analytics]
 leads_to: [specialization/telecom-bss-oss]
 related: [specialization/ecommerce-retail-path, specialization/fintech-analyst-path]
-estimated_time: 15
+estimated_time: 35
 difficulty: 4
 audience: middle
 ---
@@ -16,6 +16,19 @@ audience: middle
 :::info[TL;DR]
 Telecom-аналитик работает с BSS/OSS — системами для управления абонентами, тарификации, заказами и сетью. Специфика: миллионы абонентов, real-time charging, жёсткая регуляция (СОРМ, 152-ФЗ, лицензии) и длинный lifecycle (десятилетиями работающие legacy-системы).
 :::
+
+## Для кого эта статья
+
+- Junior-аналитики, которые хотят войти в Telecom
+- Middle SA, переходящие из других доменов (FinTech, e-commerce)
+- Team Lead / Architects, оценивающие специфику Telecom-проектов
+
+## После прочтения вы узнаете
+
+- Чем Telecom отличается от e-commerce и FinTech
+- Какие системы входят в BSS и OSS
+- Какие протоколы и стандарты нужно знать
+- Как выглядит карьерный путь Telecom-аналитика
 
 ## Чем Telecom отличается от других отраслей
 
@@ -79,6 +92,24 @@ flowchart TD
 | 3 | Senior SA | BSS/OSS архитектура, MVNO |
 | 4 | Lead / Architect | Telecom-решения, 5G |
 
+## Пример: BSS-реплейсинг для оператора «Связь»
+
+**Контекст.** Региональный оператор связи с 2.5M абонентов эксплуатировал BSS-платформу на Oracle BRM 2008 года. Система не поддерживала hybrid-тарифы (pre-paid + post-paid), не было API для MVNO-партнёров, downtime биллинга достигал 4 часов в месяц.
+
+**Задача.** За 18 месяцев заменить ядро BSS: CRM, Product Catalog, Order Management, Billing/Charging. Без остановки действующих абонентов.
+
+**Решение.**
+- Выбрана платформа Netcracker (TM Forum Open API compliant)
+- Разбивка на 5 фаз: (1) Product Catalog → (2) CRM → (3) OM → (4) Billing → (5) OCS
+- Миграция данных: параллельная запись в старую и новую BSS в течение 3 месяцев
+- Для pre-paid абонентов — горячая миграция через OCS (по IMSI-range, 50K/ночь)
+
+**Результат.**
+- Downtime BSS: с 4 ч/мес до 0 (99.995%)
+- Запуск 3 MVNO-партнёров через TM Forum API
+- Время вывода нового тарифа: с 3 недель до 2 дней
+- ROI: 18 месяцев (учтена экономия на лицензиях Oracle и downtime)
+
 ## Что дальше
 
 - [BSS/OSS](/docs/specialization/telecom-bss-oss) — архитектура Telecom-систем
@@ -91,3 +122,18 @@ flowchart TD
 
 2. **Какие особенности Telecom по сравнению с другими отраслями?**
    *Ответ:* Миллионы абонентов, real-time charging, жёсткая регуляция (СОРМ), десятилетиями работающие legacy-системы.
+
+3. **Какие 4 стандарта TM Forum нужно знать аналитику?**
+   *Ответ:* eTOM (процессы), SID (данные), TAM (приложения), Open API (интеграции).
+
+4. **Сколько абонентов может обслуживать BSS оператора связи?**
+   *Ответ:* 10M+ абонентов, пиковая нагрузка до 50 000 TPS на OCS.
+
+5. **Какая максимальная задержка OCS при pre-paid звонке?**
+   *Ответ:* Менее 100 ms, иначе звонок оборвётся.
+
+## Ссылки
+
+- [TM Forum Open API](https://www.tmforum.org/oda/open-apis/)
+- [3GPP спецификации](https://www.3gpp.org/specifications)
+- [Минцифры — лицензирование услуг связи](https://digital.gov.ru/ru/activity/directions/8/)

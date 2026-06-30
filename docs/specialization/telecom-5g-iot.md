@@ -8,7 +8,7 @@ tags: [telecom, 5g, iot, network-slicing, edge-computing]
 prerequisites: [specialization/telecom-bss-oss]
 leads_to: []
 related: [architecture/microservices-patterns, integration/event-driven-architecture]
-estimated_time: 20
+estimated_time: 40
 difficulty: 6
 audience: senior
 ---
@@ -16,6 +16,19 @@ audience: senior
 :::info[TL;DR]
 5G — не просто «быстрее», а новая архитектура: network slicing, edge computing, low latency, mMTC (massive IoT). Для аналитика 5G означает новые бизнес-модели: B2B-сеть для заводов, IoT-тарифы для миллионов устройств, SLA на уровне сети.
 :::
+
+## Для кого эта статья
+
+- SA, изучающие 5G и IoT-архитектуру
+- Архитекторы BSS, готовящиеся к внедрению 5G
+- Продуктовые менеджеры IoT-решений
+
+## После прочтения вы узнаете
+
+- Чем 5G отличается от 4G на уровне архитектуры
+- Что такое Network Slicing и какие бизнес-модели он открывает
+- Какие технологии IoT используются в Telecom
+- Как Edge Computing меняет требования к BSS
 
 ## Что нового в 5G (vs 4G)
 
@@ -46,7 +59,7 @@ flowchart TD
     NEF --> AMF["AMF (управление доступом)"]
     AMF --> SMF["SMF (управление сессиями)"]
     SMF --> UPF["UPF (плоскость данных — быстрый путь)"]
-\```
+```
 
 ## Network Slicing
 
@@ -63,7 +76,7 @@ flowchart TD
     PHY --> S3["Slice 3: mMTC<br/>(массовый IoT)"]
     S3 --> S3S["SLA: до 1 млн устройств/км², энергопотребление минимальное"]
     S3 --> S3E["Пример: smart meters, сенсоры"]
-\```
+```
 
 ## IoT в Telecom
 
@@ -82,7 +95,7 @@ flowchart TD
 flowchart LR
     D["Device"] --> NB["NB-IoT"] --> NW["Network"] --> PL["IoT Platform"] --> BS["BSS"]
     PL --> APP["Application<br/>(аналитика, UI)"]
-\```
+```
 
 **IoT Platform — ключевой компонент:**
 - **Device Management** — регистрация, OTA-обновления, состояние
@@ -99,7 +112,7 @@ flowchart LR
     CL["Cloud (дата-центр)"] <--> CN["Core Network"] <--> ED["Edge (у БС)"] <--> DV["Device"]
     ED --> ED1["Low latency (< 10 ms)"]
     ED --> ED2["Обработка данных локально"]
-\```
+```
 
 **Для аналитика:** Edge Computing означает требования к биллингу — как тарифицировать обработку на edge? Как учитывать потреблённые ресурсы?
 
@@ -113,6 +126,28 @@ flowchart LR
 | SLA | Юридические обязательства по скорости/задержке |
 | Provisioning | Активация slice в реальном времени |
 | API монетизация | TM Forum Open API для B2B |
+
+## Пример: Network Slicing для промышленного завода
+
+**Контекст.** Крупный производитель автомобилей («АвтоТех») построил «умный завод» с 5G-покрытием. Требования: три класса трафика на одной физической сети 5G:
+1. **URLLC** — управление роботами-манипуляторами (latency < 5 ms, reliability 99.999%)
+2. **eMBB** — видеоаналитика 4K с 200 камер (throughput > 500 Мбит/с на камеру)
+3. **mMTC** — 50 000 сенсоров температуры/вибрации (единицы байт/день, батарея 10 лет)
+
+**Задача.** Спроектировать 5G-сеть с тремя slices, интегрировать BSS для тарификации по SLA.
+
+**Решение.**
+- Network Slicing через 5GC: NSSF назначает slice-селектор по типу устройства
+- URLLC-срез: выделенные ресурсы на UPF, MIMO-антенны, SLA в договоре
+- eMBB-срез: best-effort с приоритетом для видео
+- mMTC-срез: NB-IoT на отдельной несущей
+- BSS: Product Catalog содержит три продукта (URLLC-Slice, eMBB-Slice, mMTC-Slice) с разными ценами и SLA
+
+**Результат.**
+- URLLC: latency 3.2 ms, 0 сбоев за 6 месяцев
+- eMBB: 200 камер 4K передают видео в реальном времени
+- mMTC: 50K сенсоров работают от батареек, замена раз в 8 лет
+- Оператор зарабатывает: 2 млн ₽/мес за URLLC-slice + 500K ₽ за eMBB
 
 ## Что дальше
 
@@ -129,3 +164,17 @@ flowchart LR
 
 3. **Как Edge Computing меняет требования к BSS?**
    *Ответ:* Нужно тарифицировать не только трафик, но и вычислительные ресурсы на edge, SLA по latency.
+
+4. **Какие три типа трафика поддерживает Network Slicing в 5G?**
+   *Ответ:* eMBB (широкополосный), URLLC (низкая задержка), mMTC (массовый IoT).
+
+5. **Какая технология IoT подходит для умных счётчиков?**
+   *Ответ:* NB-IoT — низкая скорость (~200 Кбит/с), дальняя связь (10+ км), минимальное энергопотребление.
+
+## Ссылки
+
+- [3GPP TS 23.501 — 5G System Architecture](https://www.3gpp.org/specifications)
+- [5G SBA (Service-Based Architecture) — Ericsson](https://www.ericsson.com/en/5g)
+- [GSMA — 5G Network Slicing](https://www.gsma.com)
+- [NB-IoT — 3GPP Release 13](https://www.3gpp.org/specifications)
+- [ETSI MEC — Multi-access Edge Computing](https://www.etsi.org/technologies/multi-access-edge-computing)

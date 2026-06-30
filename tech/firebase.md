@@ -2,6 +2,8 @@
 id: firebase
 title: Firebase — экосистема для мобильных игр
 sidebar_label: Firebase
+type: technology
+tech_type: tool
 level: 5
 category: tech
 tags: [gamedev, firebase, analytics, crashlytics, remote-config, fcm, push, backend]
@@ -10,6 +12,11 @@ leads_to: [specialization/gamedev-sdk]
 estimated_time: 25
 difficulty: 4
 audience: middle
+official_url: https://firebase.google.com/docs
+version: "SDK 11.x"
+requires_articles: [specialization/gamedev-analytics, specialization/gamedev-sdk]
+used_in_tasks: [gamedev-liveops]
+alternatives: [amplitude, sentry, onesignal]
 ---
 
 :::info[TL;DR]

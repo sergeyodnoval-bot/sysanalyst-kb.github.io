@@ -4,7 +4,7 @@ title: Git — контроль версий
 sidebar_label: Git
 level: 1
 category: tool
-type: tech
+type: technology
 tech_type: tool
 tags: [git, vcs, devops, tool, basics]
 first_seen: ITB-18

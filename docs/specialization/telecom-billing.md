@@ -8,7 +8,7 @@ tags: [telecom, billing, charging, ocs, rating, cdr]
 prerequisites: [specialization/telecom-bss-oss]
 leads_to: [specialization/telecom-crm-order, specialization/telecom-mvno]
 related: [architecture/saga-pattern, data/dwh-basics]
-estimated_time: 25
+estimated_time: 40
 difficulty: 6
 audience: senior
 ---
@@ -16,6 +16,19 @@ audience: senior
 :::info[TL;DR]
 Billing (выставление счетов) и Charging (тарификация в реальном времени) — ядро Telecom. Pre-paid: деньги списываются сразу. Post-paid: счёт в конце месяца. Аналитик специфицирует тарифные планы, CDR (Call Data Records), роуминг, OCS (Online Charging System) и интеграцию с CRM.
 :::
+
+## Для кого эта статья
+
+- SA, работающие над Billing/Charging-модулями
+- Архитекторы BSS-платформ операторов связи
+- Разработчики OCS и Mediation-систем
+
+## После прочтения вы узнаете
+
+- Чем pre-paid отличается от post-paid на уровне архитектуры
+- Как работает OCS (Online Charging System) в real-time
+- Из каких этапов состоит обработка CDR
+- Как проектировать тарифные планы в Telecom
 
 ## Pre-paid vs Post-paid
 
@@ -133,6 +146,25 @@ flowchart LR
 | Роуминг | TAP-файлы (входящий/исходящий) |
 | Zero-rating | По списку URL/IP |
 
+## Пример: Миграция pre-paid абонентов на hybrid-биллинг
+
+**Контекст.** Оператор «Мобайл» (5M pre-paid, 2M post-paid) терял 15% pre-paid абонентов в месяц из-за отсутствия hybrid-тарифов. Конкуренты (Yota, Tele2) предлагали пакеты с безлимитными соцсетями и переносом остатков, что было недоступно на старой OCS (Huawei OCS v8, 2014).
+
+**Задача.** Мигрировать 5M pre-paid абонентов на новую OCS (Ericsson Charging System) с поддержкой hybrid (pre-paid + post-paid в одном тарифе) без потери действующих абонентов.
+
+**Решение.**
+- Новая OCS развёрнута параллельно, синхронизация балансов через Kafka
+- Миграция по IMSI-range: 5 пулов по 1M абонентов, 50K/ночь
+- Каждый пакет проходил: заморозка старой OCS → перенос баланса → активация в новой OCS → тестовый звонок
+- Rollback-план: при падении успешности < 99% — откат пула за 2 часа
+
+**Результат.**
+- Успешность миграции: 99.97% (1 500 ошибок из 5M, все исправлены вручную)
+- Downtime на абонента: < 3 минут
+- Запуск hybrid-тарифа «Всё включено» через 2 недели после миграции
+- Отток pre-paid: снизился с 15% до 4% за 3 месяца
+- ARPU вырос на 18% за счёт cross-sell
+
 ## Что дальше
 
 - [CRM и Order Management](/docs/specialization/telecom-crm-order)
@@ -148,3 +180,16 @@ flowchart LR
 
 3. **Что такое CDR и как он обрабатывается?**
    *Ответ:* Call Data Record — запись об операции. Процесс: Mediation → Rating → Guiding → Billing.
+
+4. **Какая максимальная задержка OCS для pre-paid звонка?**
+   *Ответ:* Менее 100 ms, иначе звонок может оборваться.
+
+5. **Что такое Zero-rating в Telecom?**
+   *Ответ:* Трафик на определённые ресурсы (соцсети, мессенджеры) не тарифицируется — OCS пропускает его без списания средств.
+
+## Ссылки
+
+- [3GPP TS 32.240 — Charging Architecture](https://www.3gpp.org/specifications)
+- [TM Forum — Charging APIs](https://www.tmforum.org/oda/open-apis/)
+- [IETF RFC 4006 — Diameter Credit-Control Application](https://datatracker.ietf.org/doc/html/rfc4006)
+- [GSMA — TAP (Transferred Account Procedure) Standard](https://www.gsma.com)

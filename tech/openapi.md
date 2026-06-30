@@ -3,6 +3,7 @@ id: openapi
 sidebar_position: 1
 title: OpenAPI Specification (Swagger)
 sidebar_label: OpenAPI / Swagger
+type: technology
 tech_type: standard
 level: 3
 category: integration

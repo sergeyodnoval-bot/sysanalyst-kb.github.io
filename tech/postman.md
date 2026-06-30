@@ -3,6 +3,7 @@ id: postman
 sidebar_position: 2
 title: Postman
 sidebar_label: Postman
+type: technology
 tech_type: tool
 level: 2
 category: testing
