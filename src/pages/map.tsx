@@ -284,15 +284,39 @@ export default function KnowledgeMap(): React.ReactElement {
     position: {x: 400, y: 300},
   }], []);
 
+  // DEBUG: test edge connecting testNode to first layouted node
+  const testEdge = useMemo(() => {
+    if (!nodes.length) return [];
+    const firstRealId = nodes[0].id;
+    return [{
+      id: 'test-edge',
+      source: 'test-node',
+      target: firstRealId,
+      type: 'smoothstep',
+      animated: true,
+      style: {stroke: '#ef4444', strokeWidth: 3},
+      markerEnd: {type: MarkerType.ArrowClosed},
+    }];
+  }, [nodes]);
+
   useEffect(() => {
     const rfContainer = document.querySelector('.react-flow__viewport');
     const rfNodesContainer = document.querySelector('.react-flow__nodes');
+    const rfEdgesContainer = document.querySelector('.react-flow__edges');
     const nodeCount = rfNodesContainer?.childElementCount ?? -1;
+    const edgeCount = rfEdgesContainer?.childElementCount ?? -1;
     const containerHeight = document.querySelector('.react-flow')?.clientHeight ?? -1;
+
+    // check if first few edge source/target match a node id
+    const edgeSample = edges.slice(0, 5).map(e => `${e.id}:${e.source}->${e.target}`).join(' ');
+    const nodeSample = nodes.slice(0, 5).map(n => n.id).join(' ');
+    const nodeSet = new Set(nodes.map(n => n.id));
+    const mismatches = edges.filter(e => !nodeSet.has(e.source) || !nodeSet.has(e.target)).length;
+
     const div = document.createElement('div');
     div.id = 'kg-debug';
-    div.style.cssText = 'position:fixed;bottom:8px;right:8px;background:#1a1a2e;color:#fff;padding:8px 12px;border-radius:6px;font:12px monospace;z-index:9999;max-width:500px;white-space:pre-wrap;';
-    div.textContent = `state: ${nodes.length}n/${edges.length}e | rndr: ${nodeCount}n | rfH: ${containerHeight}px | firstNode: ${nodes[0]?.id ?? '-'}`;
+    div.style.cssText = 'position:fixed;bottom:8px;right:8px;background:#1a1a2e;color:#fff;padding:8px 12px;border-radius:6px;font:12px monospace;z-index:9999;max-width:700px;white-space:pre-wrap;';
+    div.textContent = `state: ${nodes.length}n/${edges.length}e | DOM: ${nodeCount}n/${edgeCount}e | rfH: ${containerHeight}px | badRefs: ${mismatches} | samples: ${edgeSample} | nodes: ${nodeSample}`;
     document.body.appendChild(div);
     return () => div.remove();
   }, [nodes, edges]);
@@ -381,7 +405,7 @@ export default function KnowledgeMap(): React.ReactElement {
             {() => (
               <ReactFlow
                 nodes={[...testNode, ...nodes]}
-                edges={edges}
+                edges={[...testEdge, ...edges]}
                 onNodesChange={onNodesChange}
                 onEdgesChange={onEdgesChange}
                 nodeTypes={nodeTypes}
