@@ -300,27 +300,20 @@ export default function KnowledgeMap(): React.ReactElement {
   }, [nodes]);
 
   useEffect(() => {
-    const rfContainer = document.querySelector('.react-flow__viewport');
-    const rfNodesContainer = document.querySelector('.react-flow__nodes');
-    const rfEdgesContainer = document.querySelector('.react-flow__edges');
-    const nodeCount = rfNodesContainer?.childElementCount ?? -1;
-    const edgeCount = rfEdgesContainer?.childElementCount ?? -1;
-    const containerHeight = document.querySelector('.react-flow')?.clientHeight ?? -1;
-
-    // check if first few edge source/target match a node id
-    const edgeSample = edges.slice(0, 5).map(e => `${e.id}:${e.source}->${e.target}`).join(' ');
-    const nodeSample = nodes.slice(0, 5).map(n => n.id).join(' ');
     const nodeSet = new Set(nodes.map(n => n.id));
     const mismatches = edges.filter(e => !nodeSet.has(e.source) || !nodeSet.has(e.target)).length;
+    const edgeSample = edges.slice(0, 5).map(e => `${e.id}:${e.source}->${e.target}`).join(' ');
+    const nodeSample = nodes.slice(0, 5).map(n => n.id).join(' ');
 
-    const div = document.createElement('textarea');
-    div.id = 'kg-debug';
-    div.readOnly = true;
-    div.style.cssText = 'position:fixed;bottom:8px;right:8px;background:#1a1a2e;color:#fff;padding:8px 12px;border-radius:6px;font:12px monospace;z-index:9999;max-width:700px;white-space:pre-wrap;border:1px solid #444;resize:both;user-select:text;pointer-events:auto;';
-    div.value = `state: ${nodes.length}n/${edges.length}e | DOM: ${nodeCount}n/${edgeCount}e | rfH: ${containerHeight}px | badRefs: ${mismatches}\nsamples: ${edgeSample}\nnodes: ${nodeSample}`;
-    document.body.appendChild(div);
-    return () => div.remove();
-  }, [nodes, edges]);
+    console.log('=== KG DEBUG ===');
+    console.log('state:', `${nodes.length}n / ${edges.length}e`);
+    console.log('firstNode:', nodes[0]?.id ?? '-', `pos: ${JSON.stringify(nodes[0]?.position)}`);
+    console.log('badRefs:', mismatches, `(edges with source/target not matching any node id)`);
+    console.log('edge samples:', edgeSample);
+    console.log('node samples:', nodeSample);
+    console.log('filteredNodes:', filteredNodes.length, 'filteredEdges:', filteredEdges.length);
+    console.log('layoutedNodes:', layoutedNodes.length);
+  }, [nodes, edges, filteredNodes, filteredEdges, layoutedNodes]);
 
   const toggleTech = (key: keyof FilterState['technologies']) => {
     setFilters((f) => ({...f, technologies: {...f.technologies, [key]: !f.technologies[key]}}));
