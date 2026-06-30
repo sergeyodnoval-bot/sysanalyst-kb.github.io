@@ -224,6 +224,8 @@ export default function KnowledgeMap(): React.ReactElement {
     const nodes = visibleNodes.map((n) => ({
       id: n.id,
       type: n.type,
+      width: 160,
+      height: 80,
       data: {
         label: n.label,
         category: n.category,
