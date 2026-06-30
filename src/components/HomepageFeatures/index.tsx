@@ -13,16 +13,6 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Граф знаний',
-    emoji: '🧠',
-    description: (
-      <>
-        Все статьи связаны между собой. Открой карту знаний и увидишь, как темы зависят друг от друга.
-      </>
-    ),
-    link: '/map',
-  },
-  {
     title: 'Тест на уровень',
     emoji: '🎯',
     description: (

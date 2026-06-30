@@ -213,7 +213,6 @@ const config: Config = {
           position: 'left',
           label: 'Задачи',
         },
-        {to: '/map', label: 'Карта знаний', position: 'left'},
         {to: '/test', label: 'Тест на уровень', position: 'left'},
         {to: '/tracks', label: 'Треки', position: 'left'},
       ],
