@@ -1,7 +1,5 @@
-import React, {useMemo, useState, useEffect} from 'react';
+import React, {useMemo, useState, useEffect, useCallback} from 'react';
 import ReactFlow, {
-  useNodesState,
-  useEdgesState,
   Controls,
   Background,
   MiniMap,
@@ -272,11 +270,8 @@ export default function KnowledgeMap(): React.ReactElement {
     });
   }, [filteredNodes, filteredEdges]);
 
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-
-  useEffect(() => { if (layoutedNodes.length) setNodes(layoutedNodes); }, [layoutedNodes, setNodes]);
-  useEffect(() => { if (filteredEdges.length) setEdges(filteredEdges); }, [filteredEdges, setEdges]);
+  const onNodesChange = useCallback(() => {}, []);
+  const onEdgesChange = useCallback(() => {}, []);
 
   // DEBUG: hardcoded test node
   const testNode = useMemo(() => [{
@@ -284,38 +279,39 @@ export default function KnowledgeMap(): React.ReactElement {
     type: 'article',
     data: {label: 'TEST', category: 'basics', level: 1, type: 'article', link: '#'},
     position: {x: 400, y: 300},
+    width: 160, height: 80,
   }], []);
 
   // DEBUG: test edge connecting testNode to first layouted node
   const testEdge = useMemo(() => {
-    if (!nodes.length) return [];
-    const firstRealId = nodes[0].id;
+    if (!layoutedNodes.length) return [];
+    const firstRealId = layoutedNodes[0].id;
     return [{
       id: 'test-edge',
       source: 'test-node',
       target: firstRealId,
-      type: 'smoothstep',
+      type: 'default',
       animated: true,
-      style: {stroke: '#ef4444', strokeWidth: 3},
+      style: {stroke: '#ef4444', strokeWidth: 5},
       markerEnd: {type: MarkerType.ArrowClosed},
     }];
-  }, [nodes]);
+  }, [layoutedNodes]);
 
   useEffect(() => {
-    const nodeSet = new Set(nodes.map(n => n.id));
-    const mismatches = edges.filter(e => !nodeSet.has(e.source) || !nodeSet.has(e.target)).length;
-    const edgeSample = edges.slice(0, 5).map(e => `${e.id}:${e.source}->${e.target}`).join(' ');
-    const nodeSample = nodes.slice(0, 5).map(n => n.id).join(' ');
+    const nodeSet = new Set(layoutedNodes.map(n => n.id));
+    const mismatches = filteredEdges.filter(e => !nodeSet.has(e.source) || !nodeSet.has(e.target)).length;
+    const edgeSample = filteredEdges.slice(0, 5).map(e => `${e.id}:${e.source}->${e.target}`).join(' ');
+    const nodeSample = layoutedNodes.slice(0, 5).map(n => n.id).join(' ');
 
     console.log('=== KG DEBUG ===');
-    console.log('state:', `${nodes.length}n / ${edges.length}e`);
-    console.log('firstNode:', nodes[0]?.id ?? '-', `pos: ${JSON.stringify(nodes[0]?.position)}`);
+    console.log('state:', `${layoutedNodes.length}n / ${filteredEdges.length}e`);
+    console.log('firstNode:', layoutedNodes[0]?.id ?? '-', `pos: ${JSON.stringify(layoutedNodes[0]?.position)}`);
     console.log('badRefs:', mismatches, `(edges with source/target not matching any node id)`);
     console.log('edge samples:', edgeSample);
     console.log('node samples:', nodeSample);
     console.log('filteredNodes:', filteredNodes.length, 'filteredEdges:', filteredEdges.length);
     console.log('layoutedNodes:', layoutedNodes.length);
-  }, [nodes, edges, filteredNodes, filteredEdges, layoutedNodes]);
+  }, [layoutedNodes, filteredEdges, filteredNodes]);
 
   const toggleTech = (key: keyof FilterState['technologies']) => {
     setFilters((f) => ({...f, technologies: {...f.technologies, [key]: !f.technologies[key]}}));
@@ -400,8 +396,8 @@ export default function KnowledgeMap(): React.ReactElement {
           <BrowserOnly fallback={<div style={{padding: 40, color: '#94a3b8'}}>Загрузка карты знаний...</div>}>
             {() => (
               <ReactFlow
-                nodes={[...testNode, ...nodes]}
-                edges={[...testEdge, ...edges]}
+                nodes={[...testNode, ...layoutedNodes]}
+                edges={[...testEdge, ...filteredEdges]}
                 onNodesChange={onNodesChange}
                 onEdgesChange={onEdgesChange}
                 nodeTypes={nodeTypes}
