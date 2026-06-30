@@ -194,10 +194,13 @@ export default function KnowledgeMap(): React.ReactElement {
     div.style.cssText = 'position:fixed;bottom:8px;right:8px;background:#1a1a2e;color:#fff;padding:8px 12px;border-radius:6px;font:12px monospace;z-index:9999;';
     div.textContent = `KG: data=${hasData} nodes=${n} edges=${e}`;
     document.body.appendChild(div);
+
+    const firstPos = layoutedNodes[0]?.position;
+    const firstNode = layoutedNodes[0]?.id;
     const log = document.createElement('div');
     log.id = 'kg-log';
-    log.style.cssText = 'position:fixed;bottom:48px;right:8px;background:#1a1a2e;color:#0f0;padding:8px 12px;border-radius:6px;font:11px monospace;z-index:9999;max-width:400px;white-space:pre-wrap;';
-    log.textContent = `nodes from state: ${nodes.length}\nedges from state: ${edges.length}\nfilteredNodes: ${filteredNodes.length}\nfilteredEdges: ${filteredEdges.length}\nlayoutedNodes: ${layoutedNodes.length}`;
+    log.style.cssText = 'position:fixed;bottom:48px;right:8px;background:#1a1a2e;color:#0f0;padding:8px 12px;border-radius:6px;font:11px monospace;z-index:9999;max-width:500px;white-space:pre-wrap;';
+    log.textContent = `nodes: ${nodes.length}\nedges: ${edges.length}\nfiltered: ${filteredNodes.length}|${filteredEdges.length}\nlayouted: ${layoutedNodes.length}\nfirstNode: ${firstNode}\nfirstPos: ${JSON.stringify(firstPos)}\nhasNaN: ${layoutedNodes.some(n => Number.isNaN(n.position.x) || Number.isNaN(n.position.y))}`;
     document.body.appendChild(log);
     return () => { div.remove(); log.remove(); };
   });
