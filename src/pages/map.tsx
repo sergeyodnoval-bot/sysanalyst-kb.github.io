@@ -185,6 +185,22 @@ export default function KnowledgeMap(): React.ReactElement {
     edges: GraphEdgeData[];
   }> | undefined;
   const graphData = graphPlugin?.default;
+  useEffect(() => {
+    const hasData = !!graphData;
+    const n = graphData?.nodes?.length ?? 0;
+    const e = graphData?.edges?.length ?? 0;
+    const div = document.createElement('div');
+    div.id = 'kg-debug';
+    div.style.cssText = 'position:fixed;bottom:8px;right:8px;background:#1a1a2e;color:#fff;padding:8px 12px;border-radius:6px;font:12px monospace;z-index:9999;';
+    div.textContent = `KG: data=${hasData} nodes=${n} edges=${e}`;
+    document.body.appendChild(div);
+    const log = document.createElement('div');
+    log.id = 'kg-log';
+    log.style.cssText = 'position:fixed;bottom:48px;right:8px;background:#1a1a2e;color:#0f0;padding:8px 12px;border-radius:6px;font:11px monospace;z-index:9999;max-width:400px;white-space:pre-wrap;';
+    log.textContent = `nodes from state: ${nodes.length}\nedges from state: ${edges.length}\nfilteredNodes: ${filteredNodes.length}\nfilteredEdges: ${filteredEdges.length}\nlayoutedNodes: ${layoutedNodes.length}`;
+    document.body.appendChild(log);
+    return () => { div.remove(); log.remove(); };
+  });
 
   const [filters, setFilters] = useState<FilterState>({
     articles: true,
