@@ -8,7 +8,7 @@ category: modeling
 tags: [modeling, l3, middle, story-mapping, user-stories, agile]
 prerequisites: [modeling/state-diagram]
 leads_to: [modeling/impact-mapping]
-related: [requirements/user-stories, process/agile-requirements, tools/miro]
+related: [requirements/user-stories, process/agile-requirements, tech/miro]
 estimated_time: 30
 difficulty: 5
 ---

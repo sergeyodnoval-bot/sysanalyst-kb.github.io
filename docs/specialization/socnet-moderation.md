@@ -7,7 +7,7 @@ category: specialization
 tags: [socnet, moderation, safety, nsfw, abuse, asr, content-id, community-guidelines]
 prerequisites: [specialization/socnet-path]
 leads_to: [specialization/socnet-monetization, specialization/socnet-platform]
-related: [ai-ethics, architecture/authorization]
+related: [specialization/ai-ethics, architecture/authorization]
 estimated_time: 35
 difficulty: 6
 audience: senior

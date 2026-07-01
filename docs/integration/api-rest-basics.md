@@ -8,8 +8,8 @@ category: integration
 tags: [rest, api, http, json]
 prerequisites: [tech/http, basics/what-is-protocol, basics/client-server-basics]
 leads_to: [integration/api-openapi, integration/api-design-detailed]
-related: []
-estimated_time: 20
+related: [integration/api-design-detailed, tech/http]
+estimated_time: 25
 difficulty: 3
 ---
 
@@ -74,5 +74,22 @@ DELETE /api/users/42  — удалить пользователя
 - Проектирование эндпоинтов
 - Документирование форматов запросов и ответов
 - Согласование с командами-потребителями
+
+## Проверь себя
+
+1. **Назовите шесть архитектурных ограничений REST.**
+   > Единый интерфейс, отсутствие состояния, кэширование, клиент-сервер, многоуровневость, код по требованию.
+
+2. **Почему в URI ресурсов используются существительные, а не глаголы?**
+   > REST оперирует ресурсами, а HTTP-методы (GET, POST, PUT, DELETE) уже обозначают действие над ресурсом.
+
+3. **Какой способ версионирования API считается наиболее распространённым?**
+   > URL-based (`/api/v1/users`) — он самый простой и наглядный для потребителей.
+
+## Что дальше
+
+- [Спецификация OpenAPI и Swagger](/docs/integration/api-openapi)
+- [Детальное проектирование API](/docs/integration/api-design-detailed)
+- [Протокол HTTP / HTTPS](/tech/http)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Q7pw0nTBSLk" title="YouTube video player" frameborder="0" allowfullscreen></iframe>

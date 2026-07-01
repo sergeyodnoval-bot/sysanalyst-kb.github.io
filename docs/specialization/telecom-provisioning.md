@@ -7,7 +7,7 @@ category: specialization
 tags: [telecom, provisioning, activation, hlr, hss, network]
 prerequisites: [specialization/telecom-bss-oss, specialization/telecom-crm-order]
 leads_to: [specialization/telecom-5g-iot]
-related: [integration/async-message-queue, architecture/event-driven-architecture]
+related: [integration/async-message-queue, integration/event-driven-architecture]
 estimated_time: 35
 difficulty: 5
 audience: middle

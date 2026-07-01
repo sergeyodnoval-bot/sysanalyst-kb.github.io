@@ -8,7 +8,7 @@ category: soft
 tags: [soft, l2, strong-junior, facilitation, meetings, workshop]
 prerequisites: [soft/soft-skills]
 leads_to: [soft/workshop-techniques]
-related: [soft/critical-thinking, soft/negotiations, modeling/event-storming]
+related: [soft/critical-thinking, soft/negotiations, integration/event-storming]
 estimated_time: 25
 difficulty: 3
 ---

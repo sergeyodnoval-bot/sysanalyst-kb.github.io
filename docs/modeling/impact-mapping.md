@@ -8,7 +8,7 @@ category: modeling
 tags: [modeling, l3, middle, impact-mapping, strategy, goals]
 prerequisites: [modeling/user-story-mapping]
 leads_to: []
-related: [modeling/user-story-mapping, requirements/user-stories, tools/miro]
+related: [modeling/user-story-mapping, requirements/user-stories, tech/miro]
 estimated_time: 25
 difficulty: 5
 ---

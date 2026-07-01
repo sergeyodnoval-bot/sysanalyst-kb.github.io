@@ -8,7 +8,7 @@ category: integration
 tags: [integration, l3, middle, event-storming, workshop, modeling, ddd]
 prerequisites: [integration/event-driven-architecture]
 leads_to: []
-related: [modeling/bpmn, modeling/c4-context, miro]
+related: [modeling/bpmn, modeling/c4-context, tech/miro]
 estimated_time: 30
 difficulty: 6
 ---

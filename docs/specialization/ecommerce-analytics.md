@@ -7,7 +7,7 @@ category: specialization
 tags: [ecommerce, analytics, metrics, funnel, cohort, abc, product-analytics, dashboards]
 prerequisites: [specialization/ecommerce-oms, specialization/ecommerce-pricing]
 leads_to: [specialization/ecommerce-retail-path]
-related: [tech/prometheus, data/nosql, integration/analytics-setup]
+related: [tech/prometheus, data/nosql]
 estimated_time: 40
 difficulty: 5
 audience: middle

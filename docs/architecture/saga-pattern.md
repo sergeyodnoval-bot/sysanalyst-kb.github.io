@@ -8,7 +8,7 @@ category: architecture
 tags: [architecture, l4, senior, saga, transactions, distributed-systems, kafka]
 prerequisites: [architecture/cqrs]
 leads_to: []
-related: [architecture/eda-detailed, integration/kafka, architecture/event-driven-architecture]
+related: [architecture/eda-detailed, integration/kafka, integration/event-driven-architecture]
 estimated_time: 35
 difficulty: 7
 ---

@@ -8,7 +8,7 @@ category: soft
 tags: [soft, l2, strong-junior, workshop, facilitation, design-sprint]
 prerequisites: [soft/facilitation]
 leads_to: []
-related: [soft/negotiations, soft/business-writing-deep, modeling/event-storming]
+related: [soft/negotiations, soft/business-writing-deep, integration/event-storming]
 estimated_time: 25
 difficulty: 3
 ---

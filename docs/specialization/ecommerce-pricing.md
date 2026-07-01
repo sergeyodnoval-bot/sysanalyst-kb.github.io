@@ -7,7 +7,7 @@ category: specialization
 tags: [ecommerce, pricing, promotions, coupons, discounts, dynamic-pricing]
 prerequisites: [specialization/ecommerce-catalog]
 leads_to: [specialization/ecommerce-marketplace]
-related: [architecture/rules-engine, requirements/functional-requirements-detailed, tech/prometheus]
+related: [requirements/functional-requirements-detailed, tech/prometheus]
 estimated_time: 40
 difficulty: 6
 audience: senior

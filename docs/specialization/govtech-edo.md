@@ -7,7 +7,7 @@ category: specialization
 tags: [govtech, edm, edo, document, workflow, smev, ukep, sed]
 prerequisites: [specialization/govtech-security]
 leads_to: []
-related: [architecture/event-driven-architecture, integration/api-design-detailed, tech/crypto]
+related: [integration/event-driven-architecture, integration/api-design-detailed, tech/crypto]
 estimated_time: 35
 difficulty: 6
 audience: senior

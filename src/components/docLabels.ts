@@ -3,7 +3,6 @@ const LABELS: Record<string, string> = {
   'basics/how-computer-works': 'Как работает компьютер',
   'basics/what-is-programming': 'Что такое программирование',
   'basics/who-is-system-analyst': 'Кто такой системный аналитик',
-  'basics/client-server': 'Клиент-серверная архитектура',
   'basics/client-server-basics': 'Клиент-серверная архитектура',
   'basics/what-is-api': 'Что такое API',
   'basics/what-is-protocol': 'Что такое протокол взаимодействия',
