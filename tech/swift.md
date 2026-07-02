@@ -19,6 +19,7 @@ citation_key: swift_standards
 citation_format: |
   SWIFT. SWIFT Standards — MT and MX message formats.
   URL: https://www.swift.com/standards
+audience: middle
 ---
 
 :::info TL;DR

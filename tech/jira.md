@@ -1,5 +1,5 @@
----
 id: jira
+audience: junior
 sidebar_position: 1
 title: Jira
 sidebar_label: Jira
@@ -17,7 +17,6 @@ used_in_tasks: [write-user-story, elicit-requirements]
 alternatives: []
 difficulty: 2
 estimated_time: 12
----
 
 # Jira
 

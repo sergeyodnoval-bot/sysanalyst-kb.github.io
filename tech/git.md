@@ -1,5 +1,5 @@
----
 id: git
+audience: junior
 title: Git — контроль версий
 sidebar_label: Git
 level: 1
@@ -12,7 +12,6 @@ prerequisites:
   - basics/what-is-programming
 related:
   - basics/git-overview
----
 
 # Git — контроль версий
 

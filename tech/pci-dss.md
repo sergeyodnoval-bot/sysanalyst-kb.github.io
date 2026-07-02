@@ -19,6 +19,7 @@ citation_key: pci_dss40
 citation_format: |
   PCI Security Standards Council. PCI DSS v4.0 — Payment Card Industry Data Security Standard.
   URL: https://www.pcisecuritystandards.org
+audience: middle
 ---
 
 :::info TL;DR

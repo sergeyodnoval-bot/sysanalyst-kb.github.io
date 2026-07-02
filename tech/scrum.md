@@ -1,5 +1,5 @@
----
 id: scrum
+audience: junior
 sidebar_position: 3
 title: Scrum
 sidebar_label: Scrum
@@ -18,7 +18,6 @@ first_seen: 1995
 requires_articles: [process/scrum-basics]
 used_in_tasks: [grooming]
 alternatives: [kanban, xp, safe]
----
 
 # Scrum
 

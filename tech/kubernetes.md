@@ -11,6 +11,7 @@ version: "1.32"
 requires_articles: [architecture/microservices-patterns, integration/api-rest-basics]
 used_in_tasks: [telecom-oss-integration]
 alternatives: [docker-swarm, nomad, openshift]
+audience: middle
 ---
 
 Kubernetes (K8s) — платформа для оркестрации контейнеров (Docker). Автоматизирует развёртывание, масштабирование и управление микросервисами.

@@ -251,6 +251,10 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'socnet-monetization': 'Монетизация соцсетей',
     'socnet-platform': 'Платформа контента',
     'socnet-eco': 'API, SDK, маркетплейс',
+    'security-fundamentals': 'Основы безопасности для системного аналитика',
+    'conflict-resolution': 'Конфликты и стресс в работе аналитика',
+    'business-case-writing': 'Бизнес-кейс и обоснование решений',
+    'activity-diagram': 'Activity diagram (UML Activities)',
   },
   tech: {
     browser: 'Веб-браузер',
@@ -438,6 +442,7 @@ const juniorTrack: TrackDef = {
         {type: 'tech', id: 'openapi'},
         {type: 'tech', id: 'curl'},
         {type: 'tech', id: 'postman'},
+        {type: 'article', id: 'security-fundamentals', folder: 'basics'},
         {type: 'task', id: 'describe-feature'},
         {type: 'task', id: 'design-rest-api'},
       ],
@@ -485,6 +490,7 @@ const middleTrack: TrackDef = {
         {type: 'article', id: 'soft-skills', folder: 'soft'},
         {type: 'article', id: 'critical-thinking', folder: 'soft'},
         {type: 'article', id: 'business-writing', folder: 'soft'},
+        {type: 'article', id: 'conflict-resolution', folder: 'soft'},
       ],
     },
     {
@@ -516,6 +522,7 @@ const middleTrack: TrackDef = {
         {type: 'article', id: 'c4-container', folder: 'modeling'},
         {type: 'article', id: 'dfd', folder: 'modeling'},
         {type: 'article', id: 'component-diagram', folder: 'modeling'},
+        {type: 'article', id: 'activity-diagram', folder: 'modeling'},
         {type: 'tech', id: 'drawio'},
         {type: 'tech', id: 'plantuml'},
       ],
@@ -572,6 +579,7 @@ const middleTrack: TrackDef = {
         {type: 'article', id: 'stakeholder-analysis', folder: 'process'},
         {type: 'article', id: 'cost-benefit-analysis', folder: 'process'},
         {type: 'article', id: 'risk-management', folder: 'process'},
+        {type: 'article', id: 'business-case-writing', folder: 'soft'},
       ],
     },
     {

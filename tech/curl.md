@@ -1,5 +1,5 @@
----
 id: curl
+audience: junior
 title: "cURL"
 sidebar_label: cURL
 type: technology
@@ -15,7 +15,6 @@ used_in_tasks: [design-rest-api]
 alternatives: [postman, httpie]
 difficulty: 1
 estimated_time: 10
----
 
 # cURL
 

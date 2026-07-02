@@ -16,6 +16,7 @@ estimated_time: 20
 requires_articles: [specialization/ai-analyst-intro, specialization/ai-llm-rag]
 used_in_tasks: [evaluate-llm-output]
 alternatives: []
+audience: middle
 ---
 
 # Hugging Face

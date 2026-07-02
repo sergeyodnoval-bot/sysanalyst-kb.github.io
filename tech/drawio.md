@@ -1,5 +1,5 @@
----
 id: drawio
+audience: junior
 title: "Draw.io (diagrams.net)"
 sidebar_label: "Draw.io"
 type: technology
@@ -15,7 +15,6 @@ used_in_tasks: [design-database-schema]
 alternatives: [miro, figma]
 difficulty: 1
 estimated_time: 5
----
 
 # Draw.io (diagrams.net)
 

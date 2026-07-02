@@ -1,5 +1,5 @@
----
 id: miro
+audience: junior
 title: "Miro"
 sidebar_label: Miro
 type: technology
@@ -15,7 +15,6 @@ used_in_tasks: []
 alternatives: [sboard, mural, figjam]
 difficulty: 1
 estimated_time: 10
----
 
 # Miro
 

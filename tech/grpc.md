@@ -16,6 +16,7 @@ estimated_time: 25
 requires_articles: [integration/api-rest-basics]
 used_in_tasks: [design-rest-api, integrate-two-systems]
 alternatives: [openapi, graphql]
+audience: middle
 ---
 
 # gRPC — Remote Procedure Call

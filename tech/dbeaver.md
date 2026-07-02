@@ -1,5 +1,5 @@
----
 id: dbeaver
+audience: junior
 title: "DBeaver"
 sidebar_label: DBeaver
 type: technology
@@ -15,7 +15,6 @@ used_in_tasks: []
 alternatives: [datagrip]
 difficulty: 2
 estimated_time: 10
----
 
 # DBeaver
 

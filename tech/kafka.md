@@ -15,6 +15,7 @@ used_in_tasks: []
 alternatives: [rabbitmq, pulsar, nats]
 difficulty: 4
 estimated_time: 30
+audience: middle
 ---
 
 # Apache Kafka

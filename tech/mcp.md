@@ -6,8 +6,10 @@ type: technology
 tech_type: protocol
 category: ai
 tags: [ai, agents, mcp, protocol, tools]
+requires_articles: [specialization/ai-agents-intro]
 official_url: https://modelcontextprotocol.io/
 github: https://github.com/modelcontextprotocol/servers
+audience: middle
 ---
 
 # MCP — Model Context Protocol

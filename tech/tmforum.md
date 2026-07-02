@@ -11,6 +11,7 @@ version: "ODA R20.5"
 requires_articles: [specialization/telecom-bss-oss, specialization/telecom-path]
 used_in_tasks: [telecom-oss-integration, telecom-design-billing]
 alternatives: [3gpp, itu-t]
+audience: senior
 ---
 
 TM Forum — глобальная ассоциация, разрабатывающая стандарты для Telecom-индустрии.

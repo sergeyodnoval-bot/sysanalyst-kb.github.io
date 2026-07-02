@@ -1,5 +1,5 @@
----
 id: postman
+audience: junior
 sidebar_position: 2
 title: Postman
 sidebar_label: Postman
@@ -19,7 +19,6 @@ first_seen: 2012
 requires_articles: [integration/api-rest-basics]
 used_in_tasks: [design-rest-api]
 alternatives: []
----
 
 # Postman
 

@@ -16,6 +16,7 @@ estimated_time: 20
 requires_articles: [architecture/microservices-patterns]
 used_in_tasks: [integrate-two-systems]
 alternatives: [podman, containerd, kubernetes]
+audience: middle
 ---
 
 # Docker — контейнеризация

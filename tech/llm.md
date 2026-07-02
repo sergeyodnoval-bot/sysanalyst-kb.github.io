@@ -13,6 +13,7 @@ estimated_time: 30
 requires_articles: [specialization/ai-analyst-intro, specialization/ai-llm-rag]
 used_in_tasks: [design-rag-pipeline, evaluate-llm-output]
 alternatives: []
+audience: middle
 ---
 
 # Large Language Model (LLM)

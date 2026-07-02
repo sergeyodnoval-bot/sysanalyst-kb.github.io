@@ -14,6 +14,7 @@ used_in_tasks: []
 alternatives: [mysql, oracle, sqlserver]
 difficulty: 2
 estimated_time: 20
+audience: junior
 ---
 
 # PostgreSQL

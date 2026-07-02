@@ -1,5 +1,5 @@
----
 id: figma
+audience: junior
 title: "Figma"
 sidebar_label: "Figma"
 type: technology
@@ -14,7 +14,6 @@ used_in_tasks: []
 alternatives: [sketch, adobe-xd]
 difficulty: 1
 estimated_time: 15
----
 
 # Figma
 

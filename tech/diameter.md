@@ -11,6 +11,7 @@ version: "RFC 6733"
 requires_articles: [specialization/telecom-bss-oss, specialization/telecom-billing]
 used_in_tasks: [telecom-design-billing, telecom-oss-integration]
 alternatives: [ss7, radius, http2]
+audience: senior
 ---
 
 Diameter — протокол аутентификации, авторизации и тарификации в Telecom и IP-сетях. Замена RADIUS и SS7 в современных сетях.

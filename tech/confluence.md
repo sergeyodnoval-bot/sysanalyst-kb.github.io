@@ -1,5 +1,5 @@
----
 id: confluence
+audience: junior
 sidebar_position: 2
 title: Confluence
 sidebar_label: Confluence
@@ -17,7 +17,6 @@ used_in_tasks: [elicit-requirements]
 alternatives: []
 difficulty: 2
 estimated_time: 10
----
 
 # Confluence
 

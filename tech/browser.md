@@ -1,5 +1,5 @@
----
 id: browser
+audience: junior
 title: "Веб-браузер"
 sidebar_label: "Браузер"
 type: technology
@@ -14,7 +14,6 @@ used_in_tasks: []
 alternatives: []
 difficulty: 1
 estimated_time: 15
----
 
 # Веб-браузер
 

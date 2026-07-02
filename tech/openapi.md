@@ -21,6 +21,7 @@ citation_key: openapi31
 requires_articles: [integration/api-rest-basics]
 used_in_tasks: [design-rest-api]
 alternatives: [graphql, grpc]
+audience: middle
 ---
 
 # OpenAPI Specification (Swagger)

@@ -14,10 +14,6 @@ const config: Config = {
   tagline: 'Структурированные знания для системных аналитиков — от простого к сложному',
   favicon: 'img/favicon.ico',
 
-  future: {
-    v4: true,
-  },
-
   url: 'https://sergeyodnoval-bot.github.io',
   baseUrl: '/sysanalyst-kb.github.io/',
 
@@ -147,22 +143,30 @@ const config: Config = {
           walkDir(path.resolve(__dirname, 'tech'), '', 'technology');
           walkDir(path.resolve(__dirname, 'tasks'), '', 'task');
 
-          // Normalize edge references: strip tech/ prefix, resolve bare article IDs
+          // Normalize edge references: resolve bare IDs to full paths
           const nodeIds = new Set(graph.nodes.map((n: {id: string}) => n.id));
-          const shortToFull: Record<string, string> = {};
+          const shortToFull: Record<string, {article: string; tech: string; task: string}> = {};
           for (const n of graph.nodes) {
             const parts = n.id.split('/');
             const short = parts[parts.length - 1];
+            const type = parts[0] === 'tech' ? 'tech' : parts[0] === 'tasks' ? 'task' : 'article';
             if (!shortToFull[short]) {
-              shortToFull[short] = n.id;
+              shortToFull[short] = {} as any;
             }
+            shortToFull[short][type] = n.id;
           }
 
           for (const edge of graph.edges) {
             const resolve = (id: string): string => {
-              if (id.startsWith('tech/')) id = id.slice(5);
-              if (!id.includes('/') && !nodeIds.has(id) && shortToFull[id]) {
-                return shortToFull[id];
+              if (id.startsWith('tech/')) {
+                const short = id.slice(5);
+                if (shortToFull[short]?.tech) return shortToFull[short].tech;
+                return id;
+              }
+              if (!id.includes('/') && !nodeIds.has(id)) {
+                if (shortToFull[id]?.article) return shortToFull[id].article;
+                if (shortToFull[id]?.tech) return shortToFull[id].tech;
+                if (shortToFull[id]?.task) return shortToFull[id].task;
               }
               return id;
             };

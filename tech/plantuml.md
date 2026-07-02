@@ -1,5 +1,5 @@
----
 id: plantuml
+audience: junior
 title: "PlantUML"
 sidebar_label: PlantUML
 type: technology
@@ -15,7 +15,6 @@ used_in_tasks: []
 alternatives: [drawio, mermaid]
 difficulty: 2
 estimated_time: 15
----
 
 # PlantUML
 

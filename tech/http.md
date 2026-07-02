@@ -18,6 +18,7 @@ used_in_tasks: [design-rest-api]
 alternatives: []
 difficulty: 2
 estimated_time: 15
+audience: junior
 ---
 
 # HTTP — HyperText Transfer Protocol

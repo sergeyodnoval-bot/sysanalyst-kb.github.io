@@ -15,6 +15,7 @@ used_in_tasks: []
 alternatives: [kafka, activemq, nats]
 difficulty: 3
 estimated_time: 25
+audience: middle
 ---
 
 # RabbitMQ

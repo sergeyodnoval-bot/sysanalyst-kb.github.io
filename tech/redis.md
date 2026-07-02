@@ -16,6 +16,7 @@ estimated_time: 20
 requires_articles: [data/nosql]
 used_in_tasks: [design-database-schema]
 alternatives: [memcached, hazelcast, couchbase]
+audience: middle
 ---
 
 # Redis — in-memory data store

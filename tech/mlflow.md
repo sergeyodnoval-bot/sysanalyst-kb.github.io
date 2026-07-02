@@ -16,6 +16,7 @@ estimated_time: 25
 requires_articles: [specialization/ai-ml-architecture]
 used_in_tasks: []
 alternatives: [weights-and-biases, kubeflow]
+audience: middle
 ---
 
 # MLflow

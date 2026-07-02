@@ -16,6 +16,7 @@ estimated_time: 25
 requires_articles: [specialization/ai-llm-rag]
 used_in_tasks: [design-rag-pipeline]
 alternatives: [llamaindex]
+audience: middle
 ---
 
 # LangChain
