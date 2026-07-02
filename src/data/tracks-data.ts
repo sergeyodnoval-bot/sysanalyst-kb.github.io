@@ -325,6 +325,7 @@ export const itemLabels: Record<string, Record<string, string>> = {
     'conduct-stakeholder-interview': 'Интервью со стейкхолдером',
     'design-database-schema': 'Проектирование схемы БД',
     'integrate-two-systems': 'Проектирование интеграции',
+    'kafka-integration-spec': 'Проектирование интеграции с Kafka',
     'frame-ml-problem': 'Формулировка ML-задачи',
     'define-ml-metrics': 'Определение метрик ML-продукта',
     'design-rag-pipeline': 'Проектирование RAG-пайплайна',
@@ -551,6 +552,7 @@ const middleTrack: TrackDef = {
         {type: 'article', id: 'event-storming', folder: 'integration'},
         {type: 'tech', id: 'kafka'},
         {type: 'tech', id: 'rabbitmq'},
+        {type: 'task', id: 'kafka-integration-spec'},
       ],
     },
     {

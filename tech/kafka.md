@@ -11,10 +11,10 @@ vendor: "Apache Software Foundation"
 license: "Open Source (Apache 2.0)"
 first_seen: 2011
 requires_articles: [integration/async-message-queue]
-used_in_tasks: []
+used_in_tasks: [kafka-integration-spec]
 alternatives: [rabbitmq, pulsar, nats]
 difficulty: 4
-estimated_time: 30
+estimated_time: 45
 audience: middle
 ---
 
@@ -22,108 +22,262 @@ audience: middle
 
 Kafka — **распределённая платформа для событийных потоков (event streaming)**. В отличие от классических брокеров (RabbitMQ), Kafka не удаляет сообщения после обработки, а хранит их в журнале (log) с возможностью перечитывать.
 
-Kafka спроектирована для **огромных объёмов данных** — сотни тысяч сообщений в секунду на одном кластере.
+## Как аналитик работает с Kafka в реальности
 
-## Для чего используется
+DevOps / архитектор разворачивает кластер и выдаёт координаты:
+```
+bootstrap.servers = kafka-cluster.prod:9092,kafka-cluster.prod:9093
+security.protocol = SASL_SSL
+sasl.mechanism = SCRAM-SHA-512
+```
 
-- **Event Sourcing** — хранение всей истории изменений состояния
-- **Log aggregation** — сбор логов со всех микросервисов в единый поток
-- **Stream processing** — обработка данных в реальном времени через Kafka Streams или ksqlDB
-- **CDC (Change Data Capture)** — отслеживание изменений в БД через Debezium
-- **Метрики и мониторинг** — сбор метрик со всех сервисов
-- **CQRS** — разделение команд и запросов через событийную шину
+Аналитик в этой схеме отвечает за:
+- **Topic Charter** — названия топиков, количество партиций, retention, ключ партиционирования
+- **Message Schema** — формат сообщений (Avro / JSON / Protobuf), обязательные поля
+- **Consumer Group** — контракт: кто читает, сколько консюмеров, commit strategy
+- **Error Handling** — Dead Letter Topic, retry-логика
+- **Headers** — служебные метаданные (traceId, messageType, version)
 
-## Ключевые концепции
+Для просмотра топиков и сообщений используются GUI-клиенты (не консоль):
+- **Kafka UI** (https://github.com/provectus/kafka-ui) — веб-интерфейс, показывает топики, партиции, консюмеров, лаг, содержимое сообщений
+- **AKHQ** — альтернатива Kafka UI
+- **Offset Explorer** (бывший Kafka Tool) — десктопный клиент для Windows/Mac
 
-| Понятие | Описание |
-|---------|----------|
-| **Topic** | Категория сообщений (аналог таблицы в БД) |
-| **Partition** | Единица параллелизма внутри topic. Сообщения с одним ключом всегда попадают в одну партицию — гарантия порядка |
-| **Broker** | Сервер Kafka. Кластер из 3+ brokers для отказоустойчивости |
-| **Replication factor** | Количество копий каждой партиции (обычно 3) |
-| **Consumer Group** | Группа consumer'ов, которые делят между собой партиции topic. Если один consumer падает, его партиции переходят другому (rebalancing) |
-| **Offset** | Номер сообщения внутри партиции. Consumer сохраняет offset — может перечитать с любого места |
-| **Retention** | Время хранения сообщений (по умолчанию 7 дней) или максимальный размер (по умолчанию 1 ГБ на партицию) |
-| **ZooKeeper / KRaft** | ZooKeeper — классический координатор кластера (всё ещё распространён). KRaft — новый встроенный координатор (без ZooKeeper, с Kafka 2.8+) |
+## Что аналитику нужно знать о Kafka-концепциях
 
-## Когда выбирать Kafka
+### Topic и партиции
 
-- **Высокая пропускная способность** — нужно обрабатывать > 100 000 сообщений в секунду
-- **Хранение истории** — сообщения должны жить дни или недели (replay, audit)
-- **Несколько consumer'ов** — сотни сервисов читают один и тот же поток данных
-- **Stream processing** — нужна обработка на лету (агрегации, join-ы, фильтрация)
-- **Интеграция с экосистемой Hadoop / ClickHouse / Elastic** — Kafka Connect из коробки
+| Термин | Зачем аналитику |
+|--------|-----------------|
+| **Topic** | Единица интеграции. Один топик = один тип событий (orders, payments, notifications) |
+| **Partition** | Единица параллелизма. Количество партиций = максимальное количество consumer'ов, которые могут читать параллельно |
+| **Replication Factor** | Отказоустойчивость. Обычно 3 — аналитик указывает в нефункциональных требованиях |
 
-## Когда НЕ выбирать Kafka
+**Правила для аналитика:**
+- Сообщения с **одинаковым ключом** попадают в одну партицию → порядок гарантирован
+- Если порядок не важен — ключ можно не указывать (round-robin)
+- Количество партиций **нельзя уменьшить** (только увеличить) — проектируйте с запасом
 
-- **Простая асинхронная задача** (отправить email) — RabbitMQ проще и легче
-- **Задержка критична (< 10 мс)** — Kafka имеет latency в десятки миллисекунд
-- **Гибкая маршрутизация** — у Kafka только topic, нет exchange/binding как в RabbitMQ
-- **Маленький проект (до 1000 сообщений/день)** — оверхед Kafka неоправдан
+### Partition Key
 
-## Сравнение: Apache Kafka vs RabbitMQ
+Ключ определяет, в какую партицию попадёт сообщение. Выбор ключа — аналитическое решение.
+
+| Ключ | Эффект |
+|------|--------|
+| `customer_id` | Все события одного клиента в одной партиции — порядок гарантирован |
+| `order_id` | Порядок событий одного заказа (если ключ совпадает с partition key) |
+| `random / null` | Равномерное распределение, порядок не гарантирован |
+
+**Пример спецификации:** «События по одному заказу должны обрабатываться последовательно. Partition key = `order_id`. Всего 6 партиций для равномерной нагрузки».
+
+### Consumer Group
+
+Группа consumer'ов, которые вместе читают топик. Каждая партиция читается **только одним consumer'ом** внутри группы.
+
+```
+Topic: orders (3 partitions)
+  Consumer Group: payment-service
+    consumer-1 → partition 0
+    consumer-2 → partition 1
+    consumer-3 → partition 2
+```
+
+**Что важно аналитику:**
+- Количество consumer'ов в группе **не может превышать количество партиций** — лишние будут простаивать
+- **Rebalancing** — перераспределение партиций при добавлении/удалении consumer'а. Во время rebalance группа не обрабатывает сообщения (stop-the-world на 5-30 секунд)
+- Consumer lag — разница между последним сообщением в партиции и тем, которое consumer прочитал. Lag растёт → consumer не справляется → аналитик закладывает метрику в мониторинг
+
+### Offsets
+
+Каждое сообщение в партиции имеет номер (offset). Consumer запоминает, какой offset уже обработал.
+
+**Стратегии commit:**
+- `auto.commit=true` (по умолчанию) — consumer сам коммитит offset каждые 5 секунд. Есть риск повторной обработки при падении
+- Ручной commit — consumer коммитит после успешной обработки. Меньше дублей, но сложнее код
+
+Для аналитика важно: в спецификации указывать стратегию commit и `auto.offset.reset`:
+- `earliest` — начать с самого старого сообщения (для новых consumer'ов, которым нужны все данные)
+- `latest` — начать с новых сообщений (пропустить историю)
+
+### Headers
+
+Метаданные, которые producer прикрепляет к сообщению. Не влияют на партиционирование, но используются consumer'ом.
+
+**Стандартные хедеры в практике:**
+```
+traceId: "a1b2c3d4"         — сквозная трассировка
+messageType: "OrderCreated"  — тип события
+version: "1.0"              — версия схемы
+contentType: "avro"         — формат данных
+source: "order-service"     — источник
+```
+
+**Зачем аналитику:** хедеры — часть контракта. Пропишите их в спецификации: какие хедеры обязательные, какие опциональные.
+
+### Delivery Semantics
+
+Как аналитик объясняет бизнесу гарантии доставки:
+
+| Семантика | Что значит | Когда подходит |
+|-----------|-----------|----------------|
+| **At-most-once** | Сообщение не будет доставлено повторно, но может потеряться | Метрики, логи — потерять пару сообщений некритично |
+| **At-least-once** | Каждое сообщение будет доставлено минимум один раз, возможны дубли | Платёжные транзакции — дубли обрабатываются идемпотентно |
+| **Exactly-once** | Каждое сообщение ровно один раз — самая дорогая гарантия | Финтех, где дубли критичны (списания), требует идемпотентности на стороне consumer'а |
+
+**На практике:** большинство систем используют at-least-once + идемпотентный consumer.
+
+## Как подключаться к Kafka
+
+### Что даёт DevOps
+
+```yaml
+# Конфиг подключения (аналитик копирует в спецификацию)
+bootstrap.servers: host1:9092,host2:9092
+security.protocol: SASL_SSL         # или PLAINTEXT (dev), SSL
+sasl.mechanism: SCRAM-SHA-512      # или PLAIN
+sasl.jaas.config: <username:password>  # или через env
+schema.registry.url: https://schema-registry:8081
+```
+
+### GUI-клиенты для аналитика
+
+| Инструмент | Тип | Где скачать |
+|-----------|-----|-------------|
+| **Kafka UI** | Web | docker-образ provectuslabs/kafka-ui |
+| **AKHQ** | Web | docker-образ (тоже веб) |
+| **Offset Explorer** | Desktop | https://offsetexplorer.com/ |
+| **Confluent Cloud Console** | Web | Если кластер в Confluent Cloud |
+
+Все подключаются по тем же параметрам: bootstrap servers, SASL, SSL, Schema Registry URL.
+
+## Шаблон спецификации интеграции с Kafka
+
+Страницы, которые аналитик пишет в SRS или контракте интеграции.
+
+### 1. Topic Charter
+
+| Поле | Значение | Пример |
+|------|----------|--------|
+| Имя топика | Отражает домен и тип события | `order.payment.processed` |
+| Количество партиций | Зависит от нагрузки (формула: target throughput / per-partition throughput) | 6 |
+| Replication Factor | Отказоустойчивость, обычно 3 | 3 |
+| Retention | Время хранения сообщений | 7 дней |
+| Cleanup Policy | `delete` (по времени) или `compact` (по ключу) | `delete` |
+| Partition Key | Поле, по которому определяется партиция | `order_id` |
+
+### 2. Message Schema (Avro / JSON)
+
+```json
+{
+  "name": "OrderPaymentProcessed",
+  "type": "record",
+  "fields": [
+    {"name": "eventId",      "type": "string", "doc": "UUID события"},
+    {"name": "orderId",      "type": "string"},
+    {"name": "amount",       "type": "decimal"},
+    {"name": "currency",     "type": "string", "default": "RUB"},
+    {"name": "timestamp",    "type": "long",   "doc": "UNIX epoch ms"}
+  ]
+}
+```
+
+Аналитик определяет поля, их типы, обязательность (`default`). Schema Registry проверяет совместимость при изменениях.
+
+### 3. Producer Spec
+
+| Параметр | Значение | Пояснение |
+|----------|----------|-----------|
+| `acks` | `all` | Ждать подтверждения от всех реплик |
+| `retries` | `3` | Повтор при временной ошибке |
+| `enable.idempotence` | `true` | Защита от дублов при повторной отправке |
+| `compression.type` | `snappy` / `lz4` | Сжатие для больших сообщений |
+
+### 4. Consumer Spec
+
+| Параметр | Значение | Пояснение |
+|----------|----------|-----------|
+| `group.id` | `payment-service` | Имя группы — уникально в рамках кластера |
+| `auto.offset.reset` | `earliest` / `latest` | Откуда читать новому consumer'у |
+| `enable.auto.commit` | `true` / `false` | Авто-commit или ручной |
+| `max.poll.records` | `500` | Сколько сообщений за один poll |
+
+### 5. Error Handling
+
+- **Dead Letter Topic (DLT)** — топик для сообщений, которые не удалось обработать. Имя: `original-topic-name-dlt` или `original-topic-name-retry-[N]`
+- **Retry strategy** — exponential backoff: 10s → 30s → 60s → DLT
+- В спецификации: «Сообщения, не обработанные после 3 ретраев, попадают в DLT. Оператор мониторит DLT раз в смену»
+
+### 6. Header Conventions
+
+| Header | Обязательный | Пример |
+|--------|-------------|--------|
+| `traceId` | Да | `"a1b2c3d4-e5f6"` |
+| `messageType` | Да | `"OrderPaymentProcessed"` |
+| `version` | Да | `"1.0"` |
+| `source` | Да | `"order-service"` |
+| `contentType` | Да | `"avro"` |
+
+### 7. Security
+
+| Параметр | Значение |
+|----------|----------|
+| Protocol | SASL_SSL (прод), PLAINTEXT (dev) |
+| Mechanism | SCRAM-SHA-512 (прод) / PLAIN (dev) |
+| Credentials | Через секреты Kubernetes / Vault |
+
+### 8. Monitoring
+
+Метрики, которые нужно заложить в требования к мониторингу:
+- **Consumer lag** по каждой партиции
+- **Messages in / out** per topic
+- **Error rate** — сообщения в DLT
+- **Rebalance count** — частота перебалансировок
+
+## Сравнение с альтернативами
+
+### Kafka vs RabbitMQ
 
 | Критерий | Kafka | RabbitMQ |
 |----------|-------|----------|
-| **Архитектура** | Распределённый лог | Централизованная очередь |
-| **Производительность** | 100K–1M msg/сек | 10K–50K msg/сек |
-| **Latency** | ~10–50 мс (batch) | < 1 мс (одиночные) |
-| **Хранение** | По retention (дни/ГБ) | До подтверждения (ack) |
-| **Маршрутизация** | По ключу в partition | Exchange + routing key |
-| **Replay** | Да (с любого offset) | Нет |
-| **Порядок сообщений** | Внутри партиции | Внутри очереди |
-| **Размер сообщения** | До 1 МБ (по умолчанию) | До 128 МБ (по умолчанию) |
-| **Опыт эксплуатации** | Сложный (кластер, мониторинг) | Простой (можно один узел) |
+| Архитектура | Распределённый лог | Очередь сообщений |
+| Производительность | 100K–1M msg/сек | 10K–50K msg/сек |
+| Latency | ~10–50 мс | < 1 мс |
+| Хранение | По retention (дни/ГБ) | До подтверждения |
+| Replay | Да (с любого offset) | Нет |
+| Порядок | Внутри партиции | Внутри очереди |
 
-**Вывод:** RabbitMQ — для задач (task queue, RPC). Kafka — для потоков (event stream, log, CDC). Часто используются вместе: RabbitMQ принимает запросы от клиентов, Kafka хранит события домена.
+**Вывод:** RabbitMQ — для задач (task queue, RPC). Kafka — для потоков (event stream, log, CDC). Часто работают в паре.
 
-## Сравнение: Apache Kafka vs Apache Pulsar
+### Kafka vs Pulsar
 
-Pulsar — более новый конкурент, решающий некоторые проблемы Kafka:
+Pulsar решает проблемы Kafka (rebalance без паузы, нативная multi-tenancy), но экосистема меньше.
 
-| Критерий | Kafka | Pulsar |
-|----------|-------|--------|
-| **Хранение** | На каждом broker | Отдельный слой хранения (BookKeeper) |
-| **Rebalancing** | Stop-the-world (пауза) | Сегментированное (без паузы) |
-| **Multi-tenancy** | Через topic naming | Нативная (tenant/namespace) |
-| **Гео-репликация** | Встроенная | Более гибкая |
+## CLI команды (для справки)
 
-**Вывод:** Kafka — более зрелая экосистема (больше инструментов, документации, сообщества). Pulsar — технологически интереснее, но экосистема меньше.
-
-## Сравнение: Apache Kafka vs NATS
-
-NATS — лёгкий брокер для сверхбыстрой доставки. Kafka vs NATS — не конкуренты, а разные классы:
-
-| Критерий | Kafka | NATS |
-|----------|-------|------|
-| Область | Event streaming, хранение | Быстрая доставка, IoT, микросервисы |
-| Хранение | Да (retention) | Нет (кроме JetStream) |
-| Скорость | Высокая | Очень высокая |
-| Гарантии | Exactly-once | At-most-once / At-least-once |
-
-## CLI команды
+Если понадобится локально проверить гипотезу — минимальный набор:
 
 | Команда | Описание |
 |---------|----------|
-| `kafka-topics.sh --create --topic orders --partitions 3 --replication-factor 3` | Создать topic |
-| `kafka-console-producer.sh --topic orders` | Отправить сообщение в консоли |
-| `kafka-console-consumer.sh --topic orders --from-beginning` | Читать все сообщения с начала |
-| `kafka-consumer-groups.sh --describe --group my-group` | Статус consumer group (lag) |
-| `kafka-run-class.sh kafka.tools.GetOffsetShell --topic orders --time -1` | Количество сообщений в topic |
+| `kafka-console-consumer.sh --topic orders --from-beginning --bootstrap-server localhost:9092 --property print.headers=true` | Посмотреть сообщения с хедерами |
+| `kafka-consumer-groups.sh --describe --group my-group --bootstrap-server localhost:9092` | Lag consumer group |
+| `kafka-topics.sh --describe --topic orders --bootstrap-server localhost:9092` | Детали топика |
 
-## Как начать
+## Что дальше
 
-1. Самый простой способ — Docker: `docker compose up` с [confluentinc/cp-kafka](https://hub.docker.com/r/confluentinc/cp-kafka)
-2. Создайте topic: `kafka-topics.sh --create --topic events --bootstrap-server localhost:9092`
-3. Запустите producer: `kafka-console-producer.sh --topic events --bootstrap-server localhost:9092`
-4. В другом окне consumer: `kafka-console-consumer.sh --topic events --from-beginning --bootstrap-server localhost:9092`
-5. Вводите текст в producer — consumer его показывает
+- [Задача: проектирование интеграции с Kafka](/tasks/kafka-integration-spec) — применить знания на практике
+- [Асинхронное взаимодействие (Message Queue)](/docs/integration/async-message-queue) — фундамент
+- [Event-Driven Architecture](/docs/integration/event-driven-architecture) — куда Kafka вписывается архитектурно
 
-## Ссылки
+## Проверь себя
 
-- [Официальная документация](https://kafka.apache.org/documentation/)
-- [Kafka в Docker (Confluent)](https://hub.docker.com/r/confluentinc/cp-kafka)
-- [Kafka Quickstart](https://kafka.apache.org/quickstart)
-- [Confluent Developer — курсы для начинающих](https://developer.confluent.io/)
-- [Kafka vs RabbitMQ — сравнение](https://www.confluent.io/blog/kafka-vs-rabbitmq/)
-- [Kafka The Definitive Guide (книга, Neha Narkhede)](https://www.confluent.io/resources/kafka-the-definitive-guide/)
+1. **Почему количество consumer'ов в группе не может быть больше количества партиций?**
+   *Ответ:* Каждая партиция читается только одним consumer'ом внутри группы. Лишние consumer'ы будут простаивать — партиций им не достанется.
+
+2. **Какой partition key выбрать, если нужен порядок событий по одному заказу?**
+   *Ответ:* `order_id`. Все сообщения с одинаковым `order_id` попадут в одну партицию, где порядок гарантирован.
+
+3. **Чем отличается auto.offset.reset = earliest от latest?**
+   *Ответ:* `earliest` — начать чтение с самого старого сообщения (подходит для новых consumer'ов, которым нужны все данные). `latest` — начать только с новых сообщений (пропустить историю).
+
+4. **Что такое consumer lag и почему его нужно мониторить?**
+   *Ответ:* Разница между последним сообщением в партиции и тем, которое consumer уже обработал. Растущий lag = consumer не справляется с нагрузкой = нужны доп. партиции/консюмеры или оптимизация.

@@ -172,6 +172,7 @@ const LABELS: Record<string, string> = {
   'define-ml-metrics': 'Определение метрик ML-продукта',
   'design-rag-pipeline': 'Проектирование RAG-пайплайна',
   'design-agent-system': 'Проектирование AI-агента для продакшна',
+  'kafka-integration-spec': 'Проектирование интеграции с Kafka',
   'docker': 'Docker — контейнеризация',
   'prometheus': 'Prometheus — сбор метрик',
   'redis': 'Redis — in-memory data store',
